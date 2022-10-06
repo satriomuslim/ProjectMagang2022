@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.landing.LandingActivity">
+    tools:context=".ui.landing.LandingNextActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -34,19 +34,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
-        android:text="@string/landing_2"
+        android:text="@string/landing_5"
         android:textAlignment="center"
-        android:textSize="35sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="285dp"
+        android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="@string/landing_3"
+        android:text="@string/landing_6"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

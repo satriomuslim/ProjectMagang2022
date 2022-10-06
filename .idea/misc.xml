@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/activity_landing.xml" value="0.14" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/activity_landing_next.xml" value="0.17" />
+      </map>
+    </option>
+  </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>

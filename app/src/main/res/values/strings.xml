@@ -11,4 +11,14 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+
+    <string name="landing_1">Lewati</string>
+    <string name="landing_2">Membantu Memantau Anak Anda</string>
+    <string name="landing_3">Binamurid membantu anda dalam memantau bidang akademik maupun non akademik anak kamu</string>
+    <string name="btn_landing">Selanjutnya</string>
+    <string name="image_landing">image</string>
+
+    <string name="landing_5">Mulai percakapan mudah dengan Pedagogue</string>
+    <string name="landing_6">Mulai percayakan dan melihat Daily Report anak kesayangan kamu lewat Jasa dari Pedagogue dengan mudah dan nyaman</string>
 </resources>
