@@ -3,8 +3,31 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/activity_landing.xml" value="0.14" />
-        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/activity_landing_next.xml" value="0.17" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/drawable-v24/ic_baseline_clear_24.xml" value="0.169" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/drawable-v24/shape_item.xml" value="0.18" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/drawable/bg_text_field.xml" value="0.169" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/drawable/ic_baseline_clear_24.xml" value="0.169" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/drawable/ic_baseline_fiber_pin_24.xml" value="0.169" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/activity_invitation_pedagogue.xml" value="0.22" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/activity_landing.xml" value="0.18" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/activity_landing_next.xml" value="0.16" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/activity_list_child_pedagogue.xml" value="0.18" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/fragment_daily_parent.xml" value="0.2" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/fragment_daily_parents_calender.xml" value="0.22" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/fragment_daily_pedagogue.xml" value="0.18" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/fragment_daily_report_child_pedagogue.xml" value="0.18" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/fragment_daily_report_input_pedagogue.xml" value="0.18" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/fragment_history_parent.xml" value="0.2" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/fragment_history_pedagogue.xml" value="0.22" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/fragment_home_parent.xml" value="0.2" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/fragment_home_scan_list.xml" value="0.2" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/fragment_scan_barcode_parents.xml" value="0.22" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/item_daily_child_layout.xml" value="0.25" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/item_daily_layout.xml" value="0.25" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/item_daily_parents_layout.xml" value="0.25" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/item_history_layout.xml" value="0.22" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/item_list_layout.xml" value="0.2" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/item_user_layout.xml" value="0.18" />
       </map>
     </option>
   </component>
