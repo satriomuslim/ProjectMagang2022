@@ -3,8 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/activity_landing.xml" value="0.14" />
-        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/activity_landing_next.xml" value="0.17" />
+        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/activity_landing.xml" value="0.371875" />
+        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/activity_landing_next.xml" value="0.33" />
+        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/activity_login.xml" value="0.371875" />
       </map>
     </option>
   </component>
