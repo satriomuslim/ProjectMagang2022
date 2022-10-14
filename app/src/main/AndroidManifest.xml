@@ -15,7 +15,10 @@
         android:theme="@style/Theme.Qtnbinamurid"
         tools:targetApi="31">
         <activity
-            android:name=".LandingNextActivity"
+            android:name=".InvitationPedagogueActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.landing.LandingNextActivity"
             android:exported="false" />
         <activity
             android:name=".ui.register.RegisterActivity"

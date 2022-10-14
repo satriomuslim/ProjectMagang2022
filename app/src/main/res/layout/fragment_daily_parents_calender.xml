@@ -5,20 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".ui.parent.history.HistoryParentFragment">
+    tools:context=".ui.parent.daily.DailyParentsCalenderFragment">
 
-    <TextView
-        android:id="@+id/list_child_pedagogue"
-        style="@style/DefaultTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="History Parents"
-        android:textColor="@color/black"
-        android:textSize="20sp"
+    <Button
+        android:id="@+id/button3"
+        style="@style/Button_one"
+        android:layout_marginTop="16dp"
+        android:text="Search Kalender"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
@@ -27,7 +23,7 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_child_pedagogue">
+        app:layout_constraintTop_toBottomOf="@+id/button3">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_main"
@@ -38,8 +34,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/item_history_layout" />
+            tools:listitem="@layout/item_daily_parents_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

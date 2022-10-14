@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".ui.parent.history.HistoryParentFragment">
+    tools:context=".ui.parent.home.HomeScanListFragment">
 
     <TextView
         android:id="@+id/list_child_pedagogue"
         style="@style/DefaultTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="History Parents"
+        android:text="Pilih Anak"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,8 +38,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/item_history_layout" />
+            tools:listitem="@layout/item_user_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
