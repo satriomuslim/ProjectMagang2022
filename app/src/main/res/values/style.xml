@@ -15,6 +15,28 @@
         <item name="fontFamily">@font/poppins_regular</item>
     </style>
 
+    <style name="DefaultTextLandingBold" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="DefaultTextLandingSemiBold" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="fontFamily">@font/poppins_semibold</item>
+    </style>
+
+    <style name="DefaultTextMedium" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="fontFamily">@font/poppins_medium</item>
+    </style>
+
+
     <style name="Button_one">
         <item name="android:inputType">textCapSentences</item>
         <item name="android:backgroundTint">@color/blue</item>
@@ -26,6 +48,15 @@
         <item name="android:layout_marginTop">64dp</item>
         <item name="android:layout_marginEnd">8dp</item>
         <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="ButtonDefault">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:backgroundTint">@color/blue</item>
+        <item name="android:textSize">16sp</item>
+        <item name="cornerRadius">16dp</item>
+        <item name="android:padding">16dp</item>
+        <item name="fontFamily">@font/poppins_semibold</item>
     </style>
 
     <style name="Button_chat">
@@ -42,11 +73,8 @@
     <style name="TextInputEdit" parent="Widget.MaterialComponents.TextInputLayout.FilledBox" >
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">8dp</item>
-        <item name="android:layout_marginTop">32dp</item>
-        <item name="android:layout_marginEnd">8dp</item>
-        <item name="android:background">@drawable/bg_text_field</item>
-        <item name="android:textColorHint">@color/black</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:background">@drawable/bg_background_white_stoke_black</item>
         <item name="android:padding">15dp</item>
         <item name="android:inputType">textEmailAddress</item>
     </style>

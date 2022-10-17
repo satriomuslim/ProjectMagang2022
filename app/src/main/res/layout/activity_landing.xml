@@ -11,8 +11,7 @@
         style="@style/DefaultTextLanding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_margin="24dp"
         android:text="@string/landing_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,22 +22,22 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:contentDescription="@string/image_landing"
+        android:src="@drawable/ill_landing_page_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:ignore="ImageContrastCheck"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:ignore="ImageContrastCheck" />
 
     <TextView
         android:id="@+id/textView2"
-        style="@style/DefaultTextLanding"
+        style="@style/DefaultTextLandingSemiBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:text="@string/landing_2"
         android:textAlignment="center"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -49,6 +48,7 @@
         android:layout_width="285dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:fontFamily="@font/poppins_regular"
         android:text="@string/landing_3"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,13 +56,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_next_landing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
-        android:text="@string/btn_landing"
         android:backgroundTint="@color/blue"
+        android:text="@string/btn_landing"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

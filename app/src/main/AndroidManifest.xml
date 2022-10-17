@@ -15,7 +15,10 @@
         android:theme="@style/Theme.Qtnbinamurid"
         tools:targetApi="31">
         <activity
-            android:name=".InvitationPedagogueActivity"
+            android:name=".ui.resetPassword.ResetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.pedagogue.invitation.InvitationPedagogueActivity"
             android:exported="false" />
         <activity
             android:name=".ui.landing.LandingNextActivity"
@@ -44,6 +47,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
