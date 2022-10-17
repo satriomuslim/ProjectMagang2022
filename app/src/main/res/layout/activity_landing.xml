@@ -34,7 +34,7 @@
         style="@style/DefaultTextLandingSemiBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="24dp"
         android:text="@string/landing_2"
         android:textAlignment="center"
         android:textSize="24sp"
