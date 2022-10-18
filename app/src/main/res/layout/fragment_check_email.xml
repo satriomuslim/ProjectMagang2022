@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.resetPassword.CheckEmailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_envelope_big"
+        android:layout_gravity="center"
+        android:layout_marginTop="48dp"/>
 
-</FrameLayout>
+    <TextView
+        style="@style/DefaultTextMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Check Email Kamu"
+        android:textSize="24sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        style="@style/DefaultTextLanding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kami telah mengirimkan instruksi pemulihan kata sandi ke email Anda"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:textSize="12sp"/>
+
+    <Button
+        android:id="@+id/btn_send_email"
+        style="@style/ButtonDefault"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Open Email"
+        android:layout_marginTop="48dp"/>
+</LinearLayout>
