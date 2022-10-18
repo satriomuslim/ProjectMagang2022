@@ -6,19 +6,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.qatros.qtn_bina_murid.R
-import com.qatros.qtn_bina_murid.databinding.FragmentSetNewPasswordBinding
+import com.qatros.qtn_bina_murid.databinding.FragmentResetPasswordBinding
 import com.qatros.qtn_bina_murid.ui.login.LoginActivity
 
-class SetNewPasswordFragment : Fragment() {
-    private lateinit var binding: FragmentSetNewPasswordBinding
-
+class ResetPasswordFragment : Fragment() {
+    private lateinit var binding : FragmentResetPasswordBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentSetNewPasswordBinding.inflate(layoutInflater)
+        binding = FragmentResetPasswordBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -29,7 +29,11 @@ class SetNewPasswordFragment : Fragment() {
 
     private fun init() {
         with(binding) {
-            btnReset.setOnClickListener {
+            btnSendEmail.setOnClickListener {
+                findNavController().navigate(R.id.action_resetPasswordFragment_to_checkEmailFragment)
+            }
+
+            btnResetToLogin.setOnClickListener {
                 startActivity(Intent(activity, LoginActivity::class.java))
                 activity?.finish()
             }

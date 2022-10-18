@@ -7,6 +7,7 @@ import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.databinding.ActivityLandingBinding
 import com.qatros.qtn_bina_murid.databinding.ActivityLoginBinding
 import com.qatros.qtn_bina_murid.ui.register.RegisterActivity
+import com.qatros.qtn_bina_murid.ui.resetPassword.ResetPasswordActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -22,6 +23,10 @@ class LoginActivity : AppCompatActivity() {
         with(binding) {
             btnLoginToRegister.setOnClickListener {
                 startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
+            }
+
+            btnForgotPassword.setOnClickListener {
+                startActivity(Intent(this@LoginActivity, ResetPasswordActivity::class.java))
             }
         }
     }
