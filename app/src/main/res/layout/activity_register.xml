@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="8"
-        android:background="@drawable/bg_background_white_top_radius"
+        android:background="@drawable/bg_rounded_white_top_radius"
         android:orientation="vertical"
         android:padding="16dp">
 
