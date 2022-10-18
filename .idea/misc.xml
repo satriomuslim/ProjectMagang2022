@@ -3,6 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/drawable/bg_background_white_top_radius.xml" value="0.169" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/drawable/ic_person.xml" value="0.169" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/activity_invitation_pedagogue.xml" value="0.2" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/activity_landing.xml" value="0.22" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/activity_list_child_pedagogue.xml" value="0.33" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/fragment_daily_parent.xml" value="0.2" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/fragment_daily_parents_calender.xml" value="0.2" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/fragment_daily_pedagogue.xml" value="0.2" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/fragment_daily_report_child_pedagogue.xml" value="0.18" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/fragment_daily_report_input_pedagogue.xml" value="0.2" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
+        <entry key="..\:/Kuliah/S7/Magang/Doc/Project-BinaMurid/binamurid-mobile/app/src/main/res/layout/fragment_profile_pedagogue.xml" value="0.18" />
         <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/bg_background_stoke_black.xml" value="0.1985" />
         <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/bg_background_white_stoke_black.xml" value="0.1995" />
         <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/bg_background_white_top_radius.xml" value="0.3725" />
@@ -47,4 +60,11 @@
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.22" />
+      </ProjectState>
+    </option>
+  </component>
 </project>

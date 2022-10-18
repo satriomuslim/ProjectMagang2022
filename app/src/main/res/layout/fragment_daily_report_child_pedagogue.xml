@@ -32,7 +32,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="425dp"
         android:layout_marginTop="16dp"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,6 +51,15 @@
             tools:listitem="@layout/item_daily_child_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:layout_gravity="center"
+        style="@style/Button_one"
+        android:text="Tambah Catatan"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextContrastCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
