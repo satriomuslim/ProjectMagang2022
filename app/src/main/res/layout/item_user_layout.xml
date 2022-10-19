@@ -34,16 +34,12 @@
             android:id="@+id/tv_nama"
             style="@style/DefaultTextView"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@+id/img_user"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/img_user"
             app:layout_constraintTop_toTopOf="@+id/img_user"
-            app:layout_constraintVertical_bias="0.13"
             tools:text="Ganyu Gaze" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
