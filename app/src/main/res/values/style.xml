@@ -36,7 +36,6 @@
         <item name="fontFamily">@font/poppins_medium</item>
     </style>
 
-
     <style name="Button_one">
         <item name="android:inputType">textCapSentences</item>
         <item name="android:backgroundTint">@color/blue</item>
