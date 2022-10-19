@@ -1,10 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.parent.daily.DailyParentFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/greyBackground"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/bg_rounded_yellow_medium_allradius"
+            android:backgroundTint="@color/blue"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/iv_profile_daily_report"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/raiden_avatar" />
+
+            <LinearLayout
+                android:id="@+id/wrap_txt_undang_pendagogue"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_toRightOf="@id/iv_profile_daily_report"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/DefaultTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Ganyu Gaze"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    style="@style/DefaultTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kelas 8A"
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_arrow_right"
+                app:layout_constraintStart_toEndOf="@id/wrap_txt_undang_pendagogue"
+                app:tint="@color/white" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                style="@style/DefaultTextLandingSemiBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_rounded_yellow_small_allradius"
+                android:backgroundTint="@color/white"
+                android:drawableRight="@drawable/ic_arrow_down"
+                android:elevation="10dp"
+                android:padding="8dp"
+                android:text="Ganyu"
+                android:textSize="12sp"
+                android:textAlignment="center"
+                android:textColor="@color/blue" />
+
+            <TextView
+                style="@style/DefaultTextLandingSemiBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_rounded_yellow_small_allradius"
+                android:backgroundTint="@color/white"
+                android:drawableRight="@drawable/ic_arrow_down"
+                android:elevation="10dp"
+                android:padding="8dp"
+                android:text="Kazuha"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                android:textColor="@color/blue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="10dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_rounded_white_top_radius"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/DefaultTextLandingSemiBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilih Tanggal"
+                android:textColor="@color/blue"
+                android:textSize="16sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"/>
+            
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_date_daily_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"/>
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp">
+
+                <TextView
+                    style="@style/DefaultTextMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Laporan anak"
+                    android:textColor="@color/blue" />
+
+                <TextView
+                    style="@style/DefaultTextMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lihat Semua"
+                    android:textColor="@color/blue"
+                    android:layout_alignParentRight="true"
+                    android:textSize="12sp"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_detail_daily_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                tools:listitem="@layout/item_report_daily_parent"/>
+        </LinearLayout>
+    </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
