@@ -15,7 +15,6 @@
             android:id="@+id/binamurid_img1"
             android:layout_width="92dp"
             android:layout_height="18dp"
-            android:layout_marginTop="12dp"
             android:src="@drawable/binamurid_1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -66,7 +65,7 @@
                     android:layout_marginTop="8dp"
                     android:text="Hi, Raiden Shogun"
                     android:textColor="@color/blue"
-                    android:textSize="18sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     style="@style/DefaultTextMedium"
@@ -89,7 +88,6 @@
                 app:layout_constraintStart_toEndOf="@+id/wrap_user_info"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -97,8 +95,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:padding="16dp"
             android:background="@drawable/bg_rounded_blue_allradius"
+            android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/wrap_profile">
@@ -118,7 +116,7 @@
                     android:layout_height="wrap_content"
                     android:text="Metode Lain"
                     android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     style="@style/DefaultTextView"
@@ -141,12 +139,11 @@
             </LinearLayout>
 
             <ImageView
-                android:layout_width="136dp"
-                android:layout_height="136dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/ill_home_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/wrap_banner_text"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -184,7 +181,7 @@
                     android:layout_height="wrap_content"
                     android:text="Mulai daftarkan anak"
                     android:textColor="@color/yellow"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/img_toga"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -280,6 +277,7 @@ agar bisa mengundang pedagogue"
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
+            android:id="@+id/title_daily_update"
             style="@style/DefaultTextMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -290,6 +288,14 @@ agar bisa mengundang pedagogue"
             app:layout_constraintTop_toBottomOf="@+id/wrap_button_undang_pendagogue"
             app:layout_constraintStart_toStartOf="parent"/>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_daily_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            tools:listitem="@layout/item_home_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_daily_update"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>
