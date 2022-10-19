@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Catatan Ganyu dari Pedagogue Kazuha"
-            android:textSize="12sp"/>
+            android:textSize="11sp" />
 
         <TextView
             style="@style/DefaultTextMedium"
