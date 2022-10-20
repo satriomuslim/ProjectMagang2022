@@ -5,7 +5,7 @@
 <!--    <solid android:color="#F3F3F3" />-->
     <solid android:color="@color/white" />
     <stroke android:width="2dp"
-        android:color="@color/primary50" />
+        android:color="@color/blue" />
     <corners
         android:bottomRightRadius="10dp"
         android:bottomLeftRadius="10dp"

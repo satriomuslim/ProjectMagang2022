@@ -218,7 +218,7 @@ agar bisa mengundang pedagogue"
             app:layout_constraintTop_toBottomOf="@+id/wrap_button_daftar_anak" />
 
         <RelativeLayout
-            android:id="@+id/wrap_button_undang_pendagogue"
+            android:id="@+id/btn_invite_pendagogue"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="16dp"
@@ -233,7 +233,7 @@ agar bisa mengundang pedagogue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:src="@drawable/ic_adduser" />
+                android:src="@drawable/ic_qr_code" />
 
             <LinearLayout
                 android:id="@+id/wrap_txt_undang_pendagogue"
@@ -248,7 +248,7 @@ agar bisa mengundang pedagogue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:text="Undang Pendagogue Yuk"
+                    android:text="Lihat ID atau Scanbarcode Anak"
                     android:textSize="14sp"
                     android:textColor="@color/blue"/>
 
@@ -256,9 +256,9 @@ agar bisa mengundang pedagogue"
                     style="@style/DefaultTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Kamu bisa undang lewat Scanned atau ID"
+                    android:text="Kamu bisa lihat lewat Scanned atau ID"
                     android:textSize="10sp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/greyText"/>
 
             </LinearLayout>
 
@@ -281,7 +281,7 @@ agar bisa mengundang pedagogue"
             android:text="Daily Update"
             android:textSize="18sp"
             android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@+id/wrap_button_undang_pendagogue"
+            app:layout_constraintTop_toBottomOf="@+id/btn_invite_pendagogue"
             app:layout_constraintStart_toStartOf="parent"/>
 
         <androidx.recyclerview.widget.RecyclerView

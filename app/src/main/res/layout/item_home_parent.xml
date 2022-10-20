@@ -22,12 +22,12 @@
             android:id="@+id/iv_dots"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
             android:background="@drawable/bg_oval_white"
             android:backgroundTint="@color/yellowWhite"
             android:padding="8dp"
-            android:src="@drawable/ic_circle_yellow"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center" />
+            android:src="@drawable/ic_circle_yellow" />
 
         <View
             android:id="@+id/vw_bottom"

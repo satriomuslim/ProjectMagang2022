@@ -1,5 +1,6 @@
 package com.qatros.qtn_bina_murid.ui.parent.home
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -33,6 +34,10 @@ class HomeParentFragment : Fragment() {
             with(rvDailyUpdate){
                 adapter = HomeParentAdapter(listOf("", "", "", "", "", ""))
                 layoutManager = LinearLayoutManager(requireContext())
+            }
+
+            btnInvitePendagogue.setOnClickListener{
+                startActivity(Intent(activity, HomeScanListActivity::class.java))
             }
         }
 

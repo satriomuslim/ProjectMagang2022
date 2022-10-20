@@ -39,6 +39,12 @@
             android:name=".ui.landing.LandingActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.parent.home.HomeScanListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.parent.scan.ScanBarcodeParentsActivity"
+            android:exported="false" />
+        <activity
             android:name="com.qatros.qtn_bina_murid.ui.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
