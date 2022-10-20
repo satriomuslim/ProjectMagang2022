@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
-        android:background="@color/grey">
+        android:background="@drawable/bg_rounded_white_stoke_grey">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_user"
@@ -28,7 +28,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription"
-            tools:src="@tools:sample/avatars" />
+            android:src="@drawable/raiden_avatar" />
 
         <TextView
             android:id="@+id/tv_nama"
@@ -40,7 +40,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/img_user"
             app:layout_constraintStart_toEndOf="@+id/img_user"
             app:layout_constraintTop_toTopOf="@+id/img_user"
-            tools:text="Ganyu Gaze" />
+            android:text="Ganyu Gaze" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

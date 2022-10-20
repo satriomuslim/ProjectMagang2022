@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Daftar Anak"
-            android:textColor="@color/netral50"
+            android:textColor="@color/greyText"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +43,7 @@
             style="@style/DefaultTextView"
             android:text="Hai, isi data diri anakmu di form bawah ya pastikan datanya sudah benar"
             android:textAlignment="center"
-            android:textColor="@color/netral10"
+            android:textColor="@color/greyDefault"
             android:textSize="9sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -235,7 +235,7 @@
             android:backgroundTint="@color/blue"
             android:text="Daftar"
             android:textAllCaps="false"
-            android:textColor="@color/base50"
+            android:textColor="@color/white"
             app:cornerRadius="14dp"
             app:elevation="5dp"/>
 
