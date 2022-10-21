@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.parent.child.FormChildFragment">
+    tools:context=".ui.parent.child.FormChildActivity">
 
     <LinearLayout
         android:id="@+id/wrap_profile"
@@ -202,7 +202,6 @@
                 android:hint="Tanggal Lahir"
                 android:inputType="date"
                 android:maxLines="1"
-                android:onClick="selectData"
                 android:singleLine="true"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"

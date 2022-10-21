@@ -28,7 +28,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription"
-            android:src="@drawable/raiden_avatar" />
+            android:src="@drawable/image" />
 
         <TextView
             android:id="@+id/tv_nama"

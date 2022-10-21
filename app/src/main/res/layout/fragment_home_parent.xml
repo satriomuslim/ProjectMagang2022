@@ -30,16 +30,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/binamurid_img1">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img_profile"
-                android:layout_width="44dp"
-                android:layout_height="44dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"
-                android:src="@drawable/raiden_avatar"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription"
+                android:src="@drawable/image" />
 
             <LinearLayout
                 android:id="@+id/wrap_user_info"
@@ -149,7 +150,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
@@ -193,8 +193,7 @@
                     style="@style/DefaultTextMedium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Daftarkan anak kamu terlebih dahulu ya
-agar bisa mengundang pedagogue"
+                    android:text="Daftarkan anak kamu terlebih dahulu ya agar bisa mengundang pedagogue"
                     android:textColor="@color/white"
                     android:textSize="10sp"
                     app:layout_constraintBottom_toBottomOf="parent"

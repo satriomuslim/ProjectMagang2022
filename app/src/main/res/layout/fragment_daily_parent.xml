@@ -18,14 +18,17 @@
             android:layout_margin="16dp"
             android:background="@drawable/bg_rounded_yellow_medium_allradius"
             android:backgroundTint="@color/blue"
-            android:padding="16dp">
+            android:padding="8dp">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_profile_daily_report"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:src="@drawable/raiden_avatar" />
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription"
+                android:src="@drawable/image" />
 
             <LinearLayout
                 android:id="@+id/wrap_txt_undang_pendagogue"
