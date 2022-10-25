@@ -196,7 +196,7 @@
                 android:background="@drawable/ed_rounded_corner"
                 android:clickable="false"
                 android:cursorVisible="false"
-                android:drawableLeft="@drawable/ic_calendar"
+                android:drawableStart="@drawable/ic_calendar"
                 android:drawablePadding="20dp"
                 android:focusable="false"
                 android:hint="Tanggal Lahir"

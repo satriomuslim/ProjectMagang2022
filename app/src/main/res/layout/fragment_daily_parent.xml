@@ -35,7 +35,7 @@
                 android:layout_width="240dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_toRightOf="@id/iv_profile_daily_report"
+                android:layout_toEndOf="@id/iv_profile_daily_report"
                 android:orientation="vertical">
 
                 <TextView
@@ -60,7 +60,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_arrow_right"
                 app:layout_constraintStart_toEndOf="@id/wrap_txt_undang_pendagogue"
@@ -81,13 +81,13 @@
                 android:layout_weight="1"
                 android:background="@drawable/bg_rounded_yellow_small_allradius"
                 android:backgroundTint="@color/white"
-                android:drawableRight="@drawable/ic_arrow_down"
                 android:elevation="10dp"
                 android:padding="8dp"
                 android:text="Ganyu"
                 android:textSize="12sp"
                 android:textAlignment="center"
-                android:textColor="@color/blue" />
+                android:textColor="@color/blue"
+                app:drawableRightCompat="@drawable/ic_arrow_down" />
 
             <TextView
                 style="@style/DefaultTextLandingSemiBold"
@@ -97,13 +97,13 @@
                 android:layout_weight="1"
                 android:background="@drawable/bg_rounded_yellow_small_allradius"
                 android:backgroundTint="@color/white"
-                android:drawableRight="@drawable/ic_arrow_down"
                 android:elevation="10dp"
                 android:padding="8dp"
                 android:text="Kazuha"
                 android:textAlignment="center"
                 android:textSize="12sp"
-                android:textColor="@color/blue" />
+                android:textColor="@color/blue"
+                app:drawableRightCompat="@drawable/ic_arrow_down" />
         </LinearLayout>
 
         <LinearLayout
@@ -150,7 +150,7 @@
                     android:layout_height="wrap_content"
                     android:text="Lihat Semua"
                     android:textColor="@color/blue"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:textSize="12sp"
                     android:layout_centerVertical="true"/>
             </RelativeLayout>
@@ -164,6 +164,7 @@
                 android:layout_marginRight="16dp"
                 tools:listitem="@layout/item_report_daily_parent"/>
         </LinearLayout>
+
     </LinearLayout>
 
 

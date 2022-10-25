@@ -76,7 +76,7 @@
         android:layout_marginBottom="45dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/on_landing" />
+        app:srcCompat="@drawable/ill_on_landing" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
