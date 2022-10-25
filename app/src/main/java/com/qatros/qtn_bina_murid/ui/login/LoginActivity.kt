@@ -9,15 +9,25 @@ import com.qatros.qtn_bina_murid.databinding.ActivityLoginBinding
 import com.qatros.qtn_bina_murid.ui.parent.navigation.NavigationParentActivity
 import com.qatros.qtn_bina_murid.ui.register.RegisterActivity
 import com.qatros.qtn_bina_murid.ui.resetPassword.ResetPasswordActivity
+import org.koin.android.ext.android.inject
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
+
+    private val viewModel: LoginViewModel by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         init()
+        observeData()
+    }
+
+    private fun observeData() {
+        viewModel.observeLoginSuccess().observe(this) {
+
+        }
     }
 
     private fun init() {

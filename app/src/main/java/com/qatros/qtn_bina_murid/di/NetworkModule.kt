@@ -19,7 +19,7 @@ val networkModule = module{
     }
     single{
         Retrofit.Builder()
-            .baseUrl("https://www.themealdb.com/")
+            .baseUrl("https://binamurid.herokuapp.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .client(get())
