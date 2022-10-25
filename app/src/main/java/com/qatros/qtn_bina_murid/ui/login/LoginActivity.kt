@@ -5,10 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.core.widget.addTextChangedListener
-import com.qatros.qtn_bina_murid.R
-import com.qatros.qtn_bina_murid.databinding.ActivityLandingBinding
+import androidx.core.view.isGone
+import com.qatros.qtn_bina_murid.data.remote.request.LoginRequest
+import com.qatros.qtn_bina_murid.data.remote.request.UserLogin
 import com.qatros.qtn_bina_murid.databinding.ActivityLoginBinding
+import com.qatros.qtn_bina_murid.di.SharedPreference
 import com.qatros.qtn_bina_murid.ui.parent.navigation.NavigationParentActivity
 import com.qatros.qtn_bina_murid.ui.register.RegisterActivity
 import com.qatros.qtn_bina_murid.ui.resetPassword.ResetPasswordActivity
@@ -33,8 +34,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun observeData() {
-        viewModel.observeLoginSuccess().observe(this) {
-
+        viewModel.observeLoginSuccess().observe(this) { data ->
+            binding.pbLogin.isGone = true
+            SharedPreference(this).userToken = data?.token ?: ""
+            startActivity(Intent(this@LoginActivity, NavigationParentActivity::class.java))
+            finish()
         }
     }
 
@@ -81,7 +85,15 @@ class LoginActivity : AppCompatActivity() {
             }
 
             btnLogin.setOnClickListener{
-                startActivity(Intent(this@LoginActivity, NavigationParentActivity::class.java))
+                val loginReq = LoginRequest(
+                    user = UserLogin(
+                        email = etEmailLogin.text.toString(),
+                        password = etPasswordLogin.text.toString()
+                    )
+                )
+                viewModel.postLogin(loginReq)
+                pbLogin.isGone = false
+
             }
         }
     }
