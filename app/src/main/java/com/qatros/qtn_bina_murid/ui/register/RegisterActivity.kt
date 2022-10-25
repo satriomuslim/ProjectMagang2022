@@ -49,35 +49,30 @@ class RegisterActivity : AppCompatActivity() {
 
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
 
-            val name = binding.etNameRegister.text.toString().trim()
-            val email = binding.etEmailRegister.text.toString().trim()
-            val telp = binding.etTelpRegister.text.toString().trim()
-            val password = binding.etPasswordRegister.text.toString().trim()
-            val confpass = binding.etConfirmPasswordRegister.text.toString().trim()
+            binding.apply {
+                when {
+                    etNameRegister.text!!.isEmpty() -> {
+                        etNameRegister.error = "Name Required"
+                    }
+                    etEmailRegister.text!!.isEmpty() -> {
+                        etEmailRegister.error = "Email Required"
+                    }
+                    etTelpRegister.text!!.isEmpty() -> {
+                       etTelpRegister.error = "Number Telephone Required"
+                    }
+                    etPasswordRegister.text!!.isEmpty() -> {
+                        etPasswordRegister.error = "Password Required"
+                    }
+                    etConfirmPasswordRegister.text!!.isEmpty() -> {
+                        etConfirmPasswordRegister.error = "Confirmation Password Required"
+                    }
+                    else -> {
 
-            when {
-                name.isEmpty() -> {
-                    binding.etNameRegister.error = "Name Required"
-                }
-                email.isEmpty() -> {
-                    binding.etEmailRegister.error = "Email Required"
-                }
-                telp.isEmpty() -> {
-                    binding.etTelpRegister.error = "Number Telephone Required"
-                }
-                password.isEmpty() -> {
-                    binding.etPasswordRegister.error = "Password Required"
-                }
-                confpass.isEmpty() -> {
-                    binding.etConfirmPasswordRegister.error = "Conformation Password Required"
-                }
-                else -> {
+                    }
 
                 }
-
+                btnRegister.isEnabled =  etNameRegister.text!!.isNotEmpty() && etEmailRegister.text!!.isNotEmpty() && etTelpRegister.text!!.isNotEmpty() && etPasswordRegister.text!!.isNotEmpty() && etConfirmPasswordRegister.text!!.isNotEmpty()
             }
-            binding.btnRegister.isEnabled =  name.isNotEmpty() && email.isNotEmpty() && telp.isNotEmpty() && password.isNotEmpty() && confpass.isNotEmpty()
-
         }
 
         override fun afterTextChanged(s: Editable) {

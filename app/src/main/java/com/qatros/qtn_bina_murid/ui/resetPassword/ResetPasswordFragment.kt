@@ -39,18 +39,18 @@ class ResetPasswordFragment : Fragment() {
 
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
 
-            val email = binding.etEmailReset.text.toString().trim()
+            binding.apply{
+                when {
+                    etEmailReset.text!!.isEmpty() -> {
+                        etEmailReset.error = "Email Required"
+                    }
+                    else -> {
 
-            when {
-                email.isEmpty() -> {
-                    binding.etEmailReset.error = "Email Required"
+                    }
+
                 }
-                else -> {
-
-                }
-
+                btnSendEmail.isEnabled =  etEmailReset.text!!.isNotEmpty()
             }
-            binding.btnSendEmail.isEnabled =  email.isNotEmpty()
 
         }
 

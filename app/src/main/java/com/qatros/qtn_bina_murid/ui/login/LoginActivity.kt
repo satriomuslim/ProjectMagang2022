@@ -28,7 +28,6 @@ class LoginActivity : AppCompatActivity() {
         binding.etEmailLogin.addTextChangedListener(loginTextWatcher)
         binding.etPasswordLogin.addTextChangedListener(loginTextWatcher)
 
-
         init()
         observeData()
     }
@@ -49,22 +48,21 @@ class LoginActivity : AppCompatActivity() {
 
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
 
-            val email = binding.etEmailLogin.text.toString().trim()
-            val password = binding.etPasswordLogin.text.toString().trim()
+            binding.apply{
+                when {
+                    etEmailLogin.text!!.isEmpty() -> {
+                       etEmailLogin.error = "Email Required"
+                    }
+                   etPasswordLogin.text!!.isEmpty() -> {
+                        etEmailLogin.error = "Password Required"
+                    }
+                    else -> {
 
-            when {
-                email.isEmpty() -> {
-                    binding.etEmailLogin.error = "Email Required"
-                }
-                password.isEmpty() -> {
-                    binding.etPasswordLogin.error = "Password Required"
-                }
-                else -> {
+                    }
 
                 }
-
+                btnLogin.isEnabled =  etEmailLogin.text!!.isNotEmpty() && etPasswordLogin.text!!.isNotEmpty()
             }
-            binding.btnLogin.isEnabled =  email.isNotEmpty() && password.isNotEmpty()
 
         }
 
