@@ -3,6 +3,9 @@ package com.qatros.qtn_bina_murid.ui.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import androidx.core.widget.addTextChangedListener
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.databinding.ActivityLandingBinding
 import com.qatros.qtn_bina_murid.databinding.ActivityLoginBinding
@@ -17,7 +20,44 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.etEmailLogin.addTextChangedListener(loginTextWatcher)
+        binding.etPasswordLogin.addTextChangedListener(loginTextWatcher)
+
+
         init()
+    }
+
+    private val loginTextWatcher: TextWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+
+        }
+
+        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+
+            val email = binding.etEmailLogin.text.toString().trim()
+            val password = binding.etPasswordLogin.text.toString().trim()
+
+            when {
+                email.isEmpty() -> {
+                    binding.etEmailLogin.error = "Email Required"
+                }
+                password.isEmpty() -> {
+                    binding.etPasswordLogin.error = "Password Required"
+                }
+                else -> {
+
+                }
+
+            }
+            binding.btnLogin.isEnabled =  email.isNotEmpty() && password.isNotEmpty()
+
+        }
+
+        override fun afterTextChanged(s: Editable) {
+
+        }
+
     }
 
     private fun init() {

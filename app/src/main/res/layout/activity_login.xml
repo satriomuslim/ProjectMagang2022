@@ -41,7 +41,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:id="@+id/et_email_login"
+            android:id="@+id/email_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
@@ -51,6 +51,7 @@
             android:layout_marginTop="32dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_email_login"
                 android:inputType="textEmailAddress"
                 android:textCursorDrawable="@drawable/cursor_color"
                 android:layout_width="match_parent"
@@ -59,7 +60,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:id="@+id/et_password_login"
+            android:id="@+id/password_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
@@ -70,8 +71,10 @@
             android:layout_marginTop="24dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_password_login"
                 android:inputType="textPassword"
                 android:textCursorDrawable="@drawable/cursor_color"
+                android:paddingEnd="40dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -89,6 +92,7 @@
         <Button
             android:id="@+id/btn_login"
             style="@style/ButtonDefault"
+            android:enabled="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Masuk"

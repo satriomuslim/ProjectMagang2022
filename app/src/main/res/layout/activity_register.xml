@@ -15,11 +15,15 @@
         android:layout_weight="2">
 
         <ImageView
+            android:id="@+id/btn_back_from_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/bg_oval_white"
-            android:padding="16dp"
+            android:padding="8dp"
             android:src="@drawable/ic_back"
             app:tint="@color/blue" />
     </RelativeLayout>
@@ -58,7 +62,7 @@
                     android:textSize="12sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/et_name_register"
+                    android:id="@+id/name_register"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -69,6 +73,7 @@
                     app:startIconDrawable="@drawable/ic_user">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_name_register"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textCursorDrawable="@drawable/cursor_color"
@@ -77,7 +82,7 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/et_email_register"
+                    android:id="@+id/email_register"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -88,6 +93,7 @@
                     app:startIconDrawable="@drawable/ic_envelopeopen">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_email_register"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textCursorDrawable="@drawable/cursor_color"
@@ -95,7 +101,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/et_telp_register"
+                    android:id="@+id/telp_register"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -106,6 +112,7 @@
                     app:startIconDrawable="@drawable/ic_phone">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_telp_register"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textCursorDrawable="@drawable/cursor_color"
@@ -113,7 +120,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/et_password_register"
+                    android:id="@+id/password_register"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -125,6 +132,7 @@
                     app:startIconDrawable="@drawable/ic_locksimple">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_password_register"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textCursorDrawable="@drawable/cursor_color"
@@ -132,7 +140,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/et_confirm_password_register"
+                    android:id="@+id/confirm_password_register"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -144,6 +152,7 @@
                     app:startIconDrawable="@drawable/ic_locksimple">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_confirm_password_register"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textCursorDrawable="@drawable/cursor_color"
@@ -151,8 +160,9 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
-                    android:id="@+id/btn_login"
+                    android:id="@+id/btn_register"
                     style="@style/ButtonDefault"
+                    android:enabled="false"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"

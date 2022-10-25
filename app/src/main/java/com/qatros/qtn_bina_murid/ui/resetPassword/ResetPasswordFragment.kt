@@ -2,6 +2,8 @@ package com.qatros.qtn_bina_murid.ui.resetPassword
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +18,7 @@ class ResetPasswordFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentResetPasswordBinding.inflate(layoutInflater)
         return binding.root
@@ -24,7 +26,38 @@ class ResetPasswordFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.etEmailReset.addTextChangedListener(loginTextWatcher)
+
         init()
+    }
+
+    private val loginTextWatcher: TextWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+
+        }
+
+        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+
+            val email = binding.etEmailReset.text.toString().trim()
+
+            when {
+                email.isEmpty() -> {
+                    binding.etEmailReset.error = "Email Required"
+                }
+                else -> {
+
+                }
+
+            }
+            binding.btnSendEmail.isEnabled =  email.isNotEmpty()
+
+        }
+
+        override fun afterTextChanged(s: Editable) {
+
+        }
+
     }
 
     private fun init() {
