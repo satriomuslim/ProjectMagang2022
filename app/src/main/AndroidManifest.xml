@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Qtnbinamurid"
         tools:targetApi="31">
         <activity
+            android:name=".ParentProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.resetPassword.ResetPasswordActivity"
             android:exported="false" />
         <activity

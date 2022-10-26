@@ -3,65 +3,57 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/bg_background_stoke_black.xml" value="0.1985" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/bg_background_white_stoke_black.xml" value="0.1995" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/bg_background_white_top_radius.xml" value="0.3725" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/bg_bottom_sheet_color.xml" value="0.2405" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/bg_oval_white.xml" value="0.328" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/bg_rounded_blue_allradius.xml" value="0.1995" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/bg_rounded_white_stoke_black.xml" value="0.1995" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/bg_rounded_white_stoke_blue.xml" value="0.165" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/bg_rounded_white_stoke_grey.xml" value="0.2405" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/bg_rounded_white_top_radius.xml" value="0.1995" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/bg_rounded_yellow_medium_allradius.xml" value="0.2405" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/bg_rounded_yellow_small_allradius.xml" value="0.2405" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/bg_text_field.xml" value="0.3725" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/cursor_color.xml" value="0.1" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/ic_arrow_forward.xml" value="0.1995" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/ic_baseline_clear_24.xml" value="0.3725" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/ic_baseline_done_24.xml" value="0.3725" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/ic_baseline_fiber_pin_24.xml" value="0.3725" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/ic_chat.xml" value="0.1995" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/ic_clipboardtext.xml" value="0.2405" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/ic_houseline.xml" value="0.2405" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3725" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/drawable/ic_user.xml" value="0.328" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/font/poppins_bold.xml" value="0.3300555793073963" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/font/poppins_medium.xml" value="0.3300555793073963" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/activity_invitation_pedagogue.xml" value="0.16" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/activity_landing.xml" value="0.14918512327622233" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/activity_landing_next.xml" value="0.25" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/activity_list_child_pedagogue.xml" value="0.22" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/activity_login.xml" value="0.1" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/activity_main.xml" value="0.371875" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/activity_navigation_parent.xml" value="0.22" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/activity_navigation_pedagogue.xml" value="0.371875" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/activity_register.xml" value="0.1" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/activity_reset_password.xml" value="0.14918512327622233" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/activity_splash.xml" value="0.25" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_daily_parent.xml" value="0.22" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_daily_parents_calender.xml" value="0.371875" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_daily_pedagogue.xml" value="0.4008714596949891" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_daily_report_child_pedagogue.xml" value="0.371875" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_daily_report_input_pedagogue.xml" value="0.371875" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_form_child.xml" value="0.25" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_history_parent.xml" value="0.371875" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_history_pedagogue.xml" value="0.371875" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_home_parent.xml" value="0.25" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_home_pedagogue.xml" value="0.371875" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_home_scan_list.xml" value="0.25" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_profile.xml" value="0.371875" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_profile_pedagogue.xml" value="0.371875" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_scan_barcode_parents.xml" value="0.25" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/item_daily_child_layout.xml" value="0.371875" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/item_daily_layout.xml" value="0.25" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/item_daily_parents_layout.xml" value="0.371875" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/item_date.xml" value="0.23854166666666668" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/item_home_parent.xml" value="0.25104166666666666" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/item_list_layout.xml" value="0.371875" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/item_report_daily_parent.xml" value="0.2" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/item_user_layout.xml" value="0.23958333333333334" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2501068832834545" />
+        <entry key="..\:/Gitlab/app/src/main/res/drawable-v24/bg_rounded_white_bottom_radius.xml" value="0.1375" />
+        <entry key="..\:/Gitlab/app/src/main/res/drawable/bg_oval_white.xml" value="0.2135" />
+        <entry key="..\:/Gitlab/app/src/main/res/drawable/bg_rounded_blue_allradius.xml" value="0.2135" />
+        <entry key="..\:/Gitlab/app/src/main/res/drawable/bg_rounded_blue_bottom_radius.xml" value="0.1845" />
+        <entry key="..\:/Gitlab/app/src/main/res/drawable/bg_rounded_blue_top_radius.xml" value="0.1845" />
+        <entry key="..\:/Gitlab/app/src/main/res/drawable/bg_rounded_white_stoke_blue.xml" value="0.2135" />
+        <entry key="..\:/Gitlab/app/src/main/res/drawable/bg_rounded_white_stoke_grey.xml" value="0.2135" />
+        <entry key="..\:/Gitlab/app/src/main/res/drawable/bg_rounded_white_top_radius.xml" value="0.2135" />
+        <entry key="..\:/Gitlab/app/src/main/res/drawable/bg_rounded_yellow_medium_allradius.xml" value="0.2135" />
+        <entry key="..\:/Gitlab/app/src/main/res/drawable/bg_rounded_yellow_small_allradius.xml" value="0.2135" />
+        <entry key="..\:/Gitlab/app/src/main/res/drawable/ed_rounded_corner.xml" value="0.1" />
+        <entry key="..\:/Gitlab/app/src/main/res/drawable/ic_qr_code.xml" value="0.2095" />
+        <entry key="..\:/Gitlab/app/src/main/res/drawable/ic_scroll.xml" value="0.2095" />
+        <entry key="..\:/Gitlab/app/src/main/res/drawable/ic_user.xml" value="0.2095" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/activity_child_profile.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/activity_home_scan_list.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/activity_invitation_pedagogue.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/activity_landing.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/activity_landing_next.xml" value="0.2259963768115942" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/activity_list_child_pedagogue.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/activity_navigation_parent.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/activity_navigation_pedagogue.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/activity_parent_profile.xml" value="0.2" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/activity_reset_password.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/activity_splash.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_check_email.xml" value="0.2259963768115942" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_daily_parent.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_daily_parents_calender.xml" value="0.2259963768115942" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_daily_report_child_pedagogue.xml" value="0.2259963768115942" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_form_child.xml" value="0.2" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_history_parent.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_history_pedagogue.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_home_parent.xml" value="0.3526818515797208" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_home_pedagogue.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_home_scan_list.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_parent_profile_menu.xml" value="0.2259963768115942" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_profile_pedagogue.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_reset_password.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_scan_barcode_parents.xml" value="0.264" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_set_new_password.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/item_daily_child_layout.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/item_daily_layout.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/item_daily_parents_layout.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/item_history_layout.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/item_home_parent.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/item_list_layout.xml" value="0.2259963768115942" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/item_report_daily_parent.xml" value="0.2259963768115942" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/item_user_layout.xml" value="0.25" />
       </map>
     </option>
   </component>

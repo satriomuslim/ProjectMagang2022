@@ -265,10 +265,10 @@ agar bisa mengundang pedagogue"
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/wrap_txt_undang_pendagogue"
                 android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:src="@drawable/ic_arrow_right"
-                android:layout_centerVertical="true"/>
+                app:layout_constraintStart_toEndOf="@id/wrap_txt_undang_pendagogue" />
 
         </RelativeLayout>
 
