@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_parent_profile"
+    app:startDestination="@id/parentMenuProfile">
+
+    <fragment
+        android:id="@+id/parentMenuProfile"
+        android:name="com.qatros.qtn_bina_murid.ui.parent.profile.ParentMenuProfileFragment"
+        android:label="fragment_parent_menu_profile"
+        tools:layout="@layout/fragment_parent_menu_profile" >
+        <action
+            android:id="@+id/action_parentMenuProfileFragment_to_parentEditProfileFragment"
+            app:destination="@id/parentEditProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/parentEditProfileFragment"
+        android:name="com.qatros.qtn_bina_murid.ui.parent.profile.ParentEditProfileFragment"
+        android:label="fragment_parent_edit_profile"
+        tools:layout="@layout/fragment_parent_edit_profile" />
+
+</navigation>

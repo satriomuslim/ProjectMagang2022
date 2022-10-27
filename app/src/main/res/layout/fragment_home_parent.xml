@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.pedagogue.home.HomePedagogueFragment">
+    tools:context=".ui.parent.home.HomeParentFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -265,10 +265,10 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/wrap_txt_undang_pendagogue"
                 android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:src="@drawable/ic_arrow_right"
-                android:layout_centerVertical="true"/>
+                app:layout_constraintStart_toEndOf="@id/wrap_txt_undang_pendagogue" />
 
         </RelativeLayout>
 
