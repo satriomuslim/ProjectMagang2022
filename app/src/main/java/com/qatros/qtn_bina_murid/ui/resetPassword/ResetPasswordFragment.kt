@@ -32,7 +32,9 @@ class ResetPasswordFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.etEmailReset.addTextChangedListener(loginTextWatcher)
+        binding.apply{
+            etEmailReset.addTextChangedListener(loginTextWatcher)
+        }
 
         init()
         observeData()
@@ -67,7 +69,13 @@ class ResetPasswordFragment : Fragment() {
         }
 
         override fun afterTextChanged(s: Editable) {
-
+            binding.apply {
+                if (etEmailReset.text?.isBlank()?.not() == true) {
+                    btnSendEmail.setBackgroundColor(resources.getColor(R.color.blue))
+                } else {
+                    btnSendEmail.setBackgroundColor(resources.getColor(R.color.grey))
+                }
+            }
         }
 
     }
