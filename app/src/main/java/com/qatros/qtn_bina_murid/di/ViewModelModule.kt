@@ -10,6 +10,7 @@ import com.qatros.qtn_bina_murid.ui.pedagogue.history.HistoryPedagogueViewModel
 import com.qatros.qtn_bina_murid.ui.pedagogue.home.HomePedagogueViewModel
 import com.qatros.qtn_bina_murid.ui.pedagogue.profile.ProfilePedagogueViewModel
 import com.qatros.qtn_bina_murid.ui.register.RegisterViewModel
+import com.qatros.qtn_bina_murid.ui.resetPassword.ResetPasswordViewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {
@@ -23,6 +24,6 @@ val viewModelModule = module {
     single { HistoryPedagogueViewModel(get()) }
     single { HomePedagogueViewModel(get()) }
     single { ProfilePedagogueViewModel(get()) }
-
+    single { ResetPasswordViewModel(get()) }
 
 }
