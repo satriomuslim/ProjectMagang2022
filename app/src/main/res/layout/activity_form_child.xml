@@ -55,11 +55,11 @@
             android:src="@drawable/image" />
 
         <TextView
-            android:layout_width="180dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             style="@style/DefaultTextView"
-            android:text="Hai, isi data diri anakmu di form bawah ya pastikan datanya sudah benar"
+            android:text="Hai, isi data diri anakmu di form bawah \nya pastikan datanya sudah benar"
             android:textAlignment="center"
             android:textColor="@color/greyDefault"
             android:textSize="9sp"
@@ -104,8 +104,7 @@
                 android:maxLines="1"
                 android:singleLine="true"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textSize="18sp" />
+                android:textColorHint="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -137,8 +136,7 @@
                 android:maxLines="1"
                 android:singleLine="true"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textSize="18sp" />
+                android:textColorHint="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -170,8 +168,7 @@
                 android:maxLines="1"
                 android:singleLine="true"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textSize="18sp" />
+                android:textColorHint="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -204,15 +201,14 @@
                 android:maxLines="1"
                 android:singleLine="true"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textSize="18sp" />
+                android:textColorHint="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_register"
+            android:id="@+id/btn_register_child"
             style="@style/Button_one"
-            android:layout_width="360dp"
+            android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
@@ -220,7 +216,6 @@
             android:text="Daftar"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            app:cornerRadius="14dp"
             app:elevation="5dp"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>

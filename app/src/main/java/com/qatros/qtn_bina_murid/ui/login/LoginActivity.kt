@@ -35,7 +35,10 @@ class LoginActivity : AppCompatActivity() {
     private fun observeData() {
         viewModel.observeLoginSuccess().observe(this) { data ->
             binding.pbLogin.isGone = true
-            SharedPreference(this).userToken = data?.token ?: ""
+            SharedPreference(this).apply {
+                userToken = "bearer ${data?.token}"
+                isLogin = true
+            }
             startActivity(Intent(this@LoginActivity, NavigationParentActivity::class.java))
             finish()
         }

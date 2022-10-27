@@ -36,7 +36,10 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun observeData() {
         viewModel.observeRegisterSuccess().observe(this) { data ->
-            SharedPreference(this).userToken = data?.token ?: ""
+            SharedPreference(this).apply {
+                userToken = "bearer ${data?.token}"
+                isLogin = true
+            }
             startActivity(Intent(this@RegisterActivity, NavigationParentActivity::class.java))
             finish()
         }
@@ -87,7 +90,7 @@ class RegisterActivity : AppCompatActivity() {
                 val registerReq = RegisterRequest(
                     email = etEmailRegister.text.toString(),
                     password = etPasswordRegister.text.toString(),
-                    no_hp = etTelpRegister.text.toString().toInt(),
+                    no_hp = etTelpRegister.text.toString(),
                     fullname =  etNameRegister.text.toString()
                 )
                 viewModel.postRegister(registerReq)

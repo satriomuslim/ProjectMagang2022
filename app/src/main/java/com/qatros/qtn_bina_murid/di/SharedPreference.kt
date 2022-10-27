@@ -9,6 +9,7 @@ class SharedPreference(val context: Context) {
     companion object {
         private const val PREF_NAME ="qatros.qtn_bina_murid.user_token"
         private const val USER_TOKEN = "user.token"
+        private const val IS_LOGIN = "is.login"
 
     }
     @SuppressLint("NewApi")
@@ -21,6 +22,10 @@ class SharedPreference(val context: Context) {
     var userToken : String
         get() = pref.getString(USER_TOKEN,"").toString()
         set(value) = pref.edit().putString(USER_TOKEN,value).apply()
+
+    var isLogin : Boolean
+        get() = pref.getBoolean(IS_LOGIN, false)
+        set(value) = pref.edit().putBoolean(IS_LOGIN,value).apply()
 
 
     fun resetSharedPref(){
