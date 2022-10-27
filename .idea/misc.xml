@@ -22,6 +22,7 @@
         <entry key="..\:/Gitlab/app/src/main/res/drawable/ic_qr_code.xml" value="0.2095" />
         <entry key="..\:/Gitlab/app/src/main/res/drawable/ic_scroll.xml" value="0.2095" />
         <entry key="..\:/Gitlab/app/src/main/res/drawable/ic_user.xml" value="0.2095" />
+        <entry key="..\:/Gitlab/app/src/main/res/drawable/ic_user_plus.xml" value="0.176" />
         <entry key="..\:/Gitlab/app/src/main/res/drawable/ill_login.xml" value="0.1295" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/activity_child_profile.xml" value="0.25" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/activity_form_child.xml" value="0.2259963768115942" />
@@ -30,12 +31,12 @@
         <entry key="..\:/Gitlab/app/src/main/res/layout/activity_landing.xml" value="0.25" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/activity_landing_next.xml" value="0.2259963768115942" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/activity_list_child_pedagogue.xml" value="0.25" />
-        <entry key="..\:/Gitlab/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/activity_login.xml" value="0.4" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/activity_main.xml" value="0.2259963768115942" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/activity_navigation_parent.xml" value="0.25" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/activity_navigation_pedagogue.xml" value="0.25" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/activity_parent_profile.xml" value="0.264" />
-        <entry key="..\:/Gitlab/app/src/main/res/layout/activity_register.xml" value="0.152" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/activity_register.xml" value="0.10400000000000001" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/activity_reset_password.xml" value="0.25" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/activity_scan_barcode_parents.xml" value="0.2259963768115942" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/activity_splash.xml" value="0.25" />
@@ -49,7 +50,7 @@
         <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_history_parent.xml" value="0.25" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_history_pedagogue.xml" value="0.25" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_home_parent.xml" value="0.176" />
-        <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_home_pedagogue.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_home_pedagogue.xml" value="0.264" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_home_scan_list.xml" value="0.25" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_parent_edit_profile.xml" value="0.2259963768115942" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_parent_menu_profile.xml" value="0.264" />
@@ -62,6 +63,7 @@
         <entry key="..\:/Gitlab/app/src/main/res/layout/item_daily_child_layout.xml" value="0.25" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/item_daily_layout.xml" value="0.25" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/item_daily_parents_layout.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/item_date.xml" value="0.2259963768115942" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/item_history_layout.xml" value="0.25" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/item_home_parent.xml" value="0.25" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/item_list_layout.xml" value="0.2259963768115942" />

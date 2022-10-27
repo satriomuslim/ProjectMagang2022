@@ -216,13 +216,13 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_register"
+                android:id="@+id/btn_register_child"
                 style="@style/Button_one"
                 android:layout_width="360dp"
                 android:layout_height="64dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="15dp"
-                android:backgroundTint="@color/blue"
+                android:backgroundTint="@color/grey"
                 android:text="Daftar"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
