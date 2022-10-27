@@ -25,8 +25,10 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.etEmailLogin.addTextChangedListener(loginTextWatcher)
-        binding.etPasswordLogin.addTextChangedListener(loginTextWatcher)
+        binding.apply {
+            binding.etEmailLogin.addTextChangedListener(loginTextWatcher)
+            etPasswordLogin.addTextChangedListener(loginTextWatcher)
+        }
 
         init()
         observeData()

@@ -24,11 +24,13 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.etNameRegister.addTextChangedListener(loginTextWatcher)
-        binding.etEmailRegister.addTextChangedListener(loginTextWatcher)
-        binding.etTelpRegister.addTextChangedListener(loginTextWatcher)
-        binding.etPasswordRegister.addTextChangedListener(loginTextWatcher)
-        binding.etConfirmPasswordRegister.addTextChangedListener(loginTextWatcher)
+        binding.apply {
+            etNameRegister.addTextChangedListener(loginTextWatcher)
+            etEmailRegister.addTextChangedListener(loginTextWatcher)
+            etTelpRegister.addTextChangedListener(loginTextWatcher)
+            etPasswordRegister.addTextChangedListener(loginTextWatcher)
+            etConfirmPasswordRegister.addTextChangedListener(loginTextWatcher)
+        }
 
         init()
         observeData()
