@@ -24,6 +24,8 @@
     <string name="image_landing">image</string>
 
     <string name="landing_5">Mulai percakapan mudah dengan Pedagogue</string>
-    <string name="landing_6">Mulai percayakan dan melihat Daily Report anak kesayangan kamu lewat Jasa dari Pedagogue dengan mudah dan nyaman</string>
+    <string name="landing_6">Mulai percakapan dan menanyakan anak melalui Pedagogue dengan mudah</string>
     <string name="example_desc">Skill anak dalam memahami materi sudah baik dan lancar. Akan tetapi dia hanya kurang fokus.</string>
+    <string name="title_activity_activiy_from_child_fragment">ActiviyFromChildFragment</string>
+    <string name="title_activity_form_child">FormChildActivity</string>
 </resources>

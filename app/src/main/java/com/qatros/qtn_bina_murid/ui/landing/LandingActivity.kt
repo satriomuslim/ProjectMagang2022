@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.databinding.ActivityLandingBinding
+import com.qatros.qtn_bina_murid.di.SharedPreference
+import com.qatros.qtn_bina_murid.ui.parent.navigation.NavigationParentActivity
 
 class LandingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLandingBinding
@@ -20,6 +22,15 @@ class LandingActivity : AppCompatActivity() {
         binding.btnNextLanding.setOnClickListener{
             startActivity(Intent(this, LandingNextActivity::class.java))
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val isLogin = SharedPreference(this).isLogin
+        if(isLogin) {
+            startActivity(Intent(this, NavigationParentActivity::class.java))
+            finish()
         }
     }
 }

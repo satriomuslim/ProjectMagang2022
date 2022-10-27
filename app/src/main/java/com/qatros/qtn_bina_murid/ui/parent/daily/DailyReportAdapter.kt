@@ -3,10 +3,8 @@ package com.qatros.qtn_bina_murid.ui.parent.daily
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
 import com.qatros.qtn_bina_murid.R
-import com.qatros.qtn_bina_murid.ui.parent.home.HomeParentAdapter
 
 class DailyReportAdapter(val dailyList: List<String>) : RecyclerView.Adapter<DailyReportAdapter.ListViewHolder>() {
     inner class ListViewHolder(listView : View) : RecyclerView.ViewHolder(listView) {

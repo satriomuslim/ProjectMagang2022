@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.qatros.qtn_bina_murid">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -19,6 +21,9 @@
             android:exported="false" />
         <activity
             android:name=".ui.resetPassword.ResetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.parent.child.FormChildActivity"
             android:exported="false" />
         <activity
             android:name=".ui.pedagogue.invitation.InvitationPedagogueActivity"
@@ -40,6 +45,12 @@
             android:exported="false" />
         <activity
             android:name=".ui.landing.LandingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.parent.home.HomeScanListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.parent.scan.ScanBarcodeParentsActivity"
             android:exported="false" />
         <activity
             android:name="com.qatros.qtn_bina_murid.ui.splash.SplashActivity"

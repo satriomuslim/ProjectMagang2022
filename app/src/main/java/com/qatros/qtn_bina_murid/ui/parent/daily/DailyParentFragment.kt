@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.databinding.FragmentDailyParentBinding
 
 
@@ -17,7 +16,7 @@ class DailyParentFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDailyParentBinding.inflate(layoutInflater)
         return binding.root
     }

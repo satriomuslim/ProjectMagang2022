@@ -43,9 +43,7 @@
         <item name="cornerRadius">15dp</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">64dp</item>
-        <item name="android:layout_marginStart">8dp</item>
         <item name="android:layout_marginTop">64dp</item>
-        <item name="android:layout_marginEnd">8dp</item>
         <item name="fontFamily">@font/poppins_regular</item>
     </style>
 

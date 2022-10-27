@@ -13,8 +13,8 @@
         android:background="@drawable/bg_rounded_blue_bottom_radius"
         android:backgroundTint="@color/blue"
         android:orientation="vertical"
-        android:paddingTop="24dp"
-        android:paddingBottom="24dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -93,13 +93,11 @@
 
         <fragment
             android:id="@+id/fg_menu_profile_parent"
+            android:name="com.qatros.qtn_bina_murid.ui.parent.profile.ParentMenuProfileFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:name="com.qatros.qtn_bina_murid.ui.parent.profile.ParentMenuProfileFragment"
             app:defaultNavHost="true"
-            app:navGraph="@navigation/nav_parent_profile"
-            />
+            app:navGraph="@navigation/nav_parent_profile" />
 
     </LinearLayout>
 

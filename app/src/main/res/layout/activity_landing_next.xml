@@ -32,7 +32,7 @@
     <TextView
         android:id="@+id/textView2"
         style="@style/DefaultTextLandingSemiBold"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/landing_5"
@@ -45,7 +45,7 @@
     <TextView
         android:id="@+id/textView3"
         style="@style/DefaultTextLanding"
-        android:layout_width="310dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/landing_6"
@@ -65,5 +65,15 @@
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginBottom="45dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ill_on_landing_next" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
