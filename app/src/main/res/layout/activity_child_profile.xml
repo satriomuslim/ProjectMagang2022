@@ -67,6 +67,7 @@
             app:layout_constraintTop_toBottomOf="@id/circleImageView"/>
 
         <Button
+            android:id="@+id/btn_edit_profile_child"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
