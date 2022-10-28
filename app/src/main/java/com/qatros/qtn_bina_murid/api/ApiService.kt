@@ -1,8 +1,10 @@
 package com.qatros.qtn_bina_murid.api
 
+import com.qatros.qtn_bina_murid.data.remote.request.DailyReportRequest
 import com.qatros.qtn_bina_murid.data.remote.request.ForgotPasswordRequest
 import com.qatros.qtn_bina_murid.data.remote.request.LoginRequest
 import com.qatros.qtn_bina_murid.data.remote.request.RegisterRequest
+import com.qatros.qtn_bina_murid.data.remote.response.DailyReportResponse
 import com.qatros.qtn_bina_murid.data.remote.response.ForgotPasswordResponse
 import com.qatros.qtn_bina_murid.data.remote.response.ListChildResponse
 import com.qatros.qtn_bina_murid.data.remote.response.LoginRegisterResponse
@@ -35,5 +37,8 @@ interface ApiService {
         @Part("dateofbirth") dateOfBirth: RequestBody,
         @Part file: MultipartBody.Part
     ) : Response<Any>
+
+    @GET("api/v1/report")
+    suspend fun getAllDataDailyReport(@Body dailyReportRequest: DailyReportRequest): Response<DailyReportResponse>
 
 }

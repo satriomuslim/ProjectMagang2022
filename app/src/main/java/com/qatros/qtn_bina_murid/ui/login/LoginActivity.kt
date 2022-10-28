@@ -69,7 +69,6 @@ class LoginActivity : AppCompatActivity() {
 
                 }
                 btnLogin.isEnabled =  etEmailLogin.text!!.isNotEmpty() && etPasswordLogin.text!!.isNotEmpty()
-
             }
 
         }
