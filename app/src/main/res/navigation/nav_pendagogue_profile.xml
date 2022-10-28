@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_pendagogue_profile"
+    app:startDestination="@id/pendagogueMenuProfile">
+
+    <fragment
+        android:id="@+id/pendagogueMenuProfile"
+        android:name="com.qatros.qtn_bina_murid.ui.parent.profile.ParentMenuProfileFragment"
+        android:label="fragment_parent_menu_profile"
+        tools:layout="@layout/fragment_pendagogue_menu_profile" >
+        <action
+            android:id="@+id/action_pendagogueMenuProfileFragment_to_pendagogueEditProfileFragment"
+            app:destination="@id/pendagogueEditProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pendagogueEditProfileFragment"
+        android:name="com.qatros.qtn_bina_murid.ui.parent.profile.ParentEditProfileFragment"
+        android:label="fragment_parent_edit_profile"
+        tools:layout="@layout/fragment_pendagogue_edit_profile" />
+
+</navigation>

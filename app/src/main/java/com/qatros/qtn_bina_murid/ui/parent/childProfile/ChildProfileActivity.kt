@@ -1,23 +1,21 @@
-package com.qatros.qtn_bina_murid.ui.parent.child
+package com.qatros.qtn_bina_murid.ui.parent.childProfile
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.qatros.qtn_bina_murid.R
-import com.qatros.qtn_bina_murid.databinding.FragmentDailyParentBinding
-import com.qatros.qtn_bina_murid.databinding.FragmentFormChildBinding
+import com.qatros.qtn_bina_murid.databinding.ActivityChildProfileBinding
+import com.qatros.qtn_bina_murid.databinding.ActivityFormChildBinding
 
+class ChildProfileActivity : AppCompatActivity() {
 
-class FormChildFragment : Fragment() {
-
-    private lateinit var binding : FragmentFormChildBinding
+    private lateinit var binding: ActivityChildProfileBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityChildProfileBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         binding.apply{
             edAsalSekolah.addTextChangedListener(loginTextWatcher)
@@ -25,15 +23,7 @@ class FormChildFragment : Fragment() {
             edNamaPanggilanAnak.addTextChangedListener(loginTextWatcher)
             edTanggalLahirAnak.addTextChangedListener(loginTextWatcher)
         }
-    }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        // Inflate the layout for this fragment
-        binding = FragmentFormChildBinding.inflate(layoutInflater)
-        return binding.root
     }
 
     private val loginTextWatcher: TextWatcher = object : TextWatcher {
@@ -62,7 +52,7 @@ class FormChildFragment : Fragment() {
                     }
 
                 }
-                btnRegisterChild.isEnabled =  edAsalSekolah.text!!.isNotEmpty() && edNamaAnak.text!!.isNotEmpty() && edNamaPanggilanAnak.text!!.isNotEmpty() && edTanggalLahirAnak.text!!.isNotEmpty()
+                btnEditProfileChild.isEnabled =  edAsalSekolah.text!!.isNotEmpty() && edNamaAnak.text!!.isNotEmpty() && edNamaPanggilanAnak.text!!.isNotEmpty() && edTanggalLahirAnak.text!!.isNotEmpty()
 
             }
 
@@ -71,13 +61,12 @@ class FormChildFragment : Fragment() {
         override fun afterTextChanged(s: Editable) {
             binding.apply {
                 if (edAsalSekolah.text?.isBlank()?.not() == true && edNamaAnak.text?.isBlank()?.not() == true && edNamaPanggilanAnak.text?.isBlank()?.not() == true && edTanggalLahirAnak.text?.isBlank()?.not() == true) {
-                    btnRegisterChild.setBackgroundColor(resources.getColor(R.color.blue))
+                    btnEditProfileChild.setBackgroundColor(resources.getColor(R.color.blue))
                 } else {
-                    btnRegisterChild.setBackgroundColor(resources.getColor(R.color.grey))
+                    btnEditProfileChild.setBackgroundColor(resources.getColor(R.color.grey))
                 }
             }
         }
 
     }
-
 }

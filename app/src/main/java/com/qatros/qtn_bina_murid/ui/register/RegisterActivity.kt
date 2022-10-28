@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.core.view.isGone
+import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.data.remote.request.RegisterRequest
 import com.qatros.qtn_bina_murid.databinding.ActivityRegisterBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
@@ -26,11 +27,13 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.etNameRegister.addTextChangedListener(loginTextWatcher)
-        binding.etEmailRegister.addTextChangedListener(loginTextWatcher)
-        binding.etTelpRegister.addTextChangedListener(loginTextWatcher)
-        binding.etPasswordRegister.addTextChangedListener(loginTextWatcher)
-        binding.etConfirmPasswordRegister.addTextChangedListener(loginTextWatcher)
+        binding.apply{
+            etNameRegister.addTextChangedListener(loginTextWatcher)
+            etEmailRegister.addTextChangedListener(loginTextWatcher)
+            etTelpRegister.addTextChangedListener(loginTextWatcher)
+            etPasswordRegister.addTextChangedListener(loginTextWatcher)
+            etConfirmPasswordRegister.addTextChangedListener(loginTextWatcher)
+        }
 
         init()
         observeData()
@@ -87,7 +90,13 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         override fun afterTextChanged(s: Editable) {
-
+            binding.apply {
+                if (etNameRegister.text?.isBlank()?.not() == true && etEmailRegister.text?.isBlank()?.not() == true && etTelpRegister.text?.isBlank()?.not() == true && etPasswordRegister.text?.isBlank()?.not() == true && etConfirmPasswordRegister.text?.isBlank()?.not() == true)  {
+                    btnRegister.setBackgroundColor(resources.getColor(R.color.blue))
+                } else {
+                    btnRegister.setBackgroundColor(resources.getColor(R.color.grey))
+                }
+            }
         }
 
     }
