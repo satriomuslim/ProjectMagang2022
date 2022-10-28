@@ -8,6 +8,7 @@
         <entry key="..\:/Gitlab/app/src/main/res/drawable/bg_rounded_blue_allradius.xml" value="0.2135" />
         <entry key="..\:/Gitlab/app/src/main/res/drawable/bg_rounded_blue_bottom_radius.xml" value="0.1845" />
         <entry key="..\:/Gitlab/app/src/main/res/drawable/bg_rounded_blue_top_radius.xml" value="0.1845" />
+        <entry key="..\:/Gitlab/app/src/main/res/drawable/bg_rounded_white_allradius.xml" value="0.2245" />
         <entry key="..\:/Gitlab/app/src/main/res/drawable/bg_rounded_white_stoke_blue.xml" value="0.2135" />
         <entry key="..\:/Gitlab/app/src/main/res/drawable/bg_rounded_white_stoke_grey.xml" value="0.2135" />
         <entry key="..\:/Gitlab/app/src/main/res/drawable/bg_rounded_white_top_radius.xml" value="0.2135" />
@@ -18,6 +19,7 @@
         <entry key="..\:/Gitlab/app/src/main/res/drawable/ic_arrow_down.xml" value="0.1295" />
         <entry key="..\:/Gitlab/app/src/main/res/drawable/ic_arrow_forward.xml" value="0.1295" />
         <entry key="..\:/Gitlab/app/src/main/res/drawable/ic_caretright.xml" value="0.1295" />
+        <entry key="..\:/Gitlab/app/src/main/res/drawable/ic_freepik__character.xml" value="0.2245" />
         <entry key="..\:/Gitlab/app/src/main/res/drawable/ic_plus.xml" value="0.1295" />
         <entry key="..\:/Gitlab/app/src/main/res/drawable/ic_qr_code.xml" value="0.2095" />
         <entry key="..\:/Gitlab/app/src/main/res/drawable/ic_scroll.xml" value="0.2095" />
@@ -31,11 +33,12 @@
         <entry key="..\:/Gitlab/app/src/main/res/layout/activity_landing.xml" value="0.25" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/activity_landing_next.xml" value="0.2259963768115942" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/activity_list_child_pedagogue.xml" value="0.25" />
-        <entry key="..\:/Gitlab/app/src/main/res/layout/activity_login.xml" value="0.4" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/activity_main.xml" value="0.2259963768115942" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/activity_navigation_parent.xml" value="0.25" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/activity_navigation_pedagogue.xml" value="0.25" />
-        <entry key="..\:/Gitlab/app/src/main/res/layout/activity_parent_profile.xml" value="0.264" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/activity_parent_profile.xml" value="0.152" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/activity_pendagogue_profile.xml" value="0.25" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/activity_register.xml" value="0.10400000000000001" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/activity_reset_password.xml" value="0.25" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/activity_scan_barcode_parents.xml" value="0.2259963768115942" />
@@ -55,6 +58,8 @@
         <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_parent_edit_profile.xml" value="0.2259963768115942" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_parent_menu_profile.xml" value="0.264" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_parent_profile_menu.xml" value="0.2259963768115942" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_pendagogue_edit_profile.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_pendagogue_menu_profile.xml" value="0.2359375" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_profile_pedagogue.xml" value="0.25" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/fragment_reset_password.xml" value="0.25" />
@@ -69,6 +74,8 @@
         <entry key="..\:/Gitlab/app/src/main/res/layout/item_list_layout.xml" value="0.2259963768115942" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/item_report_daily_parent.xml" value="0.2259963768115942" />
         <entry key="..\:/Gitlab/app/src/main/res/layout/item_user_layout.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/popup_invite_id_pendagogue.xml" value="0.25" />
+        <entry key="..\:/Gitlab/app/src/main/res/layout/popup_scan_barcode_pendagogue.xml" value="0.24895833333333334" />
       </map>
     </option>
   </component>
