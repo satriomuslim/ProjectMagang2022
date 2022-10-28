@@ -5,18 +5,17 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 data class ListChildResponse(
-    @SerializedName("children") val children: List<Children>
+    @SerializedName("code") val code : Int,
+    @SerializedName("message") val message : String,
+    @SerializedName("data") val data : List<Children>
 )
 
 @Parcelize
 data class Children (
-    @SerializedName("id") val id : Int,
-    @SerializedName("fullname") val fullname : String,
-    @SerializedName("nickname") val nickname : String,
-    @SerializedName("photo_profile") val photo_profile : String,
+    @SerializedName("children_id") val childrenId : Int,
+    @SerializedName("fullname") val fullName : String,
+    @SerializedName("nickname") val nickName : String,
     @SerializedName("school") val school : String,
-    @SerializedName("no_hp") val no_hp : Int,
-    @SerializedName("dateofbirth") val dateofbirth : String,
-    @SerializedName("created_at") val created_at : String,
-    @SerializedName("updated_at") val updated_at : String
+    @SerializedName("date of birth") val dateOfBirth : String,
+    @SerializedName("avatar") val avatar : String
 ) : Parcelable

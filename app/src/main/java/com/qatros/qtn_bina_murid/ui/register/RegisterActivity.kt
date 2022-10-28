@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import androidx.core.view.isGone
 import com.qatros.qtn_bina_murid.data.remote.request.RegisterRequest
 import com.qatros.qtn_bina_murid.databinding.ActivityRegisterBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
 import com.qatros.qtn_bina_murid.ui.login.LoginActivity
 import com.qatros.qtn_bina_murid.ui.login.LoginViewModel
 import com.qatros.qtn_bina_murid.ui.parent.navigation.NavigationParentActivity
+import com.qatros.qtn_bina_murid.utils.toast
 import org.koin.android.ext.android.inject
 
 class RegisterActivity : AppCompatActivity() {
@@ -35,13 +37,19 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun observeData() {
-        viewModel.observeRegisterSuccess().observe(this) { data ->
-            SharedPreference(this).apply {
-                userToken = "bearer ${data?.token}"
-                isLogin = true
+        with(viewModel) {
+            observeRegisterSuccess().observe(this@RegisterActivity) { data ->
+                SharedPreference(this@RegisterActivity).apply {
+                    userToken = "bearer ${data?.token}"
+                    isLogin = true
+                }
+                startActivity(Intent(this@RegisterActivity, NavigationParentActivity::class.java))
+                finish()
             }
-            startActivity(Intent(this@RegisterActivity, NavigationParentActivity::class.java))
-            finish()
+
+            observeError().observe(this@RegisterActivity) {
+                this@RegisterActivity.toast(it)
+            }
         }
     }
 

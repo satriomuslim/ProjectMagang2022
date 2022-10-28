@@ -13,6 +13,7 @@ import com.qatros.qtn_bina_murid.di.SharedPreference
 import com.qatros.qtn_bina_murid.ui.parent.navigation.NavigationParentActivity
 import com.qatros.qtn_bina_murid.ui.register.RegisterActivity
 import com.qatros.qtn_bina_murid.ui.resetPassword.ResetPasswordActivity
+import com.qatros.qtn_bina_murid.utils.toast
 import org.koin.android.ext.android.inject
 
 class LoginActivity : AppCompatActivity() {
@@ -33,14 +34,21 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun observeData() {
-        viewModel.observeLoginSuccess().observe(this) { data ->
-            binding.pbLogin.isGone = true
-            SharedPreference(this).apply {
-                userToken = "bearer ${data?.token}"
-                isLogin = true
+        with(viewModel) {
+            observeLoginSuccess().observe(this@LoginActivity) { data ->
+                binding.pbLogin.isGone = true
+                SharedPreference(this@LoginActivity).apply {
+                    userToken = "bearer ${data?.token}"
+                    isLogin = true
+                }
+                startActivity(Intent(this@LoginActivity, NavigationParentActivity::class.java))
+                finish()
             }
-            startActivity(Intent(this@LoginActivity, NavigationParentActivity::class.java))
-            finish()
+
+            observeError().observe(this@LoginActivity) {
+                binding.pbLogin.isGone = true
+                this@LoginActivity.toast(it)
+            }
         }
     }
 
