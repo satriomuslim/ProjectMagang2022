@@ -96,11 +96,11 @@
             <Button
                 android:id="@+id/btn_login"
                 style="@style/ButtonDefault"
-                android:enabled="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Masuk"
-                android:layout_marginTop="24dp"/>
+                android:layout_marginTop="24dp"
+                android:enabled="false"
+                android:text="Masuk" />
 
             <LinearLayout
                 android:layout_width="match_parent"

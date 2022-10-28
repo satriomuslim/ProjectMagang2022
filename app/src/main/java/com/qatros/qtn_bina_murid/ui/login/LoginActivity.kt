@@ -1,11 +1,13 @@
 package com.qatros.qtn_bina_murid.ui.login
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.core.view.isGone
+import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.data.remote.request.LoginRequest
 import com.qatros.qtn_bina_murid.data.remote.request.UserLogin
 import com.qatros.qtn_bina_murid.databinding.ActivityLoginBinding
@@ -25,8 +27,8 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.apply {
-            binding.etEmailLogin.addTextChangedListener(loginTextWatcher)
+        binding.apply{
+            etEmailLogin.addTextChangedListener(loginTextWatcher)
             etPasswordLogin.addTextChangedListener(loginTextWatcher)
         }
 
@@ -58,8 +60,8 @@ class LoginActivity : AppCompatActivity() {
                     etEmailLogin.text!!.isEmpty() -> {
                        etEmailLogin.error = "Email Required"
                     }
-                   etPasswordLogin.text!!.isEmpty() -> {
-                        etEmailLogin.error = "Password Required"
+                    etPasswordLogin.text!!.isEmpty() -> {
+                        etPasswordLogin.error = "Password Required"
                     }
                     else -> {
 
@@ -72,7 +74,13 @@ class LoginActivity : AppCompatActivity() {
         }
 
         override fun afterTextChanged(s: Editable) {
-
+            binding.apply {
+                if (etEmailLogin.text?.isBlank()?.not() == true && etPasswordLogin.text?.isBlank()?.not() == true) {
+                btnLogin.setBackgroundColor(resources.getColor(R.color.blue))
+            } else {
+                    btnLogin.setBackgroundColor(resources.getColor(R.color.grey))
+                }
+            }
         }
 
     }

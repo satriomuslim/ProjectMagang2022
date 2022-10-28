@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.data.remote.request.RegisterRequest
 import com.qatros.qtn_bina_murid.databinding.ActivityRegisterBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
@@ -24,7 +25,7 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.apply {
+        binding.apply{
             etNameRegister.addTextChangedListener(loginTextWatcher)
             etEmailRegister.addTextChangedListener(loginTextWatcher)
             etTelpRegister.addTextChangedListener(loginTextWatcher)
@@ -81,7 +82,13 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         override fun afterTextChanged(s: Editable) {
-
+            binding.apply {
+                if (etNameRegister.text?.isBlank()?.not() == true && etEmailRegister.text?.isBlank()?.not() == true && etTelpRegister.text?.isBlank()?.not() == true && etPasswordRegister.text?.isBlank()?.not() == true && etConfirmPasswordRegister.text?.isBlank()?.not() == true)  {
+                    btnRegister.setBackgroundColor(resources.getColor(R.color.blue))
+                } else {
+                    btnRegister.setBackgroundColor(resources.getColor(R.color.grey))
+                }
+            }
         }
 
     }
