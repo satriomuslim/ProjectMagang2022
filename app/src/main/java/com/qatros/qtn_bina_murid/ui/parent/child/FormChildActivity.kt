@@ -5,6 +5,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isGone
 import com.qatros.qtn_bina_murid.R
 
 import com.qatros.qtn_bina_murid.databinding.ActivityFormChildBinding
@@ -13,6 +14,7 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.koin.android.ext.android.inject
+import java.io.File
 
 class FormChildActivity : AppCompatActivity() {
 
@@ -25,7 +27,7 @@ class FormChildActivity : AppCompatActivity() {
         binding = ActivityFormChildBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.apply{
+        binding.apply {
             edAsalSekolah.addTextChangedListener(loginTextWatcher)
             edNamaAnak.addTextChangedListener(loginTextWatcher)
             edNamaPanggilanAnak.addTextChangedListener(loginTextWatcher)
@@ -37,9 +39,18 @@ class FormChildActivity : AppCompatActivity() {
     }
 
     private fun observeData() {
-        viewModel.observeAddChildSuccess().observe(this) {
-            Toast.makeText(this, "SUCCESS MENAMBAH ANAK", Toast.LENGTH_SHORT).show()
-            finish()
+        with(viewModel) {
+            observeAddChildSuccess().observe(this@FormChildActivity) {
+                binding.pbRegisterChild.isGone = true
+                Toast.makeText(this@FormChildActivity, "SUCCESS MENAMBAH ANAK", Toast.LENGTH_SHORT)
+                    .show()
+                finish()
+            }
+
+            observeError().observe(this@FormChildActivity) {
+                binding.pbRegisterChild.isGone = true
+                Toast.makeText(this@FormChildActivity, it, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -50,7 +61,7 @@ class FormChildActivity : AppCompatActivity() {
 
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
 
-            binding.apply{
+            binding.apply {
                 when {
                     edAsalSekolah.text!!.isEmpty() -> {
                         edAsalSekolah.error = "Name School Required"
@@ -69,7 +80,8 @@ class FormChildActivity : AppCompatActivity() {
                     }
 
                 }
-                btnRegisterChild.isEnabled =  edAsalSekolah.text!!.isNotEmpty() && edNamaAnak.text!!.isNotEmpty() && edNamaPanggilanAnak.text!!.isNotEmpty() && edTanggalLahirAnak.text!!.isNotEmpty()
+                btnRegisterChild.isEnabled =
+                    edAsalSekolah.text!!.isNotEmpty() && edNamaAnak.text!!.isNotEmpty() && edNamaPanggilanAnak.text!!.isNotEmpty() && edTanggalLahirAnak.text!!.isNotEmpty()
 
             }
 
@@ -77,7 +89,10 @@ class FormChildActivity : AppCompatActivity() {
 
         override fun afterTextChanged(s: Editable) {
             binding.apply {
-                if (edAsalSekolah.text?.isBlank()?.not() == true && edNamaAnak.text?.isBlank()?.not() == true && edNamaPanggilanAnak.text?.isBlank()?.not() == true && edTanggalLahirAnak.text?.isBlank()?.not() == true) {
+                if (edAsalSekolah.text?.isBlank()?.not() == true && edNamaAnak.text?.isBlank()
+                        ?.not() == true && edNamaPanggilanAnak.text?.isBlank()
+                        ?.not() == true && edTanggalLahirAnak.text?.isBlank()?.not() == true
+                ) {
                     btnRegisterChild.setBackgroundColor(resources.getColor(R.color.blue))
                 } else {
                     btnRegisterChild.setBackgroundColor(resources.getColor(R.color.grey))
@@ -89,16 +104,17 @@ class FormChildActivity : AppCompatActivity() {
 
     private fun init() {
         with(binding) {
-            btnRegisterChild.setOnClickListener{
+            btnRegisterChild.setOnClickListener {
                 val token = SharedPreference(this@FormChildActivity).userToken
                 val fullName = edNamaAnak.text.toString().toRequestBody("text/plain".toMediaType())
-                val nickName = edNamaPanggilanAnak.text.toString().toRequestBody("text/plain".toMediaType())
+                val nickName =
+                    edNamaPanggilanAnak.text.toString().toRequestBody("text/plain".toMediaType())
                 val school = edAsalSekolah.text.toString().toRequestBody("text/plain".toMediaType())
-                val birthOfDate = edTanggalLahirAnak.text.toString().toRequestBody("text/plain".toMediaType())
+                val birthOfDate =
+                    edTanggalLahirAnak.text.toString().toRequestBody("text/plain".toMediaType())
                 val image: MultipartBody.Part? = null
-                if (image != null) {
-                    viewModel.postAddChild(token, fullName, nickName, school, birthOfDate, image)
-                }
+                pbRegisterChild.isGone = false
+                viewModel.postAddChild(token, fullName, nickName, school, birthOfDate, image)
             }
         }
     }
