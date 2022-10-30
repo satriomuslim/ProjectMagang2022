@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qatros.qtn_bina_murid.databinding.FragmentHomeParentBinding
 import com.qatros.qtn_bina_murid.ui.parent.child.FormChildActivity
+import kotlinx.coroutines.NonDisposableHandle.parent
 
 class HomeParentFragment : Fragment() {
 
@@ -19,7 +20,7 @@ class HomeParentFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = FragmentHomeParentBinding.inflate(layoutInflater)
+        binding = FragmentHomeParentBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -41,6 +42,10 @@ class HomeParentFragment : Fragment() {
 
             wrapButtonDaftarAnak.setOnClickListener{
                 startActivity(Intent(activity, FormChildActivity::class.java))
+            }
+
+            with(vpBannerHome) {
+                adapter = SliderHomeAdapter()
             }
         }
 

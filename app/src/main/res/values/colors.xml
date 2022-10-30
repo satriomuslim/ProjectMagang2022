@@ -17,5 +17,7 @@
     <color name="green">#4CD137</color>
     <color name="greyText">#4A4A4A</color>
     <color name="greyProfile">#E0E4EE</color>
+    <color name="yellowHome">#FFE662</color>
+    <color name="blueHome">#A6FFFA</color>
 
 </resources>

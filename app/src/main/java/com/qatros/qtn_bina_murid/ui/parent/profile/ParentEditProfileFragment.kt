@@ -15,9 +15,8 @@ class ParentEditProfileFragment : Fragment() {
 
     private lateinit var binding : FragmentParentEditProfileBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.apply{
             edNamaLengkap.addTextChangedListener(loginTextWatcher)
             edAlamat.addTextChangedListener(loginTextWatcher)
