@@ -73,6 +73,8 @@ dependencies {
 
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    //barcode
+    implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
 //    //barcode generator
 //    implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.3'
 

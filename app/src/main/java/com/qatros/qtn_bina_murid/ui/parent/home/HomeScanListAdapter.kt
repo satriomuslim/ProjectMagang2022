@@ -8,8 +8,10 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.qatros.qtn_bina_murid.R
+import com.qatros.qtn_bina_murid.data.remote.response.Children
+import com.qatros.qtn_bina_murid.utils.loadImageUser
 
-class HomeScanListAdapter(val childList: List<String>, private var clickListener : onItemClick) : RecyclerView.Adapter<HomeScanListAdapter.ListViewHolder>() {
+class HomeScanListAdapter(val childList: List<Children>, private var clickListener : onItemClick) : RecyclerView.Adapter<HomeScanListAdapter.ListViewHolder>() {
 
     private var selectedPosition = -1
 
@@ -17,14 +19,6 @@ class HomeScanListAdapter(val childList: List<String>, private var clickListener
         var name: TextView = itemView.findViewById(R.id.tv_nama)
         var image: ImageView = itemView.findViewById(R.id.img_user)
         var layout: ConstraintLayout = itemView.findViewById(R.id.cl_item)
-
-        fun itemClick(data: String, action : onItemClick) {
-            itemView.setOnClickListener{
-                layout.setBackgroundColor(itemView.context.resources.getColor(R.color.blue))
-                name.setTextColor(itemView.context.resources.getColor(R.color.white))
-                action.setItemClick(data, adapterPosition)
-            }
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -34,24 +28,23 @@ class HomeScanListAdapter(val childList: List<String>, private var clickListener
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val child = childList[position]
-        if (selectedPosition == position) {
-            holder.layout.setBackgroundColor(holder.itemView.context.resources.getColor(R.color.blue))
-            holder.name.setTextColor(holder.itemView.context.resources.getColor(R.color.white))
-        } else {
-            holder.layout.setBackgroundColor(holder.itemView.context.resources.getColor(R.color.white))
-            holder.name.setTextColor(holder.itemView.context.resources.getColor(R.color.black))
+        with(holder) {
+            name.text = child.fullName
+            image.loadImageUser(child.avatar)
+            if (selectedPosition == position) {
+                layout.setBackgroundColor(itemView.context.resources.getColor(R.color.blue))
+                name.setTextColor(itemView.context.resources.getColor(R.color.white))
+            } else {
+                layout.setBackgroundColor(itemView.context.resources.getColor(R.color.white))
+                name.setTextColor(itemView.context.resources.getColor(R.color.black))
+            }
+            itemView.setOnClickListener { v ->
+                if (selectedPosition >= 0) notifyItemChanged(selectedPosition)
+                selectedPosition = adapterPosition
+                notifyItemChanged(selectedPosition)
+                clickListener.setItemClick(child, position)
+            }
         }
-        holder.itemView.setOnClickListener { v ->
-            if (selectedPosition >= 0) notifyItemChanged(selectedPosition)
-            selectedPosition = holder.adapterPosition
-            notifyItemChanged(selectedPosition)
-           clickListener.setItemClick(child, position)
-        }
-//        with(holder) {
-//            name.text = child.fullName
-//            image.loadImageUser(child.avatar)
-//            itemClick(child, clickListener)
-//        }
     }
 
     override fun getItemCount(): Int {
@@ -59,6 +52,6 @@ class HomeScanListAdapter(val childList: List<String>, private var clickListener
     }
 
     interface onItemClick {
-        fun setItemClick(data: String, position: Int)
+        fun setItemClick(data: Children, position: Int)
     }
 }

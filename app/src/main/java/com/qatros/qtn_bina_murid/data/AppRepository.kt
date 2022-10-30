@@ -7,6 +7,7 @@ import com.qatros.qtn_bina_murid.data.remote.request.ForgotPasswordRequest
 import com.qatros.qtn_bina_murid.data.remote.request.LoginRequest
 import com.qatros.qtn_bina_murid.data.remote.request.RegisterRequest
 import com.qatros.qtn_bina_murid.data.remote.response.ForgotPasswordResponse
+import com.qatros.qtn_bina_murid.data.remote.response.InvitationTokenResponse
 import com.qatros.qtn_bina_murid.data.remote.response.ListChildResponse
 import com.qatros.qtn_bina_murid.data.remote.response.LoginRegisterResponse
 import okhttp3.MultipartBody
@@ -31,5 +32,9 @@ class AppRepository(private val localRepository: LocalRepository, private val re
 
     suspend fun postAddChild(token: String, fullName: RequestBody, nickName: RequestBody, school: RequestBody, birthOfDate: RequestBody, file: MultipartBody.Part) : ResponseResult<Any> {
         return remoteRepository.postAddChild(token, fullName, nickName, school, birthOfDate, file)
+    }
+
+    suspend fun getInviteChildren(childrenId: Int): ResponseResult<InvitationTokenResponse> {
+        return remoteRepository.getInviteChildren(childrenId)
     }
 }

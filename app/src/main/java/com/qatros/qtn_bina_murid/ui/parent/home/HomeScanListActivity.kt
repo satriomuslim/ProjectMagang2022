@@ -19,7 +19,7 @@ class HomeScanListActivity : AppCompatActivity(), HomeScanListAdapter.onItemClic
 
     private val viewModel: HomeViewModel by inject()
 
-    private var idChildren: Int? = null
+    private var childrenData: Children? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +34,9 @@ class HomeScanListActivity : AppCompatActivity(), HomeScanListAdapter.onItemClic
 
     private fun observeData() {
         viewModel.observeGetChildListSuccess().observe(this) {
+            Log.e("TAG", "observeData: ${it?.data}", )
             with(binding.rvMain){
-//                adapter = it?.data?.let { it1 -> HomeScanListAdapter(it1, this@HomeScanListActivity) }
-                adapter = HomeScanListAdapter(listOf("1", "2", "3", "4", "5", "6","7", "8", "9", "0", "11", "12"), this@HomeScanListActivity)
+                adapter = it?.data?.let { it1 -> HomeScanListAdapter(it1, this@HomeScanListActivity) }
                 layoutManager = LinearLayoutManager(this@HomeScanListActivity)
             }
         }
@@ -46,12 +46,11 @@ class HomeScanListActivity : AppCompatActivity(), HomeScanListAdapter.onItemClic
         with(binding){
 
             btnChoose.setOnClickListener{
-                if (idChildren != null) {
-
+                if (childrenData != null) {
+                    startActivity(Intent(this@HomeScanListActivity, ScanBarcodeParentsActivity::class.java).putExtra(ScanBarcodeParentsActivity.CHILD_DATA, childrenData))
                 } else {
                     this@HomeScanListActivity.toast("Silahkan Pilih Anak")
                 }
-                startActivity(Intent(this@HomeScanListActivity, ScanBarcodeParentsActivity::class.java))
             }
 
             btnBackFromListchild.setOnClickListener{
@@ -60,8 +59,9 @@ class HomeScanListActivity : AppCompatActivity(), HomeScanListAdapter.onItemClic
         }
     }
 
-    override fun setItemClick(data: String, position: Int) {
+    override fun setItemClick(data: Children, position: Int) {
         Log.e("TAG", "setItemClick: $data", )
+        childrenData = data
     }
 
 }

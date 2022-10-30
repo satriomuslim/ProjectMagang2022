@@ -45,6 +45,6 @@ interface ApiService {
     @POST("api/v1/children/invite")
     suspend fun postInviteChildren()
 
-    @GET("api/v1/children/(children_id)/invitation")
+    @GET("api/v1/children/{children_id}/invitation")
     suspend fun getInviteChildren(@Path("children_id") childrenId: Int) : Response<InvitationTokenResponse>
 }

@@ -46,4 +46,8 @@ class RemoteRepository(private val apiService: ApiService) {
     suspend fun postAddChild(token: String, fullName: RequestBody, nickName: RequestBody, school: RequestBody, birthOfDate: RequestBody, file: MultipartBody.Part) = getResult {
         apiService.postAddChild(token, fullName, nickName, school, birthOfDate, file)
     }
+
+    suspend fun getInviteChildren(childrenId: Int) = getResult {
+        apiService.getInviteChildren(childrenId)
+    }
 }

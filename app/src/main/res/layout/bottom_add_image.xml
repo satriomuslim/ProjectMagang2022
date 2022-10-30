@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:background="@drawable/bg_rounded_blue_top_radius">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            style="@style/DefaultTextMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Foto Profile"
+            android:textSize="18sp"
+            android:textColor="@color/white" />
+
+        <ImageView
+            android:id="@+id/btn_delete_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_trash" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/btn_add_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_camera"
+                android:background="@drawable/bg_oval_blue_stroke"
+                android:padding="16dp"/>
+
+            <TextView
+                style="@style/DefaultTextMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kamera"
+                android:textColor="@color/white"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btn_add_galery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_image"
+                android:background="@drawable/bg_oval_blue_stroke"
+                android:padding="16dp"/>
+
+            <TextView
+                style="@style/DefaultTextMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Galeri"
+                android:textColor="@color/white"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
