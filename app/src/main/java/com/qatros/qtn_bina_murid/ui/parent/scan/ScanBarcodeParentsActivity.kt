@@ -1,5 +1,6 @@
 package com.qatros.qtn_bina_murid.ui.parent.scan
 
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,7 @@ import com.google.zxing.common.BitMatrix
 import com.journeyapps.barcodescanner.BarcodeEncoder
 import com.qatros.qtn_bina_murid.data.remote.response.Children
 import com.qatros.qtn_bina_murid.databinding.ActivityScanBarcodeParentsBinding
+import com.qatros.qtn_bina_murid.di.SharedPreference
 import com.qatros.qtn_bina_murid.ui.parent.home.HomeViewModel
 import com.qatros.qtn_bina_murid.utils.loadImageUser
 import org.koin.android.ext.android.inject
@@ -37,13 +39,14 @@ class ScanBarcodeParentsActivity : AppCompatActivity() {
             generateQR(it)
             with(binding) {
                 pbScanBarcodeParents.isGone = true
-                binding.tvInviteToken.text = it.toUpperCase(Locale.ROOT)
+                binding.tvInviteToken.text = "ID :" + it.toUpperCase(Locale.ROOT)
             }
         }
     }
     private fun init(){
         val child = intent.getParcelableExtra<Children>(CHILD_DATA)
-        viewModel.getInviteChildren(child?.childrenId ?: 0)
+        val token = SharedPreference(this).userToken
+        viewModel.getInviteChildren(token, child?.childrenId ?: 0)
         with(binding){
             pbScanBarcodeParents.isGone = false
             btnBackFromBarcode.setOnClickListener{

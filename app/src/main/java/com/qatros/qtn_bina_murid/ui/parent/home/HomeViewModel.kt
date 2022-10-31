@@ -31,9 +31,9 @@ class HomeViewModel(private val repository: AppRepository) : BaseViewModel() {
         }
     }
 
-    fun getInviteChildren(childrenId :Int) {
+    fun getInviteChildren(token: String, childrenId :Int) {
         viewModelScope.launch {
-            when(val result = repository.getInviteChildren(childrenId)) {
+            when(val result = repository.getInviteChildren(token, childrenId)) {
                 is ResponseResult.Success -> {
                     getChildTokenSuccess.postValue(result.data.invitation_token)
                 }

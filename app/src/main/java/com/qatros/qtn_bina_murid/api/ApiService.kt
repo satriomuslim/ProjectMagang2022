@@ -46,5 +46,5 @@ interface ApiService {
     suspend fun postInviteChildren()
 
     @GET("api/v1/children/{children_id}/invitation")
-    suspend fun getInviteChildren(@Path("children_id") childrenId: Int) : Response<InvitationTokenResponse>
+    suspend fun getInviteChildren(@Header("Authorization") token: String, @Path("children_id") childrenId: Int) : Response<InvitationTokenResponse>
 }

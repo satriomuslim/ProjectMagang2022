@@ -34,7 +34,7 @@ class AppRepository(private val localRepository: LocalRepository, private val re
         return remoteRepository.postAddChild(token, fullName, nickName, school, birthOfDate, file)
     }
 
-    suspend fun getInviteChildren(childrenId: Int): ResponseResult<InvitationTokenResponse> {
-        return remoteRepository.getInviteChildren(childrenId)
+    suspend fun getInviteChildren(token: String, childrenId: Int): ResponseResult<InvitationTokenResponse> {
+        return remoteRepository.getInviteChildren(token, childrenId)
     }
 }
