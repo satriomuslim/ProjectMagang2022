@@ -30,7 +30,7 @@ class HomeParentFragment : Fragment() {
 
     private fun init() {
         with(binding) {
-            with(rvDailyUpdate){
+            with(rvDailyParentUpdate){
                 adapter = HomeParentAdapter(listOf("", "", "", "", "", ""))
                 layoutManager = LinearLayoutManager(requireContext())
             }
