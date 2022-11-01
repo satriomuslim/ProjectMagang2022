@@ -3,6 +3,7 @@ package com.qatros.qtn_bina_murid.data.remote
 import com.qatros.qtn_bina_murid.api.ApiService
 import com.qatros.qtn_bina_murid.base.ResponseResult
 import com.qatros.qtn_bina_murid.data.remote.request.ForgotPasswordRequest
+import com.qatros.qtn_bina_murid.data.remote.request.InviteChildRequest
 import com.qatros.qtn_bina_murid.data.remote.request.LoginRequest
 import com.qatros.qtn_bina_murid.data.remote.request.RegisterRequest
 import okhttp3.MultipartBody
@@ -49,5 +50,9 @@ class RemoteRepository(private val apiService: ApiService) {
 
     suspend fun getInviteChildren(token: String, childrenId: Int) = getResult {
         apiService.getInviteChildren(token, childrenId)
+    }
+
+    suspend fun postInviteChildren(token: String, inviteChildRequest: InviteChildRequest) = getResult {
+        apiService.postInviteChildren(token, inviteChildRequest)
     }
 }

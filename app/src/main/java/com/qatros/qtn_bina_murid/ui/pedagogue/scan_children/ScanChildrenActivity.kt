@@ -8,10 +8,15 @@ import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
+import com.qatros.qtn_bina_murid.data.remote.request.InviteChildRequest
 import com.qatros.qtn_bina_murid.databinding.ActivityScanChildrenBinding
+import com.qatros.qtn_bina_murid.di.SharedPreference
+import org.koin.android.ext.android.inject
 
 class ScanChildrenActivity : AppCompatActivity() {
     private lateinit var codeScanner: CodeScanner
+
+    private val viewModel: ScanChildrenViewModel by inject()
 
     private lateinit var binding: ActivityScanChildrenBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,6 +24,13 @@ class ScanChildrenActivity : AppCompatActivity() {
         binding = ActivityScanChildrenBinding.inflate(layoutInflater)
         setContentView(binding.root)
         init()
+        observeData()
+    }
+
+    private fun observeData() {
+        viewModel.observeInviteChildSuccess().observe(this) {
+            Toast.makeText(this, "Scan result: ${it?.children?.children_id}", Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun init() {
@@ -37,6 +49,11 @@ class ScanChildrenActivity : AppCompatActivity() {
         codeScanner.decodeCallback = DecodeCallback {
             runOnUiThread {
                 Toast.makeText(this, "Scan result: ${it.text}", Toast.LENGTH_LONG).show()
+                val token = SharedPreference(this).userToken
+                val inviteChildReq = InviteChildRequest(
+                    invitation_token = it.text
+                )
+                viewModel.postInviteChild(token, inviteChildReq)
             }
         }
         codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS

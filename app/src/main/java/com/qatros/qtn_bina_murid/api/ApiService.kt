@@ -1,14 +1,7 @@
 package com.qatros.qtn_bina_murid.api
 
-import com.qatros.qtn_bina_murid.data.remote.request.DailyReportRequest
-import com.qatros.qtn_bina_murid.data.remote.request.ForgotPasswordRequest
-import com.qatros.qtn_bina_murid.data.remote.request.LoginRequest
-import com.qatros.qtn_bina_murid.data.remote.request.RegisterRequest
-import com.qatros.qtn_bina_murid.data.remote.response.DailyReportResponse
-import com.qatros.qtn_bina_murid.data.remote.response.ForgotPasswordResponse
-import com.qatros.qtn_bina_murid.data.remote.response.InvitationTokenResponse
-import com.qatros.qtn_bina_murid.data.remote.response.ListChildResponse
-import com.qatros.qtn_bina_murid.data.remote.response.LoginRegisterResponse
+import com.qatros.qtn_bina_murid.data.remote.request.*
+import com.qatros.qtn_bina_murid.data.remote.response.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
@@ -43,7 +36,7 @@ interface ApiService {
     suspend fun getAllDataDailyReport(@Body dailyReportRequest: DailyReportRequest): Response<DailyReportResponse>
 
     @POST("api/v1/children/invite")
-    suspend fun postInviteChildren()
+    suspend fun postInviteChildren(@Header("Authorization") token: String, inviteChildRequest: InviteChildRequest) : Response<InviteChildResponse>
 
     @GET("api/v1/children/{children_id}/invitation")
     suspend fun getInviteChildren(@Header("Authorization") token: String, @Path("children_id") childrenId: Int) : Response<InvitationTokenResponse>

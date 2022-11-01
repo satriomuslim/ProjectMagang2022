@@ -10,6 +10,7 @@ import com.qatros.qtn_bina_murid.ui.pedagogue.daily.DailyPedagogueViewModel
 import com.qatros.qtn_bina_murid.ui.pedagogue.history.HistoryPedagogueViewModel
 import com.qatros.qtn_bina_murid.ui.pedagogue.home.HomePedagogueViewModel
 import com.qatros.qtn_bina_murid.ui.pedagogue.profile.ProfilePedagogueViewModel
+import com.qatros.qtn_bina_murid.ui.pedagogue.scan_children.ScanChildrenViewModel
 import com.qatros.qtn_bina_murid.ui.register.RegisterViewModel
 import com.qatros.qtn_bina_murid.ui.resetPassword.ResetPasswordViewModel
 import org.koin.dsl.module
@@ -27,4 +28,5 @@ val viewModelModule = module {
     single { ProfilePedagogueViewModel(get()) }
     single { ResetPasswordViewModel(get()) }
     single { FormChildViewModel(get()) }
+    single { ScanChildrenViewModel(get()) }
 }

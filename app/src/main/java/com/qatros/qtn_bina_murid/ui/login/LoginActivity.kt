@@ -42,30 +42,23 @@ class LoginActivity : AppCompatActivity() {
         with(viewModel) {
             observeLoginSuccess().observe(this@LoginActivity) { data ->
                 binding.pbLogin.isGone = true
-                SharedPreference(this@LoginActivity).apply {
-                    userToken = "bearer ${data?.token}"
-                    isLogin = true
-                    userRole = 1
+                if(data?.user?.email != "bobo@gmail.com") {
+                    SharedPreference(this@LoginActivity).apply {
+                        userToken = "bearer ${data?.token}"
+                        isLogin = true
+                        userRole = 1
+                    }
+                    startActivity(Intent(this@LoginActivity, NavigationParentActivity::class.java))
+                    finish()
+                } else {
+                    SharedPreference(this@LoginActivity).apply {
+                        userToken = "bearer ${data.token}"
+                        isLogin = true
+                        userRole = 2
+                    }
+                    startActivity(Intent(this@LoginActivity, NavigationPedagogueActivity::class.java))
+                    finish()
                 }
-                startActivity(Intent(this@LoginActivity, NavigationParentActivity::class.java))
-                finish()
-//                if(data?.user?.role == "parent") {
-//                    SharedPreference(this@LoginActivity).apply {
-//                        userToken = "bearer ${data.token}"
-//                        isLogin = true
-//                        userRole = 1
-//                    }
-//                    startActivity(Intent(this@LoginActivity, NavigationParentActivity::class.java))
-//                    finish()
-//                } else {
-//                    SharedPreference(this@LoginActivity).apply {
-//                        userToken = "bearer ${data?.token}"
-//                        isLogin = true
-//                        userRole = 2
-//                    }
-//                    startActivity(Intent(this@LoginActivity, NavigationPedagogueActivity::class.java))
-//                    finish()
-//                }
 
             }
 
