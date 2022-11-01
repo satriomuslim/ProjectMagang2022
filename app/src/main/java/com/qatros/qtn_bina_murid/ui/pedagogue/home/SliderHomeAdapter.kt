@@ -1,4 +1,4 @@
-package com.qatros.qtn_bina_murid.ui.parent.home
+package com.qatros.qtn_bina_murid.ui.pedagogue.home
 
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -16,7 +16,7 @@ import org.w3c.dom.Text
 class SliderHomeAdapter() : RecyclerView.Adapter<SliderHomeAdapter.ListViewHolder>() {
     var lst_images = intArrayOf(
         R.drawable.ill_home_parent,
-        R.drawable.ill_home_2
+        R.drawable.ill_home_parent
     )
 
     // list of titles

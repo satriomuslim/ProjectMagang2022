@@ -1,4 +1,4 @@
-package com.qatros.qtn_bina_murid.ui.pedagogue.scan_children
+package com.qatros.qtn_bina_murid.ui.pedagogue.scanChildren
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,9 +7,7 @@ import com.qatros.qtn_bina_murid.base.BaseViewModel
 import com.qatros.qtn_bina_murid.base.ResponseResult
 import com.qatros.qtn_bina_murid.data.AppRepository
 import com.qatros.qtn_bina_murid.data.remote.request.InviteChildRequest
-import com.qatros.qtn_bina_murid.data.remote.request.RegisterRequest
 import com.qatros.qtn_bina_murid.data.remote.response.InviteChildResponse
-import com.qatros.qtn_bina_murid.data.remote.response.LoginRegisterResponse
 import kotlinx.coroutines.launch
 
 class ScanChildrenViewModel(private val repository: AppRepository) : BaseViewModel() {

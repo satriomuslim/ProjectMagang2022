@@ -1,4 +1,4 @@
-package com.qatros.qtn_bina_murid.ui.pedagogue.scan_children
+package com.qatros.qtn_bina_murid.ui.pedagogue.scanChildren
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

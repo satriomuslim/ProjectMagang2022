@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.pedagogue.profile.PendagogueProfileActivity">
+    tools:context=".ui.profile.ProfileActivity">
 
     <LinearLayout
         android:id="@+id/wrap_profile"
@@ -26,7 +26,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
-            android:text="Profile Pendagogue"
+            android:text="Profile"
             android:textColor="@color/white"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:gravity="center"
-            android:text="Kaedehara Kazuha"
+            android:text="Raiden Shogun"
             android:textColor="@color/blue"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -93,11 +93,11 @@
 
         <fragment
             android:id="@+id/fg_menu_profile_parent"
-            android:name="com.qatros.qtn_bina_murid.ui.parent.profile.ParentMenuProfileFragment"
+            android:name="com.qatros.qtn_bina_murid.ui.profile.MenuProfileFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:defaultNavHost="true"
-            app:navGraph="@navigation/nav_pendagogue_profile" />
+            app:navGraph="@navigation/nav_profile" />
 
     </LinearLayout>
 

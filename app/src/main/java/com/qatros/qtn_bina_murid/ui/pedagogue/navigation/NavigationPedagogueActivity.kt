@@ -1,18 +1,14 @@
 package com.qatros.qtn_bina_murid.ui.pedagogue.navigation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.databinding.ActivityNavigationPedagogueBinding
-import com.qatros.qtn_bina_murid.ui.parent.daily.DailyParentFragment
-import com.qatros.qtn_bina_murid.ui.parent.history.HistoryParentFragment
-import com.qatros.qtn_bina_murid.ui.parent.home.HomeParentFragment
-import com.qatros.qtn_bina_murid.ui.parent.profile.ParentProfileActivity
+import com.qatros.qtn_bina_murid.ui.history.HistoryFragment
 import com.qatros.qtn_bina_murid.ui.pedagogue.daily.DailyPedagogueFragment
-import com.qatros.qtn_bina_murid.ui.pedagogue.history.HistoryPedagogueFragment
-import com.qatros.qtn_bina_murid.ui.pedagogue.history.HistoryPedagogueViewModel
 import com.qatros.qtn_bina_murid.ui.pedagogue.home.HomePedagogueFragment
+import com.qatros.qtn_bina_murid.ui.profile.ProfileActivity
 
 class NavigationPedagogueActivity : AppCompatActivity() {
 
@@ -28,8 +24,8 @@ class NavigationPedagogueActivity : AppCompatActivity() {
     private fun init(){
         val homeFragment = HomePedagogueFragment()
         val dailyReportFragment = DailyPedagogueFragment()
-        val historyFragment = HistoryPedagogueFragment()
-        val parentEditProfileFragment = ParentProfileActivity()
+        val historyFragment = HistoryFragment()
+        val parentEditProfileFragment = ProfileActivity()
 
         setCurrentFragment(homeFragment)
 

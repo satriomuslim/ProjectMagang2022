@@ -40,4 +40,10 @@ interface ApiService {
 
     @GET("api/v1/children/{children_id}/invitation")
     suspend fun getInviteChildren(@Header("Authorization") token: String, @Path("children_id") childrenId: Int) : Response<InvitationTokenResponse>
+
+    @GET("api/v1/user/profile")
+    suspend fun getProfileUser(@Header("Authorization") token: String) : Response<ProfileResponse>
+
+    @PUT("api/v1/user/1")
+    suspend fun editProfileUser()
 }

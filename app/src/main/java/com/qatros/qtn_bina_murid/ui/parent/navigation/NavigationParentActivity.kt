@@ -6,10 +6,9 @@ import androidx.fragment.app.Fragment
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.databinding.ActivityNavigationParentBinding
 import com.qatros.qtn_bina_murid.ui.parent.daily.DailyParentFragment
-import com.qatros.qtn_bina_murid.ui.parent.history.HistoryParentFragment
+import com.qatros.qtn_bina_murid.ui.history.HistoryFragment
 import com.qatros.qtn_bina_murid.ui.parent.home.HomeParentFragment
-import com.qatros.qtn_bina_murid.ui.parent.profile.ParentEditProfileFragment
-import com.qatros.qtn_bina_murid.ui.parent.profile.ParentProfileActivity
+import com.qatros.qtn_bina_murid.ui.profile.ProfileActivity
 
 class NavigationParentActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNavigationParentBinding
@@ -24,8 +23,8 @@ class NavigationParentActivity : AppCompatActivity() {
     private fun init(){
         val homeFragment = HomeParentFragment()
         val dailyReportFragment = DailyParentFragment()
-        val historyFragment = HistoryParentFragment()
-        val parentEditProfileFragment = ParentProfileActivity()
+        val historyFragment = HistoryFragment()
+        val parentEditProfileFragment = ProfileActivity()
 
         setCurrentFragment(homeFragment)
 

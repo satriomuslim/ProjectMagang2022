@@ -1,4 +1,4 @@
-package com.qatros.qtn_bina_murid.ui.parent.history
+package com.qatros.qtn_bina_murid.ui.history
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.qatros.qtn_bina_murid.R
 
-class HistoryParentAdapter(val historyList: List<String>) : RecyclerView.Adapter<HistoryParentAdapter.ListViewHolder>() {
+class HistoryAdapter(val historyList: List<String>) : RecyclerView.Adapter<HistoryAdapter.ListViewHolder>() {
     inner class ListViewHolder(listView : View) : RecyclerView.ViewHolder(listView) {
     }
 

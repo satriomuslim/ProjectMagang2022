@@ -25,7 +25,7 @@
             android:name=".ui.pedagogue.profile.PendagogueProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.parent.profile.ParentProfileActivity"
+            android:name=".ui.profile.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".ui.resetPassword.ResetPasswordActivity"
@@ -34,7 +34,7 @@
             android:name=".ui.parent.child.FormChildActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.pedagogue.scan_children.ScanChildrenActivity"
+            android:name=".ui.pedagogue.scanChildren.ScanChildrenActivity"
             android:exported="false" />
         <activity
             android:name=".ui.landing.LandingNextActivity"

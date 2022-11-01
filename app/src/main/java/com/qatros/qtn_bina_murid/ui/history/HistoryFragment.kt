@@ -1,22 +1,22 @@
-package com.qatros.qtn_bina_murid.ui.parent.history
+package com.qatros.qtn_bina_murid.ui.history
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.qatros.qtn_bina_murid.databinding.FragmentHistoryParentBinding
+import com.qatros.qtn_bina_murid.databinding.FragmentHistoryBinding
 
-class HistoryParentFragment : Fragment() {
+class HistoryFragment : Fragment() {
 
-    private lateinit var binding : FragmentHistoryParentBinding
+    private lateinit var binding : FragmentHistoryBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHistoryParentBinding.inflate(layoutInflater)
+        binding = FragmentHistoryBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -28,7 +28,7 @@ class HistoryParentFragment : Fragment() {
     private fun init() {
         with(binding) {
             with(rvMain) {
-                adapter = HistoryParentAdapter(listOf("", "", "", "", "", "","", "", "", "", "", ""))
+                adapter = HistoryAdapter(listOf("", "", "", "", "", "","", "", "", "", "", ""))
                 layoutManager = LinearLayoutManager(requireContext())
             }
         }

@@ -1,19 +1,18 @@
-package com.qatros.qtn_bina_murid.ui.parent.profile
+package com.qatros.qtn_bina_murid.ui.profile
 
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.qatros.qtn_bina_murid.R
-import com.qatros.qtn_bina_murid.databinding.FragmentFormChildBinding
-import com.qatros.qtn_bina_murid.databinding.FragmentParentEditProfileBinding
+import com.qatros.qtn_bina_murid.databinding.FragmentEditProfileBinding
 
-class ParentEditProfileFragment : Fragment() {
+class EditProfileFragment : Fragment() {
 
-    private lateinit var binding : FragmentParentEditProfileBinding
+    private lateinit var binding : FragmentEditProfileBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -29,7 +28,7 @@ class ParentEditProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentParentEditProfileBinding.inflate(layoutInflater)
+        binding = FragmentEditProfileBinding.inflate(layoutInflater)
         return binding.root
     }
 

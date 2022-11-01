@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.Toast
 import androidx.core.view.isGone
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.data.remote.request.RegisterRequest
@@ -41,12 +42,9 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun observeData() {
         with(viewModel) {
-            observeRegisterSuccess().observe(this@RegisterActivity) { data ->
-                SharedPreference(this@RegisterActivity).apply {
-                    userToken = "bearer ${data?.token}"
-                    isLogin = true
-                }
-                startActivity(Intent(this@RegisterActivity, NavigationParentActivity::class.java))
+            observeRegisterSuccess().observe(this@RegisterActivity) {
+                Toast.makeText(this@RegisterActivity, "Register Success", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
                 finish()
             }
 

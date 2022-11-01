@@ -6,9 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.databinding.FragmentHomePedagogueBinding
-import com.qatros.qtn_bina_murid.ui.pedagogue.scan_children.ScanChildrenActivity
+import com.qatros.qtn_bina_murid.ui.pedagogue.scanChildren.ScanChildrenActivity
 
 class HomePedagogueFragment : Fragment() {
 
