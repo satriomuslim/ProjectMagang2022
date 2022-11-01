@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.base.BaseFragment
 
-class ProfileActivity : BaseFragment() {
+class ProfileFragment : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

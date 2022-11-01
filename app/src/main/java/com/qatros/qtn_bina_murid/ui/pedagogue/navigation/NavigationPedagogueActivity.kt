@@ -8,7 +8,7 @@ import com.qatros.qtn_bina_murid.databinding.ActivityNavigationPedagogueBinding
 import com.qatros.qtn_bina_murid.ui.history.HistoryFragment
 import com.qatros.qtn_bina_murid.ui.pedagogue.daily.DailyPedagogueFragment
 import com.qatros.qtn_bina_murid.ui.pedagogue.home.HomePedagogueFragment
-import com.qatros.qtn_bina_murid.ui.profile.ProfileActivity
+import com.qatros.qtn_bina_murid.ui.profile.ProfileFragment
 
 class NavigationPedagogueActivity : AppCompatActivity() {
 
@@ -25,7 +25,7 @@ class NavigationPedagogueActivity : AppCompatActivity() {
         val homeFragment = HomePedagogueFragment()
         val dailyReportFragment = DailyPedagogueFragment()
         val historyFragment = HistoryFragment()
-        val parentEditProfileFragment = ProfileActivity()
+        val parentEditProfileFragment = ProfileFragment()
 
         setCurrentFragment(homeFragment)
 
