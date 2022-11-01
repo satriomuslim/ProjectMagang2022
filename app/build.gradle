@@ -75,6 +75,9 @@ dependencies {
 
     //barcode
     implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
+
+    //barcode scanner
+    implementation 'com.github.yuriy-budiyev:code-scanner:2.3.2'
 //    //barcode generator
 //    implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.3'
 

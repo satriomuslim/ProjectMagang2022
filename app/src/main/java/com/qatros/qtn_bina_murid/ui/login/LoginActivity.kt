@@ -13,6 +13,7 @@ import com.qatros.qtn_bina_murid.data.remote.request.UserLogin
 import com.qatros.qtn_bina_murid.databinding.ActivityLoginBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
 import com.qatros.qtn_bina_murid.ui.parent.navigation.NavigationParentActivity
+import com.qatros.qtn_bina_murid.ui.pedagogue.navigation.NavigationPedagogueActivity
 import com.qatros.qtn_bina_murid.ui.register.RegisterActivity
 import com.qatros.qtn_bina_murid.ui.resetPassword.ResetPasswordActivity
 import com.qatros.qtn_bina_murid.utils.toast
@@ -44,9 +45,28 @@ class LoginActivity : AppCompatActivity() {
                 SharedPreference(this@LoginActivity).apply {
                     userToken = "bearer ${data?.token}"
                     isLogin = true
+                    userRole = 1
                 }
                 startActivity(Intent(this@LoginActivity, NavigationParentActivity::class.java))
                 finish()
+//                if(data?.user?.role == "parent") {
+//                    SharedPreference(this@LoginActivity).apply {
+//                        userToken = "bearer ${data.token}"
+//                        isLogin = true
+//                        userRole = 1
+//                    }
+//                    startActivity(Intent(this@LoginActivity, NavigationParentActivity::class.java))
+//                    finish()
+//                } else {
+//                    SharedPreference(this@LoginActivity).apply {
+//                        userToken = "bearer ${data?.token}"
+//                        isLogin = true
+//                        userRole = 2
+//                    }
+//                    startActivity(Intent(this@LoginActivity, NavigationPedagogueActivity::class.java))
+//                    finish()
+//                }
+
             }
 
             observeError().observe(this@LoginActivity) {
@@ -104,6 +124,8 @@ class LoginActivity : AppCompatActivity() {
             }
 
             btnLogin.setOnClickListener{
+//                startActivity(Intent(this@LoginActivity, NavigationPedagogueActivity::class.java))
+//                finish()
                 val loginReq = LoginRequest(
                     user = UserLogin(
                         email = etEmailLogin.text.toString(),

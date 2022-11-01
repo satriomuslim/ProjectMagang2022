@@ -34,7 +34,7 @@
             android:name=".ui.parent.child.FormChildActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.pedagogue.invitation.InvitationPedagogueActivity"
+            android:name=".ui.pedagogue.scan_children.ScanChildrenActivity"
             android:exported="false" />
         <activity
             android:name=".ui.landing.LandingNextActivity"

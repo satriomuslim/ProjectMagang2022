@@ -18,5 +18,6 @@ data class User (
     @SerializedName("reset_password_token") val reset_password_token : String,
     @SerializedName("reset_password_sent_at") val reset_password_sent_at : String,
     @SerializedName("email_confirmed") val email_confirmed : Boolean,
-    @SerializedName("confirm_token") val confirm_token : String
+    @SerializedName("confirm_token") val confirm_token : String,
+    @SerializedName("role") val role : String
 )

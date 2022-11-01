@@ -15,8 +15,8 @@ class HomeViewModel(private val repository: AppRepository) : BaseViewModel() {
     private val getChildListSuccess = MutableLiveData<ListChildResponse?>()
     fun observeGetChildListSuccess() : LiveData<ListChildResponse?> = getChildListSuccess
 
-    private val getChildTokenSuccess = MutableLiveData<String>()
-    fun observeGetChildTokenSuccess() : LiveData<String> = getChildTokenSuccess
+    private val getChildTokenSuccess = MutableLiveData<String?>()
+    fun observeGetChildTokenSuccess() : LiveData<String?> = getChildTokenSuccess
 
     fun getChildList(token: String) {
         viewModelScope.launch {
@@ -35,6 +35,7 @@ class HomeViewModel(private val repository: AppRepository) : BaseViewModel() {
         viewModelScope.launch {
             when(val result = repository.getInviteChildren(token, childrenId)) {
                 is ResponseResult.Success -> {
+                    Log.e("TAG", "getInviteChildren: ${result.data}", )
                     getChildTokenSuccess.postValue(result.data.invitation_token)
                 }
                 is ResponseResult.Error -> {

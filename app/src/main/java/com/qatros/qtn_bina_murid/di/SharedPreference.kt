@@ -10,7 +10,7 @@ class SharedPreference(val context: Context) {
         private const val PREF_NAME ="qatros.qtn_bina_murid.user_token"
         private const val USER_TOKEN = "user.token"
         private const val IS_LOGIN = "is.login"
-
+        private const val USER_ROLE = "user.role"
     }
     @SuppressLint("NewApi")
     private val masterKeyAlias= MasterKey.Builder(context)
@@ -27,11 +27,12 @@ class SharedPreference(val context: Context) {
         get() = pref.getBoolean(IS_LOGIN, false)
         set(value) = pref.edit().putBoolean(IS_LOGIN,value).apply()
 
+    var userRole : Int
+        get() = pref.getInt(USER_ROLE, 0)
+        set(value) = pref.edit().putInt(USER_ROLE,value).apply()
 
     fun resetSharedPref(){
         context.getSharedPreferences(PREF_NAME,0).edit().clear().apply()
     }
-
-
 
 }

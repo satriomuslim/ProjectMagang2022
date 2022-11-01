@@ -36,10 +36,12 @@ class ScanBarcodeParentsActivity : AppCompatActivity() {
 
     private fun observeData() {
         viewModel.observeGetChildTokenSuccess().observe(this) {
-            generateQR(it)
+            if (it != null) {
+                generateQR(it)
+            }
             with(binding) {
                 pbScanBarcodeParents.isGone = true
-                binding.tvInviteToken.text = "ID :" + it.toUpperCase(Locale.ROOT)
+                binding.tvInviteToken.text = "ID :" + it?.toUpperCase(Locale.ROOT)
             }
         }
     }
@@ -52,7 +54,7 @@ class ScanBarcodeParentsActivity : AppCompatActivity() {
             btnBackFromBarcode.setOnClickListener{
                 finish()
             }
-            tvNama.text = child?.nickName
+            tvNama.text = child?.fullName
             imgUser.loadImageUser(child?.avatar)
 
         }
@@ -69,28 +71,6 @@ class ScanBarcodeParentsActivity : AppCompatActivity() {
             e.printStackTrace()
         }
     }
-
-//    private fun generateBarcode() {
-//        val manager = getSystemService(WINDOW_SERVICE) as WindowManager
-//        val display: Display = manager.defaultDisplay
-//
-//        val point = Point()
-//        display.getSize(point)
-//
-//        val width: Int = point.x
-//        val height: Int = point.y
-//
-//        var dimen = if (width < height) width else height
-//        dimen = dimen * 3 / 4
-//
-//        qrgEncoder = QRGEncoder(dataEdt.getText().toString(), null, QRGContents.Type.TEXT, dimen)
-//        try {
-//            bitmap = qrgEncoder.encodeAsBitmap()
-//            qrCodeIV.setImageBitmap(bitmap)
-//        } catch (e: WriterException) {
-//            Log.e("Tag", e.toString())
-//        }
-//    }
 
     companion object {
         val CHILD_DATA = "ScanBarcodeParents.childid"
