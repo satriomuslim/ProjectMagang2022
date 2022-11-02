@@ -1,8 +1,10 @@
 package com.qatros.qtn_bina_murid.di
 
+import com.google.gson.GsonBuilder
 import com.qatros.qtn_bina_murid.api.ApiService
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -11,16 +13,23 @@ import java.util.concurrent.TimeUnit
 
 val networkModule = module{
     single{
+        val logging = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
         OkHttpClient.Builder()
+            .addInterceptor(logging)
             .connectTimeout(60L, TimeUnit.SECONDS)
             .readTimeout(60L, TimeUnit.SECONDS)
             .writeTimeout(60L, TimeUnit.SECONDS)
             .build()
     }
     single{
+        val gson = GsonBuilder()
+            .setLenient()
+            .create()
         Retrofit.Builder()
             .baseUrl("https://binamurid.herokuapp.com/")
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .client(get())
             .build()

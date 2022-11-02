@@ -1,5 +1,6 @@
 package com.qatros.qtn_bina_murid.ui.pedagogue.scanChildren
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -24,13 +25,6 @@ class ScanChildrenActivity : AppCompatActivity() {
         binding = ActivityScanChildrenBinding.inflate(layoutInflater)
         setContentView(binding.root)
         init()
-        observeData()
-    }
-
-    private fun observeData() {
-        viewModel.observeInviteChildSuccess().observe(this) {
-            Toast.makeText(this, "Scan result: ${it?.children?.children_id}", Toast.LENGTH_LONG).show()
-        }
     }
 
     private fun init() {
@@ -49,11 +43,8 @@ class ScanChildrenActivity : AppCompatActivity() {
         codeScanner.decodeCallback = DecodeCallback {
             runOnUiThread {
                 Toast.makeText(this, "Scan result: ${it.text}", Toast.LENGTH_LONG).show()
-                val token = SharedPreference(this).userToken
-                val inviteChildReq = InviteChildRequest(
-                    invitation_token = it.text
-                )
-                viewModel.postInviteChild(token, inviteChildReq)
+                startActivity(Intent(this, ScanChildrenResultActivity::class.java).putExtra(ScanChildrenResultActivity.INV_TOKEN, it.text))
+                finish()
             }
         }
         codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS

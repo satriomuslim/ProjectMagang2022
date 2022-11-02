@@ -1,5 +1,6 @@
 package com.qatros.qtn_bina_murid.ui.pedagogue.scanChildren
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -18,9 +19,11 @@ class ScanChildrenViewModel(private val repository: AppRepository) : BaseViewMod
         viewModelScope.launch {
             when(val result = repository.postInviteChildren(token, inviteChildRequest)) {
                 is ResponseResult.Success -> {
+                    Log.e("TAG", "postInviteChild: ${result.data}", )
                     inviteChildSuccess.postValue(result.data)
                 }
                 is ResponseResult.Error -> {
+                    Log.e("TAG", "postInviteChildERROR: ${result.errorMsg} ${result.code}", )
                     isError.postValue(result.errorMsg)
                 }
             }
