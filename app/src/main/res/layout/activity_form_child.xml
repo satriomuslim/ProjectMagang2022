@@ -217,7 +217,7 @@
                 android:layout_height="64dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="15dp"
-                android:backgroundTint="@color/blue"
+                android:backgroundTint="@color/grey"
                 android:text="Daftar"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
