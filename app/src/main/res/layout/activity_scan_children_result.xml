@@ -1,13 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <TextView
-        android:id="@+id/tv_id_result"
+        style="@style/DefaultTextMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1"/>
+        android:layout_gravity="center"
+        android:text="Konfirmasi" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/success" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_oval_grey_stroke"
+            android:padding="8dp"
+            android:src="@drawable/image" />
+
+        <TextView
+            style="@style/DefaultTextLandingSemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="16dp"
+            android:text="Ganyu Gaze"
+            android:textColor="@color/blue"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <TextView
+        style="@style/DefaultTextMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:text="Apakah anak pendidik sudah benar ?" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="24dp"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tidak"
+            android:gravity="center"
+            android:padding="8dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/bg_rounded_white_stoke_grey"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Benar"
+            android:gravity="center"
+            android:padding="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="36dp"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_rounded_blue_very_small_allradius"/>
+    </LinearLayout>
 
 </LinearLayout>

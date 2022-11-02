@@ -3,21 +3,20 @@ package com.qatros.qtn_bina_murid.data.remote.response
 import com.google.gson.annotations.SerializedName
 
 class LoginRegisterResponse (
-    @SerializedName("user") val user : User,
+    @SerializedName("message") val message : String,
     @SerializedName("token") val token : String,
-    @SerializedName("message") val message : String
+    @SerializedName("data") val data : User
         )
 
 data class User (
-
-    @SerializedName("id") val id : Int,
+    @SerializedName("user_id") val user_id : Int,
     @SerializedName("email") val email : String,
-    @SerializedName("password_digest") val password_digest : String,
-    @SerializedName("created_at") val created_at : String,
-    @SerializedName("updated_at") val updated_at : String,
-    @SerializedName("reset_password_token") val reset_password_token : String,
-    @SerializedName("reset_password_sent_at") val reset_password_sent_at : String,
-    @SerializedName("email_confirmed") val email_confirmed : Boolean,
+    @SerializedName("confirmed") val confirmed : Boolean,
     @SerializedName("confirm_token") val confirm_token : String,
-    @SerializedName("role") val role : String
+    @SerializedName("fullname") val fullname : String,
+    @SerializedName("no_hp") val no_hp : String,
+    @SerializedName("address") val address : String,
+    @SerializedName("dateofbirth") val dateofbirth : String,
+    @SerializedName("role") val role : List<String>,
+    @SerializedName("avatar") val avatar : String
 )

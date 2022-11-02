@@ -30,20 +30,32 @@ interface ApiService {
         @Part("school") school: RequestBody,
         @Part("dateofbirth") dateOfBirth: RequestBody,
         @Part file: MultipartBody.Part
-    ) : Response<Any>
+    ): Response<Any>
 
     @GET("api/v1/report")
     suspend fun getAllDataDailyReport(@Body dailyReportRequest: DailyReportRequest): Response<DailyReportResponse>
 
     @POST("api/v1/children/invite")
-    suspend fun postInviteChildren(@Header("Authorization") token: String, @Body inviteChildRequest: InviteChildRequest) : Response<InviteChildResponse>
+    suspend fun postInviteChildren(
+        @Header("Authorization") token: String,
+        @Body inviteChildRequest: InviteChildRequest
+    ): Response<InviteChildResponse>
 
     @GET("api/v1/children/{children_id}/invitation")
-    suspend fun getInviteChildren(@Header("Authorization") token: String, @Path("children_id") childrenId: Int) : Response<InvitationTokenResponse>
+    suspend fun getInviteChildren(
+        @Header("Authorization") token: String,
+        @Path("children_id") childrenId: Int
+    ): Response<InvitationTokenResponse>
 
     @GET("api/v1/user/profile")
-    suspend fun getProfileUser(@Header("Authorization") token: String) : Response<ProfileResponse>
+    suspend fun getProfileUser(@Header("Authorization") token: String): Response<ProfileResponse>
 
-    @PUT("api/v1/user/1")
-    suspend fun editProfileUser()
+    @Multipart
+    @PUT("api/v1/user/profile?")
+    suspend fun editProfileUser(
+        @Header("Authorization") token: String, @Query("user_id") category: Int,
+        @Part("fullname") fullname: RequestBody, @Part("no_hp") telp: RequestBody,
+        @Part("address") address: RequestBody, @Part("dateofbirth") dateOfBirth: RequestBody,
+        @Part file: MultipartBody.Part
+    )
 }

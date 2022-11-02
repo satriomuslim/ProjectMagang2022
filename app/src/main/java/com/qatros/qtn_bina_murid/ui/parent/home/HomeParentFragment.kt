@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qatros.qtn_bina_murid.databinding.FragmentHomeParentBinding
+import com.qatros.qtn_bina_murid.di.SharedPreference
 import com.qatros.qtn_bina_murid.ui.parent.child.FormChildActivity
 import kotlinx.coroutines.NonDisposableHandle.parent
 
@@ -36,6 +37,8 @@ class HomeParentFragment : Fragment() {
                 layoutManager = LinearLayoutManager(requireContext())
             }
 
+            tvNameHome.text = "Hi, ${SharedPreference(requireContext()).userName}"
+            tvEmailHome.text = SharedPreference(requireContext()).userEmail
             btnInvitePendagogue.setOnClickListener{
                 startActivity(Intent(activity, HomeScanListActivity::class.java))
             }

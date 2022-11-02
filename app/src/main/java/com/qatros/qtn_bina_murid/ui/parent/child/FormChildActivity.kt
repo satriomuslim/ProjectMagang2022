@@ -143,7 +143,7 @@ class FormChildActivity : AppCompatActivity() {
 
             }
 
-            btnAddProfile.setOnClickListener {
+            btnRegisterChild.setOnClickListener {
                 showBottomSheetDialog()
             }
         }

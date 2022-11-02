@@ -78,7 +78,9 @@ dependencies {
 
     //barcode scanner
     implementation 'com.github.yuriy-budiyev:code-scanner:2.3.2'
-//    //barcode generator
-//    implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.3'
+
+    //lottie files
+    implementation "com.airbnb.android:lottie:3.4.0"
+
 
 }

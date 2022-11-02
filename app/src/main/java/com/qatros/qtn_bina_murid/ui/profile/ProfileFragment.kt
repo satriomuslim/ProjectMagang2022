@@ -6,13 +6,28 @@ import android.view.View
 import android.view.ViewGroup
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.base.BaseFragment
+import com.qatros.qtn_bina_murid.databinding.FragmentProfileBinding
+import com.qatros.qtn_bina_murid.di.SharedPreference
 
 class ProfileFragment : BaseFragment() {
+    private lateinit var binding: FragmentProfileBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_profile, container, false)
+        binding = FragmentProfileBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        init()
+    }
+
+    private fun init() {
+        with(binding) {
+            txtNameParent.text = SharedPreference(requireContext()).userName
+            txtEmailParent.text = SharedPreference(requireContext()).userEmail
+        }
     }
 }

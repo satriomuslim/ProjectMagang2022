@@ -148,8 +148,30 @@
                             android:inputType="textPassword" />
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <RadioGroup
+                        android:id="@+id/rg_role"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        android:layout_marginTop="16dp">
+
+                        <RadioButton
+                            android:id="@+id/rb_parent"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Sebagai Orang Tua"/>
+
+                        <RadioButton
+                            android:id="@+id/rb_pedagogue"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Sebagai Pedagogue" />
+                    </RadioGroup>
                     <Button
-                        android:id="@+id/btn_register"
+                        android:id="@+id/btn_next_detail"
                         style="@style/ButtonDefault"
                         android:enabled="false"
                         android:layout_width="match_parent"

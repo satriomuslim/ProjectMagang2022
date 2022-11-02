@@ -30,7 +30,6 @@ class ScanChildrenResultActivity : AppCompatActivity() {
 
     private fun observeData() {
         viewModel.observeInviteChildSuccess().observe(this) {
-            binding.tvIdResult.text = it?.children?.children_id.toString()
         }
     }
 

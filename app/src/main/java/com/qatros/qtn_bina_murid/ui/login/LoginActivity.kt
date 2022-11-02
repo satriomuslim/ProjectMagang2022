@@ -42,11 +42,20 @@ class LoginActivity : AppCompatActivity() {
         with(viewModel) {
             observeLoginSuccess().observe(this@LoginActivity) { data ->
                 binding.pbLogin.isGone = true
-                if(data?.user?.email != "bobo@gmail.com") {
+                if(data?.data?.email != "bobo@gmail.com") {
                     SharedPreference(this@LoginActivity).apply {
                         userToken = "bearer ${data?.token}"
                         isLogin = true
-                        userRole = 1
+                        userRole = if((data?.data?.role?.get(0) ?: "") == "parent") {
+                            1
+                        } else {
+                            2
+                        }
+                        userEmail = data?.data?.email ?: ""
+                        userId = data?.data?.user_id ?: 0
+                        userName = data?.data?.fullname ?: ""
+                        userTelp = data?.data?.no_hp ?: ""
+                        userAddress = data?.data?.address
                     }
                     startActivity(Intent(this@LoginActivity, NavigationParentActivity::class.java))
                     finish()
@@ -55,11 +64,15 @@ class LoginActivity : AppCompatActivity() {
                         userToken = "bearer ${data.token}"
                         isLogin = true
                         userRole = 2
+                        userEmail = data.data.email
+                        userId = data.data.user_id
+                        userName = data.data.fullname
+                        userTelp = data.data.no_hp
+                        userAddress = data.data.address
                     }
                     startActivity(Intent(this@LoginActivity, NavigationPedagogueActivity::class.java))
                     finish()
                 }
-
             }
 
             observeError().observe(this@LoginActivity) {

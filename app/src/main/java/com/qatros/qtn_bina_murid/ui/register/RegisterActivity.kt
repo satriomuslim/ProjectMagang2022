@@ -1,25 +1,24 @@
 package com.qatros.qtn_bina_murid.ui.register
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
-import androidx.core.view.isGone
+import androidx.appcompat.app.AppCompatActivity
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.data.remote.request.RegisterRequest
 import com.qatros.qtn_bina_murid.databinding.ActivityRegisterBinding
-import com.qatros.qtn_bina_murid.di.SharedPreference
 import com.qatros.qtn_bina_murid.ui.login.LoginActivity
-import com.qatros.qtn_bina_murid.ui.login.LoginViewModel
-import com.qatros.qtn_bina_murid.ui.parent.navigation.NavigationParentActivity
 import com.qatros.qtn_bina_murid.utils.toast
 import org.koin.android.ext.android.inject
+
 
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
+
+    private var role = ""
 
     private val viewModel: RegisterViewModel by inject()
 
@@ -37,21 +36,6 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         init()
-        observeData()
-    }
-
-    private fun observeData() {
-        with(viewModel) {
-            observeRegisterSuccess().observe(this@RegisterActivity) {
-                Toast.makeText(this@RegisterActivity, "Register Success", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
-                finish()
-            }
-
-            observeError().observe(this@RegisterActivity) {
-                this@RegisterActivity.toast(it)
-            }
-        }
     }
 
     private val loginTextWatcher: TextWatcher = object : TextWatcher {
@@ -83,16 +67,16 @@ class RegisterActivity : AppCompatActivity() {
                     }
 
                 }
-                btnRegister.isEnabled =  etNameRegister.text!!.isNotEmpty() && etEmailRegister.text!!.isNotEmpty() && etTelpRegister.text!!.isNotEmpty() && etPasswordRegister.text!!.isNotEmpty() && etConfirmPasswordRegister.text!!.isNotEmpty()
+                btnNextDetail.isEnabled =  etNameRegister.text!!.isNotEmpty() && etEmailRegister.text!!.isNotEmpty() && etTelpRegister.text!!.isNotEmpty() && etPasswordRegister.text!!.isNotEmpty() && etConfirmPasswordRegister.text!!.isNotEmpty()
             }
         }
 
         override fun afterTextChanged(s: Editable) {
             binding.apply {
                 if (etNameRegister.text?.isBlank()?.not() == true && etEmailRegister.text?.isBlank()?.not() == true && etTelpRegister.text?.isBlank()?.not() == true && etPasswordRegister.text?.isBlank()?.not() == true && etConfirmPasswordRegister.text?.isBlank()?.not() == true)  {
-                    btnRegister.setBackgroundColor(resources.getColor(R.color.blue))
+                    btnNextDetail.setBackgroundColor(resources.getColor(R.color.blue))
                 } else {
-                    btnRegister.setBackgroundColor(resources.getColor(R.color.grey))
+                    btnNextDetail.setBackgroundColor(resources.getColor(R.color.grey))
                 }
             }
         }
@@ -101,14 +85,14 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun init() {
         with(binding) {
-            btnRegister.setOnClickListener {
-                val registerReq = RegisterRequest(
+            btnNextDetail.setOnClickListener {
+                val regisData = RegisterData(
+                    fullName =  etNameRegister.text.toString(),
                     email = etEmailRegister.text.toString(),
                     password = etPasswordRegister.text.toString(),
-                    no_hp = etTelpRegister.text.toString(),
-                    fullname =  etNameRegister.text.toString()
+                    telp = etTelpRegister.text.toString()
                 )
-                viewModel.postRegister(registerReq)
+                startActivity(Intent(this@RegisterActivity, RegisterDetailActivity::class.java).putExtra(RegisterDetailActivity.REGISTER_DATA,regisData))
             }
             btnBackFromLogin.setOnClickListener {
                 finish()
