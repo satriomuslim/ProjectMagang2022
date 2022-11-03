@@ -45,7 +45,7 @@ class MenuProfileFragment : Fragment() {
             }
 
             btnEditProfile.setOnClickListener{
-                findNavController().navigate(R.id.action_menuProfile_to_editProfileFragment)
+                findNavController().navigate(R.id.editProfileFragment)
             }
         }
     }

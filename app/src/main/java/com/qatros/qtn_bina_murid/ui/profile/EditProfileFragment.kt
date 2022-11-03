@@ -47,8 +47,6 @@ class EditProfileFragment : Fragment() {
                 ProfileFragment()
             }
         }
-
-        ProfileFragment().settingGoneButton(true)
     }
 
     private val loginTextWatcher: TextWatcher = object : TextWatcher {
