@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_parent_profile"
-    app:startDestination="@id/parentEditProfileFragment">
+    app:startDestination="@id/menuProfile">
 
     <fragment
-        android:id="@+id/parentMenuProfile"
+        android:id="@+id/menuProfile"
         android:name="com.qatros.qtn_bina_murid.ui.profile.MenuProfileFragment"
         android:label="fragment_parent_menu_profile"
         tools:layout="@layout/fragment_menu_profile" >
         <action
-            android:id="@+id/action_parentMenuProfileFragment_to_parentEditProfileFragment"
-            app:destination="@id/parentEditProfileFragment" />
+            android:id="@+id/action_menuProfile_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
     </fragment>
     <fragment
-        android:id="@+id/parentEditProfileFragment"
+        android:id="@+id/editProfileFragment"
         android:name="com.qatros.qtn_bina_murid.ui.profile.EditProfileFragment"
         android:label="fragment_parent_edit_profile"
         tools:layout="@layout/fragment_edit_profile" />
