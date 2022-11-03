@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.databinding.FragmentMenuProfileBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
 import com.qatros.qtn_bina_murid.ui.parent.navigation.NavigationParentActivity
+import com.qatros.qtn_bina_murid.ui.pedagogue.navigation.NavigationPedagogueActivity
 
 class MenuProfileFragment : Fragment() {
 
@@ -33,13 +35,17 @@ class MenuProfileFragment : Fragment() {
             btnChangeUser.setOnClickListener{
                 if (SharedPreference(requireContext()).userRole == 1) {
                     SharedPreference(requireContext()).userRole = 2
-                    startActivity(Intent(activity, NavigationParentActivity::class.java))
+                    startActivity(Intent(activity, NavigationPedagogueActivity::class.java))
                     activity?.finish()
                 } else {
                     SharedPreference(requireContext()).userRole = 1
                     startActivity(Intent(activity, NavigationParentActivity::class.java))
                     activity?.finish()
                 }
+            }
+
+            btnEditProfile.setOnClickListener{
+                findNavController().navigate(R.id.action_menuProfile_to_editProfileFragment)
             }
         }
     }
