@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.base.BaseFragment
 import com.qatros.qtn_bina_murid.databinding.FragmentProfileBinding
@@ -22,6 +23,10 @@ class ProfileFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init()
+    }
+
+    fun settingGoneButton(visible: Boolean) {
+        binding.circleImageView.isGone = visible
     }
 
     private fun init() {

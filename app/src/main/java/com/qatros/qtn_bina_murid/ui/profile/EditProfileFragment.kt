@@ -6,13 +6,17 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.databinding.FragmentEditProfileBinding
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class EditProfileFragment : Fragment() {
 
     private lateinit var binding : FragmentEditProfileBinding
+
+    private val viewModel: ProfileViewModel by sharedViewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -30,6 +34,21 @@ class EditProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentEditProfileBinding.inflate(layoutInflater)
         return binding.root
+        init()
+    }
+
+    private fun observeData() {
+
+    }
+
+    private fun init() {
+        with(binding) {
+            btnSaveDataProfileParent.setOnClickListener {
+                ProfileFragment()
+            }
+        }
+
+        ProfileFragment().settingGoneButton(true)
     }
 
     private val loginTextWatcher: TextWatcher = object : TextWatcher {
