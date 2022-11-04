@@ -37,9 +37,6 @@ class ScanBarcodeParentsActivity : AppCompatActivity() {
         viewModel.observeGetChildTokenSuccess().observe(this) {
             val segments = it?.split(",".toRegex())?.toTypedArray()
             val token = segments?.get(0)
-            val name = segments?.get(1)
-            val avatar = segments?.get(2)
-            Log.e("TAG", "observeData: $token , $name , $avatar")
             if (it != null) {
                 generateQR(it)
             }

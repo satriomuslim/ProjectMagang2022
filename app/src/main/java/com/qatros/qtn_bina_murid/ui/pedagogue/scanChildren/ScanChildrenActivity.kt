@@ -43,6 +43,10 @@ class ScanChildrenActivity : AppCompatActivity() {
         codeScanner.decodeCallback = DecodeCallback {
             runOnUiThread {
                 Toast.makeText(this, "Scan result: ${it.text}", Toast.LENGTH_LONG).show()
+                val segments = it.text.split(",".toRegex()).toTypedArray()
+                val token = segments[0]
+                val name = segments[1]
+                val avatar = segments[2]
                 startActivity(Intent(this, ScanChildrenResultActivity::class.java).putExtra(ScanChildrenResultActivity.INV_TOKEN, it.text))
                 finish()
             }
