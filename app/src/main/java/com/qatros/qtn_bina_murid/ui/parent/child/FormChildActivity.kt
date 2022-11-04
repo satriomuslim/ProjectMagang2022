@@ -143,7 +143,7 @@ class FormChildActivity : AppCompatActivity() {
 
             }
 
-            btnRegisterChild.setOnClickListener {
+            btnAddImage.setOnClickListener {
                 showBottomSheetDialog()
             }
         }

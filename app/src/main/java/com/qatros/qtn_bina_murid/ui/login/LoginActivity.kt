@@ -57,6 +57,7 @@ class LoginActivity : AppCompatActivity() {
                         userTelp = data?.data?.no_hp ?: ""
                         userAddress = data?.data?.address
                         userAvatar = data?.data?.avatar
+                        userDate = data?.data?.dateofbirth
                     }
                     startActivity(Intent(this@LoginActivity, NavigationParentActivity::class.java))
                     finish()
@@ -71,6 +72,7 @@ class LoginActivity : AppCompatActivity() {
                         userTelp = data.data.no_hp
                         userAddress = data.data.address
                         userAvatar = data.data.avatar
+                        userDate = data.data.dateofbirth
                     }
                     startActivity(Intent(this@LoginActivity, NavigationPedagogueActivity::class.java))
                     finish()

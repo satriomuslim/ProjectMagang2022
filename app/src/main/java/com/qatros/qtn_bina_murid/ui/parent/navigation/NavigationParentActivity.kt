@@ -41,7 +41,7 @@ class NavigationParentActivity : AppCompatActivity() {
 
     private fun setCurrentFragment(fragment: Fragment) =
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.nav_host_fragment_activity_main, fragment)
+            replace(R.id.nav_host_fragment_activity_main_parent, fragment)
             commit()
         }
 }

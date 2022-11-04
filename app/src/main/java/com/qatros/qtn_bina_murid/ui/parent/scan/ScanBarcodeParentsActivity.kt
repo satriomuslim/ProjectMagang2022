@@ -1,6 +1,5 @@
 package com.qatros.qtn_bina_murid.ui.parent.scan
 
-import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
@@ -36,12 +35,17 @@ class ScanBarcodeParentsActivity : AppCompatActivity() {
 
     private fun observeData() {
         viewModel.observeGetChildTokenSuccess().observe(this) {
+            val segments = it?.split(",".toRegex())?.toTypedArray()
+            val token = segments?.get(0)
+            val name = segments?.get(1)
+            val avatar = segments?.get(2)
+            Log.e("TAG", "observeData: $token , $name , $avatar")
             if (it != null) {
                 generateQR(it)
             }
             with(binding) {
                 pbScanBarcodeParents.isGone = true
-                binding.tvInviteToken.text = "ID :" + it?.toUpperCase(Locale.ROOT)
+                binding.tvInviteToken.text = "ID :" + token?.toUpperCase(Locale.ROOT)
             }
         }
     }
@@ -63,7 +67,7 @@ class ScanBarcodeParentsActivity : AppCompatActivity() {
     private fun generateQR(text: String) {
         val writer = MultiFormatWriter()
         try {
-            val matrix: BitMatrix = writer.encode(text, BarcodeFormat.QR_CODE, 600, 600)
+            val matrix: BitMatrix = writer.encode(text, BarcodeFormat.QR_CODE, 800, 800)
             val encoder = BarcodeEncoder()
             val bitmap: Bitmap = encoder.createBitmap(matrix)
             binding.ivBarcode.setImageBitmap(bitmap)

@@ -35,7 +35,7 @@ fun ImageView.loadImageUser(url: String?, placeholder: Int = R.drawable.ic_user_
         .into(this)
 }
 
-fun Activity.toast(message:String?){
+fun Context.toast(message:String?){
     Toast.makeText(this,message, Toast.LENGTH_SHORT).show()
 }
 

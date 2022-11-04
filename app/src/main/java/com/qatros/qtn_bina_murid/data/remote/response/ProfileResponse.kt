@@ -9,10 +9,10 @@ data class ProfileResponse(
 )
 
 data class Data (
-
+    @SerializedName("user_id") val userId : Int?,
     @SerializedName("email") val email : String?,
     @SerializedName("fullname") val fullname : String?,
     @SerializedName("address") val address : String?,
-    @SerializedName("phone_number") val phoneNumber : Int?,
+    @SerializedName("phone_number") val phoneNumber : String?,
     @SerializedName("avatar") val avatar : String?
 )

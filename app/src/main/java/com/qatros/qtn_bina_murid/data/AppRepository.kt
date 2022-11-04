@@ -40,4 +40,8 @@ class AppRepository(private val localRepository: LocalRepository, private val re
     suspend fun postInviteChildren(token: String, inviteChildRequest: InviteChildRequest) : ResponseResult<InviteChildResponse> {
         return remoteRepository.postInviteChildren(token, inviteChildRequest)
     }
+
+    suspend fun editProfile(token: String, userId: Int, fullName: RequestBody, telp: RequestBody, address: RequestBody, dateOfBirth: RequestBody, file: MultipartBody.Part?) : ResponseResult<ProfileResponse> {
+        return remoteRepository.editProfile(token, userId, fullName, telp, address, dateOfBirth, file)
+    }
 }

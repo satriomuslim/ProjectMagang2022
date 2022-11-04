@@ -39,7 +39,7 @@ class HomeViewModel(private val repository: AppRepository) : BaseViewModel() {
             when(val result = repository.getInviteChildren(token, childrenId)) {
                 is ResponseResult.Success -> {
                     Log.e("TAG", "getInviteChildren: ${result.data}", )
-                    getChildTokenSuccess.postValue(result.data.invitation_token)
+                    getChildTokenSuccess.postValue("${result.data.invitation_token},${result.data.children.fullname},${result.data.children.avatar}")
                 }
                 is ResponseResult.Error -> {
                     Log.e("TAG", "getInviteChildren: ${result.errorMsg}", )

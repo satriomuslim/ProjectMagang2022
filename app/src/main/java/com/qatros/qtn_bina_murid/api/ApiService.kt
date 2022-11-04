@@ -51,11 +51,11 @@ interface ApiService {
     suspend fun getProfileUser(@Header("Authorization") token: String): Response<ProfileResponse>
 
     @Multipart
-    @PUT("api/v1/user/profile?")
+    @PUT("api/v1/user/profile/edit?")
     suspend fun editProfileUser(
-        @Header("Authorization") token: String, @Query("user_id") category: Int,
+        @Header("Authorization") token: String, @Query("user_id") userId: Int,
         @Part("fullname") fullname: RequestBody, @Part("no_hp") telp: RequestBody,
         @Part("address") address: RequestBody, @Part("dateofbirth") dateOfBirth: RequestBody,
-        @Part file: MultipartBody.Part
-    )
+        @Part file: MultipartBody.Part?
+    ) : Response<ProfileResponse>
 }

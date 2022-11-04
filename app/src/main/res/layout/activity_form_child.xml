@@ -67,14 +67,15 @@
                     android:src="@drawable/image" />
 
                 <ImageView
+                    android:id="@+id/btn_add_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_camera_small"
-                    android:background="@drawable/bg_oval_white"
-                    android:backgroundTint="@color/blue"
                     android:layout_alignRight="@id/img_profileAnak"
                     android:layout_alignBottom="@id/img_profileAnak"
-                    android:padding="8dp"/>
+                    android:background="@drawable/bg_oval_white"
+                    android:backgroundTint="@color/blue"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_camera_small" />
 
             </RelativeLayout>
 
