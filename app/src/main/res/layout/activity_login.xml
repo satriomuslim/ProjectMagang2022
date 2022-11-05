@@ -9,114 +9,130 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/blue"
         android:orientation="vertical"
-        android:weightSum="7"
-        android:background="@color/blue">
+        android:weightSum="7">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
             android:padding="36dp"
-            android:src="@drawable/ill_login"/>
+            android:src="@drawable/ill_login" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="5"
-            android:padding="16dp"
             android:background="@drawable/bg_rounded_white_top_radius"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <TextView
-                style="@style/DefaultTextMedium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Login"
-                android:textSize="24sp"
-                android:layout_marginTop="16dp"/>
-
-            <TextView
-                style="@style/DefaultTextLanding"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Masukkan email dan kata sandimu"
-                android:textSize="12sp"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:id="@+id/email_login"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:startIconDrawable="@drawable/ic_envelopeopen"
-                android:layout_marginTop="32dp">
+                android:layout_height="match_parent"
+                android:scrollbars="none">
 
-                <com.qatros.qtn_bina_murid.customview.EmailEditText
-                    android:id="@+id/et_email_login"
-                    android:inputType="textEmailAddress"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:id="@+id/password_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:startIconDrawable="@drawable/ic_locksimple"
-                app:passwordToggleEnabled="true"
-                android:layout_marginTop="16dp">
-
-                <com.qatros.qtn_bina_murid.customview.PasswordEditText
-                    android:id="@+id/et_password_login"
-                    android:inputType="textPassword"
-                    android:paddingEnd="40dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/btn_forgot_password"
-                style="@style/DefaultTextLanding"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Lupa Kata Sandi?"
-                android:textSize="13sp"
-                android:layout_gravity="right"
-                android:layout_marginTop="8dp"/>
-
-            <Button
-                android:id="@+id/btn_login"
-                style="@style/ButtonDefault"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:enabled="false"
-                android:text="Masuk" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal"
-                android:textAlignment="center"
-                android:gravity="center">
-
-                <TextView
-                    style="@style/DefaultTextLanding"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Belum punya akun? " />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/btn_login_to_register"
-                    style="@style/DefaultTextLandingSemiBold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Register"
-                    android:textColor="@color/blue"/>
-            </LinearLayout>
+                    <TextView
+                        style="@style/DefaultTextMedium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Login"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        style="@style/DefaultTextLanding"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Masukkan email dan kata sandimu"
+                        android:textSize="12sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/email_login"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        app:startIconDrawable="@drawable/ic_envelopeopen">
+
+                        <com.qatros.qtn_bina_murid.customview.EmailEditText
+                            android:id="@+id/et_email_login"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textEmailAddress" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/password_login"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        app:passwordToggleEnabled="true"
+                        app:startIconDrawable="@drawable/ic_locksimple">
+
+                        <com.qatros.qtn_bina_murid.customview.PasswordEditText
+                            android:id="@+id/et_password_login"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"
+                            android:paddingEnd="40dp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/btn_forgot_password"
+                        style="@style/DefaultTextLanding"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="8dp"
+                        android:text="Lupa Kata Sandi?"
+                        android:textSize="13sp" />
+
+                    <Button
+                        android:id="@+id/btn_login"
+                        style="@style/ButtonDefault"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:enabled="false"
+                        android:text="Masuk" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:textAlignment="center">
+
+                        <TextView
+                            style="@style/DefaultTextLanding"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Belum punya akun? " />
+
+                        <TextView
+                            android:id="@+id/btn_login_to_register"
+                            style="@style/DefaultTextLandingSemiBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Register"
+                            android:textColor="@color/blue" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </ScrollView>
+
         </LinearLayout>
+
     </LinearLayout>
 
     <ProgressBar
@@ -124,6 +140,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
 </RelativeLayout>
