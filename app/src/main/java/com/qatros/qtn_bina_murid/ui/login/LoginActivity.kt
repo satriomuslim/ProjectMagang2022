@@ -54,7 +54,6 @@ class LoginActivity : AppCompatActivity() {
                         userEmail = data?.data?.email ?: ""
                         userId = data?.data?.user_id ?: 0
                         userName = data?.data?.fullname ?: ""
-                        userTelp = data?.data?.no_hp ?: ""
                         userAddress = data?.data?.address
                         userAvatar = data?.data?.avatar
                         userDate = data?.data?.dateofbirth
@@ -69,7 +68,6 @@ class LoginActivity : AppCompatActivity() {
                         userEmail = data.data.email
                         userId = data.data.user_id
                         userName = data.data.fullname
-                        userTelp = data.data.no_hp
                         userAddress = data.data.address
                         userAvatar = data.data.avatar
                         userDate = data.data.dateofbirth

@@ -30,7 +30,6 @@ class RegisterActivity : AppCompatActivity() {
         binding.apply{
             etNameRegister.addTextChangedListener(loginTextWatcher)
             etEmailRegister.addTextChangedListener(loginTextWatcher)
-            etTelpRegister.addTextChangedListener(loginTextWatcher)
             etPasswordRegister.addTextChangedListener(loginTextWatcher)
             etConfirmPasswordRegister.addTextChangedListener(loginTextWatcher)
         }
@@ -53,9 +52,6 @@ class RegisterActivity : AppCompatActivity() {
                     etEmailRegister.text!!.isEmpty() -> {
                         etEmailRegister.error = "Email Required"
                     }
-                    etTelpRegister.text!!.isEmpty() -> {
-                       etTelpRegister.error = "Number Telephone Required"
-                    }
                     etPasswordRegister.text!!.isEmpty() -> {
                         etPasswordRegister.error = "Password Required"
                     }
@@ -67,13 +63,13 @@ class RegisterActivity : AppCompatActivity() {
                     }
 
                 }
-                btnNextDetail.isEnabled =  etNameRegister.text!!.isNotEmpty() && etEmailRegister.text!!.isNotEmpty() && etTelpRegister.text!!.isNotEmpty() && etPasswordRegister.text!!.isNotEmpty() && etConfirmPasswordRegister.text!!.isNotEmpty()
+                btnNextDetail.isEnabled =  etNameRegister.text!!.isNotEmpty() && etEmailRegister.text!!.isNotEmpty() && etPasswordRegister.text!!.isNotEmpty() && etConfirmPasswordRegister.text!!.isNotEmpty()
             }
         }
 
         override fun afterTextChanged(s: Editable) {
             binding.apply {
-                if (etNameRegister.text?.isBlank()?.not() == true && etEmailRegister.text?.isBlank()?.not() == true && etTelpRegister.text?.isBlank()?.not() == true && etPasswordRegister.text?.isBlank()?.not() == true && etConfirmPasswordRegister.text?.isBlank()?.not() == true)  {
+                if (etNameRegister.text?.isBlank()?.not() == true && etEmailRegister.text?.isBlank()?.not() == true && etPasswordRegister.text?.isBlank()?.not() == true && etConfirmPasswordRegister.text?.isBlank()?.not() == true)  {
                     btnNextDetail.setBackgroundColor(resources.getColor(R.color.blue))
                 } else {
                     btnNextDetail.setBackgroundColor(resources.getColor(R.color.grey))
@@ -89,8 +85,7 @@ class RegisterActivity : AppCompatActivity() {
                 val regisData = RegisterData(
                     fullName =  etNameRegister.text.toString(),
                     email = etEmailRegister.text.toString(),
-                    password = etPasswordRegister.text.toString(),
-                    telp = etTelpRegister.text.toString()
+                    password = etPasswordRegister.text.toString()
                 )
                 startActivity(Intent(this@RegisterActivity, RegisterDetailActivity::class.java).putExtra(RegisterDetailActivity.REGISTER_DATA,regisData))
             }

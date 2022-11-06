@@ -29,6 +29,7 @@
         android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_confirm_barcode"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/bg_oval_grey_stroke"
@@ -36,6 +37,7 @@
             android:src="@drawable/image" />
 
         <TextView
+            android:id="@+id/tv_confirm_barcode"
             style="@style/DefaultTextLandingSemiBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -62,6 +64,7 @@
         android:weightSum="2">
 
         <TextView
+            android:id="@+id/btn_denied_data"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -73,6 +76,7 @@
             android:background="@drawable/bg_rounded_white_stoke_grey"/>
 
         <TextView
+            android:id="@+id/btn_confirm_data"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

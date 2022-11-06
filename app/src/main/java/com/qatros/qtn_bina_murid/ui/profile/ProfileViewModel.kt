@@ -14,48 +14,43 @@ import okhttp3.RequestBody
 import java.io.File
 
 class ProfileViewModel(private val repository: AppRepository) : BaseViewModel() {
-    private val imageFile = MutableLiveData<File>()
-    fun observeImageFile(): LiveData<File> = imageFile
-
-    private val indicator = MutableLiveData<Boolean>()
-    fun observeIndicator(): LiveData<Boolean> = indicator
-
     private val sendData = MutableLiveData<Pair<String, String>>()
     fun observeSendData(): LiveData<Pair<String, String>> = sendData
 
     private val editProfileSuccess = MutableLiveData<SingleLiveEvent<ProfileResponse?>>()
     fun observeEditProfileSuccess(): LiveData<SingleLiveEvent<ProfileResponse?>> = editProfileSuccess
 
+    private val editAvatarSuccess = MutableLiveData<SingleLiveEvent<ProfileResponse?>>()
+    fun observeEditAvatarSuccess(): LiveData<SingleLiveEvent<ProfileResponse?>> = editAvatarSuccess
+
     fun sendData(name: String, avatar: String) {
         viewModelScope.launch {
             sendData.postValue(Pair(name, avatar))
         }
     }
-    fun sendImageFile(image: File) {
-        viewModelScope.launch {
-            imageFile.postValue(image)
-        }
-    }
-
-    fun indicatorProfile(visible: Boolean) {
-        viewModelScope.launch {
-            indicator.postValue(visible)
-        }
-    }
 
     fun editProfile(
         token: String,
-        userId: Int,
         fullName: RequestBody,
-        telp: RequestBody,
-        address: RequestBody,
-        dateOfBirth: RequestBody,
-        file: MultipartBody.Part?
+        email: RequestBody
     ) {
         viewModelScope.launch {
-            when(val result = repository.editProfile(token, userId, fullName, telp, address, dateOfBirth, file)) {
+            when(val result = repository.editProfile(token, fullName, email)) {
                 is ResponseResult.Success -> {
                     editProfileSuccess.postValue(SingleLiveEvent(result.data))
+                }
+                is ResponseResult.Error -> {
+                    isError.postValue(result.errorMsg)
+                }
+            }
+        }
+    }
+
+    fun editAvatar(token: String, file: MultipartBody.Part) {
+        viewModelScope.launch {
+            when(val result = repository.editAvatar(token, file)) {
+                is ResponseResult.Success -> {
+                    editAvatarSuccess.postValue(SingleLiveEvent(result.data))
                 }
                 is ResponseResult.Error -> {
                     isError.postValue(result.errorMsg)

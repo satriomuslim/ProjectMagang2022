@@ -121,7 +121,7 @@
                 android:layout_marginTop="16dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_date_daily_parent"
+                android:id="@+id/rv_date_daily_detail_pedagogue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"/>

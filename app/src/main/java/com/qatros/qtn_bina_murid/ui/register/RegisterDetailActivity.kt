@@ -49,7 +49,6 @@ class RegisterDetailActivity : AppCompatActivity() {
                 val registerReq = RegisterRequest(
                     email = data?.email ?: "",
                     password = data?.password ?: "",
-                    no_hp = data?.telp ?: "",
                     fullname = data?.fullName ?: "",
                     role = role
                 )

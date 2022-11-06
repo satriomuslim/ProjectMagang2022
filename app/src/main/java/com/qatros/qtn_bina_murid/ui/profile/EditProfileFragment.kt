@@ -27,7 +27,7 @@ import java.io.File
 
 class EditProfileFragment : Fragment() {
 
-    private lateinit var binding : FragmentEditProfileBinding
+    private lateinit var binding: FragmentEditProfileBinding
 
     private val viewModel: ProfileViewModel by sharedViewModel()
 
@@ -36,17 +36,15 @@ class EditProfileFragment : Fragment() {
     private val onBackCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
             findNavController().popBackStack()
-            viewModel.indicatorProfile(true)
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.onBackPressedDispatcher?.addCallback(onBackCallback)
-        binding.apply{
+        binding.apply {
             edNamaLengkap.addTextChangedListener(loginTextWatcher)
-            edAlamat.addTextChangedListener(loginTextWatcher)
-            edNomorHandphone.addTextChangedListener(loginTextWatcher)
+            edEmail.addTextChangedListener(loginTextWatcher)
         }
         init()
         observeData()
@@ -62,17 +60,12 @@ class EditProfileFragment : Fragment() {
     }
 
     private fun observeData() {
-        viewModel.observeImageFile().observe(viewLifecycleOwner) {
-            Log.e("TA", "observeData: $it", )
-            finalFile = it
-        }
         viewModel.observeEditProfileSuccess().observe(viewLifecycleOwner) {
             it.getContentIfNotHandled()?.let { data ->
                 requireContext().toast("Success Edit")
                 SharedPreference(requireContext()).apply {
                     userName = data.data.fullname ?: ""
                     userAddress = data.data.address
-                    userTelp = data.data.phoneNumber ?: ""
                     userAvatar = data.data.avatar
                 }
                 viewModel.sendData(data.data.fullname ?: "", data.data.avatar ?: "")
@@ -85,26 +78,13 @@ class EditProfileFragment : Fragment() {
         with(binding) {
             btnSaveDataProfileParent.setOnClickListener {
                 val token = SharedPreference(requireContext()).userToken
-                val userId = SharedPreference(requireContext()).userId
                 val name = edNamaLengkap.text.toString().toRequestBody("text/plain".toMediaType())
-                val telp = edNomorHandphone.text.toString().toRequestBody("text/plain".toMediaType())
-                val address = edAlamat.text.toString().toRequestBody("text/plain".toMediaType())
-                val dateOfBirth = SharedPreference(requireContext()).userDate?.toRequestBody("text/plain".toMediaType())
-                val requestImageFile =
-                    finalFile?.asRequestBody("image/jpg".toMediaTypeOrNull())
-                val imageMultipart = requestImageFile?.let { it1 ->
-                    MultipartBody.Part.createFormData(
-                        "avatar_children",
-                        finalFile?.name,
-                        it1
-                    )
-                }
-                if (dateOfBirth != null) {
-                    viewModel.editProfile(token, userId, name, telp, address, dateOfBirth, imageMultipart)
-                }
+                val email = edEmail.text.toString().toRequestBody("text/plain".toMediaType())
+
+                viewModel.editProfile(token, name, email)
+
             }
         }
-        viewModel.indicatorProfile(false)
     }
 
     private val loginTextWatcher: TextWatcher = object : TextWatcher {
@@ -114,23 +94,21 @@ class EditProfileFragment : Fragment() {
 
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
 
-            binding.apply{
+            binding.apply {
                 when {
                     edNamaLengkap.text!!.isEmpty() -> {
                         edNamaLengkap.error = "Name Required"
                     }
-                    edAlamat.text!!.isEmpty() -> {
-                        edAlamat.error = "Address Required"
-                    }
-                    edNomorHandphone.text!!.isEmpty() -> {
-                        edNomorHandphone.error = "Number Phone Required"
+                    edEmail.text!!.isEmpty() -> {
+                        edEmail.error = "Address Required"
                     }
                     else -> {
 
                     }
 
                 }
-                btnSaveDataProfileParent.isEnabled =  edNamaLengkap.text!!.isNotEmpty() && edAlamat.text!!.isNotEmpty()  && edNomorHandphone.text!!.isNotEmpty()
+                btnSaveDataProfileParent.isEnabled =
+                    edNamaLengkap.text!!.isNotEmpty() && edEmail.text!!.isNotEmpty()
 
             }
 
@@ -138,7 +116,9 @@ class EditProfileFragment : Fragment() {
 
         override fun afterTextChanged(s: Editable) {
             binding.apply {
-                if (edNamaLengkap.text?.isBlank()?.not() == true && edAlamat.text?.isBlank()?.not() == true  && edNomorHandphone.text?.isBlank()?.not() == true) {
+                if (edNamaLengkap.text?.isBlank()?.not() == true && edEmail.text?.isBlank()
+                        ?.not() == true
+                ) {
                     btnSaveDataProfileParent.setBackgroundColor(resources.getColor(R.color.blue))
                 } else {
                     btnSaveDataProfileParent.setBackgroundColor(resources.getColor(R.color.grey))
@@ -146,11 +126,6 @@ class EditProfileFragment : Fragment() {
             }
         }
 
-    }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.indicatorProfile(false)
     }
 
 }

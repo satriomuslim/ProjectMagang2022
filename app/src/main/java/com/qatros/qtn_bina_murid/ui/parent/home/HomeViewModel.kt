@@ -20,14 +20,11 @@ class HomeViewModel(private val repository: AppRepository) : BaseViewModel() {
 
     fun getChildList(token: String) {
         viewModelScope.launch {
-            Log.e("TAG", "getChildList:", )
             when(val result = repository.getListChild(token)) {
                 is ResponseResult.Success -> {
-                    Log.e("TAG", "getChildList: ${result.data}", )
                     getChildListSuccess.postValue(result.data)
                 }
                 is ResponseResult.Error -> {
-                    Log.e("TAG", "getChildList: ${result.errorMsg}", )
                     isError.postValue(result.errorMsg)
                 }
             }

@@ -3,10 +3,7 @@ package com.qatros.qtn_bina_murid.data
 import com.qatros.qtn_bina_murid.base.ResponseResult
 import com.qatros.qtn_bina_murid.data.local.LocalRepository
 import com.qatros.qtn_bina_murid.data.remote.RemoteRepository
-import com.qatros.qtn_bina_murid.data.remote.request.ForgotPasswordRequest
-import com.qatros.qtn_bina_murid.data.remote.request.InviteChildRequest
-import com.qatros.qtn_bina_murid.data.remote.request.LoginRequest
-import com.qatros.qtn_bina_murid.data.remote.request.RegisterRequest
+import com.qatros.qtn_bina_murid.data.remote.request.*
 import com.qatros.qtn_bina_murid.data.remote.response.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -41,7 +38,33 @@ class AppRepository(private val localRepository: LocalRepository, private val re
         return remoteRepository.postInviteChildren(token, inviteChildRequest)
     }
 
-    suspend fun editProfile(token: String, userId: Int, fullName: RequestBody, telp: RequestBody, address: RequestBody, dateOfBirth: RequestBody, file: MultipartBody.Part?) : ResponseResult<ProfileResponse> {
-        return remoteRepository.editProfile(token, userId, fullName, telp, address, dateOfBirth, file)
+    suspend fun editProfile(token: String, fullName: RequestBody, email: RequestBody) : ResponseResult<ProfileResponse> {
+        return remoteRepository.editProfile(token, fullName, email)
     }
+
+    suspend fun getPedagogueByChildId(token: String, childrenId: Int) : ResponseResult<ListPedagogueResponse> {
+        return remoteRepository.getListPedagogue(token, childrenId)
+    }
+
+    suspend fun getReportParent(token: String, date: String, childrenId: Int, userId: Int) : ResponseResult<ReportResponse> {
+        return remoteRepository.getReportParent(token, date, childrenId, userId)
+    }
+
+    suspend fun postSubject(token: String, subjectRequest: SubjectRequest) : ResponseResult<Any> {
+        return remoteRepository.postSubject(token, subjectRequest)
+    }
+
+    suspend fun postReport(token: String, childrenId: Int, userId: Int, addReportRequest: AddReportRequest) : ResponseResult<Any> {
+        return remoteRepository.postReport(token, childrenId, userId, addReportRequest)
+    }
+
+    suspend fun postAddRoleUser(token: String, addRoleRequest: AddRoleRequest) : ResponseResult<AddRoleResponse> {
+        return remoteRepository.postAddRoleUser(token, addRoleRequest)
+    }
+
+    suspend fun editAvatar(token: String, file: MultipartBody.Part) : ResponseResult<ProfileResponse> {
+        return remoteRepository.editAvatar(token, file)
+    }
+
+
 }

@@ -67,7 +67,6 @@
                 android:src="@drawable/ic_camera_small"
                 android:background="@drawable/bg_oval_white"
                 android:backgroundTint="@color/blue"
-                android:visibility="gone"
                 android:layout_alignRight="@id/img_profile"
                 android:layout_alignBottom="@id/img_profile"
                 android:padding="8dp"/>

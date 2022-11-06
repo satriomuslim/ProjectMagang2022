@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import com.qatros.qtn_bina_murid.R
+import com.qatros.qtn_bina_murid.data.remote.response.Children
 import com.qatros.qtn_bina_murid.databinding.ActivityChildProfileBinding
 import com.qatros.qtn_bina_murid.databinding.ActivityFormChildBinding
 
@@ -23,7 +24,18 @@ class ChildProfileActivity : AppCompatActivity() {
             edNamaPanggilanAnak.addTextChangedListener(loginTextWatcher)
             edTanggalLahirAnak.addTextChangedListener(loginTextWatcher)
         }
+        init()
 
+    }
+
+    private fun init() {
+        val data = intent.getParcelableExtra<Children>(CHILD_DATA)
+        with(binding) {
+            edAsalSekolah.setText(data?.school)
+            edNamaAnak.setText(data?.fullName)
+            edNamaPanggilanAnak.setText(data?.nickName)
+            edTanggalLahirAnak.setText(data?.dateOfBirth)
+        }
     }
 
     private val loginTextWatcher: TextWatcher = object : TextWatcher {
@@ -68,5 +80,9 @@ class ChildProfileActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    companion object {
+        val CHILD_DATA = "childProfile.data"
     }
 }

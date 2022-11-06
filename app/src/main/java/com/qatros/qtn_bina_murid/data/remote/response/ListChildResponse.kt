@@ -12,10 +12,10 @@ data class ListChildResponse(
 
 @Parcelize
 data class Children (
-    @SerializedName("children_id") val childrenId : Int,
-    @SerializedName("fullname") val fullName : String?,
-    @SerializedName("nickname") val nickName : String?,
-    @SerializedName("school") val school : String?,
-    @SerializedName("date of birth") val dateOfBirth : String?,
-    @SerializedName("avatar") val avatar : String?
+    @SerializedName("children_id") val childrenId : Int = 0,
+    @SerializedName("fullname") val fullName : String? = null,
+    @SerializedName("nickname") val nickName : String? = null,
+    @SerializedName("school") val school : String? = null,
+    @SerializedName("date of birth") val dateOfBirth : String? = null,
+    @SerializedName("avatar") val avatar : String? = null
 ) : Parcelable

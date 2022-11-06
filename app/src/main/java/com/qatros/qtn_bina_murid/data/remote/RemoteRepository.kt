@@ -2,10 +2,7 @@ package com.qatros.qtn_bina_murid.data.remote
 
 import com.qatros.qtn_bina_murid.api.ApiService
 import com.qatros.qtn_bina_murid.base.ResponseResult
-import com.qatros.qtn_bina_murid.data.remote.request.ForgotPasswordRequest
-import com.qatros.qtn_bina_murid.data.remote.request.InviteChildRequest
-import com.qatros.qtn_bina_murid.data.remote.request.LoginRequest
-import com.qatros.qtn_bina_murid.data.remote.request.RegisterRequest
+import com.qatros.qtn_bina_murid.data.remote.request.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.HttpException
@@ -56,7 +53,31 @@ class RemoteRepository(private val apiService: ApiService) {
         apiService.postInviteChildren(token, inviteChildRequest)
     }
 
-    suspend fun editProfile(token: String, userId: Int, fullName: RequestBody, telp: RequestBody, address: RequestBody, dateOfBirth: RequestBody, file: MultipartBody.Part?) = getResult {
-        apiService.editProfileUser(token, userId, fullName, telp, address, dateOfBirth, file)
+    suspend fun editProfile(token: String, fullName: RequestBody, email: RequestBody) = getResult {
+        apiService.editProfileUser(token, fullName, email)
+    }
+
+    suspend fun getListPedagogue(token: String, childrenId: Int) = getResult {
+        apiService.getPedagogueByChildId(token, childrenId)
+    }
+
+    suspend fun getReportParent(token: String, date: String, childrenId: Int, userId: Int) = getResult {
+        apiService.getReportParent(token, date, childrenId, userId)
+    }
+
+    suspend fun postSubject(token: String, subjectRequest: SubjectRequest) = getResult {
+        apiService.postSubject(token, subjectRequest)
+    }
+
+    suspend fun postReport(token: String, childrenId: Int, userId: Int, addReportRequest: AddReportRequest) = getResult {
+        apiService.postReport(token, childrenId, userId, addReportRequest)
+    }
+
+    suspend fun postAddRoleUser(token: String, addRoleRequest: AddRoleRequest) = getResult {
+        apiService.postAddRoleUser(token, addRoleRequest)
+    }
+
+    suspend fun editAvatar(token: String, file: MultipartBody.Part) = getResult {
+        apiService.editAvatar(token, file)
     }
 }

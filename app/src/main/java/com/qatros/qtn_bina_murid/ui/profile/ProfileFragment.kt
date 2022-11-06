@@ -16,11 +16,15 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.base.BaseFragment
 import com.qatros.qtn_bina_murid.databinding.BottomAddImageBinding
+import com.qatros.qtn_bina_murid.databinding.BottomImageReviewBinding
 import com.qatros.qtn_bina_murid.databinding.FragmentProfileBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
 import com.qatros.qtn_bina_murid.utils.createCustomTempFile
 import com.qatros.qtn_bina_murid.utils.loadImageUser
 import com.qatros.qtn_bina_murid.utils.uriToFile
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import java.io.File
 
@@ -45,14 +49,16 @@ class ProfileFragment : BaseFragment() {
 
     private fun observeData() {
         with(viewModel) {
-            observeIndicator().observe(viewLifecycleOwner) {
-                binding.btnAddImageProfile.isGone = it
-            }
-
             observeSendData().observe(viewLifecycleOwner) {
                 with(binding) {
-                    imgProfile.loadImageUser(it.second)
                     txtNameParent.text = it.first
+                }
+            }
+
+            observeEditAvatarSuccess().observe(viewLifecycleOwner) {
+                it.getContentIfNotHandled()?.let { data ->
+                    binding.imgProfile.loadImageUser(data.data.avatar)
+                    SharedPreference(requireContext()).userAvatar = data.data.avatar
                 }
             }
         }
@@ -60,7 +66,6 @@ class ProfileFragment : BaseFragment() {
 
     private fun init() {
         with(binding) {
-            btnAddImageProfile.isGone = true
             btnAddImageProfile.setOnClickListener {
                 showBottomSheetDialog()
             }
@@ -94,8 +99,27 @@ class ProfileFragment : BaseFragment() {
         if (result.resultCode == AppCompatActivity.RESULT_OK) {
             val selectedImg: Uri = result.data?.data as Uri
             val myFile = uriToFile(selectedImg, requireContext())
-            viewModel.sendImageFile(myFile)
-            binding.imgProfile.loadImageUser(selectedImg.path)
+            val requestImageFile =
+                myFile.asRequestBody("image/jpg".toMediaTypeOrNull())
+            val imageMultipart = requestImageFile.let { it1 ->
+                MultipartBody.Part.createFormData(
+                    "avatar",
+                    myFile.name,
+                    it1
+                )
+            }
+            val dialogBinding = BottomImageReviewBinding.inflate(layoutInflater)
+            val bottomSheetDialog = BottomSheetDialog(requireContext())
+            bottomSheetDialog.setContentView(dialogBinding.root)
+            bottomSheetDialog.show()
+            with(dialogBinding) {
+                ivImageReview.loadImageUser(selectedImg.path)
+                btnSaveAvatar.setOnClickListener{
+                    val token = SharedPreference(requireContext()).userToken
+                    viewModel.editAvatar(token, imageMultipart)
+                    bottomSheetDialog.dismiss()
+                }
+            }
         }
     }
 
@@ -106,9 +130,28 @@ class ProfileFragment : BaseFragment() {
     ) {
         if (it.resultCode == AppCompatActivity.RESULT_OK) {
             val myFile = File(currentPhotoPath)
-            viewModel.sendImageFile(myFile)
             val result = BitmapFactory.decodeFile(myFile.path)
-            binding.imgProfile.loadImageUser(currentPhotoPath)
+            val requestImageFile =
+                myFile.asRequestBody("image/jpg".toMediaTypeOrNull())
+            val imageMultipart = requestImageFile.let { it1 ->
+                MultipartBody.Part.createFormData(
+                    "avatar",
+                    myFile.name,
+                    it1
+                )
+            }
+            val dialogBinding = BottomImageReviewBinding.inflate(layoutInflater)
+            val bottomSheetDialog = BottomSheetDialog(requireContext())
+            bottomSheetDialog.setContentView(dialogBinding.root)
+            bottomSheetDialog.show()
+            with(dialogBinding) {
+                ivImageReview.loadImageUser(currentPhotoPath)
+                btnSaveAvatar.setOnClickListener{
+                    val token = SharedPreference(requireContext()).userToken
+                    viewModel.editAvatar(token, imageMultipart)
+                    bottomSheetDialog.dismiss()
+                }
+            }
         }
     }
 
@@ -134,10 +177,5 @@ class ProfileFragment : BaseFragment() {
         intent.type = "image/*"
         val chooser = Intent.createChooser(intent, "Choose a Picture")
         launcherIntentGallery.launch(chooser)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        binding.btnAddImageProfile.isGone = true
     }
 }

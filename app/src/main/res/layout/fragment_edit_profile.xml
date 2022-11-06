@@ -52,46 +52,14 @@
         app:hintTextColor="@color/blue">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_alamat"
+            android:id="@+id/ed_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:drawableStart="@drawable/ic_house"
+            android:drawableStart="@drawable/ic_envelopeopen"
             android:drawableEnd="@drawable/ic_pencil_simple"
             android:drawablePadding="16dp"
-            android:hint="Alamat"
-            android:imeOptions="actionDone"
-            android:inputType="textEmailAddress"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:textCursorDrawable="@color/blue"
-            android:textSize="16sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layout_marginTop="15dp"
-        app:boxCornerRadiusBottomEnd="16dp"
-        app:boxCornerRadiusBottomStart="16dp"
-        app:boxCornerRadiusTopEnd="16dp"
-        app:boxCornerRadiusTopStart="16dp"
-        app:boxStrokeColor="@color/blue"
-        app:hintTextColor="@color/blue">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_nomorHandphone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:drawableStart="@drawable/ic_phone"
-            android:drawableEnd="@drawable/ic_pencil_simple"
-            android:drawablePadding="16dp"
-            android:hint="Nomor Handphone"
+            android:hint="Email"
             android:imeOptions="actionDone"
             android:inputType="textEmailAddress"
             android:maxLines="1"

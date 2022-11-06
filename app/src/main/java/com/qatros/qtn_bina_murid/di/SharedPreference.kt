@@ -13,7 +13,6 @@ class SharedPreference(val context: Context) {
         private const val USER_ID = "user.id"
         private const val USER_ROLE = "user.role"
         private const val USER_NAME = "user.name"
-        private const val USER_TELP = "user.telp"
         private const val USER_ADDRESS = "user.address"
         private const val USER_EMAIL = "user.email"
         private const val USER_AVATAR = "user.avatar"
@@ -49,10 +48,6 @@ class SharedPreference(val context: Context) {
     var userEmail : String
         get() = pref.getString(USER_EMAIL,"").toString()
         set(value) = pref.edit().putString(USER_EMAIL,value).apply()
-
-    var userTelp : String
-        get() = pref.getString(USER_TELP,"").toString()
-        set(value) = pref.edit().putString(USER_TELP,value).apply()
 
     var userAddress : String?
         get() = pref.getString(USER_ADDRESS,"").toString()

@@ -1,17 +1,42 @@
 package com.qatros.qtn_bina_murid.ui.parent.daily
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.Spinner
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.qatros.qtn_bina_murid.R
+import com.qatros.qtn_bina_murid.data.remote.response.Children
+import com.qatros.qtn_bina_murid.data.remote.response.Pedagogue
+import com.qatros.qtn_bina_murid.data.remote.response.Report
+import com.qatros.qtn_bina_murid.data.remote.response.User
 import com.qatros.qtn_bina_murid.databinding.FragmentDailyParentBinding
+import com.qatros.qtn_bina_murid.di.SharedPreference
+import com.qatros.qtn_bina_murid.ui.parent.childProfile.ChildProfileActivity
+import com.qatros.qtn_bina_murid.utils.loadImageUser
+import org.koin.android.ext.android.inject
+import java.text.SimpleDateFormat
+import java.util.*
 
 
-class DailyParentFragment : Fragment() {
+class DailyParentFragment : Fragment(), DateAdapter.onItemClick {
 
-    private lateinit var binding : FragmentDailyParentBinding
+    private val dates = ArrayList<Date>()
+    private val cal = Calendar.getInstance(Locale.ENGLISH)
+    private val currentDate = Calendar.getInstance(Locale.ENGLISH).time
+    private lateinit var dateDefault : String
+    private val viewModel: DailyParentViewModel by inject()
+
+    private lateinit var binding: FragmentDailyParentBinding
+    private lateinit var token: String
+    private var childrenId: Int = 0
+    private var pedagogueId: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,19 +49,107 @@ class DailyParentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init()
+        token = SharedPreference(requireContext()).userToken
+        viewModel.getChildList(token)
+        val sdf = SimpleDateFormat("yyyy-MM-dd")
+        val dayInWeek = SimpleDateFormat("EEE MMM dd HH:mm:ss 'GMT+07:00' yyyy")
+        dateDefault = sdf.format(dayInWeek.parse(cal.time.toString()))
+        observeData()
+    }
+
+    private fun observeData() {
+        with(viewModel) {
+            observeGetChildListSuccess().observe(viewLifecycleOwner) {
+                val adapter = it?.data?.let { it1 ->
+                    SpinChildAdapter(
+                        requireContext(),
+                        android.R.layout.simple_spinner_item,
+                        it1
+                    )
+                }
+                binding.spChild.adapter = adapter
+
+                binding.spChild.onItemSelectedListener =
+                    object : AdapterView.OnItemSelectedListener {
+                        override fun onItemSelected(
+                            adapterView: AdapterView<*>?, view: View?,
+                            position: Int, id: Long
+                        ) {
+                            val child: Children = adapter?.getItem(position) ?: Children()
+                            childrenId = child.childrenId
+                            with(binding) {
+                                tvNameDailyReport.text = child.fullName
+                                tvSubjectChildDailyReport.text = child.school
+                                ivProfileDailyReport.loadImageUser(child.avatar)
+                                btnToProfileChild.setOnClickListener{
+                                    startActivity(Intent(activity, ChildProfileActivity::class.java).putExtra(ChildProfileActivity.CHILD_DATA, child))
+                                }
+                            }
+                            getPedagogue(token, child.childrenId)
+                        }
+
+                        override fun onNothingSelected(adapter: AdapterView<*>?) {
+
+                        }
+                    }
+
+            }
+
+            observeGetPedagogueSuccess().observe(viewLifecycleOwner) {
+                val adapter = it?.data?.let { it1 ->
+                    SpinnerPedagogueAdapter(
+                        requireContext(),
+                        android.R.layout.simple_spinner_item,
+                        it1
+                    )
+                }
+                binding.spPedagogue.adapter = adapter
+
+                binding.spPedagogue.onItemSelectedListener =
+                    object : AdapterView.OnItemSelectedListener {
+                        override fun onItemSelected(
+                            adapterView: AdapterView<*>?, view: View?,
+                            position: Int, id: Long
+                        ) {
+                            val pedagogue: Pedagogue = adapter?.getItem(position) ?: Pedagogue()
+                            pedagogueId = pedagogue.user_id
+
+                            getReportParent(token, dateDefault, childrenId, pedagogueId)
+                        }
+
+                        override fun onNothingSelected(adapter: AdapterView<*>?) {
+
+                        }
+                    }
+            }
+
+            observeGetReportParent().observe(viewLifecycleOwner) { data ->
+                with(binding.rvDetailDailyParent) {
+                    adapter = DailyReportAdapter(data?.data ?: listOf(), "")
+                    layoutManager = LinearLayoutManager(context)
+                }
+            }
+        }
     }
 
     private fun init() {
         with(binding) {
+            val monthCalendar = cal.clone() as Calendar
+            val maxDaysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH)
+            monthCalendar.set(Calendar.DAY_OF_MONTH, 1)
+            while (dates.size < maxDaysInMonth) {
+                dates.add(monthCalendar.time)
+                monthCalendar.add(Calendar.DAY_OF_MONTH, 1)
+            }
             with(rvDateDailyParent) {
-                adapter = DateAdapter(listOf("", "", "", "", "", "","", "", "", "", "", ""))
+                val dateAdapter = DateAdapter(dates, currentDate, this@DailyParentFragment)
+                adapter = dateAdapter
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             }
-
-            with(rvDetailDailyParent) {
-                adapter = DailyReportAdapter(listOf("", "", "", "", ""))
-                layoutManager = LinearLayoutManager(context)
-            }
         }
+    }
+
+    override fun setItemClick(data: Date, position: Int) {
+        Log.e("TAG", "setItemClick: $data")
     }
 }

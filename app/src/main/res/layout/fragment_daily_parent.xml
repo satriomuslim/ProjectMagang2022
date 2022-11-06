@@ -17,6 +17,7 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:id="@+id/btn_to_profile_child"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
@@ -28,11 +29,11 @@
                     android:id="@+id/iv_profile_daily_report"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
+                    android:src="@drawable/image"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="ContentDescription"
-                    android:src="@drawable/image" />
+                    tools:ignore="ContentDescription" />
 
                 <LinearLayout
                     android:id="@+id/wrap_txt_undang_pendagogue"
@@ -43,6 +44,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tv_name_daily_report"
                         style="@style/DefaultTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -52,6 +54,7 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/tv_subject_child_daily_report"
                         style="@style/DefaultTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -77,37 +80,20 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
-                <TextView
-                    style="@style/DefaultTextLandingSemiBold"
+                <Spinner
+                    android:id="@+id/sp_child"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_rounded_yellow_small_allradius"
-                    android:backgroundTint="@color/white"
-                    android:elevation="10dp"
-                    android:padding="8dp"
-                    android:text="Ganyu"
-                    android:textSize="12sp"
-                    android:textAlignment="center"
-                    android:textColor="@color/blue"
-                    app:drawableRightCompat="@drawable/ic_arrow_down" />
+                    android:layout_weight="1" />
 
-                <TextView
-                    style="@style/DefaultTextLandingSemiBold"
+                <Spinner
+                    android:id="@+id/sp_pedagogue"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_rounded_yellow_small_allradius"
-                    android:backgroundTint="@color/white"
-                    android:elevation="10dp"
-                    android:padding="8dp"
-                    android:text="Kazuha"
-                    android:textAlignment="center"
-                    android:textSize="12sp"
-                    android:textColor="@color/blue"
-                    app:drawableRightCompat="@drawable/ic_arrow_down" />
+                    android:layout_weight="1" />
+
             </LinearLayout>
 
             <LinearLayout
