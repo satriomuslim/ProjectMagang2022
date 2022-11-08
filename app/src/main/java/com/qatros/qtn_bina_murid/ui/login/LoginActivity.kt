@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.core.view.isGone
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.data.remote.request.LoginRequest
@@ -29,7 +30,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.apply{
+        binding.apply {
             etEmailLogin.addTextChangedListener(loginTextWatcher)
             etPasswordLogin.addTextChangedListener(loginTextWatcher)
         }
@@ -42,38 +43,25 @@ class LoginActivity : AppCompatActivity() {
         with(viewModel) {
             observeLoginSuccess().observe(this@LoginActivity) { data ->
                 binding.pbLogin.isGone = true
-                if(data?.data?.email != "bobo@gmail.com") {
-                    SharedPreference(this@LoginActivity).apply {
-                        userToken = "bearer ${data?.token}"
-                        isLogin = true
-                        userRole = if((data?.data?.role?.get(0) ?: "") == "parent") {
-                            1
-                        } else {
-                            2
-                        }
-                        userEmail = data?.data?.email ?: ""
-                        userId = data?.data?.user_id ?: 0
-                        userName = data?.data?.fullname ?: ""
-                        userAddress = data?.data?.address
-                        userAvatar = data?.data?.avatar
-                        userDate = data?.data?.dateofbirth
-                    }
-                    startActivity(Intent(this@LoginActivity, NavigationParentActivity::class.java))
-                    finish()
-                } else {
-                    SharedPreference(this@LoginActivity).apply {
-                        userToken = "bearer ${data.token}"
-                        isLogin = true
+                SharedPreference(this@LoginActivity).apply {
+                    userToken = "bearer ${data?.token}"
+                    isLogin = true
+                    if ((data?.data?.role?.get(0) ?: "") == "parent") {
+                        userRole = 1
+                        startActivity(Intent(this@LoginActivity, NavigationParentActivity::class.java))
+                        finish()
+                    } else {
                         userRole = 2
-                        userEmail = data.data.email
-                        userId = data.data.user_id
-                        userName = data.data.fullname
-                        userAddress = data.data.address
-                        userAvatar = data.data.avatar
-                        userDate = data.data.dateofbirth
+                        startActivity(Intent(this@LoginActivity, NavigationPedagogueActivity::class.java))
+                        finish()
                     }
-                    startActivity(Intent(this@LoginActivity, NavigationPedagogueActivity::class.java))
-                    finish()
+                    userEmail = data?.data?.email ?: ""
+                    userId = data?.data?.user_id ?: 0
+                    userName = data?.data?.fullname ?: ""
+                    userAddress = data?.data?.address
+                    userAvatar = data?.data?.avatar
+                    userDate = data?.data?.dateofbirth
+                    userListRole = data?.data?.role?.toMutableSet()
                 }
             }
 
@@ -91,10 +79,10 @@ class LoginActivity : AppCompatActivity() {
 
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
 
-            binding.apply{
+            binding.apply {
                 when {
                     etEmailLogin.text!!.isEmpty() -> {
-                       etEmailLogin.error = "Email Required"
+                        etEmailLogin.error = "Email Required"
                     }
                     etPasswordLogin.text!!.isEmpty() -> {
                         etPasswordLogin.error = "Password Required"
@@ -104,16 +92,19 @@ class LoginActivity : AppCompatActivity() {
                     }
 
                 }
-                btnLogin.isEnabled =  etEmailLogin.text!!.isNotEmpty() && etPasswordLogin.text!!.isNotEmpty()
+                btnLogin.isEnabled =
+                    etEmailLogin.text!!.isNotEmpty() && etPasswordLogin.text!!.isNotEmpty()
             }
 
         }
 
         override fun afterTextChanged(s: Editable) {
             binding.apply {
-                if (etEmailLogin.text?.isBlank()?.not() == true && etPasswordLogin.text?.isBlank()?.not() == true) {
-                btnLogin.setBackgroundColor(resources.getColor(R.color.blue))
-            } else {
+                if (etEmailLogin.text?.isBlank()?.not() == true && etPasswordLogin.text?.isBlank()
+                        ?.not() == true
+                ) {
+                    btnLogin.setBackgroundColor(resources.getColor(R.color.blue))
+                } else {
                     btnLogin.setBackgroundColor(resources.getColor(R.color.grey))
                 }
             }
@@ -131,9 +122,7 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(Intent(this@LoginActivity, ResetPasswordActivity::class.java))
             }
 
-            btnLogin.setOnClickListener{
-//                startActivity(Intent(this@LoginActivity, NavigationPedagogueActivity::class.java))
-//                finish()
+            btnLogin.setOnClickListener {
                 val loginReq = LoginRequest(
                     user = UserLogin(
                         email = etEmailLogin.text.toString(),

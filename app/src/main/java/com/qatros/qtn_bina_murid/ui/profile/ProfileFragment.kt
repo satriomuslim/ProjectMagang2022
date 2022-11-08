@@ -1,6 +1,8 @@
 package com.qatros.qtn_bina_murid.ui.profile
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
@@ -10,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.view.isGone
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -21,6 +24,7 @@ import com.qatros.qtn_bina_murid.databinding.FragmentProfileBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
 import com.qatros.qtn_bina_murid.utils.createCustomTempFile
 import com.qatros.qtn_bina_murid.utils.loadImageUser
+import com.qatros.qtn_bina_murid.utils.requestPermission
 import com.qatros.qtn_bina_murid.utils.uriToFile
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -32,6 +36,12 @@ class ProfileFragment : BaseFragment() {
     private lateinit var binding: FragmentProfileBinding
 
     private val viewModel: ProfileViewModel by sharedViewModel()
+
+    private val permissions =
+        listOf(
+            Manifest.permission.CAMERA,
+            Manifest.permission.READ_EXTERNAL_STORAGE
+        )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -82,11 +92,37 @@ class ProfileFragment : BaseFragment() {
         bottomSheetDialog.show()
         with(dialogBinding) {
             btnAddCamera.setOnClickListener {
+                permissions.forEach {
+                    requireActivity().let { ctx ->
+                        if (ContextCompat.checkSelfPermission(
+                                ctx,
+                                it
+                            ) != PackageManager.PERMISSION_GRANTED
+                        ) {
+                            requestPermission(
+                                permissions, {}, {}, requireActivity())
+                            return@setOnClickListener
+                        }
+                    }
+                }
                 startTakePhoto()
                 bottomSheetDialog.dismiss()
             }
 
             btnAddGalery.setOnClickListener {
+                permissions.forEach {
+                    requireActivity().let { ctx ->
+                        if (ContextCompat.checkSelfPermission(
+                                ctx,
+                                it
+                            ) != PackageManager.PERMISSION_GRANTED
+                        ) {
+                            requestPermission(
+                                permissions, {}, {}, requireActivity())
+                            return@setOnClickListener
+                        }
+                    }
+                }
                 startGallery()
                 bottomSheetDialog.dismiss()
             }

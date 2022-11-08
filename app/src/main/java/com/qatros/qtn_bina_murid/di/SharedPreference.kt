@@ -17,6 +17,7 @@ class SharedPreference(val context: Context) {
         private const val USER_EMAIL = "user.email"
         private const val USER_AVATAR = "user.avatar"
         private const val USER_DATE = "user.date"
+        private const val USER_LIST_ROLE ="user.list.role"
     }
     @SuppressLint("NewApi")
     private val masterKeyAlias= MasterKey.Builder(context)
@@ -36,6 +37,10 @@ class SharedPreference(val context: Context) {
     var userRole : Int
         get() = pref.getInt(USER_ROLE, 0)
         set(value) = pref.edit().putInt(USER_ROLE,value).apply()
+
+    var userListRole : MutableSet<String>?
+        get() = pref.getStringSet(USER_LIST_ROLE, mutableSetOf())
+        set(value) = pref.edit().putStringSet(USER_LIST_ROLE,value).apply()
 
     var userId : Int
         get() = pref.getInt(USER_ID, 0)

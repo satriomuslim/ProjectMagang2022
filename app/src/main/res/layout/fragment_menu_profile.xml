@@ -224,12 +224,13 @@
                     android:src="@drawable/ic_question" />
 
                 <TextView
+                    android:id="@+id/tv_change_user"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="16dp"
                     android:layout_toRightOf="@id/iv_icon_question"
-                    android:text="Hubungi Pihak Qatros"
+                    android:text="Daftar Pedagogue"
                     android:textColor="@color/blue"
                     android:textSize="16dp" />
 

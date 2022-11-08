@@ -1,6 +1,8 @@
 package com.qatros.qtn_bina_murid.ui.parent.child
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
@@ -11,6 +13,7 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.view.isGone
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -19,6 +22,7 @@ import com.qatros.qtn_bina_murid.databinding.ActivityFormChildBinding
 import com.qatros.qtn_bina_murid.databinding.BottomAddImageBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
 import com.qatros.qtn_bina_murid.utils.createCustomTempFile
+import com.qatros.qtn_bina_murid.utils.requestPermission
 import com.qatros.qtn_bina_murid.utils.uriToFile
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -34,6 +38,12 @@ class FormChildActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFormChildBinding
 
     private val viewModel: FormChildViewModel by inject()
+
+    private val permissions =
+        listOf(
+            Manifest.permission.CAMERA,
+            Manifest.permission.READ_EXTERNAL_STORAGE
+        )
 
     private var finalFile: File? = null
 
@@ -156,11 +166,37 @@ class FormChildActivity : AppCompatActivity() {
         bottomSheetDialog.show()
         with(dialogBinding) {
             btnAddCamera.setOnClickListener {
+                permissions.forEach {
+                    this@FormChildActivity.let { ctx ->
+                        if (ContextCompat.checkSelfPermission(
+                                ctx,
+                                it
+                            ) != PackageManager.PERMISSION_GRANTED
+                        ) {
+                            requestPermission(
+                                permissions, {}, {}, this@FormChildActivity)
+                            return@setOnClickListener
+                        }
+                    }
+                }
                 startTakePhoto()
                 bottomSheetDialog.dismiss()
             }
 
             btnAddGalery.setOnClickListener {
+                permissions.forEach {
+                    this@FormChildActivity.let { ctx ->
+                        if (ContextCompat.checkSelfPermission(
+                                ctx,
+                                it
+                            ) != PackageManager.PERMISSION_GRANTED
+                        ) {
+                            requestPermission(
+                                permissions, {}, {}, this@FormChildActivity)
+                            return@setOnClickListener
+                        }
+                    }
+                }
                 startGallery()
                 bottomSheetDialog.dismiss()
             }

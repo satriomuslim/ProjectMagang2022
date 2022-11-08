@@ -49,7 +49,7 @@ class DailyParentViewModel(private val repository: AppRepository) : BaseViewMode
 
     fun getReportParent(token: String, date: String, childrenId: Int, userId: Int) {
         viewModelScope.launch {
-            when(val result = repository.getReportParent(token, date, childrenId, userId)) {
+            when(val result = repository.getReport(token, date, childrenId, userId)) {
                 is ResponseResult.Success -> {
                     getReportParent.postValue(result.data)
                 }

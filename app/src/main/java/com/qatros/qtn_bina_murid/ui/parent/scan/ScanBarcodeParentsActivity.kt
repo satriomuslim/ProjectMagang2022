@@ -35,14 +35,12 @@ class ScanBarcodeParentsActivity : AppCompatActivity() {
 
     private fun observeData() {
         viewModel.observeGetChildTokenSuccess().observe(this) {
-            val segments = it?.split(",".toRegex())?.toTypedArray()
-            val token = segments?.get(0)
             if (it != null) {
                 generateQR(it)
             }
             with(binding) {
                 pbScanBarcodeParents.isGone = true
-                binding.tvInviteToken.text = "ID :" + token?.toUpperCase(Locale.ROOT)
+                binding.tvInviteToken.text = "ID :" + it?.toUpperCase(Locale.ROOT)
             }
         }
     }

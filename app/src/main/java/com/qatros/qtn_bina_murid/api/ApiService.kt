@@ -65,7 +65,7 @@ interface ApiService {
     ): Response<ListPedagogueResponse>
 
     @GET("api/v1/report/children/date?")
-    suspend fun getReportParent(
+    suspend fun getReport(
         @Header("Authorization") token: String,
         @Query("selected_date") date: String,
         @Query("children_id") childrenId: Int,
@@ -82,12 +82,24 @@ interface ApiService {
     suspend fun postReport(
         @Header("Authorization") token: String, @Query("children_id") childrenId: Int,
         @Query("user_id") userId: Int, @Body addReportRequest: AddReportRequest
-    ) : Response<Any>
+    ): Response<Any>
 
     @POST("api/v1/user/profile/role")
-    suspend fun postAddRoleUser(@Header("Authorization") token: String, @Body addRoleRequest: AddRoleRequest) : Response<AddRoleResponse>
+    suspend fun postAddRoleUser(
+        @Header("Authorization") token: String,
+        @Body addRoleRequest: AddRoleRequest
+    ): Response<AddRoleResponse>
 
     @Multipart
     @PUT("api/v1/user/profile/edit/avatar")
-    suspend fun editAvatar(@Header("Authorization") token: String, @Part file: MultipartBody.Part) : Response<ProfileResponse>
+    suspend fun editAvatar(
+        @Header("Authorization") token: String,
+        @Part file: MultipartBody.Part
+    ): Response<ProfileResponse>
+
+    @POST("api/v1/children/confirm_invitation")
+    suspend fun confirmProfileChild(
+        @Header("Authorization") token: String,
+        @Body inviteChildRequest: InviteChildRequest
+    ): Response<ConfirmProfileChildResponse>
 }

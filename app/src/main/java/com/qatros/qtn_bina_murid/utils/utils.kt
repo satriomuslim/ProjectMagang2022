@@ -8,11 +8,17 @@ import android.graphics.Bitmap
 import android.graphics.Matrix
 import android.net.Uri
 import android.os.Environment
+import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.qatros.qtn_bina_murid.R
 import java.io.File
 import java.io.FileOutputStream
@@ -89,6 +95,46 @@ fun rotateBitmap(bitmap: Bitmap, isBackCamera: Boolean = false): Bitmap {
             true
         )
     }
+}
+
+
+fun requestPermission(
+    permissions: List<String>,
+    permissionGranted: () -> Unit,
+    permissionDenied: () -> Unit,
+    activity: Activity
+) {
+    Dexter.withActivity(activity)
+        .withPermissions(permissions)
+        .withListener(object : MultiplePermissionsListener {
+            override fun onPermissionsChecked(report: MultiplePermissionsReport) {
+                if (report.areAllPermissionsGranted().not()) {
+                    permissionDenied.invoke()
+                    return
+                }
+
+                if (report.isAnyPermissionPermanentlyDenied) {
+                    permissionDenied.invoke()
+                    return
+                }
+
+                if (report.areAllPermissionsGranted()) {
+                    permissionGranted.invoke()
+                    return
+                }
+            }
+
+            override fun onPermissionRationaleShouldBeShown(
+                permissions: List<PermissionRequest>,
+                token: PermissionToken
+            ) {
+                token.continuePermissionRequest()
+            }
+        }).withErrorListener {
+            Log.e("Error", "requestPermission: ${it.name}", )
+        }
+        .onSameThread()
+        .check()
 }
 
 fun uriToFile(selectedImg: Uri, context: Context): File {

@@ -14,6 +14,6 @@ class DailyReportInputPedagogueFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_daily_report_input_pedagogue, container, false)
+        return inflater.inflate(R.layout.fragment_daily_pedagogue, container, false)
     }
 }

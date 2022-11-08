@@ -61,8 +61,8 @@ class RemoteRepository(private val apiService: ApiService) {
         apiService.getPedagogueByChildId(token, childrenId)
     }
 
-    suspend fun getReportParent(token: String, date: String, childrenId: Int, userId: Int) = getResult {
-        apiService.getReportParent(token, date, childrenId, userId)
+    suspend fun getReport(token: String, date: String, childrenId: Int, userId: Int) = getResult {
+        apiService.getReport(token, date, childrenId, userId)
     }
 
     suspend fun postSubject(token: String, subjectRequest: SubjectRequest) = getResult {
@@ -79,5 +79,9 @@ class RemoteRepository(private val apiService: ApiService) {
 
     suspend fun editAvatar(token: String, file: MultipartBody.Part) = getResult {
         apiService.editAvatar(token, file)
+    }
+
+    suspend fun confirmProfileChild(token: String, inviteChildRequest: InviteChildRequest) = getResult {
+        apiService.confirmProfileChild(token, inviteChildRequest)
     }
 }

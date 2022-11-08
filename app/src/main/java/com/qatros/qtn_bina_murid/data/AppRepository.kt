@@ -46,8 +46,8 @@ class AppRepository(private val localRepository: LocalRepository, private val re
         return remoteRepository.getListPedagogue(token, childrenId)
     }
 
-    suspend fun getReportParent(token: String, date: String, childrenId: Int, userId: Int) : ResponseResult<ReportResponse> {
-        return remoteRepository.getReportParent(token, date, childrenId, userId)
+    suspend fun getReport(token: String, date: String, childrenId: Int, userId: Int) : ResponseResult<ReportResponse> {
+        return remoteRepository.getReport(token, date, childrenId, userId)
     }
 
     suspend fun postSubject(token: String, subjectRequest: SubjectRequest) : ResponseResult<Any> {
@@ -66,5 +66,8 @@ class AppRepository(private val localRepository: LocalRepository, private val re
         return remoteRepository.editAvatar(token, file)
     }
 
+    suspend fun confirmProfileChild(token: String, inviteChildRequest: InviteChildRequest) : ResponseResult<ConfirmProfileChildResponse> {
+        return remoteRepository.confirmProfileChild(token, inviteChildRequest)
+    }
 
 }

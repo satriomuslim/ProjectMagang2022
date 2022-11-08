@@ -31,9 +31,11 @@ class RegisterDetailActivity : AppCompatActivity() {
     private fun observeData() {
         with(viewModel) {
             observeRegisterSuccess().observe(this@RegisterDetailActivity) {
-                Toast.makeText(this@RegisterDetailActivity, "Register Success", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this@RegisterDetailActivity, LoginActivity::class.java))
-                finish()
+                it.getContentIfNotHandled()?.let {
+                    Toast.makeText(this@RegisterDetailActivity, "Register Success", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this@RegisterDetailActivity, LoginActivity::class.java))
+                    finish()
+                }
             }
 
             observeError().observe(this@RegisterDetailActivity) {

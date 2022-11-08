@@ -3,6 +3,7 @@ package com.qatros.qtn_bina_murid.ui.landing
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.databinding.ActivityLandingBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
@@ -29,8 +30,11 @@ class LandingActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         val isLogin = SharedPreference(this).isLogin
+        val listRole = SharedPreference(this).userListRole
         val role = SharedPreference(this).userRole
         if(isLogin) {
+            Log.e("TAG", "onStart: $role", )
+            Log.e("TAG", "onStartLIST: $listRole", )
             if (role == 1) {
                 startActivity(Intent(this, NavigationParentActivity::class.java))
                 finish()

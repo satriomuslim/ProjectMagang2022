@@ -82,5 +82,6 @@ dependencies {
     //lottie files
     implementation "com.airbnb.android:lottie:3.4.0"
 
-
+    //permission
+    implementation "com.karumi:dexter:5.0.0"
 }

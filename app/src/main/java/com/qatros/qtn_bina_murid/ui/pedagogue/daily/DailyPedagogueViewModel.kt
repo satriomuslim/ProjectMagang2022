@@ -8,6 +8,8 @@ import com.qatros.qtn_bina_murid.base.ResponseResult
 import com.qatros.qtn_bina_murid.data.AppRepository
 import com.qatros.qtn_bina_murid.data.remote.request.AddReportRequest
 import com.qatros.qtn_bina_murid.data.remote.request.SubjectRequest
+import com.qatros.qtn_bina_murid.data.remote.response.ListChildResponse
+import com.qatros.qtn_bina_murid.data.remote.response.ReportResponse
 import kotlinx.coroutines.launch
 
 class DailyPedagogueViewModel(private val repository: AppRepository) : BaseViewModel() {
@@ -16,6 +18,12 @@ class DailyPedagogueViewModel(private val repository: AppRepository) : BaseViewM
 
     private val postReportSuccess = MutableLiveData<Boolean>()
     fun observePostReportSuccess() : LiveData<Boolean> = postReportSuccess
+
+    private val getChildListSuccess = MutableLiveData<ListChildResponse?>()
+    fun observeGetChildListSuccess() : LiveData<ListChildResponse?> = getChildListSuccess
+
+    private val getReportPedagogue = MutableLiveData<ReportResponse?>()
+    fun observeGetReportPedagogue() : LiveData<ReportResponse?> = getReportPedagogue
 
     fun postSubject(token: String, subjectRequest: SubjectRequest) {
         viewModelScope.launch {
@@ -35,6 +43,32 @@ class DailyPedagogueViewModel(private val repository: AppRepository) : BaseViewM
             when(val result = repository.postReport(token, childrenId, userId, addReportRequest)) {
                 is ResponseResult.Success -> {
                     postReportSuccess.postValue(true)
+                }
+                is ResponseResult.Error -> {
+                    isError.postValue(result.errorMsg)
+                }
+            }
+        }
+    }
+
+    fun getChildList(token: String) {
+        viewModelScope.launch {
+            when(val result = repository.getListChild(token)) {
+                is ResponseResult.Success -> {
+                    getChildListSuccess.postValue(result.data)
+                }
+                is ResponseResult.Error -> {
+                    isError.postValue(result.errorMsg)
+                }
+            }
+        }
+    }
+
+    fun getReportPedagogue(token: String, date: String, childrenId: Int, userId: Int) {
+        viewModelScope.launch {
+            when(val result = repository.getReport(token, date, childrenId, userId)) {
+                is ResponseResult.Success -> {
+                    getReportPedagogue.postValue(result.data)
                 }
                 is ResponseResult.Error -> {
                     isError.postValue(result.errorMsg)
