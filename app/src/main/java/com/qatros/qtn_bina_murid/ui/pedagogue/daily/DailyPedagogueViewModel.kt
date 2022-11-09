@@ -1,5 +1,6 @@
 package com.qatros.qtn_bina_murid.ui.pedagogue.daily
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -10,14 +11,16 @@ import com.qatros.qtn_bina_murid.data.remote.request.AddReportRequest
 import com.qatros.qtn_bina_murid.data.remote.request.SubjectRequest
 import com.qatros.qtn_bina_murid.data.remote.response.ListChildResponse
 import com.qatros.qtn_bina_murid.data.remote.response.ReportResponse
+import com.qatros.qtn_bina_murid.utils.SingleLiveEvent
+import io.reactivex.Single
 import kotlinx.coroutines.launch
 
 class DailyPedagogueViewModel(private val repository: AppRepository) : BaseViewModel() {
-    private val postSubjectSuccess = MutableLiveData<Boolean>()
-    fun observePostSubjectSuccess() : LiveData<Boolean> = postSubjectSuccess
+    private val postSubjectSuccess = MutableLiveData<SingleLiveEvent<Boolean>>()
+    fun observePostSubjectSuccess() : LiveData<SingleLiveEvent<Boolean>> = postSubjectSuccess
 
-    private val postReportSuccess = MutableLiveData<Boolean>()
-    fun observePostReportSuccess() : LiveData<Boolean> = postReportSuccess
+    private val postReportSuccess = MutableLiveData<SingleLiveEvent<Boolean>>()
+    fun observePostReportSuccess() : LiveData<SingleLiveEvent<Boolean>> = postReportSuccess
 
     private val getChildListSuccess = MutableLiveData<ListChildResponse?>()
     fun observeGetChildListSuccess() : LiveData<ListChildResponse?> = getChildListSuccess
@@ -25,11 +28,14 @@ class DailyPedagogueViewModel(private val repository: AppRepository) : BaseViewM
     private val getReportPedagogue = MutableLiveData<ReportResponse?>()
     fun observeGetReportPedagogue() : LiveData<ReportResponse?> = getReportPedagogue
 
+    private val indicatorCurrent = MutableLiveData<SingleLiveEvent<Boolean>>()
+    fun observeIndicatorCurrent() : LiveData<SingleLiveEvent<Boolean>> = indicatorCurrent
+
     fun postSubject(token: String, subjectRequest: SubjectRequest) {
         viewModelScope.launch {
             when(val result = repository.postSubject(token, subjectRequest)) {
                 is ResponseResult.Success -> {
-                    postSubjectSuccess.postValue(true)
+                    postSubjectSuccess.postValue(SingleLiveEvent(true))
                 }
                 is ResponseResult.Error -> {
                     isError.postValue(result.errorMsg)
@@ -42,7 +48,7 @@ class DailyPedagogueViewModel(private val repository: AppRepository) : BaseViewM
         viewModelScope.launch {
             when(val result = repository.postReport(token, childrenId, userId, addReportRequest)) {
                 is ResponseResult.Success -> {
-                    postReportSuccess.postValue(true)
+                    postReportSuccess.postValue(SingleLiveEvent(true))
                 }
                 is ResponseResult.Error -> {
                     isError.postValue(result.errorMsg)
@@ -74,6 +80,13 @@ class DailyPedagogueViewModel(private val repository: AppRepository) : BaseViewM
                     isError.postValue(result.errorMsg)
                 }
             }
+        }
+    }
+
+    fun indicatorDailyreport(indicator: Boolean) {
+        viewModelScope.launch {
+            Log.e("TAG", "indicatorDailyreport: ", )
+            indicatorCurrent.postValue(SingleLiveEvent(indicator))
         }
     }
 }

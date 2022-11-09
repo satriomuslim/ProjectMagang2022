@@ -70,7 +70,7 @@ class RemoteRepository(private val apiService: ApiService) {
     }
 
     suspend fun postReport(token: String, childrenId: Int, userId: Int, addReportRequest: AddReportRequest) = getResult {
-        apiService.postReport(token, childrenId, userId, addReportRequest)
+        apiService.postReport(token, childrenId, addReportRequest)
     }
 
     suspend fun postAddRoleUser(token: String, addRoleRequest: AddRoleRequest) = getResult {

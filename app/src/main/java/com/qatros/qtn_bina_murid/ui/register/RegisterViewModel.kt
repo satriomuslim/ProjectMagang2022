@@ -12,14 +12,14 @@ import com.qatros.qtn_bina_murid.utils.SingleLiveEvent
 import kotlinx.coroutines.launch
 
 class RegisterViewModel(private val repository: AppRepository) : BaseViewModel() {
-    private val RegisterSuccess = MutableLiveData<SingleLiveEvent<LoginRegisterResponse?>>()
-    fun observeRegisterSuccess(): LiveData<SingleLiveEvent<LoginRegisterResponse?>> = RegisterSuccess
+    private val RegisterSuccess = MutableLiveData<SingleLiveEvent<Boolean>>()
+    fun observeRegisterSuccess(): LiveData<SingleLiveEvent<Boolean>> = RegisterSuccess
 
     fun postRegister(RegisterRequest: RegisterRequest) {
         viewModelScope.launch {
             when(val result = repository.postRegister(RegisterRequest)) {
                 is ResponseResult.Success -> {
-                    RegisterSuccess.postValue(SingleLiveEvent(result.data))
+                    RegisterSuccess.postValue(SingleLiveEvent(true))
                 }
                 is ResponseResult.Error -> {
                     isError.postValue(result.errorMsg)

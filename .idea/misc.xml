@@ -65,15 +65,9 @@
         <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/activity_register_detail.xml" value="0.2" />
         <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/activity_reset_password.xml" value="0.1" />
         <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/activity_scan_barcode_parents.xml" value="0.3482789855072464" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/activity_scan_children_result.xml" value="0.33" />
+        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/activity_scan_children_result.xml" value="0.25" />
         <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/bottom_add_image.xml" value="0.2" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/bottom_image_review.xml" value="0.33" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/bottom_sheet_input_daily_pengagogue.xml" value="0.371875" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_daily_parent.xml" value="0.22" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_daily_parents_calender.xml" value="0.19166666666666668" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_daily_pedagogue.xml" value="0.25" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_daily_report_child_pedagogue.xml" value="0.18085106382978725" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_daily_report_input_pedagogue.xml" value="0.33" />
+        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_daily_pedagogue.xml" value="0.25104166666666666" />
         <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_edit_profile.xml" value="0.33" />
         <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_history_parent.xml" value="0.25104166666666666" />
         <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_home_parent.xml" value="0.5" />
@@ -83,14 +77,26 @@
         <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_pendagogue_edit_profile.xml" value="0.3482789855072464" />
         <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_pendagogue_menu_profile.xml" value="0.3482789855072464" />
         <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/item_daily_child_layout.xml" value="0.16875" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/item_daily_layout.xml" value="0.16875" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/item_daily_parents_layout.xml" value="0.16875" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/item_date.xml" value="0.67" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/item_report_daily_parent.xml" value="0.5" />
         <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/item_slider_home.xml" value="0.25" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/item_user_layout.xml" value="0.22760416666666666" />
-        <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/sp_daily_report_parent.xml" value="0.28072916666666664" />
+        <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/drawable/bg_rounded_blue_top_radius.xml" value="0.1765" />
+        <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/drawable/ic_freepik__character.xml" value="0.1765" />
+        <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/activity_login.xml" value="0.24635416666666668" />
+        <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/activity_navigation_pedagogue.xml" value="0.3229166666666667" />
+        <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/activity_scan_children.xml" value="0.13903985507246377" />
+        <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/activity_scan_children_result.xml" value="0.5" />
+        <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/bottom_sheet_input_daily_pengagogue.xml" value="0.25" />
+        <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/fragment_daily_parent.xml" value="0.203125" />
+        <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/fragment_daily_pedagogue.xml" value="0.2979842243645925" />
+        <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/fragment_home_parent.xml" value="0.24635416666666668" />
+        <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/fragment_menu_profile.xml" value="0.3500905797101449" />
+        <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/fragment_profile.xml" value="0.17223910840932116" />
+        <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/item_report_daily_parent.xml" value="0.203125" />
+        <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/popup_add_email_succes.xml" value="0.2604166666666667" />
+        <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/popup_add_subject.xml" value="0.2604166666666667" />
+        <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/popup_check_email.xml" value="0.2604166666666667" />
+        <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/popup_invite_id_pendagogue.xml" value="0.5" />
+        <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/popup_korfirm_email.xml" value="0.2604166666666667" />
+        <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/popup_scan_barcode_pendagogue.xml" value="0.2604166666666667" />
       </map>
     </option>
   </component>

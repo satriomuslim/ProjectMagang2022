@@ -14,6 +14,7 @@ data class User (
     @SerializedName("confirmed") val confirmed : Boolean,
     @SerializedName("confirm_token") val confirm_token : String,
     @SerializedName("fullname") val fullname : String,
+    @SerializedName("subject") val subject : String?,
     @SerializedName("address") val address : String,
     @SerializedName("dateofbirth") val dateofbirth : String,
     @SerializedName("role") val role : List<String>,

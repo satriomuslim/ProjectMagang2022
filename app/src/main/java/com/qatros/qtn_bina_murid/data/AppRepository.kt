@@ -14,7 +14,7 @@ class AppRepository(private val localRepository: LocalRepository, private val re
         return remoteRepository.postLogin(loginRequest)
     }
 
-    suspend fun postRegister(registerRequest: RegisterRequest) : ResponseResult<LoginRegisterResponse> {
+    suspend fun postRegister(registerRequest: RegisterRequest) : ResponseResult<Any> {
         return remoteRepository.postRegister(registerRequest)
     }
 

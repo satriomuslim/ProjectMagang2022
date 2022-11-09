@@ -37,6 +37,7 @@ class DailyParentFragment : Fragment(), DateAdapter.onItemClick {
     private lateinit var token: String
     private var childrenId: Int = 0
     private var pedagogueId: Int = 0
+    private lateinit var pedagogueName: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -112,8 +113,8 @@ class DailyParentFragment : Fragment(), DateAdapter.onItemClick {
                             position: Int, id: Long
                         ) {
                             val pedagogue: Pedagogue = adapter?.getItem(position) ?: Pedagogue()
-                            pedagogueId = pedagogue.user_id
-
+                            pedagogueId = pedagogue.pedagogue_id
+                            pedagogueName = pedagogue.fullname ?: ""
                             getReportParent(token, dateDefault, childrenId, pedagogueId)
                         }
 
@@ -125,7 +126,7 @@ class DailyParentFragment : Fragment(), DateAdapter.onItemClick {
 
             observeGetReportParent().observe(viewLifecycleOwner) { data ->
                 with(binding.rvDetailDailyParent) {
-                    adapter = DailyReportAdapter(data?.data ?: listOf(), "")
+                    adapter = DailyReportAdapter(data?.data ?: listOf(), pedagogueName)
                     layoutManager = LinearLayoutManager(context)
                 }
             }

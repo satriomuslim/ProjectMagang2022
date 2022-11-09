@@ -13,7 +13,7 @@ interface ApiService {
     suspend fun postLogin(@Body loginRequest: LoginRequest): Response<LoginRegisterResponse>
 
     @POST("api/v1/user/registers")
-    suspend fun postRegister(@Body registerRequest: RegisterRequest): Response<LoginRegisterResponse>
+    suspend fun postRegister(@Body registerRequest: RegisterRequest): Response<Any>
 
     @POST("api/v1/password/forgot")
     suspend fun postResetPassword(@Body forgotPasswordRequest: ForgotPasswordRequest): Response<ForgotPasswordResponse>
@@ -80,8 +80,7 @@ interface ApiService {
 
     @POST("api/v1/report/create")
     suspend fun postReport(
-        @Header("Authorization") token: String, @Query("children_id") childrenId: Int,
-        @Query("user_id") userId: Int, @Body addReportRequest: AddReportRequest
+        @Header("Authorization") token: String, @Query("children_id") childrenId: Int, @Body addReportRequest: AddReportRequest
     ): Response<Any>
 
     @POST("api/v1/user/profile/role")
