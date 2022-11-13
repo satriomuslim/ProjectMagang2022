@@ -41,27 +41,29 @@ class LoginActivity : AppCompatActivity() {
 
     private fun observeData() {
         with(viewModel) {
-            observeLoginSuccess().observe(this@LoginActivity) { data ->
-                binding.pbLogin.isGone = true
-                SharedPreference(this@LoginActivity).apply {
-                    userToken = "bearer ${data?.token}"
-                    isLogin = true
-                    if ((data?.data?.role?.get(0) ?: "") == "parent") {
-                        userRole = 1
-                        startActivity(Intent(this@LoginActivity, NavigationParentActivity::class.java))
-                        finish()
-                    } else {
-                        userRole = 2
-                        startActivity(Intent(this@LoginActivity, NavigationPedagogueActivity::class.java))
-                        finish()
+            observeLoginSuccess().observe(this@LoginActivity) {
+                it.getContentIfNotHandled()?.let { data ->
+                    binding.pbLogin.isGone = true
+                    SharedPreference(this@LoginActivity).apply {
+                        userToken = "bearer ${data.token}"
+                        isLogin = true
+                        if ((data.data.role[0]) == "parent") {
+                            userRole = 1
+                            startActivity(Intent(this@LoginActivity, NavigationParentActivity::class.java))
+                            finish()
+                        } else {
+                            userRole = 2
+                            startActivity(Intent(this@LoginActivity, NavigationPedagogueActivity::class.java))
+                            finish()
+                        }
+                        userEmail = data.data.email
+                        userId = data.data.user_id
+                        userName = data.data.fullname
+                        userAddress = data.data.address
+                        userAvatar = data.data.avatar
+                        userDate = data.data.dateofbirth
+                        userListRole = data.data.role.toMutableSet()
                     }
-                    userEmail = data?.data?.email ?: ""
-                    userId = data?.data?.user_id ?: 0
-                    userName = data?.data?.fullname ?: ""
-                    userAddress = data?.data?.address
-                    userAvatar = data?.data?.avatar
-                    userDate = data?.data?.dateofbirth
-                    userListRole = data?.data?.role?.toMutableSet()
                 }
             }
 

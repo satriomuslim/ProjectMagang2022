@@ -5,8 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.qatros.qtn_bina_murid.R
+import com.qatros.qtn_bina_murid.data.remote.response.DataItem
 
-class HistoryAdapter(val historyList: List<String>) : RecyclerView.Adapter<HistoryAdapter.ListViewHolder>() {
+class HistoryAdapter(val historyList: List<DataItem?>) : RecyclerView.Adapter<HistoryAdapter.ListViewHolder>() {
     inner class ListViewHolder(listView : View) : RecyclerView.ViewHolder(listView) {
     }
 

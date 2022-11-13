@@ -84,4 +84,20 @@ class RemoteRepository(private val apiService: ApiService) {
     suspend fun confirmProfileChild(token: String, inviteChildRequest: InviteChildRequest) = getResult {
         apiService.confirmProfileChild(token, inviteChildRequest)
     }
+
+    suspend fun getHistoryParent(token: String) = getResult {
+        apiService.getHistoryParent(token)
+    }
+
+    suspend fun getHomeParent(token: String) = getResult {
+        apiService.getHomeParent(token)
+    }
+
+    suspend fun getHistoryPedagogue(token: String) = getResult {
+        apiService.getHistoryPedagogue(token)
+    }
+
+    suspend fun getHomePedagogue(token: String) = getResult {
+        apiService.getHomePedagogue(token)
+    }
 }

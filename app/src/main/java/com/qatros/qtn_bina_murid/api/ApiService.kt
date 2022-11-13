@@ -102,4 +102,24 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Body inviteChildRequest: InviteChildRequest
     ): Response<ConfirmProfileChildResponse>
+
+    @GET("api/v1/activities/parent/monthly")
+    suspend fun getHistoryParent(
+        @Header("Authorization") token: String
+    ): Response<HistoryResponse>
+
+    @GET("api/v1/activities/daily")
+    suspend fun getHomeParent(
+        @Header("Authorization") token: String
+    ): Response<HistoryResponse>
+
+    @GET("api/v1/activities/parent/monthly")
+    suspend fun getHistoryPedagogue(
+        @Header("Authorization") token: String
+    ): Response<HistoryResponse>
+
+    @GET("api/v1/activities/daily")
+    suspend fun getHomePedagogue(
+        @Header("Authorization") token: String
+    ): Response<HistoryResponse>
 }

@@ -9,13 +9,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.qatros.qtn_bina_murid.databinding.FragmentHomePedagogueBinding
+import com.qatros.qtn_bina_murid.di.SharedPreference
+import com.qatros.qtn_bina_murid.ui.parent.home.HomeParentAdapter
 import com.qatros.qtn_bina_murid.ui.pedagogue.scanChildren.ScanChildrenActivity
 import com.qatros.qtn_bina_murid.utils.requestPermission
+import org.koin.android.ext.android.inject
 
 class HomePedagogueFragment : Fragment() {
 
     private lateinit var binding: FragmentHomePedagogueBinding
+
+    private val viewModel: HomePedagogueViewModel by inject()
 
     private val permissions =
         listOf(
@@ -27,14 +33,27 @@ class HomePedagogueFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentHomePedagogueBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val token = SharedPreference(requireContext()).userToken
+        viewModel.getHomeParent(token)
         init()
+        observeData()
+    }
+
+    private fun observeData() {
+        viewModel.observeHomeSuccess().observe(viewLifecycleOwner) {
+            it.getContentIfNotHandled()?.let { data ->
+                with(binding.rvDailyPendagogueUpdate){
+                    adapter = HomePedagogueAdapter(data.data)
+                    layoutManager = LinearLayoutManager(requireContext())
+                }
+            }
+        }
     }
 
     private fun init() {

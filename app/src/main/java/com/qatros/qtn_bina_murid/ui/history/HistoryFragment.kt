@@ -7,10 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qatros.qtn_bina_murid.databinding.FragmentHistoryBinding
+import com.qatros.qtn_bina_murid.di.SharedPreference
+import org.koin.android.ext.android.inject
 
 class HistoryFragment : Fragment() {
 
     private lateinit var binding : FragmentHistoryBinding
+
+    private val viewModel: HistoryViewModel by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,14 +26,27 @@ class HistoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        init()
+        observeData()
+        val role = SharedPreference(requireContext()).userRole
+        val token = SharedPreference(requireContext()).userToken
+        if (role == 1) {
+            viewModel.getHistoryParent(token)
+        } else {
+            viewModel.getHistoryPedagogue(token)
+        }
     }
 
-    private fun init() {
-        with(binding) {
-            with(rvMain) {
-                adapter = HistoryAdapter(listOf("", "", "", "", "", "","", "", "", "", "", ""))
-                layoutManager = LinearLayoutManager(requireContext())
+    private fun observeData() {
+        with(viewModel) {
+            observeHistorySuccess().observe(viewLifecycleOwner) {
+                it.getContentIfNotHandled()?.let { data ->
+                    with(binding) {
+                        with(rvMain) {
+                            adapter = HistoryAdapter(data.data)
+                            layoutManager = LinearLayoutManager(requireContext())
+                        }
+                    }
+                }
             }
         }
     }

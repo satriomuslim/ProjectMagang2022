@@ -70,4 +70,20 @@ class AppRepository(private val localRepository: LocalRepository, private val re
         return remoteRepository.confirmProfileChild(token, inviteChildRequest)
     }
 
+    suspend fun getHistoryParent(token: String): ResponseResult<HistoryResponse> {
+        return remoteRepository.getHistoryParent(token)
+    }
+
+    suspend fun getHomeParent(token: String): ResponseResult<HistoryResponse> {
+        return remoteRepository.getHomeParent(token)
+    }
+
+    suspend fun getHistoryPedagogue(token: String): ResponseResult<HistoryResponse> {
+        return remoteRepository.getHistoryParent(token)
+    }
+
+    suspend fun getHomePedagogue(token: String): ResponseResult<HistoryResponse> {
+        return remoteRepository.getHomeParent(token)
+    }
+
 }

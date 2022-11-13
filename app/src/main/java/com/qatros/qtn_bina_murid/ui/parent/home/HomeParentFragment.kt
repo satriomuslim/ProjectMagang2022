@@ -10,11 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.qatros.qtn_bina_murid.databinding.FragmentHomeParentBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
 import com.qatros.qtn_bina_murid.ui.parent.child.FormChildActivity
-import kotlinx.coroutines.NonDisposableHandle.parent
+import org.koin.android.ext.android.inject
 
 class HomeParentFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeParentBinding
+
+    private val viewModel : HomeViewModel by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,16 +29,25 @@ class HomeParentFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val token = SharedPreference(requireContext()).userToken
+        viewModel.getHomeParent(token)
         init()
+        observeData()
+    }
+
+    private fun observeData() {
+        viewModel.observeHomeSuccess().observe(viewLifecycleOwner) {
+            it.getContentIfNotHandled()?.let { data ->
+                with(binding.rvDailyParentUpdate){
+                    adapter = HomeParentAdapter(data.data)
+                    layoutManager = LinearLayoutManager(requireContext())
+                }
+            }
+        }
     }
 
     private fun init() {
         with(binding) {
-            with(rvDailyParentUpdate){
-                adapter = HomeParentAdapter(listOf("", "", "", "", "", ""))
-                layoutManager = LinearLayoutManager(requireContext())
-            }
-
             tvNameHome.text = "Hi, ${SharedPreference(requireContext()).userName}"
             tvEmailHome.text = SharedPreference(requireContext()).userEmail
             btnInvitePendagogue.setOnClickListener{

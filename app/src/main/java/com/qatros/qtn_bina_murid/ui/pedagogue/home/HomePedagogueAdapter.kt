@@ -1,4 +1,4 @@
-package com.qatros.qtn_bina_murid.ui.parent.home
+package com.qatros.qtn_bina_murid.ui.pedagogue.home
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.data.remote.response.DataItem
 
-class HomeParentAdapter(val dailyList: List<DataItem?>) : RecyclerView.Adapter<HomeParentAdapter.ListViewHolder>() {
+class HomePedagogueAdapter(val dailyList: List<DataItem?>) : RecyclerView.Adapter<HomePedagogueAdapter.ListViewHolder>() {
     inner class ListViewHolder(listView : View) : RecyclerView.ViewHolder(listView) {
         var topLine : View = itemView.findViewById(R.id.vw_top)
         var bottomLine : View = itemView.findViewById(R.id.vw_bottom)

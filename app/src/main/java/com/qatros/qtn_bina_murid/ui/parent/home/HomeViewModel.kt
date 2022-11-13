@@ -7,7 +7,9 @@ import androidx.lifecycle.viewModelScope
 import com.qatros.qtn_bina_murid.base.BaseViewModel
 import com.qatros.qtn_bina_murid.base.ResponseResult
 import com.qatros.qtn_bina_murid.data.AppRepository
+import com.qatros.qtn_bina_murid.data.remote.response.HistoryResponse
 import com.qatros.qtn_bina_murid.data.remote.response.ListChildResponse
+import com.qatros.qtn_bina_murid.utils.SingleLiveEvent
 import kotlinx.coroutines.launch
 import kotlin.math.log
 
@@ -17,6 +19,9 @@ class HomeViewModel(private val repository: AppRepository) : BaseViewModel() {
 
     private val getChildTokenSuccess = MutableLiveData<String?>()
     fun observeGetChildTokenSuccess() : LiveData<String?> = getChildTokenSuccess
+
+    private val getHomeSuccess = MutableLiveData<SingleLiveEvent<HistoryResponse>>()
+    fun observeHomeSuccess(): MutableLiveData<SingleLiveEvent<HistoryResponse>> = getHomeSuccess
 
     fun getChildList(token: String) {
         viewModelScope.launch {
@@ -40,6 +45,19 @@ class HomeViewModel(private val repository: AppRepository) : BaseViewModel() {
                 }
                 is ResponseResult.Error -> {
                     Log.e("TAG", "getInviteChildren: ${result.errorMsg}", )
+                    isError.postValue(result.errorMsg)
+                }
+            }
+        }
+    }
+
+    fun getHomeParent(token: String) {
+        viewModelScope.launch {
+            when(val result = repository.getHomeParent(token)) {
+                is ResponseResult.Success -> {
+                    getHomeSuccess.postValue(SingleLiveEvent(result.data))
+                }
+                is ResponseResult.Error -> {
                     isError.postValue(result.errorMsg)
                 }
             }
