@@ -16,6 +16,7 @@ class SharedPreference(val context: Context) {
         private const val USER_ADDRESS = "user.address"
         private const val USER_EMAIL = "user.email"
         private const val USER_AVATAR = "user.avatar"
+        private const val USER_SUBJECT = "user.subject"
         private const val USER_DATE = "user.date"
         private const val USER_LIST_ROLE ="user.list.role"
     }
@@ -57,6 +58,10 @@ class SharedPreference(val context: Context) {
     var userAddress : String?
         get() = pref.getString(USER_ADDRESS,"").toString()
         set(value) = pref.edit().putString(USER_ADDRESS,value).apply()
+
+    var userSubject : String?
+        get() = pref.getString(USER_SUBJECT,"").toString()
+        set(value) = pref.edit().putString(USER_SUBJECT,value).apply()
 
     var userAvatar : String?
         get() = pref.getString(USER_AVATAR,"").toString()

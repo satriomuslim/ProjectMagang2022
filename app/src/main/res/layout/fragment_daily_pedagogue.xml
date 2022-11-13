@@ -6,153 +6,169 @@
     android:layout_height="match_parent"
     tools:context=".ui.pedagogue.daily.DailyReportInputPedagogueFragment">
 
-    <LinearLayout
-        android:id="@+id/wrap_profile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_rounded_blue_bottom_radius"
-        android:backgroundTint="@color/blue"
-        android:orientation="vertical"
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/tv_daily_report"
-            style="@style/DefaultTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:text="Profile"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </LinearLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/wrap_imgProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/wrap_profile">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/circleImageView"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/raiden_avatar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txt_name_parent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:text="Raiden Shogun"
-            android:textColor="@color/blue"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/circleImageView" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <LinearLayout
-        android:id="@+id/wrap_choice_child"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/wrap_imgProfile">
-        <Spinner
-            android:id="@+id/sp_child_pedagogue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp" />
-    </LinearLayout>
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/wrap_choice_child">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="10dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/bg_rounded_white_top_radius"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <TextView
-                style="@style/DefaultTextLandingSemiBold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pilih Tanggal"
-                android:textColor="@color/blue"
-                android:textSize="16sp"
-                android:layout_gravity="center"
-                android:layout_marginTop="16dp"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_date_daily_detail_pedagogue"
+            <LinearLayout
+                android:id="@+id/wrap_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"/>
+                android:background="@drawable/bg_rounded_blue_bottom_radius"
+                android:backgroundTint="@color/blue"
+                android:orientation="vertical"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <RelativeLayout
+                <TextView
+                    android:id="@+id/tv_daily_report"
+                    style="@style/DefaultTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="24dp"
+                    android:text="Daily Report"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/wrap_imgProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp">
+                android:layout_marginTop="-40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/wrap_profile">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/circleImageView"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/raiden_avatar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    style="@style/DefaultTextMedium"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/txt_name_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Laporan anak"
-                    android:textColor="@color/blue" />
-
-                <TextView
-                    style="@style/DefaultTextMedium"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Lihat Semua"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Raiden Shogun"
                     android:textColor="@color/blue"
-                    android:layout_alignParentEnd="true"
-                    android:textSize="12sp"
-                    android:layout_centerVertical="true"/>
-            </RelativeLayout>
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/circleImageView" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_detail_daily_parent"
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/wrap_choice_child"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                tools:listitem="@layout/item_report_daily_parent"/>
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/wrap_imgProfile">
+                <Spinner
+                    android:id="@+id/sp_child_pedagogue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp" />
+            </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="10dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bg_rounded_white_top_radius"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/wrap_choice_child"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/DefaultTextLandingSemiBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pilih Tanggal"
+                        android:textColor="@color/blue"
+                        android:textSize="16sp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="16dp"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_date_daily_detail_pedagogue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp">
+
+                        <TextView
+                            style="@style/DefaultTextMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Laporan anak"
+                            android:textColor="@color/blue" />
+
+                        <TextView
+                            style="@style/DefaultTextMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lihat Semua"
+                            android:textColor="@color/blue"
+                            android:layout_alignParentEnd="true"
+                            android:textSize="12sp"
+                            android:layout_centerVertical="true"/>
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_detail_daily_parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        tools:listitem="@layout/item_report_daily_parent"/>
+                </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
-
+    <ImageView
+        android:id="@+id/btn_add_report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_plus"
+        android:background="@drawable/bg_oval_white"
+        android:padding="16dp"
+        android:backgroundTint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="16dp"/>
     <ProgressBar
         android:id="@+id/pb_daily_report_input_pendagogue"
         android:layout_width="wrap_content"
@@ -164,6 +180,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

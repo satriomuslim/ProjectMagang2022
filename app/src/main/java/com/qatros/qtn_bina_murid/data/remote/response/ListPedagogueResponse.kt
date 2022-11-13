@@ -9,7 +9,7 @@ data class ListPedagogueResponse(
 )
 
 data class Pedagogue (
-    @SerializedName("user_id") val user_id : Int = 0,
+    @SerializedName("pedagogue_id") val pedagogue_id : Int = 0,
     @SerializedName("fullname") val fullname : String? = null,
     @SerializedName("avatar") val avatar : String? = null
 )

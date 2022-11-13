@@ -1,17 +1,28 @@
 package com.qatros.qtn_bina_murid.ui.pedagogue.daily
 
+import android.app.AlertDialog
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import androidx.activity.OnBackPressedCallback
+import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.qatros.qtn_bina_murid.R
+import com.qatros.qtn_bina_murid.data.remote.request.AddReportRequest
+import com.qatros.qtn_bina_murid.data.remote.request.Subject
+import com.qatros.qtn_bina_murid.data.remote.request.SubjectRequest
 import com.qatros.qtn_bina_murid.data.remote.response.Children
-import com.qatros.qtn_bina_murid.databinding.FragmentDailyParentBinding
-import com.qatros.qtn_bina_murid.databinding.FragmentDailyPedagogueBinding
+import com.qatros.qtn_bina_murid.databinding.*
+import com.qatros.qtn_bina_murid.di.SharedPreference
 import com.qatros.qtn_bina_murid.ui.parent.childProfile.ChildProfileActivity
 import com.qatros.qtn_bina_murid.ui.parent.daily.DailyParentViewModel
 import com.qatros.qtn_bina_murid.ui.parent.daily.DailyReportAdapter
@@ -19,7 +30,10 @@ import com.qatros.qtn_bina_murid.ui.parent.daily.DateAdapter
 import com.qatros.qtn_bina_murid.ui.parent.daily.SpinChildAdapter
 import com.qatros.qtn_bina_murid.ui.pedagogue.daily.DateAdapter.*
 import com.qatros.qtn_bina_murid.utils.loadImageUser
+import com.qatros.qtn_bina_murid.utils.requestPermission
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import java.text.SimpleDateFormat
 import java.util.*
 
 class DailyPedagogueFragment : Fragment(), onItemClick {
@@ -30,9 +44,11 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
     private val cal = Calendar.getInstance(Locale.ENGLISH)
     private val currentDate = Calendar.getInstance(Locale.ENGLISH).time
     private lateinit var dateDefault: String
-    private val viewModel: DailyPedagogueViewModel by inject()
+    private val viewModel: DailyPedagogueViewModel by sharedViewModel()
     private lateinit var token: String
+    private var userId: Int = 0
     private var childrenId: Int = 0
+    private lateinit var pedagogueName: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,6 +62,11 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
         super.onViewCreated(view, savedInstanceState)
         init()
         observeData()
+        dateDefault = SimpleDateFormat("yyyy-MM-dd").format(cal.time)
+        userId = SharedPreference(requireContext()).userId
+        token = SharedPreference(requireContext()).userToken
+        pedagogueName = SharedPreference(requireContext()).userName
+        viewModel.getChildList(token)
     }
 
     private fun observeData() {
@@ -68,6 +89,8 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
                         ) {
                             val child: Children = adapter?.getItem(position) ?: Children()
                             childrenId = child.childrenId
+                            binding.circleImageView.loadImageUser(child.avatar)
+                            getReportPedagogue(token, "09-11-2022", childrenId, userId)
                         }
 
                         override fun onNothingSelected(adapter: AdapterView<*>?) {
@@ -79,7 +102,7 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
 
             observeGetReportPedagogue().observe(viewLifecycleOwner) { data ->
                 with(binding.rvDetailDailyParent) {
-                    adapter = DailyReportAdapter(data?.data ?: listOf(), "")
+                    adapter = DailyReportAdapter(data?.data ?: listOf(), pedagogueName)
                     layoutManager = LinearLayoutManager(context)
                 }
             }
@@ -100,10 +123,158 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
                 adapter = dateAdapter
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             }
+
+            btnAddReport.setOnClickListener {
+                showBottomSheetDialog()
+            }
         }
+    }
+
+    private fun showBottomSheetDialog() {
+
+        val dialogBinding = BottomSheetInputDailyPengagogueBinding.inflate(layoutInflater)
+        val dialogTextWatcher: TextWatcher = object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                dialogBinding.apply {
+                    when {
+                        edAddNilai.text!!.isEmpty() -> {
+                            edAddNilai.error = "Email Required"
+                        }
+                        edDesc.text!!.isEmpty() -> {
+                            edDesc.error = "Password Required"
+                        }
+                        else -> {
+
+                        }
+
+                    }
+                    btnRegisterChild.isEnabled =
+                        edDesc.text!!.isNotEmpty() && edAddNilai.text!!.isNotEmpty()
+                }
+
+            }
+
+            override fun afterTextChanged(s: Editable) {
+                dialogBinding.apply {
+                    if (edAddNilai.text?.isBlank()
+                            ?.not() == true && edDesc.text?.isBlank()
+                            ?.not() == true
+                    ) {
+                        btnRegisterChild.setBackgroundColor(resources.getColor(R.color.blue))
+                    } else {
+                        btnRegisterChild.setBackgroundColor(resources.getColor(R.color.grey))
+                    }
+                }
+            }
+
+        }
+        val bottomSheetDialog = BottomSheetDialog(requireContext())
+        bottomSheetDialog.setContentView(dialogBinding.root)
+        bottomSheetDialog.show()
+        with(dialogBinding) {
+            btnBackFromInput.setOnClickListener {
+                bottomSheetDialog.dismiss()
+            }
+            btnRegisterChild.setOnClickListener {
+                val data = AddReportRequest(
+                    description = edDesc.text.toString(),
+                    score = edAddNilai.text.toString().toInt(),
+                    date = dateDefault
+                )
+                viewModel.postReport(token, childrenId, userId, data)
+
+                viewModel.observePostReportSuccess().observe(viewLifecycleOwner) {
+                    it.getContentIfNotHandled()?.let { success ->
+                        if(success) {
+                            bottomSheetDialog.dismiss()
+                            viewModel.getReportPedagogue(token, "09-11-2022", childrenId, userId)
+                        }
+                    }
+                }
+            }
+            edAddNilai.addTextChangedListener(dialogTextWatcher)
+            edDesc.addTextChangedListener(dialogTextWatcher)
+        }
+
     }
 
     override fun setItemClick(data: Date, position: Int) {
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val subject = SharedPreference(requireContext()).userSubject
+        if (subject == "") {
+            val dialogBinding = PopupAddSubjectBinding.inflate(layoutInflater)
+            val alertDialog = AlertDialog.Builder(requireContext()).setView(dialogBinding.root)
+            val dialogTextWatcher: TextWatcher = object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                    dialogBinding.apply {
+                        when {
+                            edSubject.text!!.isEmpty() -> {
+                                edSubject.error = "Email Required"
+                            }
+                            else -> {
+
+                            }
+
+                        }
+                        btnAddSubject.isEnabled =
+                            edSubject.text!!.isNotEmpty()
+                    }
+
+                }
+
+                override fun afterTextChanged(s: Editable) {
+                    dialogBinding.apply {
+                        if (edSubject.text?.isBlank()
+                                ?.not() == true
+                        ) {
+                            btnAddSubject.setBackgroundColor(resources.getColor(R.color.blue))
+                        } else {
+                            btnAddSubject.setBackgroundColor(resources.getColor(R.color.grey))
+                        }
+                    }
+                }
+
+            }
+            alertDialog.setCancelable(false)
+            val dialog = alertDialog.show()
+            with(dialogBinding) {
+                edSubject.addTextChangedListener(dialogTextWatcher)
+                btnClosePopup.setOnClickListener {
+                    viewModel.indicatorDailyreport(true)
+                    dialog.dismiss()
+                }
+
+                btnAddSubject.setOnClickListener {
+                    val tokenSubject = SharedPreference(requireContext()).userToken
+                    val data = SubjectRequest(
+                        subject = Subject(
+                            name = edSubject.text.toString()
+                        )
+                    )
+                    viewModel.postSubject(tokenSubject, data)
+
+                    viewModel.observePostSubjectSuccess().observe(viewLifecycleOwner) {
+                        it.getContentIfNotHandled()?.let { success ->
+                            if(success) {
+                                SharedPreference(requireContext()).userSubject = edSubject.text.toString()
+                                dialog.dismiss()
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
