@@ -99,4 +99,18 @@
         <item name="android:background">@drawable/bg_rounded_blue_top_radius</item>
         <item name="backgroundTint">@color/white</item>
     </style>
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/animate_slide_down_enter</item>
+        <item name="android:windowExitAnimation">@anim/animate_slide_up_exit</item>
+    </style>
+
+    <style name="DialogAnimationShrink">
+        <item name="android:windowEnterAnimation">@anim/animate_shrink_enter</item>
+        <item name="android:windowExitAnimation">@anim/animate_shrink_exit</item>
+    </style>
+
+    <dimen name="popup_width">300dp</dimen>
+    <dimen name="popup_height">310dp</dimen>
+
 </resources>

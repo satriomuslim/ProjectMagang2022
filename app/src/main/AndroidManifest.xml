@@ -59,7 +59,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.parent.navigation.NavigationParentActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ui.pedagogue.navigation.NavigationPedagogueActivity"
             android:exported="false" />

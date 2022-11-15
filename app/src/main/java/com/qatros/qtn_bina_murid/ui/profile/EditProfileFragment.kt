@@ -15,6 +15,10 @@ import androidx.navigation.fragment.findNavController
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.databinding.FragmentEditProfileBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
+import com.qatros.qtn_bina_murid.utils.dialog.AestheticDialog
+import com.qatros.qtn_bina_murid.utils.dialog.DialogAnimation
+import com.qatros.qtn_bina_murid.utils.dialog.DialogStyle
+import com.qatros.qtn_bina_murid.utils.dialog.OnDialogClickListener
 import com.qatros.qtn_bina_murid.utils.toast
 import kotlinx.coroutines.delay
 import okhttp3.MediaType.Companion.toMediaType
@@ -25,13 +29,16 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import java.io.File
 
-class EditProfileFragment : Fragment() {
+class EditProfileFragment : Fragment(), View.OnClickListener {
 
     private lateinit var binding: FragmentEditProfileBinding
 
     private val viewModel: ProfileViewModel by sharedViewModel()
 
     private var finalFile: File? = null
+
+    var successMessage: String = "The message was sent successfully!"
+    var successTitle: String = "Success"
 
     private val onBackCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
@@ -57,6 +64,23 @@ class EditProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentEditProfileBinding.inflate(layoutInflater)
         return binding.root
+    }
+
+    override fun onClick(view: View) {
+        when (view.id) {
+            R.id.btn_register -> {
+                AestheticDialog.Builder(requireActivity(), DialogStyle.FLASH)
+                    .setTitle(successTitle)
+                    .setMessage(successMessage)
+                    .setAnimation(DialogAnimation.SHRINK)
+                    .setOnClickListener(object : OnDialogClickListener {
+                        override fun onClick(dialog: AestheticDialog.Builder) {
+                            dialog.dismiss()
+                        }
+                    })
+                    .show()
+            }
+        }
     }
 
     private fun observeData() {
