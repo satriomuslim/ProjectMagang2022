@@ -83,14 +83,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="1"
-                android:gravity="center"
                 app:layout_constraintTop_toBottomOf="@id/wrap_imgProfile">
+
                 <Spinner
+                    android:background="@drawable/style_spinner_2"
                     android:id="@+id/sp_child_pedagogue"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp" />
+                    android:layout_margin="16dp"
+                    android:gravity="center"
+                    android:layout_weight="1" />
             </LinearLayout>
 
                 <LinearLayout
