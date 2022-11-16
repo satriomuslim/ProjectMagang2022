@@ -81,6 +81,7 @@
                 android:weightSum="2">
 
                 <Spinner
+                    android:background="@drawable/style_spinner"
                     android:id="@+id/sp_child"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -88,6 +89,7 @@
                     android:layout_weight="1" />
 
                 <Spinner
+                    android:background="@drawable/style_spinner"
                     android:id="@+id/sp_pedagogue"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
