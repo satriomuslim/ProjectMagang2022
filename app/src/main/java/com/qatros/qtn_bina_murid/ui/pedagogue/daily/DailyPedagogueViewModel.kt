@@ -31,6 +31,9 @@ class DailyPedagogueViewModel(private val repository: AppRepository) : BaseViewM
     private val indicatorCurrent = MutableLiveData<SingleLiveEvent<Boolean>>()
     fun observeIndicatorCurrent() : LiveData<SingleLiveEvent<Boolean>> = indicatorCurrent
 
+    private val isErrorGetReport = MutableLiveData<SingleLiveEvent<Int>>()
+    fun observeErrorGetReport() : LiveData<SingleLiveEvent<Int>> = isErrorGetReport
+
     fun postSubject(token: String, subjectRequest: SubjectRequest) {
         viewModelScope.launch {
             when(val result = repository.postSubject(token, subjectRequest)) {
@@ -57,9 +60,9 @@ class DailyPedagogueViewModel(private val repository: AppRepository) : BaseViewM
         }
     }
 
-    fun getChildList(token: String) {
+    fun getChildList(token: String, type: String) {
         viewModelScope.launch {
-            when(val result = repository.getListChild(token)) {
+            when(val result = repository.getListChild(token, type)) {
                 is ResponseResult.Success -> {
                     getChildListSuccess.postValue(result.data)
                 }
@@ -77,7 +80,7 @@ class DailyPedagogueViewModel(private val repository: AppRepository) : BaseViewM
                     getReportPedagogue.postValue(result.data)
                 }
                 is ResponseResult.Error -> {
-                    isError.postValue(result.errorMsg)
+                    isErrorGetReport.postValue(SingleLiveEvent(result.code))
                 }
             }
         }

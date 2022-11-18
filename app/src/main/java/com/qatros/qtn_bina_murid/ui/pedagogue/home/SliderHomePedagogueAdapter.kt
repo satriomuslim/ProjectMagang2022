@@ -1,7 +1,6 @@
 package com.qatros.qtn_bina_murid.ui.pedagogue.home
 
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +10,8 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
 import com.qatros.qtn_bina_murid.R
-import org.w3c.dom.Text
 
-class SliderHomeAdapter() : RecyclerView.Adapter<SliderHomeAdapter.ListViewHolder>() {
+class SliderHomePedagogueAdapter() : RecyclerView.Adapter<SliderHomePedagogueAdapter.ListViewHolder>() {
     var lst_images = intArrayOf(
         R.drawable.ill_home_parent,
         R.drawable.ill_home_parent

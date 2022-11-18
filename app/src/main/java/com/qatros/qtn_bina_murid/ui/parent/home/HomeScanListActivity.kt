@@ -29,7 +29,7 @@ class HomeScanListActivity : AppCompatActivity(), HomeScanListAdapter.onItemClic
         init()
         observeData()
         val token = SharedPreference(this).userToken
-        viewModel.getChildList(token)
+        viewModel.getChildList(token, "parent")
     }
 
     private fun observeData() {

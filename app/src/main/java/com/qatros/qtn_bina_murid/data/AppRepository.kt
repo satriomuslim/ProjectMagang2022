@@ -22,8 +22,8 @@ class AppRepository(private val localRepository: LocalRepository, private val re
         return remoteRepository.postForgotPassword(forgotPasswordRequest)
     }
 
-    suspend fun getListChild(token: String) : ResponseResult<ListChildResponse> {
-        return remoteRepository.getListChild(token)
+    suspend fun getListChild(token: String, type: String) : ResponseResult<ListChildResponse> {
+        return remoteRepository.getListChild(token, type)
     }
 
     suspend fun postAddChild(token: String, fullName: RequestBody, nickName: RequestBody, school: RequestBody, birthOfDate: RequestBody, file: MultipartBody.Part) : ResponseResult<Any> {
@@ -79,11 +79,11 @@ class AppRepository(private val localRepository: LocalRepository, private val re
     }
 
     suspend fun getHistoryPedagogue(token: String): ResponseResult<HistoryResponse> {
-        return remoteRepository.getHistoryParent(token)
+        return remoteRepository.getHistoryPedagogue(token)
     }
 
     suspend fun getHomePedagogue(token: String): ResponseResult<HistoryResponse> {
-        return remoteRepository.getHomeParent(token)
+        return remoteRepository.getHomePedagogue(token)
     }
 
 }

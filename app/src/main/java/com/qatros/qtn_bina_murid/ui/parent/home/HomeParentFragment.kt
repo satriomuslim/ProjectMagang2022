@@ -1,6 +1,7 @@
 package com.qatros.qtn_bina_murid.ui.parent.home
 
 import android.content.Intent
+import android.os.Build.ID
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,11 +11,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.qatros.qtn_bina_murid.databinding.FragmentHomeParentBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
 import com.qatros.qtn_bina_murid.ui.parent.child.FormChildActivity
+import com.qatros.qtn_bina_murid.utils.loadImageUser
 import org.koin.android.ext.android.inject
+import java.text.SimpleDateFormat
+import java.util.*
 
 class HomeParentFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeParentBinding
+
+    private val cal = Calendar.getInstance(Locale.ENGLISH)
 
     private val viewModel : HomeViewModel by inject()
 
@@ -50,6 +56,8 @@ class HomeParentFragment : Fragment() {
         with(binding) {
             tvNameHome.text = "Hi, ${SharedPreference(requireContext()).userName}"
             tvEmailHome.text = SharedPreference(requireContext()).userEmail
+            imgProfile.loadImageUser(SharedPreference(requireContext()).userAvatar)
+            tvCurrentDate.text = SimpleDateFormat("EEEE, dd MMM yyyy").format(cal.time)
             btnInvitePendagogue.setOnClickListener{
                 startActivity(Intent(activity, HomeScanListActivity::class.java))
             }

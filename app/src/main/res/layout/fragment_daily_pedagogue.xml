@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/greyBackground"
     tools:context=".ui.pedagogue.daily.DailyReportInputPedagogueFragment">
 
     <androidx.core.widget.NestedScrollView
@@ -68,7 +69,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:gravity="center"
-                    android:text="Raiden Shogun"
+                    android:text="Profile Anak"
                     android:textColor="@color/blue"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -86,11 +87,12 @@
                 app:layout_constraintTop_toBottomOf="@id/wrap_imgProfile">
 
                 <Spinner
-                    android:background="@drawable/style_spinner_2"
+                    android:background="@drawable/style_spinner"
                     android:id="@+id/sp_child_pedagogue"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:padding="16dp"
+                    android:layout_margin="8dp"
                     android:gravity="center"
                     android:layout_weight="1" />
             </LinearLayout>
@@ -146,6 +148,17 @@
                             android:textSize="12sp"
                             android:layout_centerVertical="true"/>
                     </RelativeLayout>
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/la_not_found_daily_pedagogue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="24dp"
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true"
+                        android:visibility="gone"
+                        app:lottie_rawRes="@raw/not_found" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_detail_daily_parent"

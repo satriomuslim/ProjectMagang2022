@@ -37,8 +37,8 @@ class RemoteRepository(private val apiService: ApiService) {
         apiService.postResetPassword(forgotPasswordRequest)
     }
 
-    suspend fun getListChild(token: String) = getResult {
-        apiService.getListChild(token)
+    suspend fun getListChild(token: String, type: String) = getResult {
+        apiService.getListChild(token, type)
     }
 
     suspend fun postAddChild(token: String, fullName: RequestBody, nickName: RequestBody, school: RequestBody, birthOfDate: RequestBody, file: MultipartBody.Part) = getResult {

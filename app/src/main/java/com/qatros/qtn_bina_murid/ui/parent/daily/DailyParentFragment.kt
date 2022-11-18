@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qatros.qtn_bina_murid.R
@@ -20,6 +21,7 @@ import com.qatros.qtn_bina_murid.databinding.FragmentDailyParentBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
 import com.qatros.qtn_bina_murid.ui.parent.childProfile.ChildProfileActivity
 import com.qatros.qtn_bina_murid.utils.loadImageUser
+import okhttp3.internal.userAgent
 import org.koin.android.ext.android.inject
 import java.text.SimpleDateFormat
 import java.util.*
@@ -51,10 +53,8 @@ class DailyParentFragment : Fragment(), DateAdapter.onItemClick {
         super.onViewCreated(view, savedInstanceState)
         init()
         token = SharedPreference(requireContext()).userToken
-        viewModel.getChildList(token)
-        val sdf = SimpleDateFormat("yyyy-MM-dd")
-        val dayInWeek = SimpleDateFormat("EEE MMM dd HH:mm:ss 'GMT+07:00' yyyy")
-        dateDefault = sdf.format(dayInWeek.parse(cal.time.toString()))
+        viewModel.getChildList(token, "parent")
+        dateDefault = SimpleDateFormat("yyyy-MM-dd").format(cal.time)
         observeData()
     }
 
@@ -125,9 +125,18 @@ class DailyParentFragment : Fragment(), DateAdapter.onItemClick {
             }
 
             observeGetReportParent().observe(viewLifecycleOwner) { data ->
+                binding.laNotFoundDailyParent.isGone = true
+                binding.rvDetailDailyParent.isGone = false
                 with(binding.rvDetailDailyParent) {
                     adapter = DailyReportAdapter(data?.data ?: listOf(), pedagogueName)
                     layoutManager = LinearLayoutManager(context)
+                }
+            }
+
+            observeErrorGetReport().observe(viewLifecycleOwner) {
+                it.getContentIfNotHandled()?.let { data ->
+                    binding.laNotFoundDailyParent.isGone = false
+                    binding.rvDetailDailyParent.isGone = true
                 }
             }
         }
@@ -151,6 +160,7 @@ class DailyParentFragment : Fragment(), DateAdapter.onItemClick {
     }
 
     override fun setItemClick(data: Date, position: Int) {
-        Log.e("TAG", "setItemClick: $data")
+        dateDefault = SimpleDateFormat("yyyy-MM-dd").format(data.time)
+        viewModel.getReportParent(token, dateDefault, childrenId, pedagogueId)
     }
 }

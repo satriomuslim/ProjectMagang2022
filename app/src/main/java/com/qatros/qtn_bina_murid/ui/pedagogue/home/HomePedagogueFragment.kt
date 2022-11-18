@@ -13,13 +13,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.qatros.qtn_bina_murid.databinding.FragmentHomePedagogueBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
 import com.qatros.qtn_bina_murid.ui.parent.home.HomeParentAdapter
+import com.qatros.qtn_bina_murid.ui.parent.home.SliderHomeAdapter
 import com.qatros.qtn_bina_murid.ui.pedagogue.scanChildren.ScanChildrenActivity
+import com.qatros.qtn_bina_murid.utils.loadImageUser
 import com.qatros.qtn_bina_murid.utils.requestPermission
 import org.koin.android.ext.android.inject
+import java.text.SimpleDateFormat
+import java.util.*
 
 class HomePedagogueFragment : Fragment() {
 
     private lateinit var binding: FragmentHomePedagogueBinding
+
+    private val cal = Calendar.getInstance(Locale.ENGLISH)
 
     private val viewModel: HomePedagogueViewModel by inject()
 
@@ -40,7 +46,7 @@ class HomePedagogueFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val token = SharedPreference(requireContext()).userToken
-        viewModel.getHomeParent(token)
+        viewModel.getHomePedagogue(token)
         init()
         observeData()
     }
@@ -58,6 +64,13 @@ class HomePedagogueFragment : Fragment() {
 
     private fun init() {
         with(binding) {
+            with(vpBannerHome) {
+                adapter = SliderHomePedagogueAdapter()
+            }
+            tvNameHome.text = "Hi, ${SharedPreference(requireContext()).userName}"
+            tvEmailHome.text = SharedPreference(requireContext()).userEmail
+            imgProfile.loadImageUser(SharedPreference(requireContext()).userAvatar)
+            tvCurrentDate.text = SimpleDateFormat("EEEE, dd MMM yyyy").format(cal.time)
             btnInviteChild.setOnClickListener{
                 permissions.forEach {
                     requireActivity().let { ctx ->

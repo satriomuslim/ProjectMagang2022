@@ -51,9 +51,12 @@ class MenuProfileFragment : Fragment() {
 
     private fun init() {
         with(binding) {
-            Log.e("TAG", "init: ${SharedPreference(requireContext()).userListRole?.size}")
             if(SharedPreference(requireContext()).userListRole?.size == 1) {
-                tvChangeUser.text = "Daftar Pedagogue"
+                if (SharedPreference(requireContext()).userRole == 1) {
+                    tvChangeUser.text = "Daftar Pedagogue"
+                } else {
+                    tvChangeUser.text = "Daftar Orang Tua"
+                }
                 val token = SharedPreference(requireContext()).userToken
                 btnChangeUser.setOnClickListener {
                     if (SharedPreference(requireContext()).userRole == 1) {

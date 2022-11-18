@@ -13,9 +13,9 @@ class HomePedagogueViewModel(private val repository: AppRepository) : BaseViewMo
     private val getHomeSuccess = MutableLiveData<SingleLiveEvent<HistoryResponse>>()
     fun observeHomeSuccess(): MutableLiveData<SingleLiveEvent<HistoryResponse>> = getHomeSuccess
 
-    fun getHomeParent(token: String) {
+    fun getHomePedagogue(token: String) {
         viewModelScope.launch {
-            when(val result = repository.getHomeParent(token)) {
+            when(val result = repository.getHomePedagogue(token)) {
                 is ResponseResult.Success -> {
                     getHomeSuccess.postValue(SingleLiveEvent(result.data))
                 }

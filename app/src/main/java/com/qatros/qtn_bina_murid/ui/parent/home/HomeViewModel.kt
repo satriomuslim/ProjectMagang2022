@@ -23,9 +23,9 @@ class HomeViewModel(private val repository: AppRepository) : BaseViewModel() {
     private val getHomeSuccess = MutableLiveData<SingleLiveEvent<HistoryResponse>>()
     fun observeHomeSuccess(): MutableLiveData<SingleLiveEvent<HistoryResponse>> = getHomeSuccess
 
-    fun getChildList(token: String) {
+    fun getChildList(token: String, type: String) {
         viewModelScope.launch {
-            when(val result = repository.getListChild(token)) {
+            when(val result = repository.getListChild(token, type)) {
                 is ResponseResult.Success -> {
                     getChildListSuccess.postValue(result.data)
                 }

@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
+import androidx.core.view.isGone
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -66,7 +67,7 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
         userId = SharedPreference(requireContext()).userId
         token = SharedPreference(requireContext()).userToken
         pedagogueName = SharedPreference(requireContext()).userName
-        viewModel.getChildList(token)
+        viewModel.getChildList(token, "pedagogue")
     }
 
     private fun observeData() {
@@ -90,7 +91,7 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
                             val child: Children = adapter?.getItem(position) ?: Children()
                             childrenId = child.childrenId
                             binding.circleImageView.loadImageUser(child.avatar)
-                            getReportPedagogue(token, "09-11-2022", childrenId, userId)
+                            getReportPedagogue(token, dateDefault, childrenId, userId)
                         }
 
                         override fun onNothingSelected(adapter: AdapterView<*>?) {
@@ -101,11 +102,22 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
             }
 
             observeGetReportPedagogue().observe(viewLifecycleOwner) { data ->
+                binding.laNotFoundDailyPedagogue.isGone = true
+                binding.rvDetailDailyParent.isGone = false
                 with(binding.rvDetailDailyParent) {
                     adapter = DailyReportAdapter(data?.data ?: listOf(), pedagogueName)
                     layoutManager = LinearLayoutManager(context)
                 }
             }
+
+            observeErrorGetReport().observe(viewLifecycleOwner) {
+                it.getContentIfNotHandled()?.let { data ->
+                    binding.laNotFoundDailyPedagogue.isGone = false
+                    binding.rvDetailDailyParent.isGone = true
+                }
+            }
+
+
         }
     }
 
@@ -191,7 +203,7 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
                     it.getContentIfNotHandled()?.let { success ->
                         if(success) {
                             bottomSheetDialog.dismiss()
-                            viewModel.getReportPedagogue(token, "09-11-2022", childrenId, userId)
+                            viewModel.getReportPedagogue(token, dateDefault, childrenId, userId)
                         }
                     }
                 }
@@ -203,7 +215,8 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
     }
 
     override fun setItemClick(data: Date, position: Int) {
-
+        dateDefault = SimpleDateFormat("yyyy-MM-dd").format(data.time)
+        viewModel.getReportPedagogue(token, dateDefault, childrenId, userId)
     }
 
     override fun onStart() {

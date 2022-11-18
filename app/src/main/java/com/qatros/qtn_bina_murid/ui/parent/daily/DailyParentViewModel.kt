@@ -9,6 +9,8 @@ import com.qatros.qtn_bina_murid.data.AppRepository
 import com.qatros.qtn_bina_murid.data.remote.response.ListChildResponse
 import com.qatros.qtn_bina_murid.data.remote.response.ListPedagogueResponse
 import com.qatros.qtn_bina_murid.data.remote.response.ReportResponse
+import com.qatros.qtn_bina_murid.utils.SingleLiveEvent
+import io.reactivex.Single
 import kotlinx.coroutines.launch
 
 class DailyParentViewModel(private val repository: AppRepository) : BaseViewModel() {
@@ -21,9 +23,12 @@ class DailyParentViewModel(private val repository: AppRepository) : BaseViewMode
     private val getReportParent = MutableLiveData<ReportResponse?>()
     fun observeGetReportParent() : LiveData<ReportResponse?> = getReportParent
 
-    fun getChildList(token: String) {
+    private val isErrorGetReport = MutableLiveData<SingleLiveEvent<Int>>()
+    fun observeErrorGetReport() : LiveData<SingleLiveEvent<Int>> = isErrorGetReport
+
+    fun getChildList(token: String, type: String) {
         viewModelScope.launch {
-            when(val result = repository.getListChild(token)) {
+            when(val result = repository.getListChild(token, type)) {
                 is ResponseResult.Success -> {
                     getChildListSuccess.postValue(result.data)
                 }
@@ -54,7 +59,7 @@ class DailyParentViewModel(private val repository: AppRepository) : BaseViewMode
                     getReportParent.postValue(result.data)
                 }
                 is ResponseResult.Error -> {
-                    isError.postValue(result.errorMsg)
+                    isErrorGetReport.postValue(SingleLiveEvent(result.code))
                 }
             }
         }

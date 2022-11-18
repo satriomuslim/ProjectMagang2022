@@ -18,8 +18,8 @@ interface ApiService {
     @POST("api/v1/password/forgot")
     suspend fun postResetPassword(@Body forgotPasswordRequest: ForgotPasswordRequest): Response<ForgotPasswordResponse>
 
-    @GET("api/v1/children/list")
-    suspend fun getListChild(@Header("Authorization") token: String): Response<ListChildResponse>
+    @GET("api/v1/children/list?")
+    suspend fun getListChild(@Header("Authorization") token: String, @Query("type") type: String): Response<ListChildResponse>
 
     @Multipart
     @POST("api/v1/children/add")
@@ -112,12 +112,12 @@ interface ApiService {
         @Header("Authorization") token: String
     ): Response<HistoryResponse>
 
-    @GET("api/v1/activities/parent/monthly")
+    @GET("api/v1/activities/pedagogue/monthly")
     suspend fun getHistoryPedagogue(
         @Header("Authorization") token: String
     ): Response<HistoryResponse>
 
-    @GET("api/v1/activities/daily")
+    @GET("api/v1/activities/pedagogue/daily")
     suspend fun getHomePedagogue(
         @Header("Authorization") token: String
     ): Response<HistoryResponse>

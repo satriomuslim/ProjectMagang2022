@@ -62,6 +62,7 @@ class LoginActivity : AppCompatActivity() {
                         userAddress = data.data.address
                         userAvatar = data.data.avatar
                         userDate = data.data.dateofbirth
+                        userSubject = data.data.subject
                         userListRole = data.data.role.toMutableSet()
                     }
                 }
