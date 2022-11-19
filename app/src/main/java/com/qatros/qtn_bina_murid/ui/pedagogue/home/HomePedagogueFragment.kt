@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.view.isGone
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qatros.qtn_bina_murid.databinding.FragmentHomePedagogueBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
@@ -58,6 +59,13 @@ class HomePedagogueFragment : Fragment() {
                     adapter = HomePedagogueAdapter(data.data)
                     layoutManager = LinearLayoutManager(requireContext())
                 }
+            }
+        }
+
+        viewModel.observeErrorGetReport().observe(viewLifecycleOwner) {
+            it.getContentIfNotHandled()?.let { data ->
+                binding.laNotFoundHomePedagogue.isGone = false
+                binding.rvDailyPendagogueUpdate.isGone = true
             }
         }
     }

@@ -1,5 +1,6 @@
 package com.qatros.qtn_bina_murid.ui.pedagogue.home
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.qatros.qtn_bina_murid.base.BaseViewModel
@@ -13,6 +14,9 @@ class HomePedagogueViewModel(private val repository: AppRepository) : BaseViewMo
     private val getHomeSuccess = MutableLiveData<SingleLiveEvent<HistoryResponse>>()
     fun observeHomeSuccess(): MutableLiveData<SingleLiveEvent<HistoryResponse>> = getHomeSuccess
 
+    private val isErrorGetReport = MutableLiveData<SingleLiveEvent<Int>>()
+    fun observeErrorGetReport() : LiveData<SingleLiveEvent<Int>> = isErrorGetReport
+
     fun getHomePedagogue(token: String) {
         viewModelScope.launch {
             when(val result = repository.getHomePedagogue(token)) {
@@ -20,7 +24,7 @@ class HomePedagogueViewModel(private val repository: AppRepository) : BaseViewMo
                     getHomeSuccess.postValue(SingleLiveEvent(result.data))
                 }
                 is ResponseResult.Error -> {
-                    isError.postValue(result.errorMsg)
+                    isErrorGetReport.postValue(SingleLiveEvent(result.code))
                 }
             }
         }

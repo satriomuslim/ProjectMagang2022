@@ -23,6 +23,9 @@ class HomeViewModel(private val repository: AppRepository) : BaseViewModel() {
     private val getHomeSuccess = MutableLiveData<SingleLiveEvent<HistoryResponse>>()
     fun observeHomeSuccess(): MutableLiveData<SingleLiveEvent<HistoryResponse>> = getHomeSuccess
 
+    private val isErrorGetReport = MutableLiveData<SingleLiveEvent<Int>>()
+    fun observeErrorGetReport() : LiveData<SingleLiveEvent<Int>> = isErrorGetReport
+
     fun getChildList(token: String, type: String) {
         viewModelScope.launch {
             when(val result = repository.getListChild(token, type)) {
@@ -58,7 +61,7 @@ class HomeViewModel(private val repository: AppRepository) : BaseViewModel() {
                     getHomeSuccess.postValue(SingleLiveEvent(result.data))
                 }
                 is ResponseResult.Error -> {
-                    isError.postValue(result.errorMsg)
+                    isErrorGetReport.postValue(SingleLiveEvent(result.code))
                 }
             }
         }

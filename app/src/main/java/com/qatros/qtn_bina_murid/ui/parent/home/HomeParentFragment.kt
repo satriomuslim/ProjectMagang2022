@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qatros.qtn_bina_murid.databinding.FragmentHomeParentBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
@@ -48,6 +49,13 @@ class HomeParentFragment : Fragment() {
                     adapter = HomeParentAdapter(data.data)
                     layoutManager = LinearLayoutManager(requireContext())
                 }
+            }
+        }
+
+        viewModel.observeErrorGetReport().observe(viewLifecycleOwner) {
+            it.getContentIfNotHandled()?.let { data ->
+                binding.laNotFoundHomeParent.isGone = false
+                binding.rvDailyParentUpdate.isGone = true
             }
         }
     }

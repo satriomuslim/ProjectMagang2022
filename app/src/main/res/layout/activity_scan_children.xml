@@ -51,7 +51,7 @@
         android:layout_marginTop="16dp"
         android:text="Taruh barcode di kamera untuk scan dan pastikan barcode di kotak tengah agar bisa di scan."
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/yellow"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +70,7 @@
         android:background="@drawable/bg_rounded_white_top_radius"
         android:backgroundTint="@color/blue"
         android:orientation="vertical"
-        android:paddingTop="32dp"
+        android:paddingTop="16dp"
         android:paddingBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -82,7 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:text="Metode Lain"
             android:textColor="@color/yellow"
             android:textSize="20sp" />
@@ -98,7 +98,7 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             app:drawableLeftCompat="@drawable/ic_baseline_fiber_pin_24"
-            tools:text="ID : 992103" />
+            android:text="ID number" />
 
 
     </LinearLayout>

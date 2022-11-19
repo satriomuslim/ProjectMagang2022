@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qatros.qtn_bina_murid.databinding.FragmentHistoryBinding
@@ -31,8 +32,10 @@ class HistoryFragment : Fragment() {
         val token = SharedPreference(requireContext()).userToken
         if (role == 1) {
             viewModel.getHistoryParent(token)
+            binding.pbHistoryParent.isGone = false
         } else {
             viewModel.getHistoryPedagogue(token)
+            binding.pbHistoryParent.isGone = false
         }
     }
 
@@ -45,6 +48,7 @@ class HistoryFragment : Fragment() {
                             adapter = HistoryAdapter(data.data)
                             layoutManager = LinearLayoutManager(requireContext())
                         }
+                        pbHistoryParent.isGone = true
                     }
                 }
             }

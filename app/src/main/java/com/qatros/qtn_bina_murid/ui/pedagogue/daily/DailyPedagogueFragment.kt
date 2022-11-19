@@ -68,6 +68,7 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
         token = SharedPreference(requireContext()).userToken
         pedagogueName = SharedPreference(requireContext()).userName
         viewModel.getChildList(token, "pedagogue")
+        binding.pbDailyReportPendagogue.isGone = false
     }
 
     private fun observeData() {
@@ -102,6 +103,7 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
             }
 
             observeGetReportPedagogue().observe(viewLifecycleOwner) { data ->
+                binding.pbDailyReportPendagogue.isGone = true
                 binding.laNotFoundDailyPedagogue.isGone = true
                 binding.rvDetailDailyParent.isGone = false
                 with(binding.rvDetailDailyParent) {
@@ -112,6 +114,7 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
 
             observeErrorGetReport().observe(viewLifecycleOwner) {
                 it.getContentIfNotHandled()?.let { data ->
+                    binding.pbDailyReportPendagogue.isGone = true
                     binding.laNotFoundDailyPedagogue.isGone = false
                     binding.rvDetailDailyParent.isGone = true
                 }
@@ -198,10 +201,12 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
                     date = dateDefault
                 )
                 viewModel.postReport(token, childrenId, userId, data)
+                pbInputReportPedagogue.isGone = false
 
                 viewModel.observePostReportSuccess().observe(viewLifecycleOwner) {
                     it.getContentIfNotHandled()?.let { success ->
                         if(success) {
+                            pbInputReportPedagogue.isGone = true
                             bottomSheetDialog.dismiss()
                             viewModel.getReportPedagogue(token, dateDefault, childrenId, userId)
                         }
@@ -217,6 +222,7 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
     override fun setItemClick(data: Date, position: Int) {
         dateDefault = SimpleDateFormat("yyyy-MM-dd").format(data.time)
         viewModel.getReportPedagogue(token, dateDefault, childrenId, userId)
+        binding.pbDailyReportPendagogue.isGone = false
     }
 
     override fun onStart() {
@@ -234,7 +240,7 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
                     dialogBinding.apply {
                         when {
                             edSubject.text!!.isEmpty() -> {
-                                edSubject.error = "Email Required"
+                                edSubject.error = "Subject Required"
                             }
                             else -> {
 

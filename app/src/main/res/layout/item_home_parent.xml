@@ -33,14 +33,14 @@
             android:id="@+id/vw_bottom"
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@color/yellow"
+            android:layout_below="@id/iv_dots"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/iv_dots"/>
+            android:background="@color/yellow" />
     </RelativeLayout>
 
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/img_user"
+        android:id="@+id/img_user_daily"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
@@ -53,8 +53,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginRight="16dp">
 
         <TextView
@@ -62,25 +63,30 @@
             style="@style/DefaultTextLandingBold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="2"
             android:text="Catatan Ganyu dari Pedagogue Kazuha"
             android:textSize="11sp" />
 
         <TextView
+            android:id="@+id/tv_date_daily_update"
             style="@style/DefaultTextMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title_daily_update"
+            android:layout_alignParentBottom="true"
             android:text="16 Oktober 2022"
-            android:textSize="10dp"
             android:textColor="@color/greyDefault"
-            android:layout_alignParentBottom="true"/>
+            android:textSize="10dp" />
 
         <TextView
+            android:id="@+id/tv_time_daily_update"
             style="@style/DefaultTextMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="9.00 - 10.30 WIB"
             android:textSize="10dp"
             android:textColor="@color/greyDefault"
+            android:layout_below="@id/tv_title_daily_update"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"/>
     </RelativeLayout>

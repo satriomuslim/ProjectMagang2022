@@ -1,16 +1,24 @@
 package com.qatros.qtn_bina_murid.ui.pedagogue.scanChildren
 
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Toast
 import com.budiyev.android.codescanner.AutoFocusMode
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
+import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.data.remote.request.InviteChildRequest
+import com.qatros.qtn_bina_murid.data.remote.request.Subject
+import com.qatros.qtn_bina_murid.data.remote.request.SubjectRequest
 import com.qatros.qtn_bina_murid.databinding.ActivityScanChildrenBinding
+import com.qatros.qtn_bina_murid.databinding.PopupAddSubjectBinding
+import com.qatros.qtn_bina_murid.databinding.PopupInviteIdPendagogueBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
 import org.koin.android.ext.android.inject
 
@@ -56,5 +64,58 @@ class ScanChildrenActivity : AppCompatActivity() {
             }
         }
         codeScanner.startPreview()
+
+        binding.tvInviteToken.setOnClickListener {
+            val dialogBinding = PopupInviteIdPendagogueBinding.inflate(layoutInflater)
+            val alertDialog = AlertDialog.Builder(this).setView(dialogBinding.root)
+            val dialogTextWatcher: TextWatcher = object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                    dialogBinding.apply {
+                        when {
+                            edId.text!!.isEmpty() -> {
+                                edId.error = "ID Required"
+                            }
+                            else -> {
+
+                            }
+
+                        }
+                        btnInviteChild.isEnabled =
+                            edId.text!!.isNotEmpty()
+                    }
+
+                }
+
+                override fun afterTextChanged(s: Editable) {
+                    dialogBinding.apply {
+                        if (edId.text?.isBlank()
+                                ?.not() == true
+                        ) {
+                            btnInviteChild.setBackgroundColor(resources.getColor(R.color.blue))
+                        } else {
+                            btnInviteChild.setBackgroundColor(resources.getColor(R.color.grey))
+                        }
+                    }
+                }
+
+            }
+            val dialog = alertDialog.show()
+            with(dialogBinding) {
+                edId.addTextChangedListener(dialogTextWatcher)
+                btnClosePopupId.setOnClickListener {
+                    dialog.dismiss()
+                }
+
+                btnInviteChild.setOnClickListener {
+                    dialog.dismiss()
+                    startActivity(Intent(this@ScanChildrenActivity, ScanChildrenResultActivity::class.java).putExtra(ScanChildrenResultActivity.CHILD_DATA, edId.text.toString()))
+                    finish()
+                }
+            }
+        }
     }
 }

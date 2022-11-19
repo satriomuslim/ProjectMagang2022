@@ -185,11 +185,9 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_margin="16dp"/>
     <ProgressBar
-        android:id="@+id/pb_daily_report_input_pendagogue"
+        android:id="@+id/pb_daily_report_pendagogue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

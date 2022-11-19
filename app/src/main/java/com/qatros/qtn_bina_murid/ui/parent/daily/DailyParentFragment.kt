@@ -54,6 +54,7 @@ class DailyParentFragment : Fragment(), DateAdapter.onItemClick {
         init()
         token = SharedPreference(requireContext()).userToken
         viewModel.getChildList(token, "parent")
+        binding.pbDailyParent.isGone = false
         dateDefault = SimpleDateFormat("yyyy-MM-dd").format(cal.time)
         observeData()
     }
@@ -125,6 +126,7 @@ class DailyParentFragment : Fragment(), DateAdapter.onItemClick {
             }
 
             observeGetReportParent().observe(viewLifecycleOwner) { data ->
+                binding.pbDailyParent.isGone = true
                 binding.laNotFoundDailyParent.isGone = true
                 binding.rvDetailDailyParent.isGone = false
                 with(binding.rvDetailDailyParent) {
@@ -135,6 +137,7 @@ class DailyParentFragment : Fragment(), DateAdapter.onItemClick {
 
             observeErrorGetReport().observe(viewLifecycleOwner) {
                 it.getContentIfNotHandled()?.let { data ->
+                    binding.pbDailyParent.isGone = true
                     binding.laNotFoundDailyParent.isGone = false
                     binding.rvDetailDailyParent.isGone = true
                 }
@@ -162,5 +165,6 @@ class DailyParentFragment : Fragment(), DateAdapter.onItemClick {
     override fun setItemClick(data: Date, position: Int) {
         dateDefault = SimpleDateFormat("yyyy-MM-dd").format(data.time)
         viewModel.getReportParent(token, dateDefault, childrenId, pedagogueId)
+        binding.pbDailyParent.isGone = false
     }
 }
