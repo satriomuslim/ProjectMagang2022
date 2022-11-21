@@ -107,125 +107,56 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:boxCornerRadiusBottomEnd="20dp"
-                app:boxCornerRadiusBottomStart="20dp"
-                app:boxCornerRadiusTopEnd="20dp"
-                app:boxCornerRadiusTopStart="20dp"
-                app:boxStrokeColor="@color/black"
-                app:hintTextColor="@color/black">
+                android:layout_marginTop="32dp"
+                app:startIconDrawable="@drawable/ic_sekolah">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <com.qatros.qtn_bina_murid.customview.SchoolEditText
                     android:id="@+id/ed_asalSekolah"
-                    style="@style/DefaultTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@drawable/ed_rounded_corner"
-                    android:drawableStart="@drawable/ic_sekolah"
-                    android:drawablePadding="20dp"
-                    android:hint="Asal Sekolah"
-                    android:imeOptions="actionNext"
-                    android:inputType="textPersonName"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black" />
-
+                    android:inputType="textPersonName" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                app:boxCornerRadiusBottomEnd="20dp"
-                app:boxCornerRadiusBottomStart="20dp"
-                app:boxCornerRadiusTopEnd="20dp"
-                app:boxCornerRadiusTopStart="20dp"
-                app:boxStrokeColor="@color/black"
-                app:hintTextColor="@color/black"
-                app:passwordToggleTint="@color/black">
+                android:layout_marginTop="16dp"
+                app:startIconDrawable="@drawable/ic_toga_anak">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <com.qatros.qtn_bina_murid.customview.FullNameEditText
                     android:id="@+id/ed_namaAnak"
-                    style="@style/DefaultTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@drawable/ed_rounded_corner"
-                    android:drawableStart="@drawable/ic_toga_anak"
-                    android:drawablePadding="20dp"
-                    android:hint="Nama Lengkap"
-                    android:imeOptions="actionDone"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black" />
-
+                    android:inputType="textPersonName" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                app:boxCornerRadiusBottomEnd="20dp"
-                app:boxCornerRadiusBottomStart="20dp"
-                app:boxCornerRadiusTopEnd="20dp"
-                app:boxCornerRadiusTopStart="20dp"
-                app:boxStrokeColor="@color/black"
-                app:hintTextColor="@color/black"
-                app:passwordToggleTint="@color/black">
+                android:layout_marginTop="16dp"
+                app:startIconDrawable="@drawable/ic_toga_anak">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <com.qatros.qtn_bina_murid.customview.NameEditText
                     android:id="@+id/ed_namaPanggilanAnak"
-                    style="@style/DefaultTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@drawable/ed_rounded_corner"
-                    android:drawableStart="@drawable/ic_toga_anak"
-                    android:drawablePadding="20dp"
-                    android:hint="Nama Panggilan"
-                    android:imeOptions="actionDone"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black" />
-
+                    android:inputType="textPersonName" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                app:boxCornerRadiusBottomEnd="20dp"
-                app:boxCornerRadiusBottomStart="20dp"
-                app:boxCornerRadiusTopEnd="20dp"
-                app:boxCornerRadiusTopStart="20dp"
-                app:boxStrokeColor="@color/black"
-                app:hintTextColor="@color/black">
+                android:layout_marginTop="16dp"
+                app:startIconDrawable="@drawable/ic_calendar">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <com.qatros.qtn_bina_murid.customview.BornEditText
                     android:id="@+id/ed_tanggalLahirAnak"
-                    style="@style/DefaultTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@drawable/ed_rounded_corner"
-                    android:cursorVisible="false"
-                    android:drawableStart="@drawable/ic_calendar"
-                    android:drawablePadding="20dp"
-                    android:hint="Tanggal Lahir"
-                    android:inputType="date"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black" />
-
+                    android:inputType="date" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
