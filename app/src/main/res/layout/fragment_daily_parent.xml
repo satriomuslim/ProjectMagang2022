@@ -139,6 +139,7 @@
                         android:textColor="@color/blue" />
 
                     <TextView
+                        android:id="@+id/btn_all_parent"
                         style="@style/DefaultTextMedium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

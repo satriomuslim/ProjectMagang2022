@@ -146,6 +146,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_tanggalLahirAnak"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -156,6 +157,8 @@
                     android:id="@+id/ed_tanggalLahirAnak"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:cursorVisible="false"
                     android:inputType="date" />
             </com.google.android.material.textfield.TextInputLayout>
 

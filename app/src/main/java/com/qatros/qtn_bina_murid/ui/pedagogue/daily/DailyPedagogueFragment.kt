@@ -133,6 +133,10 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
                 dates.add(monthCalendar.time)
                 monthCalendar.add(Calendar.DAY_OF_MONTH, 1)
             }
+            btnAllPedagogue.setOnClickListener {
+                startActivity(Intent(activity, DailyPedagogueAllActivity::class.java))
+            }
+
             with(rvDateDailyDetailPedagogue) {
                 val dateAdapter = DateAdapter(dates, currentDate, this@DailyPedagogueFragment)
                 adapter = dateAdapter

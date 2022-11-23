@@ -7,7 +7,7 @@
     tools:context=".ui.landing.LandingActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/btn_skip_landing"
         style="@style/DefaultTextLanding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
         android:src="@drawable/ill_landing_page_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/btn_skip_landing"
         tools:ignore="ImageContrastCheck" />
 
     <TextView

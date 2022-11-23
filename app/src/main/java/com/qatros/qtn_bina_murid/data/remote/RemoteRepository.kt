@@ -100,4 +100,12 @@ class RemoteRepository(private val apiService: ApiService) {
     suspend fun getHomePedagogue(token: String) = getResult {
         apiService.getHomePedagogue(token)
     }
+
+    suspend fun getAllReportParent(token: String) = getResult {
+        apiService.getAllReportParent(token)
+    }
+
+    suspend fun getAllReportPedagogue(token: String) = getResult {
+        apiService.getAllReportPedagogue(token)
+    }
 }

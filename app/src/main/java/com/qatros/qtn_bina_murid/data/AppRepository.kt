@@ -86,4 +86,12 @@ class AppRepository(private val localRepository: LocalRepository, private val re
         return remoteRepository.getHomePedagogue(token)
     }
 
+    suspend fun getAllReportParent(token: String): ResponseResult<ReportResponse> {
+        return remoteRepository.getAllReportParent(token)
+    }
+
+    suspend fun getAllReportPedagogue(token: String): ResponseResult<ChildrenReportResponse> {
+        return remoteRepository.getAllReportPedagogue(token)
+    }
+
 }

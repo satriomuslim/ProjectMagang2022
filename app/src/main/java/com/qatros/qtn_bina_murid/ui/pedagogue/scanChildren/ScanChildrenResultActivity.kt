@@ -3,6 +3,7 @@ package com.qatros.qtn_bina_murid.ui.pedagogue.scanChildren
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isGone
 import com.qatros.qtn_bina_murid.data.remote.request.InviteChildRequest
 import com.qatros.qtn_bina_murid.databinding.ActivityScanChildrenBinding
 import com.qatros.qtn_bina_murid.databinding.ActivityScanChildrenResultBinding
@@ -38,8 +39,15 @@ class ScanChildrenResultActivity : AppCompatActivity() {
     private fun observeData() {
         with(viewModel){
             observeInviteChildSuccess().observe(this@ScanChildrenResultActivity) {
-                this@ScanChildrenResultActivity.toast("Berhasil Mengundang Anak")
-                finish()
+                it.getContentIfNotHandled()?.let { success ->
+                    if (success) {
+                        binding.pbAddChildren.isGone = true
+                        this@ScanChildrenResultActivity.toast("Berhasil Mengundang Anak")
+                        finish()
+                    } else {
+                        this@ScanChildrenResultActivity.toast("Error Mengundang Anak")
+                    }
+                }
             }
 
             observeConfirmChild().observe(this@ScanChildrenResultActivity) {
@@ -50,6 +58,7 @@ class ScanChildrenResultActivity : AppCompatActivity() {
                         invitation_token = invToken ?: ""
                     )
                     viewModel.postInviteChild(token, inviteChildReq)
+                    binding.pbAddChildren.isGone = false
                 }
 
                 binding.btnDeniedData.setOnClickListener {

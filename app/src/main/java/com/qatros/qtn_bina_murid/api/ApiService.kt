@@ -121,4 +121,10 @@ interface ApiService {
     suspend fun getHomePedagogue(
         @Header("Authorization") token: String
     ): Response<HistoryResponse>
+
+    @GET("api/v1/report/parent/all")
+    suspend fun getAllReportParent(@Header("Authorization") token: String): Response<ReportResponse>
+
+    @GET("api/v1/report/children/all")
+    suspend fun getAllReportPedagogue(@Header("Authorization") token: String): Response<ChildrenReportResponse>
 }

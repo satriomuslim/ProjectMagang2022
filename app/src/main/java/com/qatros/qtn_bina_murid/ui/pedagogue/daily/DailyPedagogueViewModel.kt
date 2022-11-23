@@ -9,6 +9,7 @@ import com.qatros.qtn_bina_murid.base.ResponseResult
 import com.qatros.qtn_bina_murid.data.AppRepository
 import com.qatros.qtn_bina_murid.data.remote.request.AddReportRequest
 import com.qatros.qtn_bina_murid.data.remote.request.SubjectRequest
+import com.qatros.qtn_bina_murid.data.remote.response.ChildrenReportResponse
 import com.qatros.qtn_bina_murid.data.remote.response.ListChildResponse
 import com.qatros.qtn_bina_murid.data.remote.response.ReportResponse
 import com.qatros.qtn_bina_murid.utils.SingleLiveEvent
@@ -27,6 +28,9 @@ class DailyPedagogueViewModel(private val repository: AppRepository) : BaseViewM
 
     private val getReportPedagogue = MutableLiveData<ReportResponse?>()
     fun observeGetReportPedagogue() : LiveData<ReportResponse?> = getReportPedagogue
+
+    private val getAllReportPedagogue = MutableLiveData<ChildrenReportResponse?>()
+    fun observeGetAllReportPedagogue() : LiveData<ChildrenReportResponse?> = getAllReportPedagogue
 
     private val indicatorCurrent = MutableLiveData<SingleLiveEvent<Boolean>>()
     fun observeIndicatorCurrent() : LiveData<SingleLiveEvent<Boolean>> = indicatorCurrent
@@ -90,6 +94,19 @@ class DailyPedagogueViewModel(private val repository: AppRepository) : BaseViewM
         viewModelScope.launch {
             Log.e("TAG", "indicatorDailyreport: ", )
             indicatorCurrent.postValue(SingleLiveEvent(indicator))
+        }
+    }
+
+    fun getAllReportPedagogue(token: String) {
+        viewModelScope.launch {
+            when(val result = repository.getAllReportPedagogue(token)) {
+                is ResponseResult.Success -> {
+                    getAllReportPedagogue.postValue(result.data)
+                }
+                is ResponseResult.Error -> {
+                    isErrorGetReport.postValue(SingleLiveEvent(result.code))
+                }
+            }
         }
     }
 }

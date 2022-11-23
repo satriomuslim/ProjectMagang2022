@@ -7,6 +7,7 @@ import android.util.Log
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.databinding.ActivityLandingBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
+import com.qatros.qtn_bina_murid.ui.login.LoginActivity
 import com.qatros.qtn_bina_murid.ui.parent.navigation.NavigationParentActivity
 import com.qatros.qtn_bina_murid.ui.pedagogue.navigation.NavigationPedagogueActivity
 
@@ -25,16 +26,17 @@ class LandingActivity : AppCompatActivity() {
             startActivity(Intent(this, LandingNextActivity::class.java))
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
+
+        binding.btnSkipLanding.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
     }
 
     override fun onStart() {
         super.onStart()
         val isLogin = SharedPreference(this).isLogin
-        val listRole = SharedPreference(this).userListRole
         val role = SharedPreference(this).userRole
         if(isLogin) {
-            Log.e("TAG", "onStart: $role", )
-            Log.e("TAG", "onStartLIST: $listRole", )
             if (role == 1) {
                 startActivity(Intent(this, NavigationParentActivity::class.java))
                 finish()

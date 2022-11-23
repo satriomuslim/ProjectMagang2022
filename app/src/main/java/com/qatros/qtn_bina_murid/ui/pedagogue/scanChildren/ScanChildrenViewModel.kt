@@ -10,11 +10,12 @@ import com.qatros.qtn_bina_murid.data.AppRepository
 import com.qatros.qtn_bina_murid.data.remote.request.InviteChildRequest
 import com.qatros.qtn_bina_murid.data.remote.response.ConfirmProfileChildResponse
 import com.qatros.qtn_bina_murid.data.remote.response.InviteChildResponse
+import com.qatros.qtn_bina_murid.utils.SingleLiveEvent
 import kotlinx.coroutines.launch
 
 class ScanChildrenViewModel(private val repository: AppRepository) : BaseViewModel() {
-    private val inviteChildSuccess = MutableLiveData<InviteChildResponse?>()
-    fun observeInviteChildSuccess() : LiveData<InviteChildResponse?> = inviteChildSuccess
+    private val inviteChildSuccess = MutableLiveData<SingleLiveEvent<Boolean>>()
+    fun observeInviteChildSuccess() : LiveData<SingleLiveEvent<Boolean>> = inviteChildSuccess
 
     private val confirmChild = MutableLiveData<ConfirmProfileChildResponse?>()
     fun observeConfirmChild() : LiveData<ConfirmProfileChildResponse?> = confirmChild
@@ -24,11 +25,10 @@ class ScanChildrenViewModel(private val repository: AppRepository) : BaseViewMod
             when(val result = repository.postInviteChildren(token, inviteChildRequest)) {
                 is ResponseResult.Success -> {
                     Log.e("TAG", "postInviteChild: ${result.data}", )
-                    inviteChildSuccess.postValue(result.data)
+                    inviteChildSuccess.postValue(SingleLiveEvent(true))
                 }
                 is ResponseResult.Error -> {
-                    Log.e("TAG", "postInviteChildERROR: ${result.errorMsg} ${result.code}", )
-                    isError.postValue(result.errorMsg)
+                    inviteChildSuccess.postValue(SingleLiveEvent(false))
                 }
             }
         }

@@ -154,6 +154,9 @@ class DailyParentFragment : Fragment(), DateAdapter.onItemClick {
                 dates.add(monthCalendar.time)
                 monthCalendar.add(Calendar.DAY_OF_MONTH, 1)
             }
+            btnAllParent.setOnClickListener {
+                startActivity(Intent(activity, DailyParentsAllActivity::class.java))
+            }
             with(rvDateDailyParent) {
                 val dateAdapter = DateAdapter(dates, currentDate, this@DailyParentFragment)
                 adapter = dateAdapter

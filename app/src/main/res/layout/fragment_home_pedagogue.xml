@@ -18,10 +18,10 @@
                 android:id="@+id/binamurid_img1"
                 android:layout_width="92dp"
                 android:layout_height="18dp"
-                android:src="@drawable/binamurid_1"
-                android:layout_marginTop="16dp"
                 android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginRight="16dp"
+                android:src="@drawable/binamurid_1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,10 +29,10 @@
                 android:id="@+id/wrap_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:orientation="horizontal"
                 android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginRight="16dp"
+                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -44,11 +44,11 @@
                     android:layout_height="60dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
+                    android:src="@drawable/image"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="ContentDescription"
-                    android:src="@drawable/image" />
+                    tools:ignore="ContentDescription" />
 
                 <LinearLayout
                     android:id="@+id/wrap_user_info"
@@ -66,9 +66,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:textSize="10sp"
+                        android:text="Senin, 16 Oktober 2022"
                         android:textColor="@color/black"
-                        android:text="Senin, 16 Oktober 2022" />
+                        android:textSize="10sp" />
 
                     <TextView
                         android:id="@+id/tv_name_home"
@@ -105,22 +105,22 @@
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/vp_banner_home"
-                android:layout_marginTop="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginRight="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/wrap_profile"/>
+                app:layout_constraintTop_toBottomOf="@id/wrap_profile" />
 
             <TextView
-                style="@style/DefaultTextMedium"
                 android:id="@+id/txt_invitation"
+                style="@style/DefaultTextMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginRight="16dp"
                 android:text="Invitation"
                 android:textColor="@color/black"
@@ -132,11 +132,11 @@
                 android:id="@+id/btn_invite_child"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="16dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginRight="16dp"
                 android:background="@drawable/bg_rounded_white_stoke_grey"
+                android:padding="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_invitation">
@@ -152,9 +152,9 @@
                     android:id="@+id/wrap_txt_undang_pendagogue"
                     android:layout_width="240dp"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_marginStart="16dp"
                     android:layout_toRightOf="@id/img_person_add"
-                    android:layout_marginStart="16dp">
+                    android:orientation="vertical">
 
                     <TextView
                         style="@style/DefaultTextView"
@@ -162,16 +162,16 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="4dp"
                         android:text="Undang Anak Didikmu"
-                        android:textSize="14sp"
-                        android:textColor="@color/blue"/>
+                        android:textColor="@color/blue"
+                        android:textSize="14sp" />
 
                     <TextView
                         style="@style/DefaultTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Kamu bisa undang lewat Scanned atau ID"
-                        android:textSize="10sp"
-                        android:textColor="@color/greyText"/>
+                        android:textColor="@color/greyText"
+                        android:textSize="10sp" />
 
                 </LinearLayout>
 
@@ -188,41 +188,40 @@
             <TextView
                 android:id="@+id/title_daily_update"
                 style="@style/DefaultTextMedium"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginRight="16dp"
                 android:text="Daily Update"
-                android:textSize="18sp"
                 android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/btn_invite_child"
-                app:layout_constraintStart_toStartOf="parent"/>
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_invite_child" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/la_not_found_home_pedagogue"
                 android:layout_width="wrap_content"
                 android:layout_height="200dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:visibility="gone"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_daily_update"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
-                android:visibility="gone"
-                app:lottie_rawRes="@raw/not_found"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title_daily_update"/>
+                app:lottie_rawRes="@raw/not_found" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_daily_pendagogue_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginRight="16dp"
-                tools:listitem="@layout/item_home_parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title_daily_update"/>
+                app:layout_constraintTop_toBottomOf="@+id/title_daily_update"
+                tools:listitem="@layout/item_home_parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

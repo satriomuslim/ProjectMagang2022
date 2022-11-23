@@ -1,6 +1,7 @@
 package com.qatros.qtn_bina_murid.ui.parent.child
 
 import android.Manifest
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
@@ -23,6 +24,7 @@ import com.qatros.qtn_bina_murid.databinding.BottomAddImageBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
 import com.qatros.qtn_bina_murid.utils.createCustomTempFile
 import com.qatros.qtn_bina_murid.utils.requestPermission
+import com.qatros.qtn_bina_murid.utils.toast
 import com.qatros.qtn_bina_murid.utils.uriToFile
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -31,6 +33,8 @@ import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.koin.android.ext.android.inject
 import java.io.File
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class FormChildActivity : AppCompatActivity() {
@@ -56,7 +60,6 @@ class FormChildActivity : AppCompatActivity() {
             edAsalSekolah.addTextChangedListener(loginTextWatcher)
             edNamaAnak.addTextChangedListener(loginTextWatcher)
             edNamaPanggilanAnak.addTextChangedListener(loginTextWatcher)
-            edTanggalLahirAnak.addTextChangedListener(loginTextWatcher)
         }
 
         observeData()
@@ -66,10 +69,16 @@ class FormChildActivity : AppCompatActivity() {
     private fun observeData() {
         with(viewModel) {
             observeAddChildSuccess().observe(this@FormChildActivity) {
-                binding.pbRegisterChild.isGone = true
-                Toast.makeText(this@FormChildActivity, "SUCCESS MENAMBAH ANAK", Toast.LENGTH_SHORT)
-                    .show()
-                finish()
+                it.getContentIfNotHandled()?.let {
+                    binding.pbRegisterChild.isGone = true
+                    Toast.makeText(
+                        this@FormChildActivity,
+                        "SUCCESS MENAMBAH ANAK",
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
+                    finish()
+                }
             }
 
             observeError().observe(this@FormChildActivity) {
@@ -129,6 +138,9 @@ class FormChildActivity : AppCompatActivity() {
 
     private fun init() {
         with(binding) {
+            edTanggalLahirAnak.setOnClickListener {
+                getDate()
+            }
             btnRegisterChild.setOnClickListener {
                 val token = SharedPreference(this@FormChildActivity).userToken
                 val fullName = edNamaAnak.text.toString().toRequestBody("text/plain".toMediaType())
@@ -148,7 +160,16 @@ class FormChildActivity : AppCompatActivity() {
                 }
                 if (imageMultipart != null) {
                     pbRegisterChild.isGone = false
-                    viewModel.postAddChild(token, fullName, nickName, school, birthOfDate, imageMultipart)
+                    viewModel.postAddChild(
+                        token,
+                        fullName,
+                        nickName,
+                        school,
+                        birthOfDate,
+                        imageMultipart
+                    )
+                } else {
+                    this@FormChildActivity.toast("Gambar Masih Kosong")
                 }
 
             }
@@ -158,6 +179,25 @@ class FormChildActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun getDate() {
+        val calendar = Calendar.getInstance()
+        var day = calendar.get(Calendar.DAY_OF_MONTH)
+        var month = calendar.get(Calendar.MONTH)
+        var year = calendar.get(Calendar.YEAR)
+        val dateTime = Calendar.getInstance()
+        DatePickerDialog(
+            this, R.style.DialogTheme,
+            { view, year, month, day ->
+                dateTime.set(year, month, day)
+                val dateFormater = SimpleDateFormat("dd/MM/yyyy").format(dateTime.time)
+                binding.edTanggalLahirAnak.setText(dateFormater)
+            },
+            year, month, day
+        ).show()
+
+    }
+
 
     private fun showBottomSheetDialog() {
         val dialogBinding = BottomAddImageBinding.inflate(layoutInflater)
@@ -174,7 +214,8 @@ class FormChildActivity : AppCompatActivity() {
                             ) != PackageManager.PERMISSION_GRANTED
                         ) {
                             requestPermission(
-                                permissions, {}, {}, this@FormChildActivity)
+                                permissions, {}, {}, this@FormChildActivity
+                            )
                             return@setOnClickListener
                         }
                     }
@@ -192,7 +233,8 @@ class FormChildActivity : AppCompatActivity() {
                             ) != PackageManager.PERMISSION_GRANTED
                         ) {
                             requestPermission(
-                                permissions, {}, {}, this@FormChildActivity)
+                                permissions, {}, {}, this@FormChildActivity
+                            )
                             return@setOnClickListener
                         }
                     }

@@ -33,7 +33,9 @@ class HistoryFragment : Fragment() {
         if (role == 1) {
             viewModel.getHistoryParent(token)
             binding.pbHistoryParent.isGone = false
+            binding.listChildPedagogue.text = "History Parent"
         } else {
+            binding.listChildPedagogue.text = "History Pedagogue"
             viewModel.getHistoryPedagogue(token)
             binding.pbHistoryParent.isGone = false
         }

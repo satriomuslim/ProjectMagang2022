@@ -23,6 +23,9 @@ class DailyParentViewModel(private val repository: AppRepository) : BaseViewMode
     private val getReportParent = MutableLiveData<ReportResponse?>()
     fun observeGetReportParent() : LiveData<ReportResponse?> = getReportParent
 
+    private val getAllReportParent = MutableLiveData<ReportResponse?>()
+    fun observeGetAllReportPedagogue() : LiveData<ReportResponse?> = getAllReportParent
+
     private val isErrorGetReport = MutableLiveData<SingleLiveEvent<Int>>()
     fun observeErrorGetReport() : LiveData<SingleLiveEvent<Int>> = isErrorGetReport
 
@@ -57,6 +60,19 @@ class DailyParentViewModel(private val repository: AppRepository) : BaseViewMode
             when(val result = repository.getReport(token, date, childrenId, userId)) {
                 is ResponseResult.Success -> {
                     getReportParent.postValue(result.data)
+                }
+                is ResponseResult.Error -> {
+                    isErrorGetReport.postValue(SingleLiveEvent(result.code))
+                }
+            }
+        }
+    }
+
+    fun getAllReportParent(token: String) {
+        viewModelScope.launch {
+            when(val result = repository.getAllReportParent(token)) {
+                is ResponseResult.Success -> {
+                    getAllReportParent.postValue(result.data)
                 }
                 is ResponseResult.Error -> {
                     isErrorGetReport.postValue(SingleLiveEvent(result.code))
