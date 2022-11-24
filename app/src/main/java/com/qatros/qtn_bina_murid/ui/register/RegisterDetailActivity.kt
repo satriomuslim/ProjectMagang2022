@@ -1,30 +1,27 @@
 package com.qatros.qtn_bina_murid.ui.register
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.view.Window
+import android.widget.Button
 import android.widget.Toast
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.data.remote.request.RegisterRequest
 import com.qatros.qtn_bina_murid.databinding.ActivityRegisterDetailBinding
 import com.qatros.qtn_bina_murid.ui.login.LoginActivity
-import com.qatros.qtn_bina_murid.utils.dialog.AestheticDialog
-import com.qatros.qtn_bina_murid.utils.dialog.DialogAnimation
-import com.qatros.qtn_bina_murid.utils.dialog.DialogStyle
-import com.qatros.qtn_bina_murid.utils.dialog.OnDialogClickListener
 import com.qatros.qtn_bina_murid.utils.toast
 import org.koin.android.ext.android.inject
 
-class RegisterDetailActivity : AppCompatActivity(), View.OnClickListener {
+class RegisterDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterDetailBinding
 
     private val viewModel: RegisterViewModel by inject()
 
     private lateinit var role: String
-
-    var successMessage: String = "The message was sent successfully!"
-    var successTitle: String = "Success"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +29,8 @@ class RegisterDetailActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(binding.root)
         init()
         observeData()
+
+
     }
 
     private fun observeData() {
@@ -63,6 +62,17 @@ class RegisterDetailActivity : AppCompatActivity(), View.OnClickListener {
                     role = role
                 )
                 viewModel.postRegister(registerReq)
+
+                val dialog = Dialog(this@RegisterDetailActivity)
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+                dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                dialog.setContentView(R.layout.popup_add_email)
+
+                val btnClose = dialog.findViewById<Button>(R.id.btn_add_email)
+                btnClose.setOnClickListener {
+                    dialog.dismiss()
+                }
+                dialog.show()
             }
 
             btnParent.setOnClickListener {
@@ -83,23 +93,6 @@ class RegisterDetailActivity : AppCompatActivity(), View.OnClickListener {
                 btnPedagogue.setTextColor(resources.getColor(R.color.white))
                 btnParent.setTextColor(resources.getColor(R.color.black))
                 role = "pedagogue"
-            }
-        }
-    }
-
-    override fun onClick(view: View) {
-        when (view.id) {
-            R.id.btn_register -> {
-                AestheticDialog.Builder(this, DialogStyle.FLASH)
-                    .setTitle(successTitle)
-                    .setMessage(successMessage)
-                    .setAnimation(DialogAnimation.SHRINK)
-                    .setOnClickListener(object : OnDialogClickListener {
-                        override fun onClick(dialog: AestheticDialog.Builder) {
-                            dialog.dismiss()
-                        }
-                    })
-                    .show()
             }
         }
     }

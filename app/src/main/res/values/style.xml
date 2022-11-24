@@ -8,6 +8,10 @@
     <item name="fontFamily">@font/poppins_regular</item>
     </style>
 
+    <style name="DefaultTextPopup" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+
     <style name="DefaultTextLanding" parent="Widget.AppCompat.TextView">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
@@ -111,7 +115,7 @@
     </style>
 
     <dimen name="popup_width">300dp</dimen>
-    <dimen name="popup_height">310dp</dimen>
+    <dimen name="popup_height">250dp</dimen>
 
     <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
         <item name="colorAccent">@color/blue</item>

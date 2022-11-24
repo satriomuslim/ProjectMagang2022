@@ -1,44 +1,35 @@
 package com.qatros.qtn_bina_murid.ui.profile
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.view.Window
+import android.widget.Button
 import androidx.activity.OnBackPressedCallback
-import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.databinding.FragmentEditProfileBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
-import com.qatros.qtn_bina_murid.utils.dialog.AestheticDialog
-import com.qatros.qtn_bina_murid.utils.dialog.DialogAnimation
-import com.qatros.qtn_bina_murid.utils.dialog.DialogStyle
-import com.qatros.qtn_bina_murid.utils.dialog.OnDialogClickListener
 import com.qatros.qtn_bina_murid.utils.toast
-import kotlinx.coroutines.delay
 import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.MultipartBody
-import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import java.io.File
 
-class EditProfileFragment : Fragment(), View.OnClickListener {
+class EditProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentEditProfileBinding
 
     private val viewModel: ProfileViewModel by sharedViewModel()
 
     private var finalFile: File? = null
-
-    var successMessage: String = "The message was sent successfully!"
-    var successTitle: String = "Success"
 
     private val onBackCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
@@ -55,6 +46,11 @@ class EditProfileFragment : Fragment(), View.OnClickListener {
         }
         init()
         observeData()
+
+//        binding.btnSaveDataProfileParent.setOnClickListener {
+//            customDialog()
+//        }
+
     }
 
     override fun onCreateView(
@@ -66,22 +62,19 @@ class EditProfileFragment : Fragment(), View.OnClickListener {
         return binding.root
     }
 
-    override fun onClick(view: View) {
-        when (view.id) {
-            R.id.btn_register -> {
-                AestheticDialog.Builder(requireActivity(), DialogStyle.FLASH)
-                    .setTitle(successTitle)
-                    .setMessage(successMessage)
-                    .setAnimation(DialogAnimation.SHRINK)
-                    .setOnClickListener(object : OnDialogClickListener {
-                        override fun onClick(dialog: AestheticDialog.Builder) {
-                            dialog.dismiss()
-                        }
-                    })
-                    .show()
-            }
-        }
-    }
+
+//    private fun customDialog() {
+//        val dialog = Dialog(requireActivity())
+//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+//        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+//        dialog.setContentView(R.layout.popup_confirm_email)
+//
+//        val btnClose = dialog.findViewById<Button>(R.id.btn_confirm_email)
+//            btnClose.setOnClickListener {
+//                dialog.dismiss()
+//            }
+//        dialog.show()
+//    }
 
     private fun observeData() {
         viewModel.observeEditProfileSuccess().observe(viewLifecycleOwner) {
@@ -107,6 +100,16 @@ class EditProfileFragment : Fragment(), View.OnClickListener {
 
                 viewModel.editProfile(token, name, email)
 
+                val dialog = Dialog(requireActivity())
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+                dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                dialog.setContentView(R.layout.popup_confirm_email)
+
+                val btnClose = dialog.findViewById<Button>(R.id.btn_confirm_email)
+                btnClose.setOnClickListener {
+                    dialog.dismiss()
+                }
+                dialog.show()
             }
         }
     }
