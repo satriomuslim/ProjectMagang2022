@@ -1,189 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".ui.parent.child.FormChildActivity">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="26dp">
 
-        <LinearLayout
-            android:id="@+id/wrap_profile"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_rounded_white_bottom_radius"
-            android:backgroundTint="@color/blue"
-            android:orientation="vertical"
-            android:paddingTop="20dp"
-            android:paddingBottom="40dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/txt_daftarAnak"
-                style="@style/DefaultTextView"
+            <ProgressBar
+                android:id="@+id/pb_register_child"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp"
-                android:text="Daftar Anak"
-                android:textColor="@color/white"
-                android:textSize="20sp"
+                android:layout_centerInParent="true"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-        </LinearLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/wrap_imgProfile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-40dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/wrap_profile">
-
-            <RelativeLayout
-                android:id="@+id/btn_add_profile"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/wrap_profile"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/bg_rounded_white_bottom_radius"
+                android:backgroundTint="@color/blue"
+                android:orientation="vertical"
+                android:paddingTop="20dp"
+                android:paddingBottom="40dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/img_profileAnak"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="@drawable/bg_oval_grey_stroke"
-                    android:padding="8dp"
-                    android:src="@drawable/image" />
-
-                <ImageView
-                    android:id="@+id/btn_add_image"
+                <TextView
+                    android:id="@+id/txt_daftarAnak"
+                    style="@style/DefaultTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignRight="@id/img_profileAnak"
-                    android:layout_alignBottom="@id/img_profileAnak"
-                    android:background="@drawable/bg_oval_white"
-                    android:backgroundTint="@color/blue"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_camera_small" />
+                    android:layout_gravity="center"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="24dp"
+                    android:text="Daftar Anak"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            </RelativeLayout>
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/wrap_imgProfile"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                style="@style/DefaultTextView"
-                android:text="Hai, isi data diri anakmu di form bawah \nya pastikan datanya sudah benar"
-                android:textAlignment="center"
-                android:textColor="@color/greyDefault"
-                android:textSize="9sp"
+                android:layout_marginTop="-40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btn_add_profile" />
+                app:layout_constraintTop_toBottomOf="@id/wrap_profile">
+
+                <RelativeLayout
+                    android:id="@+id/btn_add_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img_profileAnak"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/bg_oval_grey_stroke"
+                        android:padding="8dp"
+                        android:src="@drawable/image" />
+
+                    <ImageView
+                        android:id="@+id/btn_add_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignRight="@id/img_profileAnak"
+                        android:layout_alignBottom="@id/img_profileAnak"
+                        android:background="@drawable/bg_oval_white"
+                        android:backgroundTint="@color/blue"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_camera_small" />
+
+                </RelativeLayout>
+
+                <TextView
+                    style="@style/DefaultTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Hai, isi data diri anakmu di form bawah \nya pastikan datanya sudah benar"
+                    android:textAlignment="center"
+                    android:textColor="@color/greyDefault"
+                    android:textSize="9sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btn_add_profile" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/wrap_formChild"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/wrap_imgProfile">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    app:startIconDrawable="@drawable/ic_sekolah">
+
+                    <com.qatros.qtn_bina_murid.customview.SchoolEditText
+                        android:id="@+id/ed_asalSekolah"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:startIconDrawable="@drawable/ic_toga_anak">
+
+                    <com.qatros.qtn_bina_murid.customview.FullNameEditText
+                        android:id="@+id/ed_namaAnak"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:startIconDrawable="@drawable/ic_toga_anak">
+
+                    <com.qatros.qtn_bina_murid.customview.NameEditText
+                        android:id="@+id/ed_namaPanggilanAnak"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_tanggalLahirAnak"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:startIconDrawable="@drawable/ic_calendar">
+
+                    <com.qatros.qtn_bina_murid.customview.BornEditText
+                        android:id="@+id/ed_tanggalLahirAnak"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:inputType="date" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_register_child"
+                    style="@style/Button_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"
+                    android:backgroundTint="@color/grey"
+                    android:enabled="false"
+                    android:text="Daftar"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    app:elevation="5dp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="480dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="731dp"
-            android:orientation="vertical">
+    </androidx.core.widget.NestedScrollView>
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                app:startIconDrawable="@drawable/ic_sekolah">
-
-                <com.qatros.qtn_bina_murid.customview.SchoolEditText
-                    android:id="@+id/ed_asalSekolah"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:startIconDrawable="@drawable/ic_toga_anak">
-
-                <com.qatros.qtn_bina_murid.customview.FullNameEditText
-                    android:id="@+id/ed_namaAnak"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:startIconDrawable="@drawable/ic_toga_anak">
-
-                <com.qatros.qtn_bina_murid.customview.NameEditText
-                    android:id="@+id/ed_namaPanggilanAnak"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tl_tanggalLahirAnak"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:startIconDrawable="@drawable/ic_calendar">
-
-                <com.qatros.qtn_bina_murid.customview.BornEditText
-                    android:id="@+id/ed_tanggalLahirAnak"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:cursorVisible="false"
-                    android:inputType="date" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_register_child"
-                style="@style/Button_one"
-                android:layout_width="match_parent"
-                android:layout_height="64dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="15dp"
-                android:backgroundTint="@color/grey"
-                android:text="Daftar"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                app:elevation="5dp"/>
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-    </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/pb_register_child"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone"/>
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

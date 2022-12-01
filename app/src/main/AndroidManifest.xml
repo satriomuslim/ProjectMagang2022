@@ -41,7 +41,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.parent.childProfile.ChildProfileActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ui.register.RegisterDetailActivity"
             android:exported="false" />
@@ -53,7 +53,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.parent.child.FormChildActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ui.pedagogue.scanChildren.ScanChildrenActivity"
             android:exported="false" />

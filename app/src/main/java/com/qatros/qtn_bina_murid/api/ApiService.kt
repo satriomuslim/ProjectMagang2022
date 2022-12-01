@@ -58,6 +58,13 @@ interface ApiService {
         @Part("email") email: RequestBody
     ): Response<ProfileResponse>
 
+    @Multipart
+    @PATCH("api/v1/user/profile/edit")
+    suspend fun editProfileChild(
+        @Header("Authorization") token: String,
+        @Part("fullname") fullname: RequestBody
+    ): Response<EditProfileChildResponse>
+
     @GET("api/v1/children/pedagogue?")
     suspend fun getPedagogueByChildId(
         @Header("Authorization") token: String,

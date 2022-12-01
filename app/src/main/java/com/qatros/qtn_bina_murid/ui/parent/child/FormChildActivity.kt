@@ -60,6 +60,7 @@ class FormChildActivity : AppCompatActivity() {
             edAsalSekolah.addTextChangedListener(loginTextWatcher)
             edNamaAnak.addTextChangedListener(loginTextWatcher)
             edNamaPanggilanAnak.addTextChangedListener(loginTextWatcher)
+            edTanggalLahirAnak.addTextChangedListener(loginTextWatcher)
         }
 
         observeData()
@@ -106,7 +107,7 @@ class FormChildActivity : AppCompatActivity() {
                     edNamaPanggilanAnak.text!!.isEmpty() -> {
                         edNamaPanggilanAnak.error = "Nickname Required"
                     }
-                    edTanggalLahirAnak.text!!.isEmpty() -> {
+                    edTanggalLahirAnak.isClickable.not() -> {
                         edTanggalLahirAnak.error = "Date Required"
                     }
                     else -> {
@@ -123,9 +124,7 @@ class FormChildActivity : AppCompatActivity() {
 
         override fun afterTextChanged(s: Editable) {
             binding.apply {
-                if (edAsalSekolah.text?.isBlank()?.not() == true && edNamaAnak.text?.isBlank()
-                        ?.not() == true && edNamaPanggilanAnak.text?.isBlank()
-                        ?.not() == true && edTanggalLahirAnak.text?.isBlank()?.not() == true
+                if (edAsalSekolah.text?.isBlank()?.not() == true && edNamaAnak.text?.isBlank()?.not() == true && edNamaPanggilanAnak.text?.isBlank()?.not() == true && edTanggalLahirAnak.text?.isBlank()?.not() == true
                 ) {
                     btnRegisterChild.setBackgroundColor(resources.getColor(R.color.blue))
                 } else {

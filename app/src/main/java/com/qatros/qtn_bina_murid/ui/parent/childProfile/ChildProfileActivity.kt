@@ -7,7 +7,6 @@ import android.text.TextWatcher
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.data.remote.response.Children
 import com.qatros.qtn_bina_murid.databinding.ActivityChildProfileBinding
-import com.qatros.qtn_bina_murid.databinding.ActivityFormChildBinding
 
 class ChildProfileActivity : AppCompatActivity() {
 
