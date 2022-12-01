@@ -14,9 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
-import androidx.core.view.isGone
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.base.BaseFragment
 import com.qatros.qtn_bina_murid.databinding.BottomAddImageBinding
 import com.qatros.qtn_bina_murid.databinding.BottomImageReviewBinding

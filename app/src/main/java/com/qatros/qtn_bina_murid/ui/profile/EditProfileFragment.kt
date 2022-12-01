@@ -46,11 +46,6 @@ class EditProfileFragment : Fragment() {
         }
         init()
         observeData()
-
-//        binding.btnSaveDataProfileParent.setOnClickListener {
-//            customDialog()
-//        }
-
     }
 
     override fun onCreateView(
@@ -61,20 +56,6 @@ class EditProfileFragment : Fragment() {
         binding = FragmentEditProfileBinding.inflate(layoutInflater)
         return binding.root
     }
-
-
-//    private fun customDialog() {
-//        val dialog = Dialog(requireActivity())
-//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-//        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-//        dialog.setContentView(R.layout.popup_confirm_email)
-//
-//        val btnClose = dialog.findViewById<Button>(R.id.btn_confirm_email)
-//            btnClose.setOnClickListener {
-//                dialog.dismiss()
-//            }
-//        dialog.show()
-//    }
 
     private fun observeData() {
         viewModel.observeEditProfileSuccess().observe(viewLifecycleOwner) {

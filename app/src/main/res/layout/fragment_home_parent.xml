@@ -19,7 +19,7 @@
                 android:id="@+id/binamurid_img1"
                 android:layout_width="92dp"
                 android:layout_height="18dp"
-                android:src="@drawable/binamurid_1"
+                android:src="@drawable/logobinamurid"
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"/>
