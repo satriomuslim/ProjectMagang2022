@@ -108,4 +108,16 @@ class RemoteRepository(private val apiService: ApiService) {
     suspend fun getAllReportPedagogue(token: String) = getResult {
         apiService.getAllReportPedagogue(token)
     }
+
+    suspend fun postMessageChat(token: String, roomId: Int) = getResult {
+        apiService.postMessageChat(token, roomId)
+    }
+
+    suspend fun getPrivateRoomChat(token: String) = getResult {
+        apiService.getPrivateRoomChat(token)
+    }
+
+    suspend fun getMessageChat(token: String, userId: Int) = getResult {
+        apiService.getMessageChat(token, userId)
+    }
 }

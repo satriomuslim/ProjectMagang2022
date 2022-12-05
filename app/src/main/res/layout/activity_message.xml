@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.chat.MessageActivity">
+
+    <LinearLayout
+        android:id="@+id/ll_parent_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:padding="8dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_back_from_chat"
+            android:src="@drawable/ic_back"
+            android:layout_margin="8dp"
+            app:tint="@color/white" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_profile_chat"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_user_default"/>
+
+        <TextView
+            android:id="@+id/tv_name_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kaedehara Kazuha"
+            style="@style/DefaultTextMedium"
+            android:textColor="@color/white"
+            android:layout_marginLeft="8dp"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_chat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/rl_parent_typing"
+        android:layout_below="@id/ll_parent_profile"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_parent_typing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/greyBackground">
+
+        <EditText
+            android:id="@+id/et_chat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="Write a message"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/btn_send_message"
+            android:layout_marginRight="8dp"
+            android:textSize="12sp"/>
+        
+        <ImageView
+            android:id="@+id/btn_send_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_paperline"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>

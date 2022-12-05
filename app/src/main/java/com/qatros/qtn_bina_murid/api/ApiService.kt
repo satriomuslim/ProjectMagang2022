@@ -134,4 +134,14 @@ interface ApiService {
 
     @GET("api/v1/report/children/all")
     suspend fun getAllReportPedagogue(@Header("Authorization") token: String): Response<ChildrenReportResponse>
+
+    @POST("api/v1/chat/messages/private/rooms/{room_id}")
+    suspend fun postMessageChat(@Header("Authorization") token: String, @Path("room_id") roomId: Int): Response<AddChatResponse>
+
+    @GET("api/v1/chat/private/rooms/all")
+    suspend fun getPrivateRoomChat(@Header("Authorization") token: String) : Response<AllRoomChatResponse>
+
+    @GET("api/v1/chat/private/rooms?")
+    suspend fun getMessageChat(@Header("Authorization") token: String, @Query("user_id")userId: Int): Response<AllChatResponse>
+
 }
