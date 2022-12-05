@@ -1,5 +1,6 @@
 package com.qatros.qtn_bina_murid.di
 
+import com.qatros.qtn_bina_murid.ui.chat.ChatViewModel
 import com.qatros.qtn_bina_murid.ui.history.HistoryViewModel
 import com.qatros.qtn_bina_murid.ui.login.LoginViewModel
 import com.qatros.qtn_bina_murid.ui.parent.child.FormChildViewModel
@@ -25,4 +26,5 @@ val viewModelModule = module {
     single { ResetPasswordViewModel(get()) }
     single { FormChildViewModel(get()) }
     single { ScanChildrenViewModel(get()) }
+    single { ChatViewModel(get()) }
 }

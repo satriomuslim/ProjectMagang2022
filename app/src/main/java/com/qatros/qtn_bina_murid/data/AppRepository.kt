@@ -94,8 +94,8 @@ class AppRepository(private val localRepository: LocalRepository, private val re
         return remoteRepository.getAllReportPedagogue(token)
     }
 
-    suspend fun postMessageChat(token: String, roomId: Int): ResponseResult<AddChatResponse> {
-        return remoteRepository.postMessageChat(token, roomId)
+    suspend fun postMessageChat(token: String, roomId: Int, addChatRequest: AddChatRequest): ResponseResult<AddChatResponse> {
+        return remoteRepository.postMessageChat(token, roomId, addChatRequest)
     }
 
     suspend fun getPrivateRoomChat(token: String): ResponseResult<AllRoomChatResponse> {

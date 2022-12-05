@@ -109,8 +109,8 @@ class RemoteRepository(private val apiService: ApiService) {
         apiService.getAllReportPedagogue(token)
     }
 
-    suspend fun postMessageChat(token: String, roomId: Int) = getResult {
-        apiService.postMessageChat(token, roomId)
+    suspend fun postMessageChat(token: String, roomId: Int, addChatRequest: AddChatRequest) = getResult {
+        apiService.postMessageChat(token, roomId, addChatRequest)
     }
 
     suspend fun getPrivateRoomChat(token: String) = getResult {
