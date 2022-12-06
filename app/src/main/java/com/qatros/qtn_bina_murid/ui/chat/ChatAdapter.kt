@@ -13,18 +13,20 @@ import java.text.SimpleDateFormat
 
 class ChatAdapter(val roomList: List<Private_room?>) : RecyclerView.Adapter<ChatAdapter.ListViewHolder>() {
     inner class ListViewHolder(listView : View) : RecyclerView.ViewHolder(listView) {
-        val descHistory : TextView = itemView.findViewById(R.id.tv_text_history)
-        val dateHistory: TextView = itemView.findViewById(R.id.tv_date_history)
+        val name : TextView = itemView.findViewById(R.id.tv_name_chat_list)
+        val lastChat: TextView = itemView.findViewById(R.id.tv_last_chat_list)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_history_layout, parent, false)
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_chat, parent, false)
         return ListViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val history = roomList[position]
+        val room = roomList[position]
         with(holder) {
+            name.text = room?.name
+            lastChat.text = room?.last_message?.content
         }
     }
 

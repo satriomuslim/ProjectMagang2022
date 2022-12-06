@@ -97,6 +97,7 @@
         <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/popup_add_subject.xml" value="0.5" />
         <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/popup_invite_id_pendagogue.xml" value="0.14" />
         <entry key="..\:/Users/Enrico Maricar/StudioProjects/binamurid-mobile/app/src/main/res/layout/sp_daily_report_parent.xml" value="0.28072916666666664" />
+        <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/activity_chat.xml" value="0.15885416666666666" />
         <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/activity_daily_parent_all.xml" value="0.25" />
         <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/activity_daily_pedagogue_all.xml" value="0.33" />
         <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/activity_form_child.xml" value="0.3500905797101449" />
@@ -113,6 +114,7 @@
         <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/fragment_history.xml" value="0.3500905797101449" />
         <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/fragment_home_parent.xml" value="0.3500905797101449" />
         <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/fragment_home_pedagogue.xml" value="0.2520833333333333" />
+        <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/item_chat.xml" value="0.33" />
         <entry key="..\:/qtn-bina-murid/qtnbinamurid/app/src/main/res/layout/item_report_daily_parent.xml" value="0.5" />
       </map>
     </option>
