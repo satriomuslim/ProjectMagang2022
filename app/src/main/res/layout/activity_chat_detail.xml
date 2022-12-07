@@ -21,7 +21,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Inbox"
+            android:text="Pilih Pedagogue"
             style="@style/DefaultTextMedium"
             android:textSize="18sp"
             android:layout_centerHorizontal="true"/>
@@ -29,22 +29,9 @@
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_chat_list"
+        android:id="@+id/rv_chat_detail_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_below="@id/rl_parent_title"/>
-
-    <ImageView
-        android:id="@+id/btn_new_chat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="16dp"
-        android:background="@drawable/bg_oval_white"
-        android:backgroundTint="@color/blue"
-        android:padding="16dp"
-        android:src="@drawable/ic_adduser"
-        app:tint="@color/white" />
 </RelativeLayout>

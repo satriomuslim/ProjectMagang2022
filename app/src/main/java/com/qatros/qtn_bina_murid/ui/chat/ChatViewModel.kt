@@ -1,5 +1,6 @@
 package com.qatros.qtn_bina_murid.ui.chat
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -42,9 +43,11 @@ class ChatViewModel(private val repository: AppRepository) : BaseViewModel() {
         viewModelScope.launch {
             when (val result = repository.getPrivateRoomChat(token)) {
                 is ResponseResult.Success -> {
+                    Log.e("TAG", "getPrivateRoom: ${result.data.data}", )
                     getPrivateRoomSuccess.postValue(SingleLiveEvent(result.data))
                 }
                 is ResponseResult.Error -> {
+                    Log.e("TAG", "getPrivateRoom: ${result.errorMsg}", )
                     isError.postValue(result.errorMsg)
                 }
             }

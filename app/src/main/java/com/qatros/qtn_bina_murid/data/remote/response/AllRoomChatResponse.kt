@@ -1,34 +1,39 @@
 package com.qatros.qtn_bina_murid.data.remote.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class AllRoomChatResponse(
     @SerializedName("data") val data : RoomData
 )
 
+@Parcelize
 data class RoomData (
-    @SerializedName("user_available") val user_available : List<User_available>,
-    @SerializedName("private_room") val private_room : List<Private_room>
-)
+    @SerializedName("user_available") val user_available : List<User_available>? = null,
+    @SerializedName("private_room") val private_room : List<Private_room>? = null
+) : Parcelable
 
+@Parcelize
 data class Last_message (
 
-    @SerializedName("message_id") val message_id : Int,
-    @SerializedName("content") val content : String,
-    @SerializedName("created_at") val created_at : String
-)
+    @SerializedName("message_id") val message_id : Int? = null,
+    @SerializedName("content") val content : String? = null,
+    @SerializedName("created_at") val created_at : String? = null
+): Parcelable
 
+@Parcelize
 data class Private_room (
 
-    @SerializedName("room_id") val room_id : Int,
-    @SerializedName("name") val name : String,
-    @SerializedName("last_message") val last_message : Last_message,
-    @SerializedName("unread_message") val unread_message : Int
-)
+    @SerializedName("room_id") val room_id : Int? = null,
+    @SerializedName("name") val name : String? = null,
+    @SerializedName("last_message") val last_message : Last_message? = null,
+    @SerializedName("unread_message") val unread_message : Int? = null
+) : Parcelable
 
+@Parcelize
 data class User_available (
-
-    @SerializedName("id") val id : Int,
-    @SerializedName("fullname") val fullname : String,
-    @SerializedName("avatar") val avatar : String
-)
+    @SerializedName("id") val id : Int? = null,
+    @SerializedName("fullname") val fullname : String? = null,
+    @SerializedName("avatar") val avatar : String? = null
+): Parcelable

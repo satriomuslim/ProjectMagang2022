@@ -11,6 +11,7 @@ import androidx.core.view.isGone
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qatros.qtn_bina_murid.databinding.FragmentHomeParentBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
+import com.qatros.qtn_bina_murid.ui.chat.ChatActivity
 import com.qatros.qtn_bina_murid.ui.parent.child.FormChildActivity
 import com.qatros.qtn_bina_murid.utils.loadImageUser
 import org.koin.android.ext.android.inject
@@ -76,6 +77,10 @@ class HomeParentFragment : Fragment() {
 
             with(vpBannerHome) {
                 adapter = SliderHomeAdapter()
+            }
+
+            icChat.setOnClickListener{
+                startActivity(Intent(activity, ChatActivity::class.java))
             }
         }
 

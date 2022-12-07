@@ -1,7 +1,9 @@
 package com.qatros.qtn_bina_murid.ui.chat
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.databinding.ActivityChatBinding
@@ -25,9 +27,16 @@ class ChatActivity : AppCompatActivity() {
         with(viewModel) {
             observeGetPrivateRoomSuccess().observe(this@ChatActivity) {
                 it.getContentIfNotHandled()?.let { data ->
+                    Log.e("TAG", "observeData: $data", )
                     with(binding.rvChatList) {
-                        adapter = ChatAdapter(data.data.private_room)
+                        adapter = data.data.private_room?.let { it1 -> ChatAdapter(it1) }
                         layoutManager = LinearLayoutManager(this@ChatActivity)
+                    }
+
+                    with(binding) {
+                        btnNewChat.setOnClickListener{
+                            startActivity(Intent(this@ChatActivity, ChatDetailActivity::class.java).putExtra(ChatDetailActivity.DATA, data.data))
+                        }
                     }
                 }
             }
