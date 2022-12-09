@@ -13,6 +13,7 @@ import androidx.core.view.isGone
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qatros.qtn_bina_murid.databinding.FragmentHomePedagogueBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
+import com.qatros.qtn_bina_murid.ui.chat.ChatActivity
 import com.qatros.qtn_bina_murid.ui.parent.home.HomeParentAdapter
 import com.qatros.qtn_bina_murid.ui.parent.home.SliderHomeAdapter
 import com.qatros.qtn_bina_murid.ui.pedagogue.scanChildren.ScanChildrenActivity
@@ -74,6 +75,9 @@ class HomePedagogueFragment : Fragment() {
         with(binding) {
             with(vpBannerHome) {
                 adapter = SliderHomePedagogueAdapter()
+            }
+            ivChat.setOnClickListener{
+                startActivity(Intent(activity, ChatActivity::class.java))
             }
             tvNameHome.text = "Hi, ${SharedPreference(requireContext()).userName}"
             tvEmailHome.text = SharedPreference(requireContext()).userEmail

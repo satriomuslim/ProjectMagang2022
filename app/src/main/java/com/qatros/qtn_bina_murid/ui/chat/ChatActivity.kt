@@ -6,11 +6,12 @@ import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qatros.qtn_bina_murid.R
+import com.qatros.qtn_bina_murid.data.remote.response.Private_room
 import com.qatros.qtn_bina_murid.databinding.ActivityChatBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
 import org.koin.android.ext.android.inject
 
-class ChatActivity : AppCompatActivity() {
+class ChatActivity : AppCompatActivity(), ChatAdapter.onItemClick {
     private lateinit var binding: ActivityChatBinding
     private val viewModel : ChatViewModel by inject()
 
@@ -29,7 +30,7 @@ class ChatActivity : AppCompatActivity() {
                 it.getContentIfNotHandled()?.let { data ->
                     Log.e("TAG", "observeData: $data", )
                     with(binding.rvChatList) {
-                        adapter = data.data.private_room?.let { it1 -> ChatAdapter(it1) }
+                        adapter = data.data.private_room?.let { it1 -> ChatAdapter(it1, this@ChatActivity) }
                         layoutManager = LinearLayoutManager(this@ChatActivity)
                     }
 
@@ -41,5 +42,9 @@ class ChatActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun setItemClick(data: Private_room, position: Int) {
+        startActivity(Intent(this, MessageActivity::class.java).putExtra(MessageActivity.USER_ID, data.recipient_id))
     }
 }

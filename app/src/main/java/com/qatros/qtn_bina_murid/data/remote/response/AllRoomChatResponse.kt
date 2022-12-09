@@ -26,6 +26,7 @@ data class Last_message (
 data class Private_room (
 
     @SerializedName("room_id") val room_id : Int? = null,
+    @SerializedName("recipient_id") val recipient_id : Int? = null,
     @SerializedName("name") val name : String? = null,
     @SerializedName("last_message") val last_message : Last_message? = null,
     @SerializedName("unread_message") val unread_message : Int? = null

@@ -42,6 +42,7 @@
         android:id="@+id/rv_chat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        tools:listitem="@layout/item_message"
         android:layout_above="@id/rl_parent_typing"
         android:layout_below="@id/ll_parent_profile"/>
 
@@ -63,7 +64,7 @@
             android:layout_toLeftOf="@id/btn_send_message"
             android:layout_marginRight="8dp"
             android:textSize="12sp"/>
-        
+
         <ImageView
             android:id="@+id/btn_send_message"
             android:layout_width="wrap_content"
@@ -72,5 +73,12 @@
             android:layout_alignParentRight="true"/>
     </RelativeLayout>
 
+
+    <ProgressBar
+        android:id="@+id/pb_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerInParent="true"/>
 
 </RelativeLayout>

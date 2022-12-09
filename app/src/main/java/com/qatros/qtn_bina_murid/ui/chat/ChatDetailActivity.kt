@@ -37,7 +37,7 @@ class ChatDetailActivity : AppCompatActivity(), ChatDetailAdapter.onItemClick {
     }
 
     override fun setItemClick(data: User_available, position: Int) {
-        startActivity(Intent(this, MessageActivity::class.java).putExtra(MessageActivity.USER_ID, data.id).putExtra(MessageActivity.PARAM, 2))
+        startActivity(Intent(this, MessageActivity::class.java).putExtra(MessageActivity.USER_ID, data.id))
         finish()
     }
 }
