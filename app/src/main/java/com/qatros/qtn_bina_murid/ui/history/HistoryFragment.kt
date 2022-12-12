@@ -54,6 +54,14 @@ class HistoryFragment : Fragment() {
                     }
                 }
             }
+
+            observeError().observe(viewLifecycleOwner) {
+                with(binding) {
+                    pbHistoryParent.isGone = true
+                    laNotFoundHistory.isGone = false
+                    rvMain.isGone = false
+                }
+            }
         }
     }
 

@@ -2,19 +2,16 @@ package com.qatros.qtn_bina_murid.ui.pedagogue.daily
 
 import android.app.AlertDialog
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputFilter
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import androidx.activity.OnBackPressedCallback
-import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.qatros.qtn_bina_murid.R
@@ -24,18 +21,15 @@ import com.qatros.qtn_bina_murid.data.remote.request.SubjectRequest
 import com.qatros.qtn_bina_murid.data.remote.response.Children
 import com.qatros.qtn_bina_murid.databinding.*
 import com.qatros.qtn_bina_murid.di.SharedPreference
-import com.qatros.qtn_bina_murid.ui.parent.childProfile.ChildProfileActivity
-import com.qatros.qtn_bina_murid.ui.parent.daily.DailyParentViewModel
 import com.qatros.qtn_bina_murid.ui.parent.daily.DailyReportAdapter
-import com.qatros.qtn_bina_murid.ui.parent.daily.DateAdapter
 import com.qatros.qtn_bina_murid.ui.parent.daily.SpinChildAdapter
 import com.qatros.qtn_bina_murid.ui.pedagogue.daily.DateAdapter.*
+import com.qatros.qtn_bina_murid.utils.InputFilterMinMax
 import com.qatros.qtn_bina_murid.utils.loadImageUser
-import com.qatros.qtn_bina_murid.utils.requestPermission
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 class DailyPedagogueFragment : Fragment(), onItemClick {
 
@@ -198,6 +192,7 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
             btnBackFromInput.setOnClickListener {
                 bottomSheetDialog.dismiss()
             }
+            edAddNilai.filters = (arrayOf<InputFilter>(InputFilterMinMax("1", "100")))
             btnRegisterChild.setOnClickListener {
                 val data = AddReportRequest(
                     description = edDesc.text.toString(),

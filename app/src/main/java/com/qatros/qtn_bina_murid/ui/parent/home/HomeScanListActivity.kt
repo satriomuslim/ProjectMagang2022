@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isGone
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.data.remote.response.Children
@@ -35,9 +36,21 @@ class HomeScanListActivity : AppCompatActivity(), HomeScanListAdapter.onItemClic
     private fun observeData() {
         viewModel.observeGetChildListSuccess().observe(this) {
             Log.e("TAG", "observeData: ${it?.data}", )
+            if(it?.data == null) {
+                with(binding) {
+                    laNotFoundScanList.isGone = false
+                    rvMain.isGone = true
+                }
+            }
             with(binding.rvMain){
                 adapter = it?.data?.let { it1 -> HomeScanListAdapter(it1, this@HomeScanListActivity) }
                 layoutManager = LinearLayoutManager(this@HomeScanListActivity)
+            }
+        }
+        viewModel.observeError().observe(this) {
+            with(binding) {
+                laNotFoundScanList.isGone = false
+                rvMain.isGone = true
             }
         }
     }

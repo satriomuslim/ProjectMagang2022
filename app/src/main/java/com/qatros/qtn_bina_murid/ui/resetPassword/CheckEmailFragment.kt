@@ -29,7 +29,7 @@ class CheckEmailFragment : Fragment() {
     private fun init() {
         with(binding) {
             btnSendEmail.setOnClickListener {
-                findNavController().navigate(R.id.action_checkEmailFragment_to_setNewPasswordFragment)
+                activity?.finish()
             }
         }
     }

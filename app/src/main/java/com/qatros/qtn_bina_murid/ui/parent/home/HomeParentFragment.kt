@@ -3,6 +3,7 @@ package com.qatros.qtn_bina_murid.ui.parent.home
 import android.content.Intent
 import android.os.Build.ID
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +13,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.qatros.qtn_bina_murid.databinding.FragmentHomeParentBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
 import com.qatros.qtn_bina_murid.ui.chat.ChatActivity
+import com.qatros.qtn_bina_murid.ui.chat.WebSocketListener
 import com.qatros.qtn_bina_murid.ui.parent.child.FormChildActivity
 import com.qatros.qtn_bina_murid.utils.loadImageUser
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.WebSocket
 import org.koin.android.ext.android.inject
 import java.text.SimpleDateFormat
 import java.util.*
@@ -24,7 +29,7 @@ class HomeParentFragment : Fragment() {
 
     private val cal = Calendar.getInstance(Locale.ENGLISH)
 
-    private val viewModel : HomeViewModel by inject()
+    private val viewModel: HomeViewModel by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,7 +51,7 @@ class HomeParentFragment : Fragment() {
     private fun observeData() {
         viewModel.observeHomeSuccess().observe(viewLifecycleOwner) {
             it.getContentIfNotHandled()?.let { data ->
-                with(binding.rvDailyParentUpdate){
+                with(binding.rvDailyParentUpdate) {
                     adapter = HomeParentAdapter(data.data)
                     layoutManager = LinearLayoutManager(requireContext())
                 }
@@ -67,11 +72,11 @@ class HomeParentFragment : Fragment() {
             tvEmailHome.text = SharedPreference(requireContext()).userEmail
             imgProfile.loadImageUser(SharedPreference(requireContext()).userAvatar)
             tvCurrentDate.text = SimpleDateFormat("EEEE, dd MMM yyyy").format(cal.time)
-            btnInvitePendagogue.setOnClickListener{
+            btnInvitePendagogue.setOnClickListener {
                 startActivity(Intent(activity, HomeScanListActivity::class.java))
             }
 
-            wrapButtonDaftarAnak.setOnClickListener{
+            wrapButtonDaftarAnak.setOnClickListener {
                 startActivity(Intent(activity, FormChildActivity::class.java))
             }
 
@@ -79,8 +84,18 @@ class HomeParentFragment : Fragment() {
                 adapter = SliderHomeAdapter()
             }
 
-            icChat.setOnClickListener{
-                startActivity(Intent(activity, ChatActivity::class.java))
+            val client: OkHttpClient = OkHttpClient()
+            icChat.setOnClickListener {
+                Log.d("PieSocket", "Connecting");
+
+                val request: Request = Request
+                    .Builder()
+                    .url("ws://bina-murid.fly.dev/cable")
+                    .build()
+                val listener = WebSocketListener()
+                val ws: WebSocket = client.newWebSocket(request, listener)
+
+//                startActivity(Intent(activity, ChatActivity::class.java))
             }
         }
 
