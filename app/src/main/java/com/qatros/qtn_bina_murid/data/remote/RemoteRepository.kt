@@ -1,15 +1,17 @@
 package com.qatros.qtn_bina_murid.data.remote
 
+import android.util.Log
 import com.qatros.qtn_bina_murid.api.ApiService
 import com.qatros.qtn_bina_murid.base.ResponseResult
 import com.qatros.qtn_bina_murid.data.remote.request.*
+import com.qatros.qtn_bina_murid.data.remote.response.LoginRegisterResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.HttpException
 import retrofit2.Response
 
 class RemoteRepository(private val apiService: ApiService) {
-    suspend fun <T : Any> getResult (
+    suspend fun <T : Any> getResult(
         request: suspend () -> Response<T>
     ): ResponseResult<T> {
         return try {
@@ -25,7 +27,29 @@ class RemoteRepository(private val apiService: ApiService) {
         }
     }
 
-    suspend fun postLogin(loginRequest: LoginRequest) = getResult {
+    suspend fun getResultLoginRegister(
+        request: suspend () -> Response<LoginRegisterResponse>
+    ): ResponseResult<LoginRegisterResponse> {
+        return try {
+            val response = request()
+            val body = response.body()
+            if (response.isSuccessful && body != null) {
+                ResponseResult.Success(body)
+            } else if (!response.isSuccessful && response.code() == 403) {
+                Log.e("TAG", "getResultLoginRegister: 403", )
+                ResponseResult.Error(code = response.code(), errorMsg = body?.message)
+            } else if (!response.isSuccessful && response.code() in 400..422) {
+                Log.e("TAG", "getResultLoginRegister: 400 ${body?.error}, $body, $response", )
+                ResponseResult.Error(code = response.code(), errorMsg = body?.error)
+            }  else {
+                ResponseResult.Error(code = response.code(), errorMsg = response.message())
+            }
+        } catch (e: HttpException) {
+            ResponseResult.Error(code = e.code(), errorMsg = e.message())
+        }
+    }
+
+    suspend fun postLogin(loginRequest: LoginRequest) = getResultLoginRegister {
         apiService.postLogin(loginRequest)
     }
 
@@ -41,7 +65,14 @@ class RemoteRepository(private val apiService: ApiService) {
         apiService.getListChild(token, type)
     }
 
-    suspend fun postAddChild(token: String, fullName: RequestBody, nickName: RequestBody, school: RequestBody, birthOfDate: RequestBody, file: MultipartBody.Part) = getResult {
+    suspend fun postAddChild(
+        token: String,
+        fullName: RequestBody,
+        nickName: RequestBody,
+        school: RequestBody,
+        birthOfDate: RequestBody,
+        file: MultipartBody.Part
+    ) = getResult {
         apiService.postAddChild(token, fullName, nickName, school, birthOfDate, file)
     }
 
@@ -49,9 +80,10 @@ class RemoteRepository(private val apiService: ApiService) {
         apiService.getInviteChildren(token, childrenId)
     }
 
-    suspend fun postInviteChildren(token: String, inviteChildRequest: InviteChildRequest) = getResult {
-        apiService.postInviteChildren(token, inviteChildRequest)
-    }
+    suspend fun postInviteChildren(token: String, inviteChildRequest: InviteChildRequest) =
+        getResult {
+            apiService.postInviteChildren(token, inviteChildRequest)
+        }
 
     suspend fun editProfile(token: String, fullName: RequestBody, email: RequestBody) = getResult {
         apiService.editProfileUser(token, fullName, email)
@@ -69,7 +101,12 @@ class RemoteRepository(private val apiService: ApiService) {
         apiService.postSubject(token, subjectRequest)
     }
 
-    suspend fun postReport(token: String, childrenId: Int, userId: Int, addReportRequest: AddReportRequest) = getResult {
+    suspend fun postReport(
+        token: String,
+        childrenId: Int,
+        userId: Int,
+        addReportRequest: AddReportRequest
+    ) = getResult {
         apiService.postReport(token, childrenId, addReportRequest)
     }
 
@@ -81,9 +118,10 @@ class RemoteRepository(private val apiService: ApiService) {
         apiService.editAvatar(token, file)
     }
 
-    suspend fun confirmProfileChild(token: String, inviteChildRequest: InviteChildRequest) = getResult {
-        apiService.confirmProfileChild(token, inviteChildRequest)
-    }
+    suspend fun confirmProfileChild(token: String, inviteChildRequest: InviteChildRequest) =
+        getResult {
+            apiService.confirmProfileChild(token, inviteChildRequest)
+        }
 
     suspend fun getHistoryParent(token: String) = getResult {
         apiService.getHistoryParent(token)
@@ -109,9 +147,10 @@ class RemoteRepository(private val apiService: ApiService) {
         apiService.getAllReportPedagogue(token)
     }
 
-    suspend fun postMessageChat(token: String, roomId: Int, addChatRequest: AddChatRequest) = getResult {
-        apiService.postMessageChat(token, roomId, addChatRequest)
-    }
+    suspend fun postMessageChat(token: String, roomId: Int, addChatRequest: AddChatRequest) =
+        getResult {
+            apiService.postMessageChat(token, roomId, addChatRequest)
+        }
 
     suspend fun getPrivateRoomChat(token: String) = getResult {
         apiService.getPrivateRoomChat(token)

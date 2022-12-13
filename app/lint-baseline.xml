@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 7.2.1" type="baseline" client="gradle" dependencies="false" name="AGP (7.2.1)" variant="fatal" version="7.2.1">
+
+    <issue
+        id="NullSafeMutableLiveData"
+        message="Expected non-nullable value"
+        errorLine1="                    isError.postValue(result.errorMsg)"
+        errorLine2="                                      ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/qatros/qtn_bina_murid/ui/chat/ChatViewModel.kt"
+            line="36"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="NullSafeMutableLiveData"
+        message="Expected non-nullable value"
+        errorLine1="                    isError.postValue(result.errorMsg)"
+        errorLine2="                                      ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/qatros/qtn_bina_murid/ui/chat/ChatViewModel.kt"
+            line="51"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="NullSafeMutableLiveData"
+        message="Expected non-nullable value"
+        errorLine1="                    isError.postValue(result.errorMsg)"
+        errorLine2="                                      ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/qatros/qtn_bina_murid/ui/chat/ChatViewModel.kt"
+            line="64"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="NullSafeMutableLiveData"
+        message="Expected non-nullable value"
+        errorLine1="                    isError.postValue(result.errorMsg)"
+        errorLine2="                                      ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/qatros/qtn_bina_murid/ui/parent/daily/DailyParentViewModel.kt"
+            line="39"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="NullSafeMutableLiveData"
+        message="Expected non-nullable value"
+        errorLine1="                    isError.postValue(result.errorMsg)"
+        errorLine2="                                      ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/qatros/qtn_bina_murid/ui/parent/daily/DailyParentViewModel.kt"
+            line="52"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="NullSafeMutableLiveData"
+        message="Expected non-nullable value"
+        errorLine1="                    isError.postValue(result.errorMsg)"
+        errorLine2="                                      ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/qatros/qtn_bina_murid/ui/pedagogue/daily/DailyPedagogueViewModel.kt"
+            line="48"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="NullSafeMutableLiveData"
+        message="Expected non-nullable value"
+        errorLine1="                    isError.postValue(result.errorMsg)"
+        errorLine2="                                      ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/qatros/qtn_bina_murid/ui/pedagogue/daily/DailyPedagogueViewModel.kt"
+            line="61"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="NullSafeMutableLiveData"
+        message="Expected non-nullable value"
+        errorLine1="                    isError.postValue(result.errorMsg)"
+        errorLine2="                                      ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/qatros/qtn_bina_murid/ui/pedagogue/daily/DailyPedagogueViewModel.kt"
+            line="74"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="NullSafeMutableLiveData"
+        message="Expected non-nullable value"
+        errorLine1="                    isError.postValue(result.errorMsg)"
+        errorLine2="                                      ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/qatros/qtn_bina_murid/ui/parent/child/FormChildViewModel.kt"
+            line="25"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="NullSafeMutableLiveData"
+        message="Expected non-nullable value"
+        errorLine1="                    isError.postValue(result.errorMsg)"
+        errorLine2="                                      ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/qatros/qtn_bina_murid/ui/history/HistoryViewModel.kt"
+            line="23"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="NullSafeMutableLiveData"
+        message="Expected non-nullable value"
+        errorLine1="                    isError.postValue(result.errorMsg)"
+        errorLine2="                                      ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/qatros/qtn_bina_murid/ui/history/HistoryViewModel.kt"
+            line="36"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="NullSafeMutableLiveData"
+        message="Expected non-nullable value"
+        errorLine1="                    isError.postValue(result.errorMsg)"
+        errorLine2="                                      ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/qatros/qtn_bina_murid/ui/parent/home/HomeViewModel.kt"
+            line="36"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="NullSafeMutableLiveData"
+        message="Expected non-nullable value"
+        errorLine1="                    isError.postValue(result.errorMsg)"
+        errorLine2="                                      ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/qatros/qtn_bina_murid/ui/parent/home/HomeViewModel.kt"
+            line="51"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="NullSafeMutableLiveData"
+        message="Expected non-nullable value"
+        errorLine1="                    isError.postValue(result.errorMsg)"
+        errorLine2="                                      ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/qatros/qtn_bina_murid/ui/login/LoginViewModel.kt"
+            line="25"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="NullSafeMutableLiveData"
+        message="Expected non-nullable value"
+        errorLine1="                    isError.postValue(result.errorMsg)"
+        errorLine2="                                      ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/qatros/qtn_bina_murid/ui/profile/ProfileViewModel.kt"
+            line="49"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="NullSafeMutableLiveData"
+        message="Expected non-nullable value"
+        errorLine1="                    isError.postValue(result.errorMsg)"
+        errorLine2="                                      ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/qatros/qtn_bina_murid/ui/profile/ProfileViewModel.kt"
+            line="62"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="NullSafeMutableLiveData"
+        message="Expected non-nullable value"
+        errorLine1="                    isError.postValue(result.errorMsg)"
+        errorLine2="                                      ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/qatros/qtn_bina_murid/ui/profile/ProfileViewModel.kt"
+            line="75"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="NullSafeMutableLiveData"
+        message="Expected non-nullable value"
+        errorLine1="                    isError.postValue(result.errorMsg)"
+        errorLine2="                                      ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/qatros/qtn_bina_murid/ui/register/RegisterViewModel.kt"
+            line="25"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="NullSafeMutableLiveData"
+        message="Expected non-nullable value"
+        errorLine1="                    isError.postValue(result.errorMsg)"
+        errorLine2="                                      ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/qatros/qtn_bina_murid/ui/resetPassword/ResetPasswordViewModel.kt"
+            line="24"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="NullSafeMutableLiveData"
+        message="Expected non-nullable value"
+        errorLine1="                    isError.postValue(result.errorMsg)"
+        errorLine2="                                      ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/qatros/qtn_bina_murid/ui/pedagogue/scanChildren/ScanChildrenViewModel.kt"
+            line="45"
+            column="39"/>
+    </issue>
+
+</issues>

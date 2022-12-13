@@ -32,7 +32,7 @@ class DailyParentFragment : Fragment(), DateAdapter.onItemClick {
     private val dates = ArrayList<Date>()
     private val cal = Calendar.getInstance(Locale.ENGLISH)
     private val currentDate = Calendar.getInstance(Locale.ENGLISH).time
-    private lateinit var dateDefault : String
+    private lateinit var dateDefault: String
     private val viewModel: DailyParentViewModel by inject()
 
     private lateinit var binding: FragmentDailyParentBinding
@@ -62,67 +62,90 @@ class DailyParentFragment : Fragment(), DateAdapter.onItemClick {
     private fun observeData() {
         with(viewModel) {
             observeGetChildListSuccess().observe(viewLifecycleOwner) {
-                val adapter = it?.data?.let { it1 ->
-                    SpinChildAdapter(
+                if(it?.data == null) {
+                    binding.pbDailyParent.isGone = true
+                    Toast.makeText(
                         requireContext(),
-                        android.R.layout.simple_spinner_item,
-                        it1
-                    )
-                }
-                binding.spChild.adapter = adapter
-
-                binding.spChild.onItemSelectedListener =
-                    object : AdapterView.OnItemSelectedListener {
-                        override fun onItemSelected(
-                            adapterView: AdapterView<*>?, view: View?,
-                            position: Int, id: Long
-                        ) {
-                            val child: Children = adapter?.getItem(position) ?: Children()
-                            childrenId = child.childrenId
-                            with(binding) {
-                                tvNameDailyReport.text = child.fullName
-                                tvSubjectChildDailyReport.text = child.school
-                                ivProfileDailyReport.loadImageUser(child.avatar)
-                                btnToProfileChild.setOnClickListener{
-                                    startActivity(Intent(activity, ChildProfileActivity::class.java).putExtra(ChildProfileActivity.CHILD_DATA, child))
-                                }
-                            }
-                            getPedagogue(token, child.childrenId)
-                        }
-
-                        override fun onNothingSelected(adapter: AdapterView<*>?) {
-
-                        }
+                        "Anak tidak ditemukan",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    val adapter = it.data.let { it1 ->
+                        SpinChildAdapter(
+                            requireContext(),
+                            android.R.layout.simple_spinner_item,
+                            it1
+                        )
                     }
+                    binding.spChild.adapter = adapter
 
+                    binding.spChild.onItemSelectedListener =
+                        object : AdapterView.OnItemSelectedListener {
+                            override fun onItemSelected(
+                                adapterView: AdapterView<*>?, view: View?,
+                                position: Int, id: Long
+                            ) {
+                                val child: Children = adapter?.getItem(position) ?: Children()
+                                childrenId = child.childrenId
+                                with(binding) {
+                                    tvNameDailyReport.text = child.fullName
+                                    tvSubjectChildDailyReport.text = child.school
+                                    ivProfileDailyReport.loadImageUser(child.avatar)
+                                    btnToProfileChild.setOnClickListener {
+                                        startActivity(
+                                            Intent(
+                                                activity,
+                                                ChildProfileActivity::class.java
+                                            ).putExtra(ChildProfileActivity.CHILD_DATA, child)
+                                        )
+                                    }
+                                }
+                                getPedagogue(token, child.childrenId)
+                            }
+
+                            override fun onNothingSelected(adapter: AdapterView<*>?) {
+
+                            }
+                        }
+                }
             }
 
             observeGetPedagogueSuccess().observe(viewLifecycleOwner) {
-                val adapter = it?.data?.let { it1 ->
-                    SpinnerPedagogueAdapter(
+                if (it?.data == null) {
+                    binding.pbDailyParent.isGone = true
+                    Toast.makeText(
                         requireContext(),
-                        android.R.layout.simple_spinner_item,
-                        it1
-                    )
-                }
-                binding.spPedagogue.adapter = adapter
-
-                binding.spPedagogue.onItemSelectedListener =
-                    object : AdapterView.OnItemSelectedListener {
-                        override fun onItemSelected(
-                            adapterView: AdapterView<*>?, view: View?,
-                            position: Int, id: Long
-                        ) {
-                            val pedagogue: Pedagogue = adapter?.getItem(position) ?: Pedagogue()
-                            pedagogueId = pedagogue.pedagogue_id
-                            pedagogueName = pedagogue.fullname ?: ""
-                            getReportParent(token, dateDefault, childrenId, pedagogueId)
-                        }
-
-                        override fun onNothingSelected(adapter: AdapterView<*>?) {
-
-                        }
+                        "Pedagogue tidak ditemukan",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    val adapter = it.data.let { it1 ->
+                        SpinnerPedagogueAdapter(
+                            requireContext(),
+                            android.R.layout.simple_spinner_item,
+                            it1
+                        )
                     }
+                    binding.spPedagogue.adapter = adapter
+
+                    binding.spPedagogue.onItemSelectedListener =
+                        object : AdapterView.OnItemSelectedListener {
+                            override fun onItemSelected(
+                                adapterView: AdapterView<*>?, view: View?,
+                                position: Int, id: Long
+                            ) {
+                                val pedagogue: Pedagogue = adapter?.getItem(position) ?: Pedagogue()
+                                pedagogueId = pedagogue.pedagogue_id
+                                pedagogueName = pedagogue.fullname ?: ""
+                                getReportParent(token, dateDefault, childrenId, pedagogueId)
+                            }
+
+                            override fun onNothingSelected(adapter: AdapterView<*>?) {
+
+                            }
+                        }
+                }
+
             }
 
             observeGetReportParent().observe(viewLifecycleOwner) { data ->

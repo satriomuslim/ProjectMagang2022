@@ -1,6 +1,7 @@
 package com.qatros.qtn_bina_murid.di
 
 import com.google.gson.GsonBuilder
+import com.qatros.qtn_bina_murid.BuildConfig
 import com.qatros.qtn_bina_murid.api.ApiService
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
@@ -28,7 +29,7 @@ val networkModule = module{
             .setLenient()
             .create()
         Retrofit.Builder()
-            .baseUrl("https://bina-murid.fly.dev/")
+            .baseUrl("https://binamurid-be.qatros.com/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .client(get())

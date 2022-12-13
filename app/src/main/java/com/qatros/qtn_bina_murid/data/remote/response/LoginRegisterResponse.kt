@@ -1,8 +1,10 @@
 package com.qatros.qtn_bina_murid.data.remote.response
 
 import com.google.gson.annotations.SerializedName
+import java.lang.Error
 
 class LoginRegisterResponse (
+    @SerializedName("error") val error: String,
     @SerializedName("message") val message : String,
     @SerializedName("token") val token : String,
     @SerializedName("data") val data : User

@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.Toast
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -68,32 +69,40 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
     private fun observeData() {
         with(viewModel) {
             observeGetChildListSuccess().observe(viewLifecycleOwner) {
-                val adapter = it?.data?.let { it1 ->
-                    SpinChildAdapter(
+                if(it?.data == null) {
+                    binding.pbDailyReportPendagogue.isGone = true
+                    Toast.makeText(
                         requireContext(),
-                        android.R.layout.simple_spinner_item,
-                        it1
-                    )
-                }
-                binding.spChildPedagogue.adapter = adapter
-
-                binding.spChildPedagogue.onItemSelectedListener =
-                    object : AdapterView.OnItemSelectedListener {
-                        override fun onItemSelected(
-                            adapterView: AdapterView<*>?, view: View?,
-                            position: Int, id: Long
-                        ) {
-                            val child: Children = adapter?.getItem(position) ?: Children()
-                            childrenId = child.childrenId
-                            binding.circleImageView.loadImageUser(child.avatar)
-                            getReportPedagogue(token, dateDefault, childrenId, userId)
-                        }
-
-                        override fun onNothingSelected(adapter: AdapterView<*>?) {
-
-                        }
+                        "Anak tidak ditemukan",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    val adapter = it.data.let { it1 ->
+                        SpinChildAdapter(
+                            requireContext(),
+                            android.R.layout.simple_spinner_item,
+                            it1
+                        )
                     }
+                    binding.spChildPedagogue.adapter = adapter
 
+                    binding.spChildPedagogue.onItemSelectedListener =
+                        object : AdapterView.OnItemSelectedListener {
+                            override fun onItemSelected(
+                                adapterView: AdapterView<*>?, view: View?,
+                                position: Int, id: Long
+                            ) {
+                                val child: Children = adapter?.getItem(position) ?: Children()
+                                childrenId = child.childrenId
+                                binding.circleImageView.loadImageUser(child.avatar)
+                                getReportPedagogue(token, dateDefault, childrenId, userId)
+                            }
+
+                            override fun onNothingSelected(adapter: AdapterView<*>?) {
+
+                            }
+                        }
+                }
             }
 
             observeGetReportPedagogue().observe(viewLifecycleOwner) { data ->

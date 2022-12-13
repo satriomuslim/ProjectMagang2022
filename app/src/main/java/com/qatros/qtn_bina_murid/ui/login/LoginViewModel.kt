@@ -1,5 +1,6 @@
 package com.qatros.qtn_bina_murid.ui.login
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -22,7 +23,8 @@ class LoginViewModel(private val repository: AppRepository) : BaseViewModel() {
                     loginSuccess.postValue(SingleLiveEvent(result.data))
                 }
                 is ResponseResult.Error -> {
-                    isError.postValue(result.errorMsg)
+                    Log.e("TAG", "postLogin: ${result.errorMsg}", )
+                    isError.postValue(result.code.toString())
                 }
             }
         }
