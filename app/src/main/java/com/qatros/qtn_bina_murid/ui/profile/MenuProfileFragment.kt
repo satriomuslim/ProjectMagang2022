@@ -2,13 +2,10 @@ package com.qatros.qtn_bina_murid.ui.profile
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.findNavController
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.data.remote.request.AddRoleRequest

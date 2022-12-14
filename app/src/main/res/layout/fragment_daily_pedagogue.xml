@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -58,7 +57,8 @@
                     android:id="@+id/circleImageView"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/raiden_avatar"
+                    android:src="@drawable/profile"
+                    android:background="@drawable/bg_oval_grey_stroke"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -79,23 +79,30 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/wrap_choice_child"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_marginStart="100dp"
+                android:layout_marginEnd="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/wrap_imgProfile">
 
                 <Spinner
-                    android:background="@drawable/style_spinner"
                     android:id="@+id/sp_child_pedagogue"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
                     android:layout_margin="8dp"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginEnd="100dp"
+                    android:background="@drawable/style_spinner"
                     android:gravity="center"
-                    android:layout_weight="1" />
-            </LinearLayout>
+                    android:padding="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"

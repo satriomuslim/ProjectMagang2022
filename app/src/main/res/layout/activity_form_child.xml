@@ -80,7 +80,7 @@
                         android:layout_height="80dp"
                         android:background="@drawable/bg_oval_grey_stroke"
                         android:padding="8dp"
-                        android:src="@drawable/image" />
+                        android:src="@drawable/profile" />
 
                     <ImageView
                         android:id="@+id/btn_add_image"
@@ -143,20 +143,6 @@
 
                     <com.qatros.qtn_bina_murid.customview.FullNameEditText
                         android:id="@+id/ed_namaAnak"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:startIconDrawable="@drawable/ic_toga_anak">
-
-                    <com.qatros.qtn_bina_murid.customview.NameEditText
-                        android:id="@+id/ed_namaPanggilanAnak"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName" />

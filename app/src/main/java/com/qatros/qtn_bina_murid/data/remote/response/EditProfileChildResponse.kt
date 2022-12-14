@@ -12,7 +12,6 @@ data class EditProfileChildResponse(
 data class Item (
     @SerializedName("user_id") val childrenId : Int?,
     @SerializedName("fullname") val fullname : String?,
-    @SerializedName("nickname") val nickname : String?,
     @SerializedName("school") val address : String?,
     @SerializedName("date") val date : Date?,
     @SerializedName("avatar") val avatar : String?
