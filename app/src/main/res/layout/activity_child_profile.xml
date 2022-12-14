@@ -66,7 +66,7 @@
                         android:layout_height="80dp"
                         android:background="@drawable/bg_oval_grey_stroke"
                         android:padding="8dp"
-                        android:src="@drawable/image" />
+                        android:src="@drawable/profile" />
 
                     <ImageView
                         android:id="@+id/btn_add_image"
@@ -95,7 +95,7 @@
                     app:layout_constraintTop_toBottomOf="@id/circleImageView"/>
 
                 <Button
-                    android:id="@+id/btn_edit_profile_child"
+                    android:id="@+id/btn_save_data_profile_parent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -108,7 +108,6 @@
                     app:layout_constraintEnd_toEndOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/wrap_formChild"
@@ -149,20 +148,6 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:startIconDrawable="@drawable/ic_toga_anak">
-
-                    <com.qatros.qtn_bina_murid.customview.NameEditText
-                        android:id="@+id/ed_namaPanggilanAnak"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tl_tanggalLahirAnak"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
@@ -182,6 +167,7 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <TextView
+                android:id="@+id/textView7"
                 style="@style/DefaultTextLandingSemiBold"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -196,13 +182,27 @@
                 android:text="Daftar Pendagogue"
                 android:textColor="@color/blue"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/wrap_formChild"
                 tools:ignore="RtlSymmetry" />
 
+            <Button
+                android:id="@+id/btn_edit_profile_child"
+                style="@style/ButtonDefault"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:enabled="false"
+                android:text="Simpan Data"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

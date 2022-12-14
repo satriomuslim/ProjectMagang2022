@@ -18,9 +18,9 @@ class FormChildViewModel(private val repository: AppRepository) : BaseViewModel(
     private val editChildSuccess = MutableLiveData<SingleLiveEvent<Boolean>>()
     fun observeEditChildSuccess() : LiveData<SingleLiveEvent<Boolean>> = editChildSuccess
 
-    fun postAddChild(token: String, fullName: RequestBody, nickName: RequestBody, school: RequestBody, birthOfDate: RequestBody, file: MultipartBody.Part) {
+    fun postAddChild(token: String, fullName: RequestBody, school: RequestBody, birthOfDate: RequestBody, file: MultipartBody.Part) {
         viewModelScope.launch {
-            when(val result = repository.postAddChild(token, fullName, nickName, school, birthOfDate, file)) {
+            when(val result = repository.postAddChild(token, fullName, school, birthOfDate, file)) {
                 is ResponseResult.Success -> {
                     addChildSuccess.postValue(SingleLiveEvent(true))
                 }
@@ -34,11 +34,10 @@ class FormChildViewModel(private val repository: AppRepository) : BaseViewModel(
     fun editChildrenProfile(token: String,
                             childrenId: Int,
                             fullName: RequestBody,
-                            nickName: RequestBody,
                             school: RequestBody,
                             image: MultipartBody.Part?) {
         viewModelScope.launch {
-            when(val result = repository.editChildrenProfile(token, childrenId, fullName, nickName, school, image)) {
+            when(val result = repository.editChildrenProfile(token, childrenId, fullName, school, image)) {
                 is ResponseResult.Success -> {
                     editChildSuccess.postValue(SingleLiveEvent(true))
                 }

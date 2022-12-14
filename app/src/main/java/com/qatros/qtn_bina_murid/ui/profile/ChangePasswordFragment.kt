@@ -42,6 +42,7 @@ class ChangePasswordFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.onBackPressedDispatcher?.addCallback(onBackCallback)
+
         binding.apply {
             edOldPassword.addTextChangedListener(loginTextWatcher)
             edNewPassword.addTextChangedListener(loginTextWatcher)

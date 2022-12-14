@@ -122,11 +122,9 @@
 
             </RelativeLayout>
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
-
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -252,7 +250,7 @@
         android:id="@+id/cv_btn_logout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
+        app:cardCornerRadius="16dp"
         app:cardElevation="5dp"
         app:cardUseCompatPadding="true">
 
