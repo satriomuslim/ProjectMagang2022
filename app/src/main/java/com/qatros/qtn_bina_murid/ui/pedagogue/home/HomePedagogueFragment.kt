@@ -29,6 +29,7 @@ class HomePedagogueFragment : Fragment() {
 
     private val cal = Calendar.getInstance(Locale.ENGLISH)
 
+    private lateinit var token: String
     private val viewModel: HomePedagogueViewModel by inject()
 
     private val permissions =
@@ -47,7 +48,7 @@ class HomePedagogueFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val token = SharedPreference(requireContext()).userToken
+        token = SharedPreference(requireContext()).userToken
         viewModel.getHomePedagogue(token)
         init()
         observeData()
@@ -100,5 +101,10 @@ class HomePedagogueFragment : Fragment() {
                 startActivity(Intent(activity, ScanChildrenActivity::class.java))
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getHomePedagogue(token)
     }
 }

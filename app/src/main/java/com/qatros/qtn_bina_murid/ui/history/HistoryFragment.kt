@@ -46,11 +46,13 @@ class HistoryFragment : Fragment() {
             observeHistorySuccess().observe(viewLifecycleOwner) {
                 it.getContentIfNotHandled()?.let { data ->
                     with(binding) {
+                        pbHistoryParent.isGone = true
+                        laNotFoundHistory.isGone = true
+                        rvMain.isGone = false
                         with(rvMain) {
                             adapter = HistoryAdapter(data.data)
                             layoutManager = LinearLayoutManager(requireContext())
                         }
-                        pbHistoryParent.isGone = true
                     }
                 }
             }
@@ -59,7 +61,7 @@ class HistoryFragment : Fragment() {
                 with(binding) {
                     pbHistoryParent.isGone = true
                     laNotFoundHistory.isGone = false
-                    rvMain.isGone = false
+                    rvMain.isGone = true
                 }
             }
         }

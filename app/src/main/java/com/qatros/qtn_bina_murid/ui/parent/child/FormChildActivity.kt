@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -271,7 +272,6 @@ class FormChildActivity : AppCompatActivity() {
     private fun startTakePhoto() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         intent.resolveActivity(packageManager)
-
         createCustomTempFile(application).also {
             val photoURI: Uri = FileProvider.getUriForFile(
                 this,

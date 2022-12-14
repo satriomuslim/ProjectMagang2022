@@ -119,7 +119,7 @@ interface ApiService {
         @Header("Authorization") token: String
     ): Response<HistoryResponse>
 
-    @GET("api/v1/activities/daily")
+    @GET("api/v1/activities/parent/daily")
     suspend fun getHomeParent(
         @Header("Authorization") token: String
     ): Response<HistoryResponse>

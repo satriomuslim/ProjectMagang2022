@@ -31,6 +31,8 @@ class HomeParentFragment : Fragment() {
 
     private val viewModel: HomeViewModel by inject()
 
+    private lateinit var token: String
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,7 +44,7 @@ class HomeParentFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val token = SharedPreference(requireContext()).userToken
+        token = SharedPreference(requireContext()).userToken
         viewModel.getHomeParent(token)
         init()
         observeData()
@@ -99,5 +101,10 @@ class HomeParentFragment : Fragment() {
             }
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getHomeParent(token)
     }
 }
