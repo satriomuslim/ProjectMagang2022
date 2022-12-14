@@ -19,7 +19,10 @@ interface ApiService {
     suspend fun postResetPassword(@Body forgotPasswordRequest: ForgotPasswordRequest): Response<ForgotPasswordResponse>
 
     @GET("api/v1/children/list?")
-    suspend fun getListChild(@Header("Authorization") token: String, @Query("type") type: String): Response<ListChildResponse>
+    suspend fun getListChild(
+        @Header("Authorization") token: String,
+        @Query("type") type: String
+    ): Response<ListChildResponse>
 
     @Multipart
     @POST("api/v1/children/add")
@@ -87,7 +90,9 @@ interface ApiService {
 
     @POST("api/v1/report/create")
     suspend fun postReport(
-        @Header("Authorization") token: String, @Query("children_id") childrenId: Int, @Body addReportRequest: AddReportRequest
+        @Header("Authorization") token: String,
+        @Query("children_id") childrenId: Int,
+        @Body addReportRequest: AddReportRequest
     ): Response<Any>
 
     @POST("api/v1/user/profile/role")
@@ -136,12 +141,35 @@ interface ApiService {
     suspend fun getAllReportPedagogue(@Header("Authorization") token: String): Response<ChildrenReportResponse>
 
     @POST("api/v1/chat/private/rooms/{room_id}")
-    suspend fun postMessageChat(@Header("Authorization") token: String, @Path("room_id") roomId: Int, @Body addChatRequest: AddChatRequest): Response<AddChatResponse>
+    suspend fun postMessageChat(
+        @Header("Authorization") token: String,
+        @Path("room_id") roomId: Int,
+        @Body addChatRequest: AddChatRequest
+    ): Response<AddChatResponse>
 
     @GET("api/v1/chat/private/rooms/all")
-    suspend fun getPrivateRoomChat(@Header("Authorization") token: String) : Response<AllRoomChatResponse>
+    suspend fun getPrivateRoomChat(@Header("Authorization") token: String): Response<AllRoomChatResponse>
 
     @GET("api/v1/chat/private/rooms?")
-    suspend fun getMessageChat(@Header("Authorization") token: String, @Query("user_id")userId: Int): Response<AllChatResponse>
+    suspend fun getMessageChat(
+        @Header("Authorization") token: String,
+        @Query("user_id") userId: Int
+    ): Response<AllChatResponse>
 
+    @Multipart
+    @PATCH("api/v1/children/edit?")
+    suspend fun editChildrenProfile(
+        @Header("Authorization") token: String,
+        @Query("children_id") childrenId: Int,
+        @Part("fullname") fullname: RequestBody,
+        @Part("nickname") nickname: RequestBody,
+        @Part("school") school: RequestBody,
+        @Part file: MultipartBody.Part?
+    ) : Response<Any>
+
+    @POST("api/v1/password/change")
+    suspend fun editPassword(
+        @Header("Authorization") token: String,
+        @Body changePasswordRequest: ChangePasswordRequest
+    ) : Response<Any>
 }

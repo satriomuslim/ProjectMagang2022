@@ -15,11 +15,32 @@ class FormChildViewModel(private val repository: AppRepository) : BaseViewModel(
     private val addChildSuccess = MutableLiveData<SingleLiveEvent<Boolean>>()
     fun observeAddChildSuccess() : LiveData<SingleLiveEvent<Boolean>> = addChildSuccess
 
+    private val editChildSuccess = MutableLiveData<SingleLiveEvent<Boolean>>()
+    fun observeEditChildSuccess() : LiveData<SingleLiveEvent<Boolean>> = editChildSuccess
+
     fun postAddChild(token: String, fullName: RequestBody, nickName: RequestBody, school: RequestBody, birthOfDate: RequestBody, file: MultipartBody.Part) {
         viewModelScope.launch {
             when(val result = repository.postAddChild(token, fullName, nickName, school, birthOfDate, file)) {
                 is ResponseResult.Success -> {
                     addChildSuccess.postValue(SingleLiveEvent(true))
+                }
+                is ResponseResult.Error -> {
+                    isError.postValue(result.errorMsg)
+                }
+            }
+        }
+    }
+
+    fun editChildrenProfile(token: String,
+                            childrenId: Int,
+                            fullName: RequestBody,
+                            nickName: RequestBody,
+                            school: RequestBody,
+                            image: MultipartBody.Part?) {
+        viewModelScope.launch {
+            when(val result = repository.editChildrenProfile(token, childrenId, fullName, nickName, school, image)) {
+                is ResponseResult.Success -> {
+                    editChildSuccess.postValue(SingleLiveEvent(true))
                 }
                 is ResponseResult.Error -> {
                     isError.postValue(result.errorMsg)

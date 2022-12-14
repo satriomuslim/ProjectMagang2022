@@ -1,5 +1,6 @@
 package com.qatros.qtn_bina_murid.ui.register
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -22,7 +23,12 @@ class RegisterViewModel(private val repository: AppRepository) : BaseViewModel()
                     RegisterSuccess.postValue(SingleLiveEvent(true))
                 }
                 is ResponseResult.Error -> {
-                    isError.postValue(result.errorMsg)
+                    val errormsg = when(result.code) {
+                        400 -> "Bad Request"
+                        422 -> "Invalid Input Data atau Data Sudah Terdaftar"
+                        else -> "Terjadi Error"
+                    }
+                    isError.postValue(errormsg)
                 }
             }
         }

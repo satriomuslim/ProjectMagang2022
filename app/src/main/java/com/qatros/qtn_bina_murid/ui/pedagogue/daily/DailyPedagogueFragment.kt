@@ -69,7 +69,7 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
     private fun observeData() {
         with(viewModel) {
             observeGetChildListSuccess().observe(viewLifecycleOwner) {
-                if(it?.data == null) {
+                if(it?.data.isNullOrEmpty()) {
                     binding.pbDailyReportPendagogue.isGone = true
                     Toast.makeText(
                         requireContext(),
@@ -77,7 +77,7 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
                         Toast.LENGTH_SHORT
                     ).show()
                 } else {
-                    val adapter = it.data.let { it1 ->
+                    val adapter = it?.data?.let { it1 ->
                         SpinChildAdapter(
                             requireContext(),
                             android.R.layout.simple_spinner_item,

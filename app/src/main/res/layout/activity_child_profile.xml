@@ -52,14 +52,34 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/wrap_profile">
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <RelativeLayout
                     android:id="@+id/circleImageView"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:src="@drawable/raiden_avatar" />
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img_profile_Anak"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/bg_oval_grey_stroke"
+                        android:padding="8dp"
+                        android:src="@drawable/image" />
+
+                    <ImageView
+                        android:id="@+id/btn_add_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignRight="@id/img_profile_Anak"
+                        android:layout_alignBottom="@id/img_profile_Anak"
+                        android:background="@drawable/bg_oval_white"
+                        android:backgroundTint="@color/blue"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_camera_small" />
+
+                </RelativeLayout>
 
                 <TextView
                     android:id="@+id/txt_namaChild"
@@ -80,6 +100,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="Edit Profile"
+                    android:enabled="false"
                     android:textColor="@color/white"
                     android:backgroundTint="@color/grey"
                     app:layout_constraintTop_toBottomOf="@id/txt_namaChild"

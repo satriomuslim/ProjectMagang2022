@@ -7,6 +7,7 @@ import com.qatros.qtn_bina_murid.base.BaseViewModel
 import com.qatros.qtn_bina_murid.base.ResponseResult
 import com.qatros.qtn_bina_murid.data.AppRepository
 import com.qatros.qtn_bina_murid.data.remote.request.AddRoleRequest
+import com.qatros.qtn_bina_murid.data.remote.request.ChangePasswordRequest
 import com.qatros.qtn_bina_murid.data.remote.response.AddRoleResponse
 import com.qatros.qtn_bina_murid.data.remote.response.ProfileResponse
 import com.qatros.qtn_bina_murid.utils.SingleLiveEvent
@@ -28,6 +29,9 @@ class ProfileViewModel(private val repository: AppRepository) : BaseViewModel() 
 
     private val addRoleSuccess = MutableLiveData<SingleLiveEvent<AddRoleResponse?>>()
     fun observeAddRoleSuccess(): LiveData<SingleLiveEvent<AddRoleResponse?>> = addRoleSuccess
+
+    private val changePasswordSuccess = MutableLiveData<SingleLiveEvent<Boolean>>()
+    fun observeChangePasswordSuccess(): LiveData<SingleLiveEvent<Boolean>> = changePasswordSuccess
 
     fun sendData(name: String, avatar: String) {
         viewModelScope.launch {
@@ -73,6 +77,19 @@ class ProfileViewModel(private val repository: AppRepository) : BaseViewModel() 
                 }
                 is ResponseResult.Error -> {
                     isError.postValue(result.errorMsg)
+                }
+            }
+        }
+    }
+
+    fun editPassword(token: String, changePasswordRequest: ChangePasswordRequest) {
+        viewModelScope.launch {
+            when(val result = repository.editPassword(token ,changePasswordRequest)) {
+                is ResponseResult.Success -> {
+                    changePasswordSuccess.postValue(SingleLiveEvent(true))
+                }
+                is ResponseResult.Error -> {
+                    changePasswordSuccess.postValue(SingleLiveEvent(false))
                 }
             }
         }

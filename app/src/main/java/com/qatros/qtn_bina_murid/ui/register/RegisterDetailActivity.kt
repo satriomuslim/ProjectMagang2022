@@ -6,12 +6,16 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.Window
 import android.widget.Button
 import android.widget.Toast
+import androidx.core.view.isGone
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.data.remote.request.RegisterRequest
 import com.qatros.qtn_bina_murid.databinding.ActivityRegisterDetailBinding
+import com.qatros.qtn_bina_murid.ui.landing.LandingActivity
 import com.qatros.qtn_bina_murid.ui.login.LoginActivity
 import com.qatros.qtn_bina_murid.utils.toast
 import org.koin.android.ext.android.inject
@@ -38,14 +42,26 @@ class RegisterDetailActivity : AppCompatActivity() {
             observeRegisterSuccess().observe(this@RegisterDetailActivity) {
                 it.getContentIfNotHandled()?.let { success ->
                     if(success) {
+                        binding.pbRegister.isGone = true
                         Toast.makeText(this@RegisterDetailActivity, "Register Success", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this@RegisterDetailActivity, LoginActivity::class.java))
-                        finish()
+                        val dialog = Dialog(this@RegisterDetailActivity)
+                        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+                        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                        dialog.setContentView(R.layout.popup_add_email)
+                        dialog.show()
+
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            dialog.dismiss()
+                            startActivity(Intent(this@RegisterDetailActivity, LoginActivity::class.java))
+                            finish()
+                        }, 1000)
+
                     }
                 }
             }
 
             observeError().observe(this@RegisterDetailActivity) {
+                binding.pbRegister.isGone = true
                 this@RegisterDetailActivity.toast(it)
             }
         }
@@ -62,22 +78,12 @@ class RegisterDetailActivity : AppCompatActivity() {
                     role = role
                 )
                 viewModel.postRegister(registerReq)
-
-                val dialog = Dialog(this@RegisterDetailActivity)
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-                dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                dialog.setContentView(R.layout.popup_add_email)
-
-                val btnClose = dialog.findViewById<Button>(R.id.btn_add_email)
-                btnClose.setOnClickListener {
-                    dialog.dismiss()
-                }
-                dialog.show()
+                pbRegister.isGone = false
             }
 
             btnParent.setOnClickListener {
                 btnParent.setBackgroundResource(R.drawable.bg_rounded_blue_very_small_allradius)
-                btnPedagogue.setBackgroundResource(R.drawable.bg_rounded_white_stoke_grey)
+                btnPedagogue.setBackgroundResource(R.drawable.bg_rounded_white_stoke_blue_bold)
                 btnRegister.isEnabled = true
                 btnRegister.setBackgroundColor(resources.getColor(R.color.blue))
                 btnParent.setTextColor(resources.getColor(R.color.white))
@@ -87,7 +93,7 @@ class RegisterDetailActivity : AppCompatActivity() {
 
             btnPedagogue.setOnClickListener {
                 btnPedagogue.setBackgroundResource(R.drawable.bg_rounded_blue_very_small_allradius)
-                btnParent.setBackgroundResource(R.drawable.bg_rounded_white_stoke_grey)
+                btnParent.setBackgroundResource(R.drawable.bg_rounded_white_stoke_blue_bold)
                 btnRegister.isEnabled = true
                 btnRegister.setBackgroundColor(resources.getColor(R.color.blue))
                 btnPedagogue.setTextColor(resources.getColor(R.color.white))

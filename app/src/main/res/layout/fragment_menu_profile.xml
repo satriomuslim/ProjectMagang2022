@@ -82,7 +82,7 @@
                 app:layout_constraintTop_toBottomOf="@id/btn_edit_profile" />
 
             <RelativeLayout
-                android:id="@+id/wrap_password"
+                android:id="@+id/btn_edit_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"

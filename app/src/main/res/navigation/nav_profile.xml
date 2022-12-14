@@ -13,11 +13,18 @@
         <action
             android:id="@+id/action_menuProfile_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_menuProfile_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.qatros.qtn_bina_murid.ui.profile.EditProfileFragment"
         android:label="fragment_parent_edit_profile"
         tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.qatros.qtn_bina_murid.ui.profile.ChangePasswordFragment"
+        android:label="ChangePasswordFragment" />
 
 </navigation>

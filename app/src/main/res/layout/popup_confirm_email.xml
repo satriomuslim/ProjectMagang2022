@@ -27,8 +27,8 @@
             android:layout_marginBottom="8dp"
             android:gravity="center"
             style="@style/DefaultTextPopup"
-            android:text="Selamat"
-            android:textColor="@color/green"
+            android:text="Error"
+            android:textColor="@color/orange"
             android:textSize="24sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -39,7 +39,8 @@
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            android:text="Email kamu baru kamu berhasil di tambahkan"
+            android:text="Silahkan konfirmasi Ulang Email Anda \nKlik Tombol dibawah ini"
+            android:textAlignment="center"
             android:textColor="@color/blue"
             android:textSize="12sp" />
 
@@ -47,13 +48,12 @@
             android:id="@+id/btn_confirm_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_subscriber_pana"
             android:layout_marginTop="16dp"
             android:clickable="true"
             android:focusable="true"
             android:gravity="center"
             android:orientation="horizontal"
-            android:text="OK"
+            android:text="Konfirmasi Ulang"
             android:textColor="@color/blue" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

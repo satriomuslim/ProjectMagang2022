@@ -16,6 +16,6 @@ data class Children (
     @SerializedName("fullname") val fullName : String? = null,
     @SerializedName("nickname") val nickName : String? = null,
     @SerializedName("school") val school : String? = null,
-    @SerializedName("date of birth") val dateOfBirth : String? = null,
+    @SerializedName("dateofbirth") val dateOfBirth : String? = null,
     @SerializedName("avatar") val avatar : String? = null
 ) : Parcelable

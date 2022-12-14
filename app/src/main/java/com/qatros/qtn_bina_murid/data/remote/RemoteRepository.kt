@@ -27,29 +27,7 @@ class RemoteRepository(private val apiService: ApiService) {
         }
     }
 
-    suspend fun getResultLoginRegister(
-        request: suspend () -> Response<LoginRegisterResponse>
-    ): ResponseResult<LoginRegisterResponse> {
-        return try {
-            val response = request()
-            val body = response.body()
-            if (response.isSuccessful && body != null) {
-                ResponseResult.Success(body)
-            } else if (!response.isSuccessful && response.code() == 403) {
-                Log.e("TAG", "getResultLoginRegister: 403", )
-                ResponseResult.Error(code = response.code(), errorMsg = body?.message)
-            } else if (!response.isSuccessful && response.code() in 400..422) {
-                Log.e("TAG", "getResultLoginRegister: 400 ${body?.error}, $body, $response", )
-                ResponseResult.Error(code = response.code(), errorMsg = body?.error)
-            }  else {
-                ResponseResult.Error(code = response.code(), errorMsg = response.message())
-            }
-        } catch (e: HttpException) {
-            ResponseResult.Error(code = e.code(), errorMsg = e.message())
-        }
-    }
-
-    suspend fun postLogin(loginRequest: LoginRequest) = getResultLoginRegister {
+    suspend fun postLogin(loginRequest: LoginRequest) = getResult {
         apiService.postLogin(loginRequest)
     }
 
@@ -158,5 +136,20 @@ class RemoteRepository(private val apiService: ApiService) {
 
     suspend fun getMessageChat(token: String, userId: Int) = getResult {
         apiService.getMessageChat(token, userId)
+    }
+
+    suspend fun editChildrenProfile(
+        token: String,
+        childrenId: Int,
+        fullName: RequestBody,
+        nickName: RequestBody,
+        school: RequestBody,
+        image: MultipartBody.Part?
+    ) = getResult {
+        apiService.editChildrenProfile(token, childrenId, fullName, nickName, school, image)
+    }
+
+    suspend fun editPassword(token: String, changePasswordRequest: ChangePasswordRequest) = getResult {
+        apiService.editPassword(token, changePasswordRequest)
     }
 }

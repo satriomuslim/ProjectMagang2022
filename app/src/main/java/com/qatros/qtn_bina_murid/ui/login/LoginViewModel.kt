@@ -16,6 +16,9 @@ class LoginViewModel(private val repository: AppRepository) : BaseViewModel() {
     private val loginSuccess = MutableLiveData<SingleLiveEvent<LoginRegisterResponse>>()
     fun observeLoginSuccess(): LiveData<SingleLiveEvent<LoginRegisterResponse>> = loginSuccess
 
+    private val loginError = MutableLiveData<SingleLiveEvent<Pair<String, Int>>>()
+    fun observeLoginError(): LiveData<SingleLiveEvent<Pair<String, Int>>> = loginError
+
     fun postLogin(loginRequest: LoginRequest) {
         viewModelScope.launch {
             when(val result = repository.postLogin(loginRequest)) {
@@ -23,8 +26,13 @@ class LoginViewModel(private val repository: AppRepository) : BaseViewModel() {
                     loginSuccess.postValue(SingleLiveEvent(result.data))
                 }
                 is ResponseResult.Error -> {
-                    Log.e("TAG", "postLogin: ${result.errorMsg}", )
-                    isError.postValue(result.code.toString())
+                    val errormsg = when(result.code) {
+                        400 -> "Bad Request"
+                        403 -> "Invalid Email Confirmation"
+                        422 -> "Invalid Input Data"
+                        else -> "Terjadi Error"
+                    }
+                    loginError.postValue(SingleLiveEvent(Pair(errormsg, result.code)))
                 }
             }
         }

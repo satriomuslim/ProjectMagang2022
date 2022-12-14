@@ -10,6 +10,7 @@ import com.qatros.qtn_bina_murid.data.remote.request.AddChatRequest
 import com.qatros.qtn_bina_murid.data.remote.response.Messages
 import com.qatros.qtn_bina_murid.databinding.ActivityMessageBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
+import com.qatros.qtn_bina_murid.utils.loadImageUser
 import io.socket.client.IO
 import io.socket.client.Socket
 import io.socket.emitter.Emitter
@@ -36,6 +37,9 @@ class MessageActivity : AppCompatActivity() {
         viewModel.getAllMessage(token, userId)
         binding.pbMessage.isGone = false
         observeData()
+        binding.srParent.setOnRefreshListener {
+            viewModel.getAllMessage(token, userId)
+        }
     }
 
 
@@ -43,6 +47,8 @@ class MessageActivity : AppCompatActivity() {
         viewModel.observeGetAllMessageSuccess().observe(this) {
             it.getContentIfNotHandled()?.let { dataResponse ->
                 binding.pbMessage.isGone = true
+                binding.ivProfileChat.loadImageUser(dataResponse.data.recipient.avatar)
+                binding.tvNameChat.text = dataResponse.data.recipient.fullname
                 messageData = dataResponse.data.messages.sortedBy { it.message_id }.toMutableList()
                 messageAdapter = MessageAdapter(messageData, userId)
                 with(binding.rvChat) {

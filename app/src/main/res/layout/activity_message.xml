@@ -38,13 +38,20 @@
             android:layout_gravity="center"/>
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_chat"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/sr_parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/item_message"
+        android:layout_height="wrap_content"
         android:layout_above="@id/rl_parent_typing"
-        android:layout_below="@id/ll_parent_profile"/>
+        android:layout_below="@id/ll_parent_profile">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_chat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_message" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
     <RelativeLayout
         android:id="@+id/rl_parent_typing"

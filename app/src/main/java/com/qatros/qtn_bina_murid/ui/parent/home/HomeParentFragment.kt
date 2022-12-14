@@ -86,16 +86,16 @@ class HomeParentFragment : Fragment() {
 
             val client: OkHttpClient = OkHttpClient()
             icChat.setOnClickListener {
-                Log.d("PieSocket", "Connecting");
+//                Log.d("PieSocket", "Connecting");
+//
+//                val request: Request = Request
+//                    .Builder()
+//                    .url("ws://bina-murid.fly.dev/cable")
+//                    .build()
+//                val listener = WebSocketListener()
+//                val ws: WebSocket = client.newWebSocket(request, listener)
 
-                val request: Request = Request
-                    .Builder()
-                    .url("ws://bina-murid.fly.dev/cable")
-                    .build()
-                val listener = WebSocketListener()
-                val ws: WebSocket = client.newWebSocket(request, listener)
-
-//                startActivity(Intent(activity, ChatActivity::class.java))
+                startActivity(Intent(activity, ChatActivity::class.java))
             }
         }
 

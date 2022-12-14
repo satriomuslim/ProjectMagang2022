@@ -4,61 +4,106 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".ui.register.RegisterDetailActivity">
-
-    <TextView
-        style="@style/DefaultTextMedium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:textSize="18sp"
-        android:text="Pilih role kamu" />
+    tools:context=".ui.login.LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_centerInParent="true"
-        android:weightSum="2">
+        android:layout_height="match_parent"
+        android:background="@color/blue"
+        android:orientation="vertical"
+        android:weightSum="7">
 
-        <TextView
-            android:id="@+id/btn_parent"
-            style="@style/DefaultTextMedium"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Orang Tua"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="16dp"
-            android:drawableTop="@drawable/ill_home_parent"
-            android:drawablePadding="8dp"
-            android:background="@drawable/bg_rounded_white_stoke_grey"
-            android:gravity="center"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:padding="36dp"
+            android:src="@drawable/ill_chose_role" />
 
-        <TextView
-            android:id="@+id/btn_pedagogue"
-            style="@style/DefaultTextMedium"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Pedagogue"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="24dp"
-            android:drawableTop="@drawable/ill_home_parent"
-            android:drawablePadding="8dp"
-            android:background="@drawable/bg_rounded_white_stoke_grey"
-            android:gravity="center"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:background="@drawable/bg_rounded_white_top_radius"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/DefaultTextMedium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Pilih Pedagogue"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        style="@style/DefaultTextLanding"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kamu termasuk Orang Tua atau Pedagogue , pilih salah satu ya"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/btn_parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Orang Tua"
+                        style="@style/DefaultTextLandingSemiBold"
+                        android:background="@drawable/bg_rounded_white_stoke_blue_bold"
+                        android:gravity="center"
+                        android:layout_marginRight="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="24dp"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"/>
+
+                    <TextView
+                        android:id="@+id/btn_pedagogue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pedagogue"
+                        style="@style/DefaultTextLandingSemiBold"
+                        android:background="@drawable/bg_rounded_white_stoke_blue_bold"
+                        android:gravity="center"
+                        android:layout_marginRight="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"/>
+
+                    <Button
+                        android:id="@+id/btn_register"
+                        style="@style/ButtonDefault"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:enabled="false"
+                        android:text="Daftar" />
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </LinearLayout>
+
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_register"
-        style="@style/ButtonDefault"
-        android:layout_width="match_parent"
+    <ProgressBar
+        android:id="@+id/pb_register"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_alignParentBottom="true"
-        android:enabled="false"
-        android:text="Daftar" />
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
 
 </RelativeLayout>

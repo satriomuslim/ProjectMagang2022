@@ -106,4 +106,16 @@ class AppRepository(private val localRepository: LocalRepository, private val re
         return remoteRepository.getMessageChat(token, userId)
     }
 
+    suspend fun editChildrenProfile(token: String,
+                                    childrenId: Int,
+                                    fullName: RequestBody,
+                                    nickName: RequestBody,
+                                    school: RequestBody,
+                                    image: MultipartBody.Part?) : ResponseResult<Any> {
+        return remoteRepository.editChildrenProfile(token, childrenId, fullName, nickName, school, image)
+    }
+
+    suspend fun editPassword(token: String, changePasswordRequest: ChangePasswordRequest) : ResponseResult<Any> {
+        return remoteRepository.editPassword(token, changePasswordRequest)
+    }
 }

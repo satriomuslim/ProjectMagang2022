@@ -80,17 +80,6 @@ class EditProfileFragment : Fragment() {
                 val email = edEmail.text.toString().toRequestBody("text/plain".toMediaType())
 
                 viewModel.editProfile(token, name, email)
-
-                val dialog = Dialog(requireActivity())
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-                dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                dialog.setContentView(R.layout.popup_confirm_email)
-
-                val btnClose = dialog.findViewById<Button>(R.id.btn_confirm_email)
-                btnClose.setOnClickListener {
-                    dialog.dismiss()
-                }
-                dialog.show()
             }
         }
     }

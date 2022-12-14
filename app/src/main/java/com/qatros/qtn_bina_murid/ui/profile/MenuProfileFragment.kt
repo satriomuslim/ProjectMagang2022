@@ -51,7 +51,7 @@ class MenuProfileFragment : Fragment() {
 
     private fun init() {
         with(binding) {
-            if(SharedPreference(requireContext()).userListRole?.size == 1) {
+            if (SharedPreference(requireContext()).userListRole?.size == 1) {
                 if (SharedPreference(requireContext()).userRole == 1) {
                     tvChangeUser.text = "Daftar Pedagogue"
                 } else {
@@ -73,13 +73,16 @@ class MenuProfileFragment : Fragment() {
 
                 }
             } else {
-                tvChangeUser.text = "Ganti Akun"
-                btnChangeUser.setOnClickListener{
-                    if (SharedPreference(requireContext()).userRole == 1) {
+                if (SharedPreference(requireContext()).userRole == 1) {
+                    tvChangeUser.text = "Ganti Ke Akun Pedagogue"
+                    btnChangeUser.setOnClickListener {
                         SharedPreference(requireContext()).userRole = 2
                         startActivity(Intent(activity, NavigationPedagogueActivity::class.java))
                         activity?.finish()
-                    } else {
+                    }
+                } else {
+                    tvChangeUser.text = "Ganti Ke Akun Parent"
+                    btnChangeUser.setOnClickListener {
                         SharedPreference(requireContext()).userRole = 1
                         startActivity(Intent(activity, NavigationParentActivity::class.java))
                         activity?.finish()
@@ -87,8 +90,12 @@ class MenuProfileFragment : Fragment() {
                 }
             }
 
-            btnEditProfile.setOnClickListener{
+            btnEditProfile.setOnClickListener {
                 findNavController().navigate(R.id.action_menuProfile_to_editProfileFragment)
+            }
+
+            btnEditPassword.setOnClickListener {
+                findNavController().navigate(R.id.action_menuProfile_to_changePasswordFragment)
             }
 
             btnLogout.setOnClickListener {

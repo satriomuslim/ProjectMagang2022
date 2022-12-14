@@ -62,7 +62,7 @@ class DailyParentFragment : Fragment(), DateAdapter.onItemClick {
     private fun observeData() {
         with(viewModel) {
             observeGetChildListSuccess().observe(viewLifecycleOwner) {
-                if(it?.data == null) {
+                if(it?.data.isNullOrEmpty()) {
                     binding.pbDailyParent.isGone = true
                     Toast.makeText(
                         requireContext(),
@@ -70,7 +70,7 @@ class DailyParentFragment : Fragment(), DateAdapter.onItemClick {
                         Toast.LENGTH_SHORT
                     ).show()
                 } else {
-                    val adapter = it.data.let { it1 ->
+                    val adapter = it?.data?.let { it1 ->
                         SpinChildAdapter(
                             requireContext(),
                             android.R.layout.simple_spinner_item,
@@ -111,7 +111,7 @@ class DailyParentFragment : Fragment(), DateAdapter.onItemClick {
             }
 
             observeGetPedagogueSuccess().observe(viewLifecycleOwner) {
-                if (it?.data == null) {
+                if (it?.data.isNullOrEmpty()) {
                     binding.pbDailyParent.isGone = true
                     Toast.makeText(
                         requireContext(),
@@ -119,7 +119,7 @@ class DailyParentFragment : Fragment(), DateAdapter.onItemClick {
                         Toast.LENGTH_SHORT
                     ).show()
                 } else {
-                    val adapter = it.data.let { it1 ->
+                    val adapter = it?.data?.let { it1 ->
                         SpinnerPedagogueAdapter(
                             requireContext(),
                             android.R.layout.simple_spinner_item,
@@ -146,6 +146,15 @@ class DailyParentFragment : Fragment(), DateAdapter.onItemClick {
                         }
                 }
 
+            }
+
+            observeError().observe(viewLifecycleOwner) {
+                binding.pbDailyParent.isGone = true
+                Toast.makeText(
+                    requireContext(),
+                    "Pedagogue tidak ditemukan",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
             observeGetReportParent().observe(viewLifecycleOwner) { data ->
@@ -191,6 +200,12 @@ class DailyParentFragment : Fragment(), DateAdapter.onItemClick {
     override fun setItemClick(data: Date, position: Int) {
         dateDefault = SimpleDateFormat("yyyy-MM-dd").format(data.time)
         viewModel.getReportParent(token, dateDefault, childrenId, pedagogueId)
+        binding.pbDailyParent.isGone = false
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getChildList(token, "parent")
         binding.pbDailyParent.isGone = false
     }
 }
