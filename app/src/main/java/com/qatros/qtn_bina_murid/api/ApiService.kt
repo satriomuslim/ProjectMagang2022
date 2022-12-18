@@ -157,4 +157,14 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Body changePasswordRequest: ChangePasswordRequest
     ) : Response<Any>
+
+    @POST("api/v1/user/email/resend")
+    suspend fun resendEmail(
+        @Body resendEmailRequest: ResendEmailRequest
+    ) : Response<Any>
+
+    @POST("api/v1/user/email/confirm")
+    suspend fun confirmEmail(
+        @Body confirmTokenRequest: ConfirmTokenRequest
+    ) : Response<Any>
 }

@@ -150,4 +150,12 @@ class RemoteRepository(private val apiService: ApiService) {
     suspend fun editPassword(token: String, changePasswordRequest: ChangePasswordRequest) = getResult {
         apiService.editPassword(token, changePasswordRequest)
     }
+
+    suspend fun resendEmail(resendEmailRequest: ResendEmailRequest) = getResult {
+        apiService.resendEmail(resendEmailRequest)
+    }
+
+    suspend fun confirmToken(confirmTokenRequest: ConfirmTokenRequest) = getResult {
+        apiService.confirmEmail(confirmTokenRequest)
+    }
 }

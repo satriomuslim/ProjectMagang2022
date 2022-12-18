@@ -117,4 +117,12 @@ class AppRepository(private val localRepository: LocalRepository, private val re
     suspend fun editPassword(token: String, changePasswordRequest: ChangePasswordRequest) : ResponseResult<Any> {
         return remoteRepository.editPassword(token, changePasswordRequest)
     }
+
+    suspend fun resendEmail(resendEmailRequest: ResendEmailRequest): ResponseResult<Any> {
+        return remoteRepository.resendEmail(resendEmailRequest)
+    }
+
+    suspend fun confirmToken(confirmTokenRequest: ConfirmTokenRequest) : ResponseResult<Any> {
+        return remoteRepository.confirmToken(confirmTokenRequest)
+    }
 }

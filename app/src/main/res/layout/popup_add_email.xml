@@ -39,7 +39,8 @@
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            android:text="Cek email kamu yah untuk konfirmasi"
+            android:textAlignment="center"
+            android:text="Cek email kamu yah untuk melihat \nkode OTP"
             android:textColor="@color/blue"
             android:textSize="14sp" />
 

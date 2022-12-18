@@ -13,12 +13,17 @@
         android:orientation="vertical"
         android:weightSum="7">
 
-        <ImageView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3"
-            android:padding="36dp"
-            android:src="@drawable/ill_chose_role" />
+            android:layout_weight="3">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="36dp"
+                android:src="@drawable/ill_chose_role" />
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,39 +48,39 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:text="Konfirmasi Email"
+                        android:text="Konfirmasi Token"
                         android:textSize="24sp" />
 
                     <TextView
                         style="@style/DefaultTextLanding"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Silahkan konfirmasi ulang email anda agar dapat login"
+                        android:text="Silahkan masukkan token yang terdapat pada email"
                         android:textSize="10sp" />
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:id="@+id/email_confirm"
-                        android:layout_width="match_parent"
+                    <in.aabhasjindal.otptextview.OtpTextView
+                        android:id="@+id/otp_view"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:startIconDrawable="@drawable/ic_envelopeopen"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
                         android:layout_marginBottom="16dp"
-                        android:layout_marginTop="32dp">
-
-                        <com.qatros.qtn_bina_murid.customview.EmailEditText
-                            android:id="@+id/et_email_confirm"
-                            android:inputType="textEmailAddress"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-                    </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_marginTop="32dp"
+                        android:textColor="@color/blue"
+                        app:height="50dp"
+                        app:width="50dp"
+                        app:bar_enabled="true"
+                        app:bar_height="2dp"
+                        app:length="6"
+                        app:otp_text_size="24dp"/>
 
                     <Button
-                        android:id="@+id/btn_konfirm_email"
+                        android:id="@+id/btn_confirm_token"
                         style="@style/ButtonDefault"
+                        android:backgroundTint="@color/blue"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
-                        android:enabled="false"
                         android:text="Kirim" />
 
                 </LinearLayout>
@@ -87,7 +92,7 @@
     </LinearLayout>
 
     <ProgressBar
-        android:id="@+id/pb_register"
+        android:id="@+id/pb_confirm_token"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
