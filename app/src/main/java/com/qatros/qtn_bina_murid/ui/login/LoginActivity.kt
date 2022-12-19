@@ -85,6 +85,7 @@ class LoginActivity : AppCompatActivity() {
                         btnClose.setOnClickListener {
                             startActivity(Intent(this@LoginActivity, ResendEmailActivity::class.java))
                             dialog.dismiss()
+//                            startActivity(Intent(this@LoginActivity, ))
                         }
                         dialog.show()
                     } else {
