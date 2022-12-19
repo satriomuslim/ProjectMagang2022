@@ -1,12 +1,19 @@
 package com.qatros.qtn_bina_murid.ui.profile
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import com.qatros.qtn_bina_murid.R
@@ -67,8 +74,16 @@ class ChangePasswordFragment : Fragment() {
         viewModel.observeChangePasswordSuccess().observe(viewLifecycleOwner) {
             it.getContentIfNotHandled()?.let { success ->
                 if(success) {
-                    requireContext().toast("Change Password Success")
-                    findNavController().popBackStack()
+                    Toast.makeText(requireActivity(), "Change Password Success", Toast.LENGTH_SHORT).show()
+                    val dialog = Dialog(requireContext())
+                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+                    dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                    dialog.setContentView(R.layout.popup_change_password)
+                    dialog.show()
+
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        dialog.dismiss()
+                    }, 1000)
                 } else {
                     requireContext().toast("Change Password Error")
                 }
