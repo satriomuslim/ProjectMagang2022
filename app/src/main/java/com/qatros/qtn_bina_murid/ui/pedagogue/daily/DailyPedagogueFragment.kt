@@ -164,10 +164,10 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
                 dialogBinding.apply {
                     when {
                         edAddNilai.text!!.isEmpty() -> {
-                            edAddNilai.error = "Email Required"
+                            edAddNilai.error = "Nilai Required"
                         }
                         edDesc.text!!.isEmpty() -> {
-                            edDesc.error = "Password Required"
+                            edDesc.error = "Description Required"
                         }
                         else -> {
 
