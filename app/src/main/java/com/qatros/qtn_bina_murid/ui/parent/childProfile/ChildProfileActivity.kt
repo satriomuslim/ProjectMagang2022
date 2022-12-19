@@ -10,7 +10,6 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
@@ -62,7 +61,6 @@ class ChildProfileActivity : AppCompatActivity() {
             txtNamaChild.setText(data?.fullName)
             edAsalSekolah.setText(data?.school)
             edNamaAnak.setText(data?.fullName)
-            edNamaPanggilanAnak.setText(data?.nickName)
             edTanggalLahirAnak.setText(data?.dateOfBirth)
             btnAddImage.setOnClickListener {
                 showBottomSheetDialog()
@@ -70,15 +68,12 @@ class ChildProfileActivity : AppCompatActivity() {
             apply{
                 edAsalSekolah.addTextChangedListener(loginTextWatcher)
                 edNamaAnak.addTextChangedListener(loginTextWatcher)
-                edNamaPanggilanAnak.addTextChangedListener(loginTextWatcher)
                 edTanggalLahirAnak.addTextChangedListener(loginTextWatcher)
             }
             btnEditProfileChild.setOnClickListener {
                 val token = SharedPreference(this@ChildProfileActivity).userToken
                 val childrenId = data?.childrenId
                 val fullName = edNamaAnak.text.toString().toRequestBody("text/plain".toMediaType())
-                val nickName =
-                    edNamaPanggilanAnak.text.toString().toRequestBody("text/plain".toMediaType())
                 val school = edAsalSekolah.text.toString().toRequestBody("text/plain".toMediaType())
                 val requestImageFile =
                     finalFile?.asRequestBody("image/jpg".toMediaTypeOrNull())
@@ -89,7 +84,7 @@ class ChildProfileActivity : AppCompatActivity() {
                         it1
                     )
                 }
-                viewModel.editChildrenProfile(token, childrenId ?: 0, fullName, nickName, school, imageMultipart)
+                viewModel.editChildrenProfile(token, childrenId ?: 0, fullName, school, imageMultipart)
             }
         }
     }
@@ -108,9 +103,6 @@ class ChildProfileActivity : AppCompatActivity() {
                     edNamaAnak.text!!.isEmpty() -> {
                         edNamaAnak.error = "Name Required"
                     }
-                    edNamaPanggilanAnak.text!!.isEmpty() -> {
-                        edNamaPanggilanAnak.error = "Nickname Required"
-                    }
                     edTanggalLahirAnak.text!!.isEmpty() -> {
                         edTanggalLahirAnak.error = "Date Required"
                     }
@@ -119,7 +111,7 @@ class ChildProfileActivity : AppCompatActivity() {
                     }
 
                 }
-                btnEditProfileChild.isEnabled =  edAsalSekolah.text!!.isNotEmpty() && edNamaAnak.text!!.isNotEmpty() && edNamaPanggilanAnak.text!!.isNotEmpty() && edTanggalLahirAnak.text!!.isNotEmpty()
+                btnEditProfileChild.isEnabled =  edAsalSekolah.text!!.isNotEmpty() && edNamaAnak.text!!.isNotEmpty() && edTanggalLahirAnak.text!!.isNotEmpty()
 
             }
 
@@ -127,7 +119,7 @@ class ChildProfileActivity : AppCompatActivity() {
 
         override fun afterTextChanged(s: Editable) {
             binding.apply {
-                if (edAsalSekolah.text?.isBlank()?.not() == true && edNamaAnak.text?.isBlank()?.not() == true && edNamaPanggilanAnak.text?.isBlank()?.not() == true && edTanggalLahirAnak.text?.isBlank()?.not() == true) {
+                if (edAsalSekolah.text?.isBlank()?.not() == true && edNamaAnak.text?.isBlank()?.not() == true && edTanggalLahirAnak.text?.isBlank()?.not() == true) {
                     btnEditProfileChild.setBackgroundColor(resources.getColor(R.color.blue))
                 } else {
                     btnEditProfileChild.setBackgroundColor(resources.getColor(R.color.grey))

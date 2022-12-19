@@ -1,24 +1,24 @@
 package com.qatros.qtn_bina_murid.ui.profile
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.findNavController
 import com.qatros.qtn_bina_murid.R
 import com.qatros.qtn_bina_murid.data.remote.request.AddRoleRequest
 import com.qatros.qtn_bina_murid.databinding.FragmentMenuProfileBinding
+import com.qatros.qtn_bina_murid.databinding.PopupChangeRole2Binding
+import com.qatros.qtn_bina_murid.databinding.PopupChangeRoleBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
 import com.qatros.qtn_bina_murid.ui.login.LoginActivity
 import com.qatros.qtn_bina_murid.ui.parent.navigation.NavigationParentActivity
 import com.qatros.qtn_bina_murid.ui.pedagogue.navigation.NavigationPedagogueActivity
+import com.qatros.qtn_bina_murid.utils.toast
 import org.koin.android.ext.android.inject
-
 
 class MenuProfileFragment : Fragment() {
 
@@ -44,7 +44,8 @@ class MenuProfileFragment : Fragment() {
         viewModel.observeAddRoleSuccess().observe(viewLifecycleOwner) {
             it.getContentIfNotHandled()?.let { data ->
                 SharedPreference(requireContext()).userListRole = data.data.role.toMutableSet()
-                binding.tvChangeUser.text = "Ganti Akun"
+                context?.toast("Daftar User Baru Success")
+
             }
         }
     }
@@ -64,11 +65,44 @@ class MenuProfileFragment : Fragment() {
                             role = "pedagogue"
                         )
                         viewModel.addRoleUser(token, data)
+
+                        val dialogBinding = PopupChangeRole2Binding.inflate(layoutInflater)
+                        val alertDialog = AlertDialog.Builder(requireContext()).setView(dialogBinding.root)
+
+                        alertDialog.setCancelable(false)
+                        val dialog = alertDialog.show()
+
+                        with(dialogBinding) {
+                            btnNo.setOnClickListener {
+                                dialog.dismiss()
+                            }
+                            btnYes.setOnClickListener {
+                                startActivity(Intent(activity, NavigationPedagogueActivity::class.java))
+                                activity?.finish()
+                            }
+                        }
+
                     } else {
                         val data = AddRoleRequest(
                             role = "parent"
                         )
                         viewModel.addRoleUser(token, data)
+
+                        val dialogBinding = PopupChangeRole2Binding.inflate(layoutInflater)
+                        val alertDialog = AlertDialog.Builder(requireContext()).setView(dialogBinding.root)
+
+                        alertDialog.setCancelable(false)
+                        val dialog = alertDialog.show()
+
+                        with(dialogBinding) {
+                            btnNo.setOnClickListener {
+                                dialog.dismiss()
+                            }
+                            btnYes.setOnClickListener {
+                                startActivity(Intent(activity, NavigationParentActivity::class.java))
+                                activity?.finish()
+                            }
+                        }
                     }
 
                 }
@@ -77,15 +111,43 @@ class MenuProfileFragment : Fragment() {
                     tvChangeUser.text = "Ganti Ke Akun Pedagogue"
                     btnChangeUser.setOnClickListener {
                         SharedPreference(requireContext()).userRole = 2
-                        startActivity(Intent(activity, NavigationPedagogueActivity::class.java))
-                        activity?.finish()
+
+                        val dialogBinding = PopupChangeRoleBinding.inflate(layoutInflater)
+                        val alertDialog = AlertDialog.Builder(requireContext()).setView(dialogBinding.root)
+
+                        alertDialog.setCancelable(false)
+                        val dialog = alertDialog.show()
+
+                        with(dialogBinding) {
+                            btnNo.setOnClickListener {
+                                dialog.dismiss()
+                            }
+                            btnYes.setOnClickListener {
+                                startActivity(Intent(activity, NavigationPedagogueActivity::class.java))
+                                activity?.finish()
+                            }
+                        }
                     }
                 } else {
                     tvChangeUser.text = "Ganti Ke Akun Parent"
                     btnChangeUser.setOnClickListener {
                         SharedPreference(requireContext()).userRole = 1
-                        startActivity(Intent(activity, NavigationParentActivity::class.java))
-                        activity?.finish()
+
+                        val dialogBinding = PopupChangeRoleBinding.inflate(layoutInflater)
+                        val alertDialog = AlertDialog.Builder(requireContext()).setView(dialogBinding.root)
+
+                        alertDialog.setCancelable(false)
+                        val dialog = alertDialog.show()
+
+                        with(dialogBinding) {
+                            btnNo.setOnClickListener {
+                                dialog.dismiss()
+                            }
+                            btnYes.setOnClickListener {
+                                startActivity(Intent(activity, NavigationParentActivity::class.java))
+                                activity?.finish()
+                            }
+                        }
                     }
                 }
             }

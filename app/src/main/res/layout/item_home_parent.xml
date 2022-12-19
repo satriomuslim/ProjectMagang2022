@@ -48,7 +48,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/image" />
+        android:src="@drawable/profile" />
 
     <RelativeLayout
         android:layout_width="match_parent"

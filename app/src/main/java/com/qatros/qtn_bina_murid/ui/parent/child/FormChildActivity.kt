@@ -60,7 +60,6 @@ class FormChildActivity : AppCompatActivity() {
         binding.apply {
             edAsalSekolah.addTextChangedListener(loginTextWatcher)
             edNamaAnak.addTextChangedListener(loginTextWatcher)
-            edNamaPanggilanAnak.addTextChangedListener(loginTextWatcher)
             edTanggalLahirAnak.addTextChangedListener(loginTextWatcher)
         }
 
@@ -105,9 +104,6 @@ class FormChildActivity : AppCompatActivity() {
                     edNamaAnak.text!!.isEmpty() -> {
                         edNamaAnak.error = "Name Required"
                     }
-                    edNamaPanggilanAnak.text!!.isEmpty() -> {
-                        edNamaPanggilanAnak.error = "Nickname Required"
-                    }
                     edTanggalLahirAnak.isClickable.not() -> {
                         edTanggalLahirAnak.error = "Date Required"
                     }
@@ -117,7 +113,7 @@ class FormChildActivity : AppCompatActivity() {
 
                 }
                 btnRegisterChild.isEnabled =
-                    edAsalSekolah.text!!.isNotEmpty() && edNamaAnak.text!!.isNotEmpty() && edNamaPanggilanAnak.text!!.isNotEmpty() && edTanggalLahirAnak.text!!.isNotEmpty()
+                    edAsalSekolah.text!!.isNotEmpty() && edNamaAnak.text!!.isNotEmpty() && edTanggalLahirAnak.text!!.isNotEmpty()
 
             }
 
@@ -125,7 +121,7 @@ class FormChildActivity : AppCompatActivity() {
 
         override fun afterTextChanged(s: Editable) {
             binding.apply {
-                if (edAsalSekolah.text?.isBlank()?.not() == true && edNamaAnak.text?.isBlank()?.not() == true && edNamaPanggilanAnak.text?.isBlank()?.not() == true && edTanggalLahirAnak.text?.isBlank()?.not() == true
+                if (edAsalSekolah.text?.isBlank()?.not() == true && edNamaAnak.text?.isBlank()?.not() == true && edTanggalLahirAnak.text?.isBlank()?.not() == true
                 ) {
                     btnRegisterChild.setBackgroundColor(resources.getColor(R.color.blue))
                 } else {
@@ -144,8 +140,6 @@ class FormChildActivity : AppCompatActivity() {
             btnRegisterChild.setOnClickListener {
                 val token = SharedPreference(this@FormChildActivity).userToken
                 val fullName = edNamaAnak.text.toString().toRequestBody("text/plain".toMediaType())
-                val nickName =
-                    edNamaPanggilanAnak.text.toString().toRequestBody("text/plain".toMediaType())
                 val school = edAsalSekolah.text.toString().toRequestBody("text/plain".toMediaType())
                 val birthOfDate =
                     edTanggalLahirAnak.text.toString().toRequestBody("text/plain".toMediaType())
@@ -163,7 +157,6 @@ class FormChildActivity : AppCompatActivity() {
                     viewModel.postAddChild(
                         token,
                         fullName,
-                        nickName,
                         school,
                         birthOfDate,
                         imageMultipart

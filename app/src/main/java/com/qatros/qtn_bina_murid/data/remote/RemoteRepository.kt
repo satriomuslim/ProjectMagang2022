@@ -46,12 +46,11 @@ class RemoteRepository(private val apiService: ApiService) {
     suspend fun postAddChild(
         token: String,
         fullName: RequestBody,
-        nickName: RequestBody,
         school: RequestBody,
         birthOfDate: RequestBody,
         file: MultipartBody.Part
     ) = getResult {
-        apiService.postAddChild(token, fullName, nickName, school, birthOfDate, file)
+        apiService.postAddChild(token, fullName, school, birthOfDate, file)
     }
 
     suspend fun getInviteChildren(token: String, childrenId: Int) = getResult {
@@ -142,14 +141,21 @@ class RemoteRepository(private val apiService: ApiService) {
         token: String,
         childrenId: Int,
         fullName: RequestBody,
-        nickName: RequestBody,
         school: RequestBody,
         image: MultipartBody.Part?
     ) = getResult {
-        apiService.editChildrenProfile(token, childrenId, fullName, nickName, school, image)
+        apiService.editChildrenProfile(token, childrenId, fullName, school, image)
     }
 
     suspend fun editPassword(token: String, changePasswordRequest: ChangePasswordRequest) = getResult {
         apiService.editPassword(token, changePasswordRequest)
+    }
+
+    suspend fun resendEmail(resendEmailRequest: ResendEmailRequest) = getResult {
+        apiService.resendEmail(resendEmailRequest)
+    }
+
+    suspend fun confirmToken(confirmTokenRequest: ConfirmTokenRequest) = getResult {
+        apiService.confirmEmail(confirmTokenRequest)
     }
 }

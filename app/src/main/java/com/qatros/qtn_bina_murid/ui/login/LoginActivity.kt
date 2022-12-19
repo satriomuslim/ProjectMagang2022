@@ -83,6 +83,7 @@ class LoginActivity : AppCompatActivity() {
 
                         val btnClose = dialog.findViewById<Button>(R.id.btn_confirm_email)
                         btnClose.setOnClickListener {
+                            startActivity(Intent(this@LoginActivity, ResendEmailActivity::class.java))
                             dialog.dismiss()
 //                            startActivity(Intent(this@LoginActivity, ))
                         }

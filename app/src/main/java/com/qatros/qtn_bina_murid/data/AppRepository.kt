@@ -26,8 +26,8 @@ class AppRepository(private val localRepository: LocalRepository, private val re
         return remoteRepository.getListChild(token, type)
     }
 
-    suspend fun postAddChild(token: String, fullName: RequestBody, nickName: RequestBody, school: RequestBody, birthOfDate: RequestBody, file: MultipartBody.Part) : ResponseResult<Any> {
-        return remoteRepository.postAddChild(token, fullName, nickName, school, birthOfDate, file)
+    suspend fun postAddChild(token: String, fullName: RequestBody, school: RequestBody, birthOfDate: RequestBody, file: MultipartBody.Part) : ResponseResult<Any> {
+        return remoteRepository.postAddChild(token, fullName, school, birthOfDate, file)
     }
 
     suspend fun getInviteChildren(token: String, childrenId: Int): ResponseResult<InvitationTokenResponse> {
@@ -109,13 +109,20 @@ class AppRepository(private val localRepository: LocalRepository, private val re
     suspend fun editChildrenProfile(token: String,
                                     childrenId: Int,
                                     fullName: RequestBody,
-                                    nickName: RequestBody,
                                     school: RequestBody,
                                     image: MultipartBody.Part?) : ResponseResult<Any> {
-        return remoteRepository.editChildrenProfile(token, childrenId, fullName, nickName, school, image)
+        return remoteRepository.editChildrenProfile(token, childrenId, fullName, school, image)
     }
 
     suspend fun editPassword(token: String, changePasswordRequest: ChangePasswordRequest) : ResponseResult<Any> {
         return remoteRepository.editPassword(token, changePasswordRequest)
+    }
+
+    suspend fun resendEmail(resendEmailRequest: ResendEmailRequest): ResponseResult<Any> {
+        return remoteRepository.resendEmail(resendEmailRequest)
+    }
+
+    suspend fun confirmToken(confirmTokenRequest: ConfirmTokenRequest) : ResponseResult<Any> {
+        return remoteRepository.confirmToken(confirmTokenRequest)
     }
 }

@@ -3,6 +3,7 @@ package com.qatros.qtn_bina_murid.di
 import com.qatros.qtn_bina_murid.ui.chat.ChatViewModel
 import com.qatros.qtn_bina_murid.ui.history.HistoryViewModel
 import com.qatros.qtn_bina_murid.ui.login.LoginViewModel
+import com.qatros.qtn_bina_murid.ui.otp.OtpViewModel
 import com.qatros.qtn_bina_murid.ui.parent.child.FormChildViewModel
 import com.qatros.qtn_bina_murid.ui.parent.daily.DailyParentViewModel
 import com.qatros.qtn_bina_murid.ui.parent.home.HomeViewModel
@@ -27,4 +28,5 @@ val viewModelModule = module {
     single { FormChildViewModel(get()) }
     single { ScanChildrenViewModel(get()) }
     single { ChatViewModel(get()) }
+    single { OtpViewModel(get()) }
 }

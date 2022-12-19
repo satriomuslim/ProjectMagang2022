@@ -9,66 +9,35 @@
     tools:context=".ui.profile.EditProfileFragment">
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/name_register"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
-        app:boxCornerRadiusBottomEnd="16dp"
-        app:boxCornerRadiusBottomStart="16dp"
-        app:boxCornerRadiusTopEnd="16dp"
-        app:boxCornerRadiusTopStart="16dp"
-        app:boxStrokeColor="@color/blue"
-        app:hintTextColor="@color/blue">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:startIconDrawable="@drawable/ic_user">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.qatros.qtn_bina_murid.customview.FullNameEditText
             android:id="@+id/ed_namaLengkap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:drawableStart="@drawable/ic_user"
             android:drawableEnd="@drawable/ic_pencil_simple"
-            android:drawablePadding="16dp"
-            android:hint="Nama Lengkap"
-            android:imeOptions="actionNext"
-            android:inputType="textPersonName"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:textCursorDrawable="@color/blue"
-            android:textSize="16sp" />
-
+            android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/email_register"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:boxCornerRadiusBottomEnd="16dp"
-        app:boxCornerRadiusBottomStart="16dp"
-        app:boxCornerRadiusTopEnd="16dp"
-        app:boxCornerRadiusTopStart="16dp"
-        app:boxStrokeColor="@color/blue"
-        app:hintTextColor="@color/blue">
+        app:startIconDrawable="@drawable/ic_envelopeopen">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.qatros.qtn_bina_murid.customview.EmailEditText
             android:id="@+id/ed_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:drawableStart="@drawable/ic_envelopeopen"
             android:drawableEnd="@drawable/ic_pencil_simple"
-            android:drawablePadding="16dp"
-            android:hint="Email"
-            android:imeOptions="actionDone"
-            android:inputType="textEmailAddress"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:textCursorDrawable="@color/blue"
-            android:textSize="16sp" />
-
+            android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

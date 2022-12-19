@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/dialog_frame_flash"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:gravity="center"
-    android:background="@drawable/bg_edt">
+    android:background="@drawable/bg_edt"
+    android:gravity="center">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/dialog_layout_flash"
@@ -15,8 +14,8 @@
         android:layout_gravity="center"
         android:background="@drawable/bg_rounded_white_allradius"
         android:gravity="center_horizontal"
-        android:minWidth="@dimen/popup_width"
-        android:minHeight="@dimen/popup_height"
+        android:minWidth="@dimen/popup_width2"
+        android:minHeight="@dimen/popup_height2"
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -25,10 +24,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
             android:gravity="center"
-            android:text="Selamat"
-            android:textColor="@color/green"
+            android:text="Apakah Kamu Yakin?"
+            android:textColor="@color/blue"
             android:textSize="24sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -37,25 +35,41 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:textAlignment="center"
-            android:text="Cek email kamu yah untuk melihat \nkode OTP"
+            android:layout_marginTop="24dp"
+            android:text="Ingin keluar dari akun ini?"
             android:textColor="@color/blue"
             android:textSize="14sp" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_add_email"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/ic_subscriber_pana"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
             android:orientation="horizontal"
-            android:text="OK"
-            android:textColor="@color/blue" />
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btn_no"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                style="@style/ButtonPopupTidak"
+                android:text="Tidak" />
+
+            <Button
+                android:id="@+id/btn_yes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                style="@style/ButtonPopupYa"
+                android:text="Ya" />
+
+        </LinearLayout>
+
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
