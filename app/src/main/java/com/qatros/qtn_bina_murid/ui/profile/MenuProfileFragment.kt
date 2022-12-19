@@ -1,10 +1,17 @@
 package com.qatros.qtn_bina_murid.ui.profile
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.qatros.qtn_bina_murid.R
@@ -62,11 +69,31 @@ class MenuProfileFragment : Fragment() {
                             role = "pedagogue"
                         )
                         viewModel.addRoleUser(token, data)
+
+                        val dialog = Dialog(requireContext())
+                        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+                        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                        dialog.setContentView(R.layout.popup_change_role_2)
+                        dialog.show()
+
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            dialog.dismiss()
+                        }, 1000)
                     } else {
                         val data = AddRoleRequest(
                             role = "parent"
                         )
                         viewModel.addRoleUser(token, data)
+
+                        val dialog = Dialog(requireContext())
+                        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+                        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                        dialog.setContentView(R.layout.popup_change_role_2)
+                        dialog.show()
+
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            dialog.dismiss()
+                        }, 1000)
                     }
 
                 }
@@ -75,15 +102,34 @@ class MenuProfileFragment : Fragment() {
                     tvChangeUser.text = "Ganti Ke Akun Pedagogue"
                     btnChangeUser.setOnClickListener {
                         SharedPreference(requireContext()).userRole = 2
-                        startActivity(Intent(activity, NavigationPedagogueActivity::class.java))
-                        activity?.finish()
+                        val dialog = Dialog(requireContext())
+                        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+                        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                        dialog.setContentView(R.layout.popup_change_role)
+                        dialog.show()
+
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            dialog.dismiss()
+                            startActivity(Intent(activity, NavigationPedagogueActivity::class.java))
+                            activity?.finish()
+                        }, 1000)
                     }
                 } else {
                     tvChangeUser.text = "Ganti Ke Akun Parent"
                     btnChangeUser.setOnClickListener {
                         SharedPreference(requireContext()).userRole = 1
-                        startActivity(Intent(activity, NavigationParentActivity::class.java))
-                        activity?.finish()
+                        Toast.makeText(requireActivity(), "Success Change Account", Toast.LENGTH_SHORT).show()
+                        val dialog = Dialog(requireContext())
+                        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+                        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                        dialog.setContentView(R.layout.popup_change_role)
+                        dialog.show()
+
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            dialog.dismiss()
+                            startActivity(Intent(activity, NavigationParentActivity::class.java))
+                            activity?.finish()
+                        }, 1000)
                     }
                 }
             }
