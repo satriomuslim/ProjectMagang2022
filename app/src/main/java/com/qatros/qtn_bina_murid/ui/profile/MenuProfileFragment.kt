@@ -14,6 +14,7 @@ import com.qatros.qtn_bina_murid.di.SharedPreference
 import com.qatros.qtn_bina_murid.ui.login.LoginActivity
 import com.qatros.qtn_bina_murid.ui.parent.navigation.NavigationParentActivity
 import com.qatros.qtn_bina_murid.ui.pedagogue.navigation.NavigationPedagogueActivity
+import com.qatros.qtn_bina_murid.utils.toast
 import org.koin.android.ext.android.inject
 
 
@@ -41,7 +42,7 @@ class MenuProfileFragment : Fragment() {
         viewModel.observeAddRoleSuccess().observe(viewLifecycleOwner) {
             it.getContentIfNotHandled()?.let { data ->
                 SharedPreference(requireContext()).userListRole = data.data.role.toMutableSet()
-                binding.tvChangeUser.text = "Ganti Akun"
+                context?.toast("Daftar User Baru Success")
             }
         }
     }
