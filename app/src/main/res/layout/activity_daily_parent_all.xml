@@ -7,14 +7,34 @@
     android:padding="16dp"
     tools:context=".ui.parent.daily.DailyParentsAllActivity">
 
-    <Button
-        android:id="@+id/button3"
-        style="@style/Button_one"
-        android:layout_marginTop="16dp"
-        android:text="Search Kalender"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:id="@+id/rl_parent_calendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_date_detail_report"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/DefaultTextMedium"
+            android:text="All Report"
+            android:layout_centerInParent="true"/>
+
+        <TextView
+            android:id="@+id/btn_change_calendar"
+            style="@style/DefaultTextMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/ic_calendar"
+            android:drawablePadding="4dp"
+            android:gravity="center"
+            android:text="Ganti Tanggal"
+            android:visibility="gone"
+            android:textSize="12dp" />
+    </RelativeLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
@@ -23,7 +43,7 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3">
+        app:layout_constraintTop_toBottomOf="@+id/rl_parent_calendar">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_main"
