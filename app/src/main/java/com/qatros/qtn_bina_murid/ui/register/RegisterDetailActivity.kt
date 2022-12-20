@@ -57,9 +57,11 @@ class RegisterDetailActivity : AppCompatActivity() {
                 }
             }
 
-            observeError().observe(this@RegisterDetailActivity) {
-                binding.pbRegister.isGone = true
-                this@RegisterDetailActivity.toast(it)
+            observeIsErrorRegister().observe(this@RegisterDetailActivity) {
+                it.getContentIfNotHandled()?.let { data ->
+                    binding.pbRegister.isGone = true
+                    this@RegisterDetailActivity.toast(data)
+                }
             }
         }
     }
