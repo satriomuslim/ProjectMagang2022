@@ -16,6 +16,9 @@ class RegisterViewModel(private val repository: AppRepository) : BaseViewModel()
     private val RegisterSuccess = MutableLiveData<SingleLiveEvent<Boolean>>()
     fun observeRegisterSuccess(): LiveData<SingleLiveEvent<Boolean>> = RegisterSuccess
 
+    private val isErrorRegister = MutableLiveData<SingleLiveEvent<String>>()
+    fun observeIsErrorRegister(): LiveData<SingleLiveEvent<String>> = isErrorRegister
+
     fun postRegister(RegisterRequest: RegisterRequest) {
         viewModelScope.launch {
             when(val result = repository.postRegister(RegisterRequest)) {
@@ -28,7 +31,7 @@ class RegisterViewModel(private val repository: AppRepository) : BaseViewModel()
                         422 -> "Invalid Input Data atau Data Sudah Terdaftar"
                         else -> "Terjadi Error"
                     }
-                    isError.postValue(errormsg)
+                    isErrorRegister.postValue(SingleLiveEvent(errormsg))
                 }
             }
         }

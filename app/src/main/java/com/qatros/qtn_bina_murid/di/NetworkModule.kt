@@ -29,7 +29,7 @@ val networkModule = module{
             .setLenient()
             .create()
         Retrofit.Builder()
-            .baseUrl("https://bina-murid.fly.dev/")
+            .baseUrl("https://binamurid-be.qatros.com/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .client(get())
