@@ -152,15 +152,21 @@ class FormChildActivity : AppCompatActivity() {
                         it1
                     )
                 }
+
                 if (imageMultipart != null) {
-                    pbRegisterChild.isGone = false
-                    viewModel.postAddChild(
-                        token,
-                        fullName,
-                        school,
-                        birthOfDate,
-                        imageMultipart
-                    )
+                    val length = finalFile?.length() ?: 0
+                    if (length <= 1000000) {
+                        pbRegisterChild.isGone = false
+                        viewModel.postAddChild(
+                            token,
+                            fullName,
+                            school,
+                            birthOfDate,
+                            imageMultipart
+                        )
+                    } else {
+                        this@FormChildActivity.toast("Ukuran Gambar Melebihi 1 Mb")
+                    }
                 } else {
                     this@FormChildActivity.toast("Gambar Masih Kosong")
                 }

@@ -20,10 +20,7 @@ import com.qatros.qtn_bina_murid.databinding.BottomAddImageBinding
 import com.qatros.qtn_bina_murid.databinding.BottomImageReviewBinding
 import com.qatros.qtn_bina_murid.databinding.FragmentProfileBinding
 import com.qatros.qtn_bina_murid.di.SharedPreference
-import com.qatros.qtn_bina_murid.utils.createCustomTempFile
-import com.qatros.qtn_bina_murid.utils.loadImageUser
-import com.qatros.qtn_bina_murid.utils.requestPermission
-import com.qatros.qtn_bina_murid.utils.uriToFile
+import com.qatros.qtn_bina_murid.utils.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -133,6 +130,7 @@ class ProfileFragment : BaseFragment() {
         if (result.resultCode == AppCompatActivity.RESULT_OK) {
             val selectedImg: Uri = result.data?.data as Uri
             val myFile = uriToFile(selectedImg, requireContext())
+            val length = myFile.length()
             val requestImageFile =
                 myFile.asRequestBody("image/jpg".toMediaTypeOrNull())
             val imageMultipart = requestImageFile.let { it1 ->
@@ -147,11 +145,16 @@ class ProfileFragment : BaseFragment() {
             bottomSheetDialog.setContentView(dialogBinding.root)
             bottomSheetDialog.show()
             with(dialogBinding) {
-                ivImageReview.loadImageUser(selectedImg.path)
+                ivImageReview.loadImageUser(selectedImg.toString())
                 btnSaveAvatar.setOnClickListener{
-                    val token = SharedPreference(requireContext()).userToken
-                    viewModel.editAvatar(token, imageMultipart)
-                    bottomSheetDialog.dismiss()
+                    if (length <= 1000000) {
+                        val token = SharedPreference(requireContext()).userToken
+                        viewModel.editAvatar(token, imageMultipart)
+                        bottomSheetDialog.dismiss()
+                    } else {
+                        requireContext().toast("Ukuran Gambar Melebihi 1 Mb")
+                        bottomSheetDialog.dismiss()
+                    }
                 }
             }
         }
@@ -164,6 +167,7 @@ class ProfileFragment : BaseFragment() {
     ) {
         if (it.resultCode == AppCompatActivity.RESULT_OK) {
             val myFile = File(currentPhotoPath)
+            val length = myFile.length()
             val result = BitmapFactory.decodeFile(myFile.path)
             val requestImageFile =
                 myFile.asRequestBody("image/jpg".toMediaTypeOrNull())
@@ -179,11 +183,16 @@ class ProfileFragment : BaseFragment() {
             bottomSheetDialog.setContentView(dialogBinding.root)
             bottomSheetDialog.show()
             with(dialogBinding) {
-                ivImageReview.loadImageUser(currentPhotoPath)
+                ivImageReview.setImageBitmap(result)
                 btnSaveAvatar.setOnClickListener{
-                    val token = SharedPreference(requireContext()).userToken
-                    viewModel.editAvatar(token, imageMultipart)
-                    bottomSheetDialog.dismiss()
+                    if (length <= 1000000) {
+                        val token = SharedPreference(requireContext()).userToken
+                        viewModel.editAvatar(token, imageMultipart)
+                        bottomSheetDialog.dismiss()
+                    } else {
+                        requireContext().toast("Ukuran Gambar Melebihi 1 Mb")
+                        bottomSheetDialog.dismiss()
+                    }
                 }
             }
         }
