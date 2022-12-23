@@ -61,52 +61,55 @@ class DailyParentFragment : Fragment(), DateAdapter.onItemClick {
 
     private fun observeData() {
         with(viewModel) {
-            observeGetChildListSuccess().observe(viewLifecycleOwner) {
-                if(it?.data.isNullOrEmpty()) {
-                    binding.pbDailyParent.isGone = true
-                    Toast.makeText(
-                        requireContext(),
-                        "Anak tidak ditemukan",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                } else {
-                    val adapter = it?.data?.let { it1 ->
-                        SpinChildAdapter(
+            observeGetChildListSuccess().observe(viewLifecycleOwner) { data ->
+                data.getContentIfNotHandled().let {
+                    if(it?.data.isNullOrEmpty()) {
+                        Log.e("TAG", "observeData: TEST", )
+                        binding.pbDailyParent.isGone = true
+                        Toast.makeText(
                             requireContext(),
-                            android.R.layout.simple_spinner_item,
-                            it1
-                        )
-                    }
-                    binding.spChild.adapter = adapter
-
-                    binding.spChild.onItemSelectedListener =
-                        object : AdapterView.OnItemSelectedListener {
-                            override fun onItemSelected(
-                                adapterView: AdapterView<*>?, view: View?,
-                                position: Int, id: Long
-                            ) {
-                                val child: Children = adapter?.getItem(position) ?: Children()
-                                childrenId = child.childrenId
-                                with(binding) {
-                                    tvNameDailyReport.text = child.fullName
-                                    tvSubjectChildDailyReport.text = child.school
-                                    ivProfileDailyReport.loadImageUser(child.avatar)
-                                    btnToProfileChild.setOnClickListener {
-                                        startActivity(
-                                            Intent(
-                                                activity,
-                                                ChildProfileActivity::class.java
-                                            ).putExtra(ChildProfileActivity.CHILD_DATA, child)
-                                        )
-                                    }
-                                }
-                                getPedagogue(token, child.childrenId)
-                            }
-
-                            override fun onNothingSelected(adapter: AdapterView<*>?) {
-
-                            }
+                            "Anak tidak ditemukan",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else {
+                        val adapter = it?.data?.let { it1 ->
+                            SpinChildAdapter(
+                                requireContext(),
+                                android.R.layout.simple_spinner_item,
+                                it1
+                            )
                         }
+                        binding.spChild.adapter = adapter
+
+                        binding.spChild.onItemSelectedListener =
+                            object : AdapterView.OnItemSelectedListener {
+                                override fun onItemSelected(
+                                    adapterView: AdapterView<*>?, view: View?,
+                                    position: Int, id: Long
+                                ) {
+                                    val child: Children = adapter?.getItem(position) ?: Children()
+                                    childrenId = child.childrenId
+                                    with(binding) {
+                                        tvNameDailyReport.text = child.fullName
+                                        tvSubjectChildDailyReport.text = child.school
+                                        ivProfileDailyReport.loadImageUser(child.avatar)
+                                        btnToProfileChild.setOnClickListener {
+                                            startActivity(
+                                                Intent(
+                                                    activity,
+                                                    ChildProfileActivity::class.java
+                                                ).putExtra(ChildProfileActivity.CHILD_DATA, child)
+                                            )
+                                        }
+                                    }
+                                    getPedagogue(token, child.childrenId)
+                                }
+
+                                override fun onNothingSelected(adapter: AdapterView<*>?) {
+
+                                }
+                            }
+                    }
                 }
             }
 

@@ -8,6 +8,7 @@ import com.qatros.qtn_bina_murid.base.ResponseResult
 import com.qatros.qtn_bina_murid.data.AppRepository
 import com.qatros.qtn_bina_murid.data.remote.request.ForgotPasswordRequest
 import com.qatros.qtn_bina_murid.data.remote.response.ForgotPasswordResponse
+import com.qatros.qtn_bina_murid.utils.SingleLiveEvent
 import kotlinx.coroutines.launch
 
 class ResetPasswordViewModel(private val repository: AppRepository) : BaseViewModel() {
@@ -21,7 +22,7 @@ class ResetPasswordViewModel(private val repository: AppRepository) : BaseViewMo
                     forgotPasswordSuccess.postValue(result.data)
                 }
                 is ResponseResult.Error -> {
-                    isError.postValue(result.errorMsg)
+                    isError.postValue(SingleLiveEvent(result.errorMsg ?: "Terjadi Kesalahan"))
                 }
             }
         }

@@ -12,6 +12,7 @@ import com.qatros.qtn_bina_murid.data.remote.response.AddChatResponse
 import com.qatros.qtn_bina_murid.data.remote.response.AllChatResponse
 import com.qatros.qtn_bina_murid.data.remote.response.AllRoomChatResponse
 import com.qatros.qtn_bina_murid.utils.SingleLiveEvent
+import io.reactivex.Single
 import kotlinx.coroutines.launch
 
 class ChatViewModel(private val repository: AppRepository) : BaseViewModel() {
@@ -33,7 +34,7 @@ class ChatViewModel(private val repository: AppRepository) : BaseViewModel() {
                     postMessageSuccess.postValue(SingleLiveEvent(result.data))
                 }
                 is ResponseResult.Error -> {
-                    isError.postValue(result.errorMsg)
+                    isError.postValue(SingleLiveEvent(result.errorMsg ?: "Terjadi Kesalahan"))
                 }
             }
         }
@@ -47,8 +48,7 @@ class ChatViewModel(private val repository: AppRepository) : BaseViewModel() {
                     getPrivateRoomSuccess.postValue(SingleLiveEvent(result.data))
                 }
                 is ResponseResult.Error -> {
-                    Log.e("TAG", "getPrivateRoom: ${result.errorMsg}", )
-                    isError.postValue(result.errorMsg)
+                    isError.postValue(SingleLiveEvent(result.errorMsg ?: "Terjadi Kesalahan"))
                 }
             }
         }
@@ -61,7 +61,7 @@ class ChatViewModel(private val repository: AppRepository) : BaseViewModel() {
                     getAllMessageSuccess.postValue(SingleLiveEvent(result.data))
                 }
                 is ResponseResult.Error -> {
-                    isError.postValue(result.errorMsg)
+                    isError.postValue(SingleLiveEvent(result.errorMsg ?: "Terjadi Kesalahan"))
                 }
             }
         }

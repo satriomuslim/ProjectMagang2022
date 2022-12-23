@@ -152,6 +152,10 @@ class MenuProfileFragment : Fragment() {
                 }
             }
 
+            btnConfirmEmail.setOnClickListener{
+                activity?.startActivity(Intent(requireActivity(), SendEmailActivity::class.java))
+            }
+
             btnEditProfile.setOnClickListener {
                 findNavController().navigate(R.id.action_menuProfile_to_editProfileFragment)
             }

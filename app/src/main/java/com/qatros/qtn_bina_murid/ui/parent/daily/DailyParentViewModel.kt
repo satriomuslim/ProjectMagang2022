@@ -14,8 +14,8 @@ import io.reactivex.Single
 import kotlinx.coroutines.launch
 
 class DailyParentViewModel(private val repository: AppRepository) : BaseViewModel() {
-    private val getChildListSuccess = MutableLiveData<ListChildResponse?>()
-    fun observeGetChildListSuccess() : LiveData<ListChildResponse?> = getChildListSuccess
+    private val getChildListSuccess = MutableLiveData<SingleLiveEvent<ListChildResponse?>>()
+    fun observeGetChildListSuccess() : LiveData<SingleLiveEvent<ListChildResponse?>> = getChildListSuccess
 
     private val getPedagogueSuccess = MutableLiveData<ListPedagogueResponse?>()
     fun observeGetPedagogueSuccess() : LiveData<ListPedagogueResponse?> = getPedagogueSuccess
@@ -33,10 +33,10 @@ class DailyParentViewModel(private val repository: AppRepository) : BaseViewMode
         viewModelScope.launch {
             when(val result = repository.getListChild(token, type)) {
                 is ResponseResult.Success -> {
-                    getChildListSuccess.postValue(result.data)
+                    getChildListSuccess.postValue(SingleLiveEvent(result.data))
                 }
                 is ResponseResult.Error -> {
-                    isError.postValue(result.errorMsg)
+                    isError.postValue(SingleLiveEvent(result.errorMsg ?: "Terjadi Kesalahan"))
                 }
             }
         }
@@ -49,7 +49,7 @@ class DailyParentViewModel(private val repository: AppRepository) : BaseViewMode
                     getPedagogueSuccess.postValue(result.data)
                 }
                 is ResponseResult.Error -> {
-                    isError.postValue(result.errorMsg)
+                    isError.postValue(SingleLiveEvent(result.errorMsg ?: "Terjadi Kesalahan"))
                 }
             }
         }

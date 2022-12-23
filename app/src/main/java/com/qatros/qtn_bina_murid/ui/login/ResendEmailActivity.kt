@@ -59,8 +59,10 @@ class ResendEmailActivity : AppCompatActivity() {
             }
 
             observeError().observe(this@ResendEmailActivity) {
-                binding.pbConfirmEmail.isGone = true
-                baseContext.toast(it)
+                it.getContentIfNotHandled()?.let {
+                    binding.pbConfirmEmail.isGone = true
+                    baseContext.toast(it)
+                }
             }
         }
     }

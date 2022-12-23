@@ -208,7 +208,6 @@
                 android:layout_marginBottom="8dp"
                 android:orientation="horizontal"
                 android:padding="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/view_line_about">
@@ -234,6 +233,61 @@
 
                 <ImageView
                     android:id="@+id/iv_row_contact_qatros"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/ic_caretright" />
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/view_line_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="16dp"
+                android:background="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_change_user" />
+
+            <RelativeLayout
+                android:id="@+id/btn_confirm_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_line_confirm">
+
+                <ImageView
+                    android:id="@+id/iv_icon_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"
+                    android:src="@drawable/ic_envelopeopen_open"
+                    app:tint="@color/blue" />
+
+                <TextView
+                    android:id="@+id/tv_confirm_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_toRightOf="@id/iv_icon_email"
+                    android:text="Konfirmasi Email"
+                    android:textColor="@color/blue"
+                    android:textSize="16dp" />
+
+                <ImageView
+                    android:id="@+id/iv_row_confirm_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"

@@ -45,6 +45,7 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
     private var userId: Int = 0
     private var childrenId: Int = 0
     private lateinit var pedagogueName: String
+    private var haveChild = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,12 +72,14 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
             observeGetChildListSuccess().observe(viewLifecycleOwner) {
                 if(it?.data.isNullOrEmpty()) {
                     binding.pbDailyReportPendagogue.isGone = true
+                    haveChild = false
                     Toast.makeText(
                         requireContext(),
                         "Anak tidak ditemukan",
                         Toast.LENGTH_SHORT
                     ).show()
                 } else {
+                    haveChild = true
                     val adapter = it?.data?.let { it1 ->
                         SpinChildAdapter(
                             requireContext(),
@@ -147,7 +150,15 @@ class DailyPedagogueFragment : Fragment(), onItemClick {
             }
 
             btnAddReport.setOnClickListener {
-                showBottomSheetDialog()
+                if (haveChild){
+                    showBottomSheetDialog()
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "Anda Tidak Memiliki Anak Didik",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         }
     }

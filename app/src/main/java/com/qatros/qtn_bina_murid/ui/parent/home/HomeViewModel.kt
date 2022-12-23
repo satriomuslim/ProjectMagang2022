@@ -33,7 +33,7 @@ class HomeViewModel(private val repository: AppRepository) : BaseViewModel() {
                     getChildListSuccess.postValue(result.data)
                 }
                 is ResponseResult.Error -> {
-                    isError.postValue(result.errorMsg)
+                    isError.postValue(SingleLiveEvent(result.errorMsg ?: "Terjadi Kesalahan"))
                 }
             }
         }
@@ -47,8 +47,7 @@ class HomeViewModel(private val repository: AppRepository) : BaseViewModel() {
                     getChildTokenSuccess.postValue(result.data.invitation_token)
                 }
                 is ResponseResult.Error -> {
-                    Log.e("TAG", "getInviteChildren: ${result.errorMsg}", )
-                    isError.postValue(result.errorMsg)
+                    isError.postValue(SingleLiveEvent(result.errorMsg ?: "Terjadi Kesalahan"))
                 }
             }
         }

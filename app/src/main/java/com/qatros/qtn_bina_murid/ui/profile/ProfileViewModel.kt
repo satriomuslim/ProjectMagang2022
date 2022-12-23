@@ -8,6 +8,7 @@ import com.qatros.qtn_bina_murid.base.ResponseResult
 import com.qatros.qtn_bina_murid.data.AppRepository
 import com.qatros.qtn_bina_murid.data.remote.request.AddRoleRequest
 import com.qatros.qtn_bina_murid.data.remote.request.ChangePasswordRequest
+import com.qatros.qtn_bina_murid.data.remote.request.ResendEmailRequest
 import com.qatros.qtn_bina_murid.data.remote.response.AddRoleResponse
 import com.qatros.qtn_bina_murid.data.remote.response.ProfileResponse
 import com.qatros.qtn_bina_murid.utils.SingleLiveEvent
@@ -33,6 +34,9 @@ class ProfileViewModel(private val repository: AppRepository) : BaseViewModel() 
     private val changePasswordSuccess = MutableLiveData<SingleLiveEvent<Boolean>>()
     fun observeChangePasswordSuccess(): LiveData<SingleLiveEvent<Boolean>> = changePasswordSuccess
 
+    private val sendEmailSuccess = MutableLiveData<SingleLiveEvent<Boolean>>()
+    fun observeSendEmailSuccess(): LiveData<SingleLiveEvent<Boolean>> = sendEmailSuccess
+
     fun sendData(name: String, avatar: String) {
         viewModelScope.launch {
             sendData.postValue(Pair(name, avatar))
@@ -50,7 +54,11 @@ class ProfileViewModel(private val repository: AppRepository) : BaseViewModel() 
                     editProfileSuccess.postValue(SingleLiveEvent(result.data))
                 }
                 is ResponseResult.Error -> {
-                    isError.postValue(result.errorMsg)
+                    val errorMsg = when(result.code){
+                        403 -> "Anda Belum KOnfirmasi Email"
+                        else -> "Terjadi Kesalahan"
+                    }
+                    isError.postValue(SingleLiveEvent(errorMsg))
                 }
             }
         }
@@ -63,7 +71,11 @@ class ProfileViewModel(private val repository: AppRepository) : BaseViewModel() 
                     editAvatarSuccess.postValue(SingleLiveEvent(result.data))
                 }
                 is ResponseResult.Error -> {
-                    isError.postValue(result.errorMsg)
+                    val errorMsg = when(result.code){
+                        403 -> "Anda Belum KOnfirmasi Email"
+                        else -> "Terjadi Kesalahan"
+                    }
+                    isError.postValue(SingleLiveEvent(errorMsg))
                 }
             }
         }
@@ -76,7 +88,11 @@ class ProfileViewModel(private val repository: AppRepository) : BaseViewModel() 
                     addRoleSuccess.postValue(SingleLiveEvent(result.data))
                 }
                 is ResponseResult.Error -> {
-                    isError.postValue(result.errorMsg)
+                    val errorMsg = when(result.code){
+                        403 -> "Anda Belum KOnfirmasi Email"
+                        else -> "Terjadi Kesalahan"
+                    }
+                    isError.postValue(SingleLiveEvent(errorMsg))
                 }
             }
         }
@@ -90,6 +106,23 @@ class ProfileViewModel(private val repository: AppRepository) : BaseViewModel() 
                 }
                 is ResponseResult.Error -> {
                     changePasswordSuccess.postValue(SingleLiveEvent(false))
+                }
+            }
+        }
+    }
+
+    fun resendEmail(resendEmailRequest: ResendEmailRequest) {
+        viewModelScope.launch {
+            when(val result = repository.resendEmail(resendEmailRequest)) {
+                is ResponseResult.Success -> {
+                    sendEmailSuccess.postValue(SingleLiveEvent(true))
+                }
+                is ResponseResult.Error -> {
+                    val errorMsg = when(result.code){
+                        403 -> "Anda Belum KOnfirmasi Email"
+                        else -> "Terjadi Kesalahan"
+                    }
+                    isError.postValue(SingleLiveEvent(errorMsg))
                 }
             }
         }

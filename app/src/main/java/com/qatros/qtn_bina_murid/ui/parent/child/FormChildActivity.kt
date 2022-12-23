@@ -83,8 +83,10 @@ class FormChildActivity : AppCompatActivity() {
             }
 
             observeError().observe(this@FormChildActivity) {
-                binding.pbRegisterChild.isGone = true
-                Toast.makeText(this@FormChildActivity, it, Toast.LENGTH_SHORT).show()
+                it.getContentIfNotHandled()?.let {
+                    binding.pbRegisterChild.isGone = true
+                    Toast.makeText(this@FormChildActivity, it, Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }

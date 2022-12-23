@@ -42,7 +42,7 @@ class ScanChildrenViewModel(private val repository: AppRepository) : BaseViewMod
                 }
                 is ResponseResult.Error -> {
                     Log.e("TAG", "postInviteChildERROR: ${result.errorMsg} ${result.code}", )
-                    isError.postValue(result.errorMsg)
+                    isError.postValue(SingleLiveEvent(result.errorMsg ?: "Terjadi Kesalahan"))
                 }
             }
         }

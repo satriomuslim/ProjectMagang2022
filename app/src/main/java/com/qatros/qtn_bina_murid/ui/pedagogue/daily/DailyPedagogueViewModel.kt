@@ -45,7 +45,11 @@ class DailyPedagogueViewModel(private val repository: AppRepository) : BaseViewM
                     postSubjectSuccess.postValue(SingleLiveEvent(true))
                 }
                 is ResponseResult.Error -> {
-                    isError.postValue(result.errorMsg)
+                    val errorMsg = when(result.code){
+                        403 -> "Anda Belum KOnfirmasi Email"
+                        else -> "Terjadi Kesalahan"
+                    }
+                    isError.postValue(SingleLiveEvent(errorMsg))
                 }
             }
         }
@@ -58,7 +62,11 @@ class DailyPedagogueViewModel(private val repository: AppRepository) : BaseViewM
                     postReportSuccess.postValue(SingleLiveEvent(true))
                 }
                 is ResponseResult.Error -> {
-                    isError.postValue(result.errorMsg)
+                    val errorMsg = when(result.code){
+                        403 -> "Anda Belum KOnfirmasi Email"
+                        else -> "Terjadi Kesalahan"
+                    }
+                    isError.postValue(SingleLiveEvent(errorMsg))
                 }
             }
         }
@@ -71,7 +79,7 @@ class DailyPedagogueViewModel(private val repository: AppRepository) : BaseViewM
                     getChildListSuccess.postValue(result.data)
                 }
                 is ResponseResult.Error -> {
-                    isError.postValue(result.errorMsg)
+                    isError.postValue(SingleLiveEvent(result.errorMsg ?: "Terjadi Kesalahan"))
                 }
             }
         }

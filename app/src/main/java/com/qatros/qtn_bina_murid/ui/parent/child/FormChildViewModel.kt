@@ -25,7 +25,7 @@ class FormChildViewModel(private val repository: AppRepository) : BaseViewModel(
                     addChildSuccess.postValue(SingleLiveEvent(true))
                 }
                 is ResponseResult.Error -> {
-                    isError.postValue(result.errorMsg)
+                    isError.postValue(SingleLiveEvent(result.errorMsg ?: "Terjadi Kesalahan"))
                 }
             }
         }
@@ -42,7 +42,11 @@ class FormChildViewModel(private val repository: AppRepository) : BaseViewModel(
                     editChildSuccess.postValue(SingleLiveEvent(true))
                 }
                 is ResponseResult.Error -> {
-                    isError.postValue(result.errorMsg)
+                    val errorMsg = when(result.code){
+                        403 -> "Anda Belum KOnfirmasi Email"
+                        else -> "Terjadi Kesalahan"
+                    }
+                    isError.postValue(SingleLiveEvent(errorMsg))
                 }
             }
         }

@@ -49,7 +49,7 @@ class LoginViewModel(private val repository: AppRepository) : BaseViewModel() {
                     resendEmailSuccess.postValue(SingleLiveEvent(true))
                 }
                 is ResponseResult.Error -> {
-                    isError.postValue(result.errorMsg)
+                    isError.postValue(SingleLiveEvent(result.errorMsg ?: "Terjadi Kesalahan"))
                 }
             }
         }

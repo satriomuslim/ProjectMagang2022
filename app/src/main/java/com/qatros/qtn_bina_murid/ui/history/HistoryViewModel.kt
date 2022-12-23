@@ -20,7 +20,7 @@ class HistoryViewModel(private val repository: AppRepository) : BaseViewModel() 
                     getHistorySuccess.postValue(SingleLiveEvent(result.data))
                 }
                 is ResponseResult.Error -> {
-                    isError.postValue(result.errorMsg)
+                    isError.postValue(SingleLiveEvent(result.errorMsg ?: "Terjadi Kesalahan"))
                 }
             }
         }
@@ -33,7 +33,7 @@ class HistoryViewModel(private val repository: AppRepository) : BaseViewModel() 
                     getHistorySuccess.postValue(SingleLiveEvent(result.data))
                 }
                 is ResponseResult.Error -> {
-                    isError.postValue(result.errorMsg)
+                    isError.postValue(SingleLiveEvent(result.errorMsg ?: "Terjadi Kesalahan"))
                 }
             }
         }
