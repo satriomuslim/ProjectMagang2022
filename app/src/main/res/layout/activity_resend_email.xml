@@ -75,7 +75,7 @@
                         android:layout_marginBottom="16dp"
                         android:layout_marginTop="32dp">
 
-                        <com.qatros.qtn_bina_murid.customview.EmailEditText
+                        <com.qatros.binamurid.customview.EmailEditText
                             android:id="@+id/et_email_confirm"
                             android:inputType="textEmailAddress"
                             android:layout_width="match_parent"

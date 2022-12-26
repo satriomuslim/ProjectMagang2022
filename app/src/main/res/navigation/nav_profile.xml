@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/menuProfile"
-        android:name="com.qatros.qtn_bina_murid.ui.profile.MenuProfileFragment"
+        android:name="com.qatros.binamurid.ui.profile.MenuProfileFragment"
         android:label="fragment_parent_menu_profile"
         tools:layout="@layout/fragment_menu_profile" >
         <action
@@ -19,12 +19,12 @@
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.qatros.qtn_bina_murid.ui.profile.EditProfileFragment"
+        android:name="com.qatros.binamurid.ui.profile.EditProfileFragment"
         android:label="fragment_parent_edit_profile"
         tools:layout="@layout/fragment_edit_profile" />
     <fragment
         android:id="@+id/changePasswordFragment"
-        android:name="com.qatros.qtn_bina_murid.ui.profile.ChangePasswordFragment"
+        android:name="com.qatros.binamurid.ui.profile.ChangePasswordFragment"
         android:label="ChangePasswordFragment" />
 
 </navigation>

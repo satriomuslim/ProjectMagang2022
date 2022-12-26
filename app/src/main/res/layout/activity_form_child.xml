@@ -127,7 +127,7 @@
 
                     app:startIconDrawable="@drawable/ic_sekolah">
 
-                    <com.qatros.qtn_bina_murid.customview.SchoolEditText
+                    <com.qatros.binamurid.customview.SchoolEditText
                         android:id="@+id/ed_asalSekolah"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -141,7 +141,7 @@
                     android:layout_marginTop="16dp"
                     app:startIconDrawable="@drawable/ic_toga_anak">
 
-                    <com.qatros.qtn_bina_murid.customview.FullNameEditText
+                    <com.qatros.binamurid.customview.FullNameEditText
                         android:id="@+id/ed_namaAnak"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -156,7 +156,7 @@
                     android:layout_marginTop="16dp"
                     app:startIconDrawable="@drawable/ic_calendar">
 
-                    <com.qatros.qtn_bina_murid.customview.BornEditText
+                    <com.qatros.binamurid.customview.BornEditText
                         android:id="@+id/ed_tanggalLahirAnak"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.qatros.qtn_bina_murid">
+    package="com.qatros.binamurid">
 
     <uses-feature android:name="android.hardware.camera" />
 
@@ -23,7 +23,7 @@
     </queries>
 
     <application
-        android:name=".App"
+        android:name="com.qatros.binamurid.App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -35,73 +35,73 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ui.profile.SendEmailActivity"
+            android:name="com.qatros.binamurid.ui.profile.SendEmailActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.login.ResendEmailActivity"
+            android:name="com.qatros.binamurid.ui.login.ResendEmailActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.otp.OtpActivity"
+            android:name="com.qatros.binamurid.ui.otp.OtpActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.chat.ChatDetailActivity"
+            android:name="com.qatros.binamurid.ui.chat.ChatDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.chat.MessageActivity"
+            android:name="com.qatros.binamurid.ui.chat.MessageActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.chat.ChatActivity"
+            android:name="com.qatros.binamurid.ui.chat.ChatActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.pedagogue.daily.DailyPedagogueAllActivity"
+            android:name="com.qatros.binamurid.ui.pedagogue.daily.DailyPedagogueAllActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.parent.daily.DailyParentsAllActivity"
+            android:name="com.qatros.binamurid.ui.parent.daily.DailyParentsAllActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.parent.childProfile.ChildProfileActivity"
+            android:name="com.qatros.binamurid.ui.parent.childProfile.ChildProfileActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.register.RegisterDetailActivity"
+            android:name="com.qatros.binamurid.ui.register.RegisterDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.pedagogue.scanChildren.ScanChildrenResultActivity"
+            android:name="com.qatros.binamurid.ui.pedagogue.scanChildren.ScanChildrenResultActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.resetPassword.ResetPasswordActivity"
+            android:name="com.qatros.binamurid.ui.resetPassword.ResetPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.parent.child.FormChildActivity"
+            android:name="com.qatros.binamurid.ui.parent.child.FormChildActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.pedagogue.scanChildren.ScanChildrenActivity"
+            android:name="com.qatros.binamurid.ui.pedagogue.scanChildren.ScanChildrenActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.landing.LandingNextActivity"
+            android:name="com.qatros.binamurid.ui.landing.LandingNextActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.register.RegisterActivity"
+            android:name="com.qatros.binamurid.ui.register.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.parent.navigation.NavigationParentActivity"
+            android:name="com.qatros.binamurid.ui.parent.navigation.NavigationParentActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.pedagogue.navigation.NavigationPedagogueActivity"
+            android:name="com.qatros.binamurid.ui.pedagogue.navigation.NavigationPedagogueActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.login.LoginActivity"
+            android:name="com.qatros.binamurid.ui.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.landing.LandingActivity"
+            android:name="com.qatros.binamurid.ui.landing.LandingActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.parent.home.HomeScanListActivity"
+            android:name="com.qatros.binamurid.ui.parent.home.HomeScanListActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.parent.scan.ScanBarcodeParentsActivity"
+            android:name="com.qatros.binamurid.ui.parent.scan.ScanBarcodeParentsActivity"
             android:exported="false" />
         <activity
-            android:name="com.qatros.qtn_bina_murid.ui.splash.SplashActivity"
+            android:name="com.qatros.binamurid.ui.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -116,7 +116,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.qatros.qtn_bina_murid"
+            android:authorities="com.qatros.binamurid"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

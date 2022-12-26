@@ -61,7 +61,7 @@
                         android:layout_marginTop="32dp"
                         app:startIconDrawable="@drawable/ic_envelopeopen">
 
-                        <com.qatros.qtn_bina_murid.customview.EmailEditText
+                        <com.qatros.binamurid.customview.EmailEditText
                             android:id="@+id/et_email_login"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
                         app:passwordToggleEnabled="true"
                         app:startIconDrawable="@drawable/ic_locksimple">
 
-                        <com.qatros.qtn_bina_murid.customview.PasswordEditText
+                        <com.qatros.binamurid.customview.PasswordEditText
                             android:id="@+id/et_password_login"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

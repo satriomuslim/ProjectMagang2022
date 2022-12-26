@@ -16,7 +16,7 @@
         android:layout_marginTop="32dp"
         app:startIconDrawable="@drawable/ic_user">
 
-        <com.qatros.qtn_bina_murid.customview.FullNameEditText
+        <com.qatros.binamurid.customview.FullNameEditText
             android:id="@+id/ed_namaLengkap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
         android:layout_marginTop="16dp"
         app:startIconDrawable="@drawable/ic_envelopeopen">
 
-        <com.qatros.qtn_bina_murid.customview.EmailEditText
+        <com.qatros.binamurid.customview.EmailEditText
             android:id="@+id/ed_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

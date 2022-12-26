@@ -14,5 +14,5 @@ dependencyResolutionManagement {
         maven { url 'https://jitpack.io' }
     }
 }
-rootProject.name = "qtn-bina-murid"
+rootProject.name = "binamurid"
 include ':app'
